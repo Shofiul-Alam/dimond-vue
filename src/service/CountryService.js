@@ -1,0 +1,10 @@
+/*eslint-disable */
+import axios from "axios";
+
+export default class CountryService {
+  getCountries() {
+    return axios
+      .get("assets/demo/data/countries.json")
+      .then(res => res.data.data);
+  }
+}
