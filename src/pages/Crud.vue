@@ -5,25 +5,25 @@
 
             <div class="card">
                 <Toolbar class="p-mb-4">
-                    <template #left>
+                    <template slot="left">
                         <Button
                             label="New"
                             icon="pi pi-plus"
                             class="p-button-success p-mr-2 p-ripple"
-                            @click="openNew()"
+                            @click="openNew"
                         ></Button>
                         <Button
                             label="Delete"
                             icon="pi pi-trash"
                             class="p-button-danger p-ripple"
-                            @click="confirmDeleteSelected()"
+                            @click="confirmDeleteSelected"
                             :disabled="
                                 !selectedProducts || !selectedProducts.length
                             "
                         ></Button>
                     </template>
 
-                    <template #right>
+                    <template slot="right">
                         <FileUpload
                             mode="basic"
                             accept="image/*"
@@ -36,7 +36,7 @@
                             label="Export"
                             icon="pi pi-upload"
                             class="p-button-help p-ripple"
-                            click="dt.exportCSV()"
+                            @click="exportCSV($event)"
                         ></Button>
                     </template>
                 </Toolbar>
@@ -44,19 +44,13 @@
                 <DataTable
                     ref="dt"
                     :value="products"
-                    :rows="10"
-                    :paginator:="true"
-                    :globalFilterFields="[
-                        'name',
-                        'country.name',
-                        'representative.name',
-                        'status',
-                    ]"
                     :selection.sync="selectedProducts"
-                    :rowHover="true"
                     dataKey="id"
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                    :showCurrentPageReport="true"
+                    :paginator="true"
+                    :rows="10"
+                    :filters="filters"
+                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
                 >
                     <template #header>
                         <div class="p-d-flex p-ai-center p-jc-between">
@@ -64,13 +58,7 @@
                             <span class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
                                 <InputText
-                                    type="text"
-                                    @input="
-                                        dt.filterGlobal(
-                                            $event.target.value,
-                                            'contains'
-                                        )
-                                    "
+                                    v-model="filters['global']"
                                     placeholder="Search..."
                                 />
                             </span>
@@ -83,20 +71,20 @@
                     ></Column>
                     <Column field="name" header="Name" sortable></Column>
                     <Column field="image" header="Image">
-                        <template #body="product">
+                        <template #body="slotProps">
                             <img
                                 :src="
                                     'assets/demo/images/product/' +
-                                    product.data.image
+                                    slotProps.data.image
                                 "
-                                :alt="product.data.name"
+                                :alt="slotProps.data.name"
                                 width="100"
                                 class="p-shadow-4"
                             /> </template
                     ></Column>
                     <Column field="price" header="Price" sortable>
-                        <template #body="product">
-                            {{ formatCurrency(product.data.price) }}
+                        <template #body="slotProps">
+                            {{ formatCurrency(slotProps.data.price) }}
                         </template>
                     </Column>
                     <Column
@@ -105,39 +93,48 @@
                         sortable
                     ></Column>
                     <Column field="review" header="Review" sortable
-                        ><template #body="product">
+                        ><template #body="slotProps">
                             <Rating
-                                :model="product.data.rating"
+                                :value="slotProps.data.rating"
                                 :readonly="true"
                                 :cancel="false"
                             ></Rating></template
                     ></Column>
                     <Column field="inventoryStatus" header="Status" sortable
-                        ><template #body="product">
+                        ><template #body="slotProps">
                             <span
                                 :class="
                                     'product-badge status-' +
-                                    product.data.inventoryStatus.toLowerCase()
+                                    slotProps.data.inventoryStatus.toLowerCase()
                                 "
-                                >{{ product.data.inventoryStatus }}</span
+                                >{{ slotProps.data.inventoryStatus }}</span
                             ></template
                         ></Column
                     >
 
                     <Column>
-                        <template #body="product">
+                        <template #body="slotProps">
                             <Button
                                 icon="pi pi-pencil"
                                 class="p-ripple p-button-rounded p-button-success p-mr-2"
-                                @click="editProduct(product)"
+                                @click="editProduct(slotProps.data)"
                             ></Button>
                             <Button
                                 icon="pi pi-trash"
                                 class="p-ripple p-button-rounded p-button-warning"
-                                @click="openConfirmation()"
+                                @click="confirmDeleteProduct(slotProps.data)"
                             ></Button>
                         </template>
                     </Column>
+
+                    <template #paginatorLeft></template>
+
+                    <template #footer>
+                        <div class="p-d-flex p-ai-center p-jc-between">
+                            In total there are
+                            {{ products ? products.length : 0 }} products.
+                        </div>
+                    </template>
                 </DataTable>
 
                 <Dialog
@@ -147,35 +144,146 @@
                     :modal="true"
                     class="p-fluid"
                 >
+                    <img
+                        :src="'assets/demo/images/product/' + product.image"
+                        :alt="product.image"
+                        class="product-image"
+                        v-if="product.image"
+                    />
+                    <div class="p-field">
+                        <label for="name">Name</label>
+                        <InputText
+                            id="name"
+                            v-model.trim="product.name"
+                            required="true"
+                            autofocus
+                            :class="{ 'p-invalid': submitted && !product.name }"
+                        />
+                        <small
+                            class="p-invalid"
+                            v-if="submitted && !product.name"
+                            >Name is required.</small
+                        >
+                    </div>
+                    <div class="p-field">
+                        <label for="description">Description</label>
+                        <Textarea
+                            id="description"
+                            v-model="product.description"
+                            required="true"
+                            rows="3"
+                            cols="20"
+                        />
+                    </div>
+
+                    <div class="p-field">
+                        <label class="p-mb-3">Category</label>
+                        <div class="p-formgrid p-grid">
+                            <div class="p-field-radiobutton p-col-6">
+                                <RadioButton
+                                    id="category1"
+                                    name="category"
+                                    value="Accessories"
+                                    v-model="product.category"
+                                />
+                                <label for="category1">Accessories</label>
+                            </div>
+                            <div class="p-field-radiobutton p-col-6">
+                                <RadioButton
+                                    id="category2"
+                                    name="category"
+                                    value="Clothing"
+                                    v-model="product.category"
+                                />
+                                <label for="category2">Clothing</label>
+                            </div>
+                            <div class="p-field-radiobutton p-col-6">
+                                <RadioButton
+                                    id="category3"
+                                    name="category"
+                                    value="Electronics"
+                                    v-model="product.category"
+                                />
+                                <label for="category3">Electronics</label>
+                            </div>
+                            <div class="p-field-radiobutton p-col-6">
+                                <RadioButton
+                                    id="category4"
+                                    name="category"
+                                    value="Fitness"
+                                    v-model="product.category"
+                                />
+                                <label for="category4">Fitness</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-formgrid p-grid">
+                        <div class="p-field p-col">
+                            <label for="price">Price</label>
+                            <InputNumber
+                                id="price"
+                                v-model="product.price"
+                                mode="currency"
+                                currency="USD"
+                                locale="en-US"
+                            />
+                        </div>
+                        <div class="p-field p-col">
+                            <label for="quantity">Quantity</label>
+                            <InputNumber
+                                id="quantity"
+                                v-model="product.quantity"
+                                integeronly
+                            />
+                        </div>
+                    </div>
+                    <template #footer>
+                        <Button
+                            label="Cancel"
+                            icon="pi pi-times"
+                            class="p-button-text"
+                            @click="hideDialog"
+                        />
+                        <Button
+                            label="Save"
+                            icon="pi pi-check"
+                            class="p-button-text"
+                            @click="saveProduct"
+                        />
+                    </template>
                 </Dialog>
 
                 <Dialog
+                    :visible.sync="deleteProductDialog"
                     header="Confirm"
-                    :visible.sync="confirmation"
                     :modal="true"
                     :style="{ width: '450px' }"
-                >
-                    <div class="confirmation-content">
+                    ><div class="confirmation-content">
                         <i
                             class="pi pi-exclamation-triangle p-mr-3"
                             style="font-size: 2rem"
                         />
-                        <span>Are you sure you want to proceed?</span>
+                        <span v-if="product"
+                            >Are you sure you want to delete
+                            <b>{{ product.name }}</b
+                            >?</span
+                        >
                     </div>
                     <template #footer>
                         <Button
                             label="No"
                             icon="pi pi-times"
-                            @click="closeConfirmation()"
-                            class="p-button-text" />
+                            class="p-button-text"
+                            @click="deleteProductDialog = false"
+                        />
                         <Button
                             label="Yes"
                             icon="pi pi-check"
-                            @click="deleteProduct()"
                             class="p-button-text"
-                            autofocus
-                    /></template>
-                </Dialog>
+                            @click="deleteProduct"
+                        /> </template
+                ></Dialog>
 
                 <Dialog
                     :visible.sync="deleteProductsDialog"
@@ -222,7 +330,9 @@ export default {
         return {
             confirmation: false,
             selectedProducts: [],
+            deleteProductDialog: false,
             deleteProductsDialog: false,
+            product: {},
             products: null,
             productDialog: false,
             cols: [
@@ -232,6 +342,8 @@ export default {
                 { field: "rating", header: "Reviews" },
                 { field: "inventoryStatus", header: "Status" },
             ],
+            submitted: false,
+            filters: {},
         };
     },
     created() {
@@ -243,35 +355,61 @@ export default {
             .then((data) => (this.products = data));
     },
     methods: {
+        formatCurrency(value) {
+            return value.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+            });
+        },
         openNew() {
             this.product = {};
             this.submitted = false;
             this.productDialog = true;
         },
-
-        confirmDeleteSelected() {
-            this.deleteProductsDialog = true;
+        hideDialog() {
+            this.productDialog = false;
+            this.submitted = false;
         },
-
-        deleteSelectedProducts() {
-            this.products = this.products.filter(
-                (val) => !this.selectedProducts.includes(val)
-            );
-            this.deleteProductsDialog = false;
-            this.selectedProducts = null;
-            this.$toast.add({
-                severity: "success",
-                summary: "Successful",
-                detail: "Products Deleted",
-                life: 3000,
-            });
+        saveProduct() {
+            this.submitted = true;
+            if (this.product.name.trim()) {
+                if (this.product.id) {
+                    this.$set(
+                        this.products,
+                        this.findIndexById(this.product.id),
+                        this.product
+                    );
+                    this.$toast.add({
+                        severity: "success",
+                        summary: "Successful",
+                        detail: "Product Updated",
+                        life: 3000,
+                    });
+                } else {
+                    this.product.id = this.createId();
+                    this.product.code = this.createId();
+                    this.product.image = "product-placeholder.svg";
+                    this.product.inventoryStatus = "INSTOCK";
+                    this.products.push(this.product);
+                    this.$toast.add({
+                        severity: "success",
+                        summary: "Successful",
+                        detail: "Product Created",
+                        life: 3000,
+                    });
+                }
+                this.productDialog = false;
+                this.product = {};
+            }
         },
-
         editProduct(product) {
             this.product = { ...product };
             this.productDialog = true;
         },
-
+        confirmDeleteProduct(product) {
+            this.product = product;
+            this.deleteProductDialog = true;
+        },
         deleteProduct() {
             this.products = this.products.filter(
                 (val) => val.id !== this.product.id
@@ -285,44 +423,6 @@ export default {
                 life: 3000,
             });
         },
-
-        hideDialog() {
-            this.productDialog = false;
-            this.submitted = false;
-        },
-
-        saveProduct() {
-            this.submitted = true;
-
-            if (this.product.name.trim()) {
-                if (this.product.id) {
-                    this.products[
-                        this.findIndexById(this.product.id)
-                    ] = this.product;
-                    this.messageService.add({
-                        severity: "success",
-                        summary: "Successful",
-                        detail: "Product Updated",
-                        life: 3000,
-                    });
-                } else {
-                    this.product.id = this.createId();
-                    this.product.image = "product-placeholder.svg";
-                    this.products.push(this.product);
-                    this.messageService.add({
-                        severity: "success",
-                        summary: "Successful",
-                        detail: "Product Created",
-                        life: 3000,
-                    });
-                }
-
-                this.products = [...this.products];
-                this.productDialog = false;
-                this.product = {};
-            }
-        },
-
         findIndexById(id) {
             let index = -1;
             for (let i = 0; i < this.products.length; i++) {
@@ -331,32 +431,35 @@ export default {
                     break;
                 }
             }
-
             return index;
         },
-
         createId() {
             let id = "";
-            const chars =
+            var chars =
                 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            for (let i = 0; i < 5; i++) {
+            for (var i = 0; i < 5; i++) {
                 id += chars.charAt(Math.floor(Math.random() * chars.length));
             }
             return id;
         },
-
-        formatCurrency(value) {
-            return value.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
+        exportCSV() {
+            this.$refs.dt.exportCSV();
+        },
+        confirmDeleteSelected() {
+            this.deleteProductsDialog = true;
+        },
+        deleteSelectedProducts() {
+            this.products = this.products.filter(
+                (val) => !this.selectedProducts.includes(val)
+            );
+            this.deleteProductsDialog = false;
+            this.selectedProducts = null;
+            this.$toast.add({
+                severity: "success",
+                summary: "Successful",
+                detail: "Products Deleted",
+                life: 3000,
             });
-        },
-
-        openConfirmation() {
-            this.confirmation = true;
-        },
-        closeConfirmation() {
-            this.confirmation = false;
         },
     },
 };
@@ -364,9 +467,43 @@ export default {
 
 
 <style lang="scss" scoped>
-/deep/ .p-dialog .product-image {
+.table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.product-image {
+    width: 100px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.p-dialog .product-image {
     width: 150px;
     margin: 0 auto 2rem auto;
     display: block;
+}
+.confirmation-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-badge {
+    border-radius: 2px;
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    &.status-instock {
+        background: #c8e6c9;
+        color: #256029;
+    }
+    &.status-outofstock {
+        background: #ffcdd2;
+        color: #c63737;
+    }
+    &.status-lowstock {
+        background: #feedaf;
+        color: #8a5340;
+    }
 }
 </style>
