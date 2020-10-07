@@ -660,7 +660,7 @@ export default {
         },
 
         recentSales($event) {
-            if (event.value.code === "0") {
+            if ($event.value.code === "0") {
                 this.products = this.productsThisWeek;
             } else {
                 this.products = this.productsLastWeek;
