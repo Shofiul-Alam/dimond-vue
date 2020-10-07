@@ -205,6 +205,79 @@
                     class="multiselect-custom"
                     :filter="true"
                 >
+                    <template #value="selectedMulti">
+                        <div
+                            class="country-item country-item-value"
+                            v-for="option of selectedMulti.value"
+                            :key="option.code"
+                        >
+                            <img
+                                src="assets/demo/flags/flag_placeholder.png"
+                                :alt="option.code"
+                                :class="
+                                    'flag flag-' + option.code.toLowerCase()
+                                "
+                            />
+                            <div>{{ option.name }}</div>
+                        </div>
+                        <template
+                            v-if="
+                                !selectedMulti.value ||
+                                selectedMulti.value.length === 0
+                            "
+                        >
+                            Select Countries
+                        </template>
+                    </template>
+                    <template #option="slotProps">
+                        <div class="country-item">
+                            <img
+                                src="/assets/demo/flags/flag_placeholder.png"
+                                :class="
+                                    'flag flag-' +
+                                    slotProps.option.code.toLowerCase()
+                                "
+                            />
+                            <div>{{ slotProps.option.name }}</div>
+                        </div>
+                    </template>
+
+                    <!-- <template #value="selectedMulti">
+                        <div
+                            class="country-item country-item-value"
+                            v-for="option of selectedMulti.value"
+                            :key="option.code"
+                        >
+                            <img
+                                src="assets/demo/flags/flag_placeholder.png"
+                                :alt="selectedMulti.option.name"
+                                :class="
+                                    'flag flag-' + option.code.toLowerCase()
+                                "
+                            />
+                            <div>{{ option.name }}</div>
+                        </div>
+                        <template
+                            v-if="
+                                !slotProps.value || slotProps.value.length === 0
+                            "
+                        >
+                            Select Countries
+                        </template>
+                    </template>
+                    <template #option="item">
+                        <div class="country-item">
+                            <img
+                                src="assets/demo/flags/flag_placeholder.png"
+                                :alt="item.option.name"
+                                :class="
+                                    'flag flag-' +
+                                    item.option.code.toLowerCase()
+                                "
+                            />
+                            <div>{{ item.option.name }}</div>
+                        </div>
+                    </template> -->
                 </MultiSelect>
             </div>
 
