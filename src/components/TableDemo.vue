@@ -16,13 +16,7 @@
 					:rows="10"
 					:paginator="true"
 					:filterDelay="0"
-					:globalFilterFields="[
-						'name',
-						'country.name',
-						'representative.name',
-						'status',
-						'activity',
-					]"
+					:filters="filters1"
 				>
 					<template #header>
 						<div class="table-header">
@@ -31,12 +25,7 @@
 								<i class="pi pi-search"></i>
 								<InputText
 									type="text"
-									@input="
-										dt.filterGlobal(
-											$event.target.value,
-											'contains'
-										)
-									"
+									v-model="filters1['global']"
 									placeholder="Global Search"
 								/>
 							</span>
@@ -160,6 +149,7 @@
 					:scrollable="true"
 					scrollHeight="600px"
 					:filterDelay="0"
+					:filters="filters2"
 					:globalFilterFields="[
 						'name',
 						'country.name',
@@ -174,7 +164,7 @@
 								<i class="pi pi-search"></i>
 								<InputText
 									type="text"
-									input="dtc.filterGlobal($event.target.value, 'contains')"
+									v-model="filters2['global']"
 									placeholder="Global Search"
 								/>
 							</span>
@@ -368,10 +358,7 @@
 
 								<Column headerStyle="width:4rem">
 									<template #body>
-										<Button
-											class="p-button-secondary"
-											icons="pi pi-search"
-										></Button>
+										<Button icon="pi pi-search"></Button>
 									</template>
 								</Column>
 
@@ -392,66 +379,64 @@
 				<DataTable
 					:value="customers3"
 					rowGroupMode="subheader"
-					@sort="onSort()"
-					:scrollable="true"
-					scrollHeight="600px"
+					groupRowsBy="representative.name"
 					sortMode="single"
 					sortField="representative.name"
+					:sortOrder="1"
 				>
+					<Column
+						field="representative.name"
+						header="Representative"
+					></Column>
 					<Column field="name" header="Name"></Column>
 					<Column field="country" header="Country">
-						<template #body="customer">
+						<template #body="slotProps">
 							<img
 								src="assets/demo/flags/flag_placeholder.png"
 								:class="
-									'flag flag-' + customer.data.country.code
+									'flag flag-' + slotProps.data.country.code
 								"
 								width="30"
 							/>
 							<span
+								style="
+									margin-left: 0.5em;
+									vertical-align: middle;
+								"
 								class="image-text"
-								style="margin-left: 0.5em"
-								>{{ customer.data.country.name }}</span
-							></template
-						></Column
-					>
+								>{{ slotProps.data.country.name }}</span
+							>
+						</template>
+					</Column>
 					<Column field="company" header="Company"></Column>
 					<Column field="status" header="Status">
-						<template #body="customer">
+						<template #body="slotProps">
 							<span
 								:class="
 									'customer-badge status-' +
-									customer.data.status
+									slotProps.data.status
 								"
-								>{{ customer.data.status }}</span
+								>{{ slotProps.data.status }}</span
 							>
 						</template>
 					</Column>
 					<Column field="date" header="Date"></Column>
-
-					<template #groupHeader="customer">
-						<template
-							v-if="
-								rowGroupMetadata[
-									customer.data.representative.name
-								].index === rowIndex
+					<template #groupheader="slotProps">
+						<img
+							:alt="slotProps.data.representative.name"
+							:src="
+								'assets/demo/images/avatar/' +
+								slotProps.data.representative.image
 							"
+							width="32"
+							style="vertical-align: middle"
+						/>
+						<span
+							style="margin-left: 0.5em; vertical-align: middle"
+							class="image-text p-text-bold p-ml-2"
+							>{{ slotProps.data.representative.name }}</span
 						>
-							<img
-								:alt="customer.representative.name"
-								src="assets/demo/images/avatar/"
-								+
-								customer.data.representative.image
-								width="32"
-								style="vertical-align: middle"
-							/>
-							<span class="p-text-bold p-ml-2">{{
-								customer.data.representative.name
-							}}</span>
-						</template>
 					</template>
-
-					<!-- <template #groupfooter="customer"></template> -->
 				</DataTable>
 			</div>
 		</div>
@@ -474,6 +459,8 @@ export default {
 			expandedRows: [],
 			rowIndex: null,
 			rowGroupMetadata: null,
+			filters1: {},
+			filters2: {},
 			representatives: [
 				{ name: "Amy Elsner", image: "amyelsner.png" },
 				{ name: "Anna Fali", image: "annafali.png" },
