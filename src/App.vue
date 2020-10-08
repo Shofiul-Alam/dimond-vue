@@ -1,61 +1,59 @@
 <template>
-    <div
-        :class="containerClass"
-        data-theme="colorScheme"
-        @click="onDocumentClick()"
-    >
-        <div class="layout-content-wrapper">
-            <app-topbar
-                :topbarNotificationMenuActive="topbarNotificationMenuActive"
-                :topbarUserMenuActive="topbarUserMenuActive"
-                @menu-button-click="onMenuButtonClick"
-                @search-click="onSearchClick"
-                @topbar-notification="onTopbarNotificationMenuButtonClick"
-                @topbar-user-menu="onTopbarUserMenuButtonClick"
-                @right-menu-click="onRightMenuClick"
-            ></app-topbar>
+	<div
+		:class="containerClass"
+		data-theme="colorScheme"
+		@click="onDocumentClick()"
+	>
+		<div class="layout-content-wrapper">
+			<app-topbar
+				:topbarNotificationMenuActive="topbarNotificationMenuActive"
+				:topbarUserMenuActive="topbarUserMenuActive"
+				@menu-button-click="onMenuButtonClick"
+				@search-click="onSearchClick"
+				@topbar-notification="onTopbarNotificationMenuButtonClick"
+				@topbar-user-menu="onTopbarUserMenuButtonClick"
+				@right-menu-click="onRightMenuClick"
+			></app-topbar>
 
-            <div class="layout-content">
-                <router-view></router-view>
-            </div>
+			<div class="layout-content">
+				<router-view></router-view>
+			</div>
 
-            <app-footer></app-footer>
-        </div>
+			<app-footer></app-footer>
+		</div>
 
-        <app-menu
-            :model="menu"
-            :menuMode="menuMode"
-            :menuActive="menuActive"
-        ></app-menu>
+		<app-menu
+			:model="menu"
+			:menuMode="menuMode"
+			:menuActive="menuActive"
+		></app-menu>
 
-        <app-right-menu
-            :rightMenuActive="rightMenuActive"
-            :colorScheme="colorScheme"
-            @rightMenuClick="rightMenuClick"
-            @onRippleChange="onRippleChange"
-        ></app-right-menu>
+		<app-right-menu
+			:rightMenuActive="rightMenuActive"
+			:colorScheme="colorScheme"
+			@rightMenuClick="rightMenuClick"
+			@onRippleChange="onRippleChange"
+		></app-right-menu>
 
-        <app-config
-            :configActive="configActive"
-            :menuTheme="menuTheme"
-            :colorScheme="colorScheme"
-            @config-click="onConfigClick"
-            @config-button-click="onConfigButtonClick"
-            @change-menu-theme="changeMenuTheme"
-        ></app-config>
+		<app-config
+			:configActive="configActive"
+			:menuTheme="menuTheme"
+			:colorScheme="colorScheme"
+			@config-click="onConfigClick"
+			@config-button-click="onConfigButtonClick"
+			@change-menu-theme="changeMenuTheme"
+		></app-config>
 
-        <app-search
-            :search="search"
-            @on-search-click="onSearchClick"
-        ></app-search>
+		<app-search
+			:search="search"
+			@on-search-click="onSearchClick"
+		></app-search>
 
-        <div class="layout-mask modal-in"></div>
-    </div>
+		<div class="layout-mask modal-in"></div>
+	</div>
 </template>
 
 <script>
-/*eslint-disable */
-import EventBus from "./event-bus";
 import AppTopbar from "./AppTopbar";
 import AppFooter from "./AppFooter";
 import AppConfig from "./AppConfig";
@@ -63,531 +61,531 @@ import AppMenu from "./AppMenu";
 import AppSearch from "./AppSearch";
 import AppRightMenu from "./AppRightMenu";
 export default {
-    name: "AppMain",
-    data() {
-        return {
-            menuActive: false,
-            menuMode: "static",
-            colorScheme: "light",
-            menuTheme: "layout-sidebar-darkgray",
-            overlayMenuActive: false,
-            staticMenuDesktopInactive: false,
-            staticMenuMobileActive: false,
-            menuClick: false,
-            search: false,
-            searchClick: false,
-            userMenuClick: false,
-            topbarUserMenuActive: false,
-            notificationMenuClick: false,
-            topbarNotificationMenuActive: false,
-            rightMenuClick: false,
-            rightMenuActive: false,
-            configActive: false,
-            configClick: false,
-            resetMenu: false,
-            menuHoverActive: false,
-            inputStyle: "outlined",
-            menu: [
-                {
-                    label: "Favorites",
-                    icon: "pi pi-fw pi-home",
-                    items: [
-                        {
-                            label: "Dashboard",
-                            icon: "pi pi-fw pi-home",
-                            to: "/",
-                        },
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "UI Kit",
-                    icon: "pi pi-fw pi-id-card",
-                    items: [
-                        {
-                            label: "Form Layout",
-                            icon: "pi pi-fw pi-id-card",
-                            to: "/uikit/formlayout",
-                        },
-                        {
-                            label: "Input",
-                            icon: "pi pi-fw pi-check-square",
-                            to: "/uikit/input",
-                        },
-                        {
-                            label: "Button",
-                            icon: "pi pi-fw pi-mobile",
-                            to: "/uikit/button",
-                        },
-                        {
-                            label: "Table",
-                            icon: "pi pi-fw pi-table",
-                            to: "/uikit/table",
-                        },
-                        {
-                            label: "List",
-                            icon: "pi pi-fw pi-list",
-                            to: "/uikit/list",
-                        },
-                        {
-                            label: "Tree",
-                            icon: "pi pi-fw pi-share-alt",
-                            to: "/uikit/tree",
-                        },
-                        {
-                            label: "Panel",
-                            icon: "pi pi-fw pi-tablet",
-                            to: "/uikit/panel",
-                        },
-                        {
-                            label: "Overlay",
-                            icon: "pi pi-fw pi-clone",
-                            to: "/uikit/overlay",
-                        },
-                        {
-                            label: "Media",
-                            icon: "pi pi-fw pi-image",
-                            to: "/uikit/media",
-                        },
-                        {
-                            label: "Menu",
-                            icon: "pi pi-fw pi-bars",
-                            to: "/uikit/menu",
-                        },
-                        {
-                            label: "Message",
-                            icon: "pi pi-fw pi-comment",
-                            to: "/uikit/message",
-                        },
-                        {
-                            label: "File",
-                            icon: "pi pi-fw pi-file",
-                            to: "/uikit/file",
-                        },
-                        {
-                            label: "Chart",
-                            icon: "pi pi-fw pi-chart-bar",
-                            to: "/uikit/charts",
-                        },
-                        {
-                            label: "Misc",
-                            icon: "pi pi-fw pi-circle-off",
-                            to: "/uikit/misc",
-                        },
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "Utilities",
-                    icon: "pi pi-fw pi-desktop",
-                    items: [
-                        {
-                            label: "Display",
-                            icon: "pi pi-fw pi-desktop",
-                            to: "/utilities/display",
-                        },
-                        {
-                            label: "Elevation",
-                            icon: "pi pi-fw pi-external-link",
-                            to: "/utilities/elevation",
-                        },
-                        {
-                            label: "Flexbox",
-                            icon: "pi pi-fw pi-directions",
-                            to: "/utilities/flexbox",
-                        },
-                        {
-                            label: "Icons",
-                            icon: "pi pi-fw pi-search",
-                            to: "/utilities/icons",
-                        },
-                        {
-                            label: "Text",
-                            icon: "pi pi-fw pi-pencil",
-                            to: "/utilities/text",
-                        },
-                        {
-                            label: "Widgets",
-                            icon: "pi pi-fw pi-star-o",
-                            to: "/utilities/widgets",
-                        },
-                        {
-                            label: "Grid System",
-                            icon: "pi pi-fw pi-th-large",
-                            to: "/utilities/grid",
-                        },
-                        {
-                            label: "Spacing",
-                            icon: "pi pi-fw pi-arrow-right",
-                            to: "/utilities/spacing",
-                        },
-                        {
-                            label: "Typography",
-                            icon: "pi pi-fw pi-align-center",
-                            to: "/utilities/typography",
-                        },
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "Pages",
-                    icon: "pi pi-fw pi-pencil",
-                    items: [
-                        {
-                            label: "Crud",
-                            icon: "pi pi-fw pi-pencil",
-                            to: "/pages/crud",
-                        },
-                        {
-                            label: "Calendar",
-                            icon: "pi pi-fw pi-calendar-plus",
-                            to: "/pages/calendar",
-                        },
-                        {
-                            label: "Landing",
-                            icon: "pi pi-fw pi-user-plus",
-                            url: "assets/pages/landing.html",
-                            target: "_blank",
-                        },
-                        {
-                            label: "Login",
-                            icon: "pi pi-fw pi-sign-in",
-                            to: "/login",
-                        },
-                        {
-                            label: "Invoice",
-                            icon: "pi pi-fw pi-dollar",
-                            to: "/pages/invoice",
-                        },
-                        {
-                            label: "Help",
-                            icon: "pi pi-fw pi-question-circle",
-                            to: "/pages/help",
-                        },
-                        {
-                            label: "Error",
-                            icon: "pi pi-fw pi-times-circle",
-                            to: "/error",
-                        },
-                        {
-                            label: "Not Found",
-                            icon: "pi pi-fw pi-exclamation-circle",
-                            to: "/notfound",
-                        },
-                        {
-                            label: "Access Denied",
-                            icon: "pi pi-fw pi-lock",
-                            to: "/access",
-                        },
-                        {
-                            label: "Empty Page",
-                            icon: "pi pi-fw pi-circle-off",
-                            to: "/pages/empty",
-                        },
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "Hierarchy",
-                    icon: "pi pi-fw pi-align-left",
-                    items: [
-                        {
-                            label: "Submenu 1",
-                            icon: "pi pi-fw pi-sign-in",
-                            items: [
-                                {
-                                    label: "Submenu 1.1",
-                                    icon: "pi pi-fw pi-sign-in",
-                                    items: [
-                                        {
-                                            label: "Submenu 1.1.1",
-                                            icon: "pi pi-fw pi-sign-in",
-                                        },
-                                        {
-                                            label: "Submenu 1.1.2",
-                                            icon: "pi pi-fw pi-sign-in",
-                                        },
-                                        {
-                                            label: "Submenu 1.1.3",
-                                            icon: "pi pi-fw pi-sign-in",
-                                        },
-                                    ],
-                                },
-                                {
-                                    label: "Submenu 1.2",
-                                    icon: "pi pi-fw pi-sign-in",
-                                    items: [
-                                        {
-                                            label: "Submenu 1.2.1",
-                                            icon: "pi pi-fw pi-sign-in",
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                        {
-                            label: "Submenu 2",
-                            icon: "pi pi-fw pi-sign-in",
-                            items: [
-                                {
-                                    label: "Submenu 2.1",
-                                    icon: "pi pi-fw pi-sign-in",
-                                    items: [
-                                        {
-                                            label: "Submenu 2.1.1",
-                                            icon: "pi pi-fw pi-sign-in",
-                                        },
-                                        {
-                                            label: "Submenu 2.1.2",
-                                            icon: "pi pi-fw pi-sign-in",
-                                        },
-                                    ],
-                                },
-                                {
-                                    label: "Submenu 2.2",
-                                    icon: "pi pi-fw pi-sign-in",
-                                    items: [
-                                        {
-                                            label: "Submenu 2.2.1",
-                                            icon: "pi pi-fw pi-sign-in",
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "Start",
-                    icon: "pi pi-fw pi-download",
-                    items: [
-                        {
-                            label: "Docs",
-                            icon: "pi pi-fw pi-file",
-                            to: "/documentation",
-                        },
-                        {
-                            label: "Buy Now",
-                            icon: "pi pi-fw pi-money-bill",
-                            command: () =>
-                                window.open(
-                                    "https://www.primefaces.org/store",
-                                    "_blank"
-                                ),
-                        },
-                    ],
-                },
-            ],
-        };
-    },
-    created() {
-        this.$primevue.ripple = true;
-    },
-    computed: {
-        containerClass() {
-            return [
-                "layout-wrapper",
-                {
-                    "layout-horizontal": this.menuMode === "horizontal",
-                    "layout-overlay": this.menuMode === "overlay",
-                    "layout-static": this.menuMode === "static",
-                    "layout-slim": this.menuMode === "slim",
-                    "layout-sidebar-dim": this.colorScheme === "dim",
-                    "layout-sidebar-dark": this.colorScheme === "dark",
-                    "layout-overlay-active": this.overlayMenuActive,
-                    "layout-mobile-active": this.staticMenuMobileActive,
-                    "layout-static-inactive":
-                        this.staticMenuDesktopInactive &&
-                        this.menuMode === "static",
-                    "p-input-filled": this.$appState.inputStyle === "filled",
-                    "p-ripple-disabled": !this.$primevueripple,
-                },
-            ];
-        },
-    },
-    components: {
-        AppTopbar,
-        AppFooter,
-        AppConfig,
-        AppMenu,
-        AppSearch,
-        AppRightMenu,
-    },
-    watch: {
-        $route() {
-            this.menuActive = false;
-            this.$toast.removeAllGroups();
-        },
-    },
-    methods: {
-        onDocumentClick() {
-            if (!this.searchClick) {
-                this.search = false;
-            }
+	name: "AppMain",
+	data() {
+		return {
+			menuActive: false,
+			menuMode: "static",
+			colorScheme: "light",
+			menuTheme: "layout-sidebar-darkgray",
+			overlayMenuActive: false,
+			staticMenuDesktopInactive: false,
+			staticMenuMobileActive: false,
+			menuClick: false,
+			search: false,
+			searchClick: false,
+			userMenuClick: false,
+			topbarUserMenuActive: false,
+			notificationMenuClick: false,
+			topbarNotificationMenuActive: false,
+			rightMenuClick: false,
+			rightMenuActive: false,
+			configActive: false,
+			configClick: false,
+			resetMenu: false,
+			menuHoverActive: false,
+			inputStyle: "outlined",
+			menu: [
+				{
+					label: "Favorites",
+					icon: "pi pi-fw pi-home",
+					items: [
+						{
+							label: "Dashboard",
+							icon: "pi pi-fw pi-home",
+							to: "/",
+						},
+					],
+				},
+				{ separator: true },
+				{
+					label: "UI Kit",
+					icon: "pi pi-fw pi-id-card",
+					items: [
+						{
+							label: "Form Layout",
+							icon: "pi pi-fw pi-id-card",
+							to: "/uikit/formlayout",
+						},
+						{
+							label: "Input",
+							icon: "pi pi-fw pi-check-square",
+							to: "/uikit/input",
+						},
+						{
+							label: "Button",
+							icon: "pi pi-fw pi-mobile",
+							to: "/uikit/button",
+						},
+						{
+							label: "Table",
+							icon: "pi pi-fw pi-table",
+							to: "/uikit/table",
+						},
+						{
+							label: "List",
+							icon: "pi pi-fw pi-list",
+							to: "/uikit/list",
+						},
+						{
+							label: "Tree",
+							icon: "pi pi-fw pi-share-alt",
+							to: "/uikit/tree",
+						},
+						{
+							label: "Panel",
+							icon: "pi pi-fw pi-tablet",
+							to: "/uikit/panel",
+						},
+						{
+							label: "Overlay",
+							icon: "pi pi-fw pi-clone",
+							to: "/uikit/overlay",
+						},
+						{
+							label: "Media",
+							icon: "pi pi-fw pi-image",
+							to: "/uikit/media",
+						},
+						{
+							label: "Menu",
+							icon: "pi pi-fw pi-bars",
+							to: "/uikit/menu",
+						},
+						{
+							label: "Message",
+							icon: "pi pi-fw pi-comment",
+							to: "/uikit/message",
+						},
+						{
+							label: "File",
+							icon: "pi pi-fw pi-file",
+							to: "/uikit/file",
+						},
+						{
+							label: "Chart",
+							icon: "pi pi-fw pi-chart-bar",
+							to: "/uikit/charts",
+						},
+						{
+							label: "Misc",
+							icon: "pi pi-fw pi-circle-off",
+							to: "/uikit/misc",
+						},
+					],
+				},
+				{ separator: true },
+				{
+					label: "Utilities",
+					icon: "pi pi-fw pi-desktop",
+					items: [
+						{
+							label: "Display",
+							icon: "pi pi-fw pi-desktop",
+							to: "/utilities/display",
+						},
+						{
+							label: "Elevation",
+							icon: "pi pi-fw pi-external-link",
+							to: "/utilities/elevation",
+						},
+						{
+							label: "Flexbox",
+							icon: "pi pi-fw pi-directions",
+							to: "/utilities/flexbox",
+						},
+						{
+							label: "Icons",
+							icon: "pi pi-fw pi-search",
+							to: "/utilities/icons",
+						},
+						{
+							label: "Text",
+							icon: "pi pi-fw pi-pencil",
+							to: "/utilities/text",
+						},
+						{
+							label: "Widgets",
+							icon: "pi pi-fw pi-star-o",
+							to: "/utilities/widgets",
+						},
+						{
+							label: "Grid System",
+							icon: "pi pi-fw pi-th-large",
+							to: "/utilities/grid",
+						},
+						{
+							label: "Spacing",
+							icon: "pi pi-fw pi-arrow-right",
+							to: "/utilities/spacing",
+						},
+						{
+							label: "Typography",
+							icon: "pi pi-fw pi-align-center",
+							to: "/utilities/typography",
+						},
+					],
+				},
+				{ separator: true },
+				{
+					label: "Pages",
+					icon: "pi pi-fw pi-pencil",
+					items: [
+						{
+							label: "Crud",
+							icon: "pi pi-fw pi-pencil",
+							to: "/pages/crud",
+						},
+						{
+							label: "Calendar",
+							icon: "pi pi-fw pi-calendar-plus",
+							to: "/pages/calendar",
+						},
+						{
+							label: "Landing",
+							icon: "pi pi-fw pi-user-plus",
+							url: "assets/pages/landing.html",
+							target: "_blank",
+						},
+						{
+							label: "Login",
+							icon: "pi pi-fw pi-sign-in",
+							to: "/login",
+						},
+						{
+							label: "Invoice",
+							icon: "pi pi-fw pi-dollar",
+							to: "/pages/invoice",
+						},
+						{
+							label: "Help",
+							icon: "pi pi-fw pi-question-circle",
+							to: "/pages/help",
+						},
+						{
+							label: "Error",
+							icon: "pi pi-fw pi-times-circle",
+							to: "/error",
+						},
+						{
+							label: "Not Found",
+							icon: "pi pi-fw pi-exclamation-circle",
+							to: "/notfound",
+						},
+						{
+							label: "Access Denied",
+							icon: "pi pi-fw pi-lock",
+							to: "/access",
+						},
+						{
+							label: "Empty Page",
+							icon: "pi pi-fw pi-circle-off",
+							to: "/pages/empty",
+						},
+					],
+				},
+				{ separator: true },
+				{
+					label: "Hierarchy",
+					icon: "pi pi-fw pi-align-left",
+					items: [
+						{
+							label: "Submenu 1",
+							icon: "pi pi-fw pi-sign-in",
+							items: [
+								{
+									label: "Submenu 1.1",
+									icon: "pi pi-fw pi-sign-in",
+									items: [
+										{
+											label: "Submenu 1.1.1",
+											icon: "pi pi-fw pi-sign-in",
+										},
+										{
+											label: "Submenu 1.1.2",
+											icon: "pi pi-fw pi-sign-in",
+										},
+										{
+											label: "Submenu 1.1.3",
+											icon: "pi pi-fw pi-sign-in",
+										},
+									],
+								},
+								{
+									label: "Submenu 1.2",
+									icon: "pi pi-fw pi-sign-in",
+									items: [
+										{
+											label: "Submenu 1.2.1",
+											icon: "pi pi-fw pi-sign-in",
+										},
+									],
+								},
+							],
+						},
+						{
+							label: "Submenu 2",
+							icon: "pi pi-fw pi-sign-in",
+							items: [
+								{
+									label: "Submenu 2.1",
+									icon: "pi pi-fw pi-sign-in",
+									items: [
+										{
+											label: "Submenu 2.1.1",
+											icon: "pi pi-fw pi-sign-in",
+										},
+										{
+											label: "Submenu 2.1.2",
+											icon: "pi pi-fw pi-sign-in",
+										},
+									],
+								},
+								{
+									label: "Submenu 2.2",
+									icon: "pi pi-fw pi-sign-in",
+									items: [
+										{
+											label: "Submenu 2.2.1",
+											icon: "pi pi-fw pi-sign-in",
+										},
+									],
+								},
+							],
+						},
+					],
+				},
+				{ separator: true },
+				{
+					label: "Start",
+					icon: "pi pi-fw pi-download",
+					items: [
+						{
+							label: "Docs",
+							icon: "pi pi-fw pi-file",
+							to: "/documentation",
+						},
+						{
+							label: "Buy Now",
+							icon: "pi pi-fw pi-money-bill",
+							command: () =>
+								window.open(
+									"https://www.primefaces.org/store",
+									"_blank"
+								),
+						},
+					],
+				},
+			],
+		};
+	},
+	created() {
+		this.$primevue.ripple = true;
+	},
+	computed: {
+		containerClass() {
+			return [
+				"layout-wrapper",
+				{
+					"layout-horizontal": this.menuMode === "horizontal",
+					"layout-overlay": this.menuMode === "overlay",
+					"layout-static": this.menuMode === "static",
+					"layout-slim": this.menuMode === "slim",
+					"layout-sidebar-dim": this.colorScheme === "dim",
+					"layout-sidebar-dark": this.colorScheme === "dark",
+					"layout-overlay-active": this.overlayMenuActive,
+					"layout-mobile-active": this.staticMenuMobileActive,
+					"layout-static-inactive":
+						this.staticMenuDesktopInactive &&
+						this.menuMode === "static",
+					"p-input-filled": this.$appState.inputStyle === "filled",
+					"p-ripple-disabled": !this.$primevueripple,
+				},
+			];
+		},
+	},
+	components: {
+		AppTopbar,
+		AppFooter,
+		AppConfig,
+		AppMenu,
+		AppSearch,
+		AppRightMenu,
+	},
+	watch: {
+		$route() {
+			this.menuActive = false;
+			this.$toast.removeAllGroups();
+		},
+	},
+	methods: {
+		onDocumentClick() {
+			if (!this.searchClick) {
+				this.search = false;
+			}
 
-            if (!this.userMenuClick) {
-                this.topbarUserMenuActive = false;
-            }
+			if (!this.userMenuClick) {
+				this.topbarUserMenuActive = false;
+			}
 
-            if (!this.notificationMenuClick) {
-                this.topbarNotificationMenuActive = false;
-            }
+			if (!this.notificationMenuClick) {
+				this.topbarNotificationMenuActive = false;
+			}
 
-            if (!this.rightMenuClick) {
-                this.rightMenuActive = false;
-            }
+			if (!this.rightMenuClick) {
+				this.rightMenuActive = false;
+			}
 
-            if (!this.menuClick) {
-                if (this.isSlim()) {
-                    this.menuService.reset();
-                }
+			if (!this.menuClick) {
+				if (this.isSlim()) {
+					this.menuService.reset();
+				}
 
-                if (this.overlayMenuActive || this.staticMenuMobileActive) {
-                    this.hideOverlayMenu();
-                }
+				if (this.overlayMenuActive || this.staticMenuMobileActive) {
+					this.hideOverlayMenu();
+				}
 
-                this.menuHoverActive = false;
-                this.unblockBodyScroll();
-            }
+				this.menuHoverActive = false;
+				this.unblockBodyScroll();
+			}
 
-            if (this.configActive && !this.configClick) {
-                this.configActive = false;
-            }
+			if (this.configActive && !this.configClick) {
+				this.configActive = false;
+			}
 
-            this.searchClick = false;
-            this.configClick = false;
-            this.userMenuClick = false;
-            this.rightMenuClick = false;
-            this.notificationMenuClick = false;
-            this.menuClick = false;
-        },
+			this.searchClick = false;
+			this.configClick = false;
+			this.userMenuClick = false;
+			this.rightMenuClick = false;
+			this.notificationMenuClick = false;
+			this.menuClick = false;
+		},
 
-        onMenuButtonClick(event) {
-            this.menuClick = true;
-            this.topbarUserMenuActive = false;
-            this.topbarNotificationMenuActive = false;
-            this.rightMenuActive = false;
+		onMenuButtonClick(event) {
+			this.menuClick = true;
+			this.topbarUserMenuActive = false;
+			this.topbarNotificationMenuActive = false;
+			this.rightMenuActive = false;
 
-            if (this.isOverlay()) {
-                this.overlayMenuActive = !this.overlayMenuActive;
-            }
+			if (this.isOverlay()) {
+				this.overlayMenuActive = !this.overlayMenuActive;
+			}
 
-            if (this.isDesktop()) {
-                this.staticMenuDesktopInactive = !this
-                    .staticMenuDesktopInactive;
-            } else {
-                this.staticMenuMobileActive = !this.staticMenuMobileActive;
-                if (this.staticMenuMobileActive) {
-                    this.blockBodyScroll();
-                } else {
-                    this.unblockBodyScroll();
-                }
-            }
+			if (this.isDesktop()) {
+				this.staticMenuDesktopInactive = !this
+					.staticMenuDesktopInactive;
+			} else {
+				this.staticMenuMobileActive = !this.staticMenuMobileActive;
+				if (this.staticMenuMobileActive) {
+					this.blockBodyScroll();
+				} else {
+					this.unblockBodyScroll();
+				}
+			}
 
-            event.preventDefault();
-        },
+			event.preventDefault();
+		},
 
-        onSearchClick(event) {
-            this.search = !this.search;
-            this.searchClick = !this.searchClick;
-        },
+		onSearchClick() {
+			this.search = !this.search;
+			this.searchClick = !this.searchClick;
+		},
 
-        onMenuClick($event) {
-            this.menuClick = true;
-            this.resetMenu = false;
-        },
+		onMenuClick() {
+			this.menuClick = true;
+			this.resetMenu = false;
+		},
 
-        onTopbarUserMenuButtonClick(event) {
-            this.userMenuClick = true;
-            this.topbarUserMenuActive = !this.topbarUserMenuActive;
+		onTopbarUserMenuButtonClick(event) {
+			this.userMenuClick = true;
+			this.topbarUserMenuActive = !this.topbarUserMenuActive;
 
-            this.hideOverlayMenu();
+			this.hideOverlayMenu();
 
-            event.preventDefault();
-        },
+			event.preventDefault();
+		},
 
-        onTopbarNotificationMenuButtonClick(event) {
-            this.notificationMenuClick = true;
-            this.topbarNotificationMenuActive = !this
-                .topbarNotificationMenuActive;
+		onTopbarNotificationMenuButtonClick(event) {
+			this.notificationMenuClick = true;
+			this.topbarNotificationMenuActive = !this
+				.topbarNotificationMenuActive;
 
-            this.hideOverlayMenu();
+			this.hideOverlayMenu();
 
-            event.preventDefault();
-        },
+			event.preventDefault();
+		},
 
-        onRightMenuClick(event) {
-            this.rightMenuClick = true;
-            this.rightMenuActive = !this.rightMenuActive;
+		onRightMenuClick(event) {
+			this.rightMenuClick = true;
+			this.rightMenuActive = !this.rightMenuActive;
 
-            this.hideOverlayMenu();
+			this.hideOverlayMenu();
 
-            event.preventDefault();
-        },
+			event.preventDefault();
+		},
 
-        onRippleChange(event) {
-            this.ripple = event.checked;
-        },
+		onRippleChange(event) {
+			this.ripple = event.checked;
+		},
 
-        onConfigClick(event) {
-            this.configClick = true;
-        },
+		onConfigClick() {
+			this.configClick = true;
+		},
 
-        onConfigButtonClick(event) {
-            this.configActive = !this.configActive;
-            this.configClick = true;
-        },
+		onConfigButtonClick() {
+			this.configActive = !this.configActive;
+			this.configClick = true;
+		},
 
-        isSlim() {
-            return this.menuMode === "slim";
-        },
+		isSlim() {
+			return this.menuMode === "slim";
+		},
 
-        isOverlay() {
-            return this.menuMode === "overlay";
-        },
+		isOverlay() {
+			return this.menuMode === "overlay";
+		},
 
-        isDesktop() {
-            return window.innerWidth > 991;
-        },
+		isDesktop() {
+			return window.innerWidth > 991;
+		},
 
-        isMobile() {
-            return window.innerWidth <= 991;
-        },
+		isMobile() {
+			return window.innerWidth <= 991;
+		},
 
-        hideOverlayMenu() {
-            this.overlayMenuActive = false;
-            this.staticMenuMobileActive = false;
-        },
+		hideOverlayMenu() {
+			this.overlayMenuActive = false;
+			this.staticMenuMobileActive = false;
+		},
 
-        blockBodyScroll() {
-            this.addClass(document.body, "blocked-scroll");
-        },
+		blockBodyScroll() {
+			this.addClass(document.body, "blocked-scroll");
+		},
 
-        unblockBodyScroll() {
-            this.removeClass(document.body, "blocked-scroll");
-        },
+		unblockBodyScroll() {
+			this.removeClass(document.body, "blocked-scroll");
+		},
 
-        addClass(element, className) {
-            if (element.classList) element.classList.add(className);
-            else element.className += " " + className;
-        },
+		addClass(element, className) {
+			if (element.classList) element.classList.add(className);
+			else element.className += " " + className;
+		},
 
-        removeClass(element, className) {
-            if (element.classList) element.classList.remove(className);
-            else
-                element.className = element.classList.replace(
-                    new Exp(
-                        "(^|\\b)" + className.split(" ").join("|") + "(\\b|$)",
-                        "gi"
-                    ),
-                    " "
-                );
-        },
+		removeClass(element, className) {
+			if (element.classList) element.classList.remove(className);
+			else
+				element.className = element.classList.replace(
+					new RegExp(
+						"(^|\\b)" + className.split(" ").join("|") + "(\\b|$)",
+						"gi"
+					),
+					" "
+				);
+		},
 
-        changeMenuTheme(themeName) {
-            this.menuTheme = themeName;
-        },
-    },
+		changeMenuTheme(themeName) {
+			this.menuTheme = themeName;
+		},
+	},
 };
 </script>

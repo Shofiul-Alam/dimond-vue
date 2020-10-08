@@ -1161,7 +1161,6 @@
 </template>
 
 <script>
-/*eslint-disable */
 import AppCode from "../AppCode";
 export default {
     name: "Documentation",

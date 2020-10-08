@@ -1,4 +1,3 @@
-/*eslint-disable */
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -157,25 +156,25 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 new Vue({
-  el: "#app",
-  computed: {
-    ViewComponent() {
-      switch (this.$route.path) {
-        case "/login":
-          return Login;
-        case "/error":
-          return Error;
-        case "/access":
-          return Access;
-        case "/notfound":
-          return NotFound;
-        default:
-          return App;
-      }
+    el: "#app",
+    computed: {
+        ViewComponent() {
+            switch (this.$route.path) {
+                case "/login":
+                    return Login;
+                case "/error":
+                    return Error;
+                case "/access":
+                    return Access;
+                case "/notfound":
+                    return NotFound;
+                default:
+                    return App;
+            }
+        }
+    },
+    router,
+    render(h) {
+        return h(this.ViewComponent);
     }
-  },
-  router,
-  render(h) {
-    return h(this.ViewComponent);
-  }
 });
