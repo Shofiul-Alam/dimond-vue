@@ -2,76 +2,69 @@
 	<div class="p-grid">
 		<div class="p-col-12">
 			<div class="card">
-				<h5>Calendar</h5>
-				<FullCalendar
-					:events="events"
-					:options="options"
-				></FullCalendar>
+				<FullCalendar :events="events" :options="options" />
 
 				<Dialog
-					:visible="eventDialog"
-					:style="{
-						width: '450px',
-					}"
+					:visible.sync="eventDialog"
+					:style="{ width: '450px' }"
 					header="Event Details"
 					:modal="true"
 					:closable="true"
 				>
-					<template #content>
-						<div class="p-fluid">
-							<div class="p-field">
-								<label for="title">Title</label>
-								<InputText
-									id="title"
-									v-if="clickedEvent"
-									v-model="changedEvent.title"
-									required="true"
-								/>
-							</div>
-							<div class="p-field">
-								<label for="start">From</label>
-								<Calendar
-									id="start"
-									v-if="clickedEvent"
-									v-model="changedEvent.start"
-									:showTime="true"
-									appendTo="body"
-								></Calendar>
-							</div>
-							<div class="p-field">
-								<label for="end">To</label>
-								<Calendar
-									id="end"
-									v-if="clickedEvent"
-									v-model="changedEvent.end"
-									:showTime="true"
-									appendTo="body"
-								></Calendar>
-							</div>
-							<div class="p-field-checkbox">
-								<Checkbox
-									id="allday"
-									v-if="clickedEvent"
-									v-model="changedEvent.allday"
-								></Checkbox>
-								<label for="allday">All Day</label>
-							</div>
+					<div class="p-fluid">
+						<div class="p-field">
+							<label for="title">Title</label>
+							<InputText
+								id="title"
+								v-if="clickedEvent"
+								v-model="changedEvent.title"
+								required="true"
+								autofocus
+							/>
 						</div>
-					</template>
-
+						<div class="p-field">
+							<label for="start">From</label>
+							<Calendar
+								id="start"
+								v-if="clickedEvent"
+								v-model="changedEvent.start"
+								:showTime="true"
+								appendTo="body"
+							/>
+						</div>
+						<div class="p-field">
+							<label for="end">To</label>
+							<Calendar
+								id="end"
+								v-if="clickedEvent"
+								v-model="changedEvent.end"
+								:showTime="true"
+								appendTo="body"
+							/>
+						</div>
+						<div class="p-field-checkbox">
+							<Checkbox
+								id="allday"
+								name="allday"
+								value="All Day"
+								v-model="changedEvent.allDay"
+							/>
+							<label for="allday">All Day</label>
+						</div>
+					</div>
 					<template #footer>
 						<Button
 							label="Save"
 							icon="pi pi-check"
 							class="p-button-text"
-							@click="save()"
-						></Button>
+							@click="save"
+						/>
 						<Button
 							label="Reset"
 							icon="pi pi-refresh"
 							class="p-button-text"
-							@click="reset()"
-						></Button>
+							@click="reset"
+						/>
 					</template>
 				</Dialog>
 			</div>
@@ -85,16 +78,14 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 export default {
-	name: "Calendar",
 	data() {
 		return {
-			events: [],
 			eventDialog: false,
-			changedEvent: { title: "", start: null, end: "", allDay: null },
 			clickedEvent: null,
+			changedEvent: { title: "", start: null, end: "", allDay: null },
 			options: {
 				plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-				defaultDate: "2017-02-01",
+				defaultDate: "2019-01-01",
 				header: {
 					left: "prev,next",
 					center: "title",
@@ -109,24 +100,33 @@ export default {
 					this.changedEvent.end = this.clickedEvent.end;
 				},
 			},
+			events: null,
 		};
 	},
+	eventService: null,
 	created() {
 		this.eventService = new EventService();
 	},
 	mounted() {
-		this.eventService.getEvents().then((events) => {
-			this.events = events;
-		});
+		this.eventService.getEvents().then((data) => (this.events = data));
 	},
 	methods: {
+		findIndexById(id) {
+			let index = -1;
+			for (let i = 0; i < this.events.length; i++) {
+				if (this.events[i].id === id) {
+					index = i;
+					break;
+				}
+			}
+			return index;
+		},
 		save() {
 			this.eventDialog = false;
 			this.clickedEvent.setProp("title", this.changedEvent.title);
 			this.clickedEvent.setStart(this.changedEvent.start);
 			this.clickedEvent.setEnd(this.changedEvent.end);
 			this.clickedEvent.setAllDay(this.changedEvent.allDay);
-
 			this.changedEvent = {
 				title: "",
 				start: null,
@@ -134,7 +134,6 @@ export default {
 				allDay: null,
 			};
 		},
-
 		reset() {
 			this.changedEvent.title = this.clickedEvent.title;
 			this.changedEvent.start = this.clickedEvent.start;
@@ -143,3 +142,6 @@ export default {
 	},
 };
 </script>
+
+<style scoped>
+</style>
