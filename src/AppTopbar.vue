@@ -10,6 +10,7 @@
                     item.label
                 }}</span>
             </template> -->
+			<app-breadcrumb></app-breadcrumb>
 			<img
 				id="logo-mobile"
 				class="mobile-logo"
@@ -167,8 +168,12 @@
 </template>
 
 <script>
+import AppBreadcrumb from "./AppBreadcrumb";
 export default {
 	name: "AppTopbar",
+	components: {
+		AppBreadcrumb,
+	},
 	props: {
 		topbarNotificationMenuActive: Boolean,
 		topbarUserMenuActive: Boolean,

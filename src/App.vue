@@ -15,6 +15,8 @@
 				@right-menu-click="onRightMenuClick"
 			></app-topbar>
 
+			<app-breadcrumb></app-breadcrumb>
+
 			<div class="layout-content">
 				<router-view></router-view>
 			</div>
@@ -30,9 +32,7 @@
 
 		<app-right-menu
 			:rightMenuActive="rightMenuActive"
-			:colorScheme="colorScheme"
 			@rightMenuClick="rightMenuClick"
-			@onRippleChange="onRippleChange"
 		></app-right-menu>
 
 		<app-config
