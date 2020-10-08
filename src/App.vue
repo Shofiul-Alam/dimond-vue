@@ -38,10 +38,13 @@
 		<app-config
 			:configActive="configActive"
 			:menuTheme="menuTheme"
+			:menuMode="menuMode"
 			:colorScheme="colorScheme"
 			@config-click="onConfigClick"
 			@config-button-click="onConfigButtonClick"
 			@change-menu-theme="changeMenuTheme"
+			@menu-mode="changeMenuMode"
+			@change-color-scheme="changeColorScheme"
 		></app-config>
 
 		<app-search
@@ -401,6 +404,7 @@ export default {
 					"p-input-filled": this.$appState.inputStyle === "filled",
 					"p-ripple-disabled": !this.$primevueripple,
 				},
+				this.colorScheme === "light" ? this.menuTheme : "",
 			];
 		},
 	},
@@ -437,9 +441,9 @@ export default {
 			}
 
 			if (!this.menuClick) {
-				if (this.isSlim()) {
-					this.menuService.reset();
-				}
+				// if (this.isSlim()) {
+				// 	this.menuService.reset();
+				// }
 
 				if (this.overlayMenuActive || this.staticMenuMobileActive) {
 					this.hideOverlayMenu();
@@ -583,8 +587,97 @@ export default {
 				);
 		},
 
-		changeMenuTheme(themeName) {
+		changeMenuTheme(themeName, logoColor, componentTheme) {
 			this.menuTheme = themeName;
+			this.changeStyleSheetsColor("theme-css", componentTheme, 2);
+
+			const appLogoLink = document.getElementById("app-logo");
+
+			if (logoColor === "dark") {
+				appLogoLink.src = "assets/layout/images/logo-dark.svg";
+			} else {
+				appLogoLink.src = "assets/layout/images/logo-white.svg";
+			}
+		},
+
+		changeColorScheme(scheme) {
+			this.colorScheme = scheme;
+			this.changeStyleSheetsColor(
+				"layout-css",
+				"layout-" + scheme + ".css",
+				1
+			);
+			this.changeStyleSheetsColor(
+				"theme-css",
+				"theme-" + scheme + ".css",
+				1
+			);
+
+			const mobileLogoLink = document.getElementById("logo-mobile");
+			const invoiceLogoLink = document.getElementById("invoice-logo");
+			const footerLogoLink = document.getElementById("footer-logo");
+
+			if (scheme === "light") {
+				mobileLogoLink.src = "assets/layout/images/logo-dark.svg";
+				invoiceLogoLink.src = "assets/layout/images/logo-dark.svg";
+				footerLogoLink.src = "assets/layout/images/logo-dark.svg";
+			} else {
+				mobileLogoLink.src = "assets/layout/images/logo-white.svg";
+				invoiceLogoLink.src = "assets/layout/images/logo-white.svg";
+				footerLogoLink.src = "assets/layout/images/logo-white.svg";
+			}
+		},
+
+		changeStyleSheetsColor(id, value, from) {
+			const element = document.getElementById(id);
+			const urlTokens = element.getAttribute("href").split("/");
+
+			if (from === 1) {
+				// which function invoked this function
+				urlTokens[urlTokens.length - 1] = value;
+			} else if (from === 2) {
+				// which function invoked this function
+				if (value !== null) {
+					urlTokens[urlTokens.length - 2] = value;
+				}
+			} else if (from === 3) {
+				// which function invoked this function
+				urlTokens[urlTokens.length - 2] = value;
+			}
+
+			const newURL = urlTokens.join("/");
+
+			this.replaceLink(element, newURL);
+		},
+
+		replaceLink(linkElement, href) {
+			if (this.isIE()) {
+				linkElement.setAttribute("href", href);
+			} else {
+				const id = linkElement.getAttribute("id");
+				const cloneLinkElement = linkElement.cloneNode(true);
+
+				cloneLinkElement.setAttribute("href", href);
+				cloneLinkElement.setAttribute("id", id + "-clone");
+
+				linkElement.parentNode.insertBefore(
+					cloneLinkElement,
+					linkElement.nextSibling
+				);
+
+				cloneLinkElement.addEventListener("load", () => {
+					linkElement.remove();
+					cloneLinkElement.setAttribute("id", id);
+				});
+			}
+		},
+
+		isIE() {
+			return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
+		},
+
+		changeMenuMode(mode) {
+			this.menuMode = mode;
 		},
 	},
 };

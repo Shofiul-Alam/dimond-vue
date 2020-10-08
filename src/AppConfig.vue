@@ -18,8 +18,9 @@
 				<RadioButton
 					name="menuMode"
 					value="static"
-					v-model="menuMode"
+					v-model="d_menuMode"
 					inputId="mode1"
+					@change="changeMenuMode('static')"
 				></RadioButton>
 				<label for="mode1">Static</label>
 			</div>
@@ -27,8 +28,9 @@
 				<RadioButton
 					name="menuMode"
 					value="overlay"
-					v-model="menuMode"
+					v-model="d_menuMode"
 					inputId="mode2"
+					@change="changeMenuMode('overlay')"
 				></RadioButton>
 				<label for="mode2">Overlay</label>
 			</div>
@@ -36,8 +38,9 @@
 				<RadioButton
 					name="menuMode"
 					value="slim"
-					v-model="menuMode"
+					v-model="d_menuMode"
 					inputId="mode3"
+					@change="changeMenuMode('slim')"
 				></RadioButton>
 				<label for="mode3">Slim</label>
 			</div>
@@ -49,7 +52,7 @@
 				<RadioButton
 					name="colorScheme"
 					value="dark"
-					v-model="colorScheme"
+					v-model="d_colorScheme"
 					inputId="theme1"
 					@change="changeColorScheme('dark')"
 				></RadioButton>
@@ -59,7 +62,7 @@
 				<RadioButton
 					name="colorScheme"
 					value="dim"
-					v-model="colorScheme"
+					v-model="d_colorScheme"
 					inputId="theme2"
 					@change="changeColorScheme('dim')"
 				></RadioButton>
@@ -69,7 +72,7 @@
 				<RadioButton
 					name="colorScheme"
 					value="light"
-					v-model="colorScheme"
+					v-model="d_colorScheme"
 					inputId="theme3"
 					@change="changeColorScheme('light')"
 				></RadioButton>
@@ -109,7 +112,7 @@
 			<hr />
 
 			<h5>Menu Themes</h5>
-			<div class="layout-themes" v-if="colorScheme === 'light'">
+			<div class="layout-themes" v-if="d_colorScheme === 'light'">
 				<div v-for="theme in menuThemes" :key="theme.name">
 					<a
 						style="cursor: pointer"
@@ -124,7 +127,7 @@
 					></a>
 				</div>
 			</div>
-			<div v-if="colorScheme !== 'light'">
+			<div v-if="d_colorScheme !== 'light'">
 				<p>
 					Menu themes are only available in light mode by design as
 					large surfaces can emit too much brightness in dark mode.
@@ -163,11 +166,9 @@ export default {
 			type: Boolean,
 			default: null,
 		},
-		colorScheme: {
-			type: String,
-			default: null,
-		},
+		colorScheme: String,
 		menuTheme: String,
+		menuMode: String,
 	},
 	data() {
 		return {
@@ -264,101 +265,28 @@ export default {
 				{ name: "teal", color: "#26A69A" },
 			],
 			componentTheme: "blue",
-			menuMode: null,
 			inputStyle: null,
 			d_ripple: this.ripple,
+			d_colorScheme: this.colorScheme,
+			d_menuMode: this.menuMode,
 		};
 	},
 	methods: {
 		changeColorScheme(scheme) {
-			this.changeStyleSheetsColor(
-				"layout-css",
-				"layout-" + scheme + ".css",
-				1
-			);
-			this.changeStyleSheetsColor(
-				"theme-css",
-				"theme-" + scheme + ".css",
-				1
-			);
-
-			const mobileLogoLink = document.getElementById("logo-mobile");
-			const invoiceLogoLink = document.getElementById("invoice-logo");
-			const footerLogoLink = document.getElementById("footer-logo");
-
-			if (scheme === "light") {
-				mobileLogoLink.src = "assets/layout/images/logo-dark.svg";
-				invoiceLogoLink.src = "assets/layout/images/logo-dark.svg";
-				footerLogoLink.src = "assets/layout/images/logo-dark.svg";
-			} else {
-				mobileLogoLink.src = "assets/layout/images/logo-white.svg";
-				invoiceLogoLink.src = "assets/layout/images/logo-white.svg";
-				footerLogoLink.src = "assets/layout/images/logo-white.svg";
-			}
+			this.$emit("change-color-scheme", scheme);
 		},
 
 		changeMenuTheme(name, logoColor, componentTheme) {
-			this.$emit("change-menu-theme", "layout-sidebar-" + name);
-			this.changeStyleSheetsColor("theme-css", componentTheme, 2);
-			if (logoColor === "dark") {
-				document.getElementById("app-logo").src =
-					"assets/layout/images/logo-dark.svg";
-			} else {
-				document.getElementById("app-logo").src =
-					"assets/layout/images/logo-white.svg";
-			}
+			this.$emit(
+				"change-menu-theme",
+				"layout-sidebar-" + name,
+				logoColor,
+				componentTheme
+			);
 		},
 
 		changeComponentTheme(theme) {
 			this.changeStyleSheetsColor("theme-css", theme, 3);
-		},
-
-		changeStyleSheetsColor(id, value, from) {
-			const element = document.getElementById(id);
-			const urlTokens = element.getAttribute("href").split("/");
-
-			if (from === 1) {
-				// which function invoked this function
-				urlTokens[urlTokens.length - 1] = value;
-			} else if (from === 2) {
-				// which function invoked this function
-				if (value !== null) {
-					urlTokens[urlTokens.length - 2] = value;
-				}
-			} else if (from === 3) {
-				// which function invoked this function
-				urlTokens[urlTokens.length - 2] = value;
-			}
-
-			const newURL = urlTokens.join("/");
-
-			this.replaceLink(element, newURL);
-		},
-
-		replaceLink(linkElement, href) {
-			if (this.isIE()) {
-				linkElement.setAttribute("href", href);
-			} else {
-				const id = linkElement.getAttribute("id");
-				const cloneLinkElement = linkElement.cloneNode(true);
-
-				cloneLinkElement.setAttribute("href", href);
-				cloneLinkElement.setAttribute("id", id + "-clone");
-
-				linkElement.parentNode.insertBefore(
-					cloneLinkElement,
-					linkElement.nextSibling
-				);
-
-				cloneLinkElement.addEventListener("load", () => {
-					linkElement.remove();
-					cloneLinkElement.setAttribute("id", id);
-				});
-			}
-		},
-
-		isIE() {
-			return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
 		},
 
 		onConfigButtonClick(event) {
@@ -368,6 +296,10 @@ export default {
 
 		onConfigClick(event) {
 			this.$emit("config-click", event);
+		},
+
+		changeMenuMode(mode) {
+			this.$emit("menu-mode", mode);
 		},
 	},
 };
