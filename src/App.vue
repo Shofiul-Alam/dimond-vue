@@ -2,7 +2,7 @@
 	<div
 		:class="containerClass"
 		data-theme="colorScheme"
-		@click="onDocumentClick()"
+		@click="onDocumentClick($event)"
 	>
 		<div class="layout-content-wrapper">
 			<app-topbar
@@ -28,10 +28,7 @@
 			:menuActive="menuActive"
 		></app-menu>
 
-		<app-right-menu
-			:rightMenuActive="rightMenuActive"
-			@rightMenuClick="rightMenuClick"
-		></app-right-menu>
+		<app-right-menu :rightMenuActive="rightMenuActive"></app-right-menu>
 
 		<app-config
 			:configActive="configActive"
@@ -418,7 +415,9 @@ export default {
 		},
 	},
 	methods: {
-		onDocumentClick() {
+		onDocumentClick($event) {
+			if ($event.target.closest(".layout-sidebar-right-active")) return;
+
 			if (!this.searchClick) {
 				this.search = false;
 			}
@@ -515,6 +514,7 @@ export default {
 		},
 
 		onRightMenuClick(event) {
+			console.log("++");
 			this.rightMenuClick = true;
 			this.rightMenuActive = !this.rightMenuActive;
 

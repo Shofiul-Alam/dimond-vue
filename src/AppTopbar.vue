@@ -5,11 +5,6 @@
 				<i class="pi pi-chevron-left"></i>
 			</a>
 			<span class="topbar-separator"></span>
-			<!-- <template v-for="item in items" :key="item.text">
-                <span class="viewname" style="text-transform: uppercase">{{
-                    item.label
-                }}</span>
-            </template> -->
 			<app-breadcrumb></app-breadcrumb>
 			<img
 				id="logo-mobile"

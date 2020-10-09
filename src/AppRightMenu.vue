@@ -2,7 +2,6 @@
 	<div
 		class="layout-sidebar-right"
 		:class="{ 'layout-sidebar-right-active': rightMenuActive }"
-		@click="$emit('right-menu-click', true)"
 	>
 		<h5>Activity</h5>
 		<div class="widget-timeline">
@@ -66,10 +65,14 @@
 
 		<div class="withdraw p-fluid">
 			<div>
-				<Input type="text" placeholder="Amount" />
+				<InputText type="text" placeholder="Amount" />
 			</div>
 			<div>
-				<Dropdown :options="amount" v-model="selectedAmount"></Dropdown>
+				<Dropdown
+					:options="amount"
+					optionLabel="label"
+					v-model="selectedAmount"
+				></Dropdown>
 			</div>
 			<div>
 				<Button label="Confirm" icon="pi pi-check"></Button>
