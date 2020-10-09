@@ -43,10 +43,7 @@
 			@change-color-scheme="changeColorScheme"
 		></app-config>
 
-		<app-search
-			:search="search"
-			@on-search-click="onSearchClick"
-		></app-search>
+		<app-search :search="search"></app-search>
 
 		<div class="layout-mask modal-in"></div>
 	</div>
@@ -417,6 +414,10 @@ export default {
 	methods: {
 		onDocumentClick($event) {
 			if ($event.target.closest(".layout-sidebar-right-active")) return;
+
+			if (document.querySelector(".layout-search")) {
+				if ($event.target.closest(".search-container")) return;
+			}
 
 			if (!this.searchClick) {
 				this.search = false;
