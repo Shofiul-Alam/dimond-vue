@@ -39,10 +39,8 @@ export default {
 		return {
 			files1: [],
 			files2: [],
-			files3: [],
 			selectedFiles1: [],
 			selectedFiles2: [],
-			selectedFiles3: [],
 			cols: [
 				{ field: "name", header: "Name" },
 				{ field: "size", header: "Size" },

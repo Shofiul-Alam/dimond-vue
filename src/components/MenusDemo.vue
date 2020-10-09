@@ -260,6 +260,7 @@ export default {
 			],
 
 			breadcrumbItems: [
+				{ label: "Electronics" },
 				{ label: "Computer" },
 				{ label: "Notebook" },
 				{ label: "Accessories" },

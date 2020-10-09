@@ -131,6 +131,7 @@ export default {
 				severity: "info",
 				summary: "Info Message",
 				detail: "PrimeNG rocks",
+				life: 3000,
 			});
 		},
 
@@ -140,6 +141,7 @@ export default {
 				severity: "warn",
 				summary: "Warn Message",
 				detail: "There are unsaved changes",
+				life: 3000,
 			});
 		},
 
@@ -149,6 +151,7 @@ export default {
 				severity: "error",
 				summary: "Error Message",
 				detail: "Validation failed",
+				life: 3000,
 			});
 		},
 
@@ -158,6 +161,7 @@ export default {
 				severity: "success",
 				summary: "Success Message",
 				detail: "Message sent",
+				life: 3000,
 			});
 		},
 

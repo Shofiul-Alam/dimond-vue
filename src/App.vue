@@ -191,7 +191,7 @@ export default {
 							to: "/utilities/elevation",
 						},
 						{
-							label: "Flexbox",
+							label: "FlexBox",
 							icon: "pi pi-fw pi-directions",
 							to: "/utilities/flexbox",
 						},

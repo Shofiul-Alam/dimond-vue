@@ -179,19 +179,19 @@
 						<template #body="customer">
 							<span class="p-column-title">Representative</span>
 							<img
-								:alt="customer.data.representative.name"
 								src="assets/demo/flags/flag_placeholder.png"
-								width="32"
-								style="vertical-align: middle"
+								:class="
+									'flag flag-' + customer.data.country.code
+								"
+								width="30"
 							/>
-
 							<span
 								class="image-text"
 								style="
 									margin-left: 0.5em;
 									vertical-align: middle;
 								"
-								>{{ customer.data.representative.name }}</span
+								>{{ customer.data.country.name }}</span
 							>
 						</template>
 					</Column>
@@ -375,7 +375,7 @@
 
 		<div class="p-col-12">
 			<div class="card">
-				<h4>Row Group and Scrolling</h4>
+				<h4>Row Group</h4>
 				<DataTable
 					:value="customers3"
 					rowGroupMode="subheader"
