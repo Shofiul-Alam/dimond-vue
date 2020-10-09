@@ -85,7 +85,6 @@ export default {
 			configClick: false,
 			resetMenu: false,
 			menuHoverActive: false,
-			inputStyle: "outlined",
 			menu: [
 				{
 					label: "Favorites",

@@ -258,7 +258,7 @@ export default {
 				{ name: "teal", color: "#26A69A" },
 			],
 			componentTheme: "blue",
-			inputStyle: null,
+
 			d_colorScheme: this.colorScheme,
 			d_menuMode: this.menuMode,
 		};
@@ -270,6 +270,14 @@ export default {
 			},
 			set(value) {
 				this.$primevue.ripple = value;
+			},
+		},
+		inputStyle: {
+			get() {
+				return this.$appState.inputStyle;
+			},
+			set(value) {
+				this.$appState.inputStyle = value;
 			},
 		},
 	},
