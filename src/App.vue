@@ -15,8 +15,6 @@
 				@right-menu-click="onRightMenuClick"
 			></app-topbar>
 
-			<app-breadcrumb></app-breadcrumb>
-
 			<div class="layout-content">
 				<router-view></router-view>
 			</div>
@@ -382,9 +380,6 @@ export default {
 			],
 		};
 	},
-	created() {
-		this.$primevue.ripple = true;
-	},
 	computed: {
 		containerClass() {
 			return [
@@ -402,7 +397,7 @@ export default {
 						this.staticMenuDesktopInactive &&
 						this.menuMode === "static",
 					"p-input-filled": this.$appState.inputStyle === "filled",
-					"p-ripple-disabled": !this.$primevueripple,
+					"p-ripple-disabled": !this.$primevue.ripple,
 				},
 				this.colorScheme === "light" ? this.menuTheme : "",
 			];
@@ -526,10 +521,6 @@ export default {
 			this.hideOverlayMenu();
 
 			event.preventDefault();
-		},
-
-		onRippleChange(event) {
-			this.ripple = event.checked;
 		},
 
 		onConfigClick() {

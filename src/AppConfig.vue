@@ -104,10 +104,7 @@
 			<hr />
 
 			<h5>Ripple Effect</h5>
-			<InputSwitch
-				v-model="d_ripple"
-				@change="$emit('on-ripple-change', $event)"
-			></InputSwitch>
+			<InputSwitch v-model="rippleActive"></InputSwitch>
 
 			<hr />
 
@@ -159,10 +156,6 @@ export default {
 			default: null,
 		},
 		configClick: {
-			type: Boolean,
-			default: null,
-		},
-		ripple: {
 			type: Boolean,
 			default: null,
 		},
@@ -266,10 +259,19 @@ export default {
 			],
 			componentTheme: "blue",
 			inputStyle: null,
-			d_ripple: this.ripple,
 			d_colorScheme: this.colorScheme,
 			d_menuMode: this.menuMode,
 		};
+	},
+	computed: {
+		rippleActive: {
+			get() {
+				return this.$primevue.ripple;
+			},
+			set(value) {
+				this.$primevue.ripple = value;
+			},
+		},
 	},
 	methods: {
 		changeColorScheme(scheme) {
