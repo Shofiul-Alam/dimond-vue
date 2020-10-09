@@ -41,6 +41,7 @@
 			@config-click="onConfigClick"
 			@config-button-click="onConfigButtonClick"
 			@change-menu-theme="changeMenuTheme"
+			@change-component-theme="changeStyleSheetsColor"
 			@menu-mode="changeMenuMode"
 			@change-color-scheme="changeColorScheme"
 		></app-config>

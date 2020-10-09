@@ -258,7 +258,6 @@ export default {
 				{ name: "teal", color: "#26A69A" },
 			],
 			componentTheme: "blue",
-
 			d_colorScheme: this.colorScheme,
 			d_menuMode: this.menuMode,
 		};
@@ -296,7 +295,7 @@ export default {
 		},
 
 		changeComponentTheme(theme) {
-			this.changeStyleSheetsColor("theme-css", theme, 3);
+			this.$emit("change-component-theme", "theme-css", theme, 3);
 		},
 
 		onConfigButtonClick(event) {
