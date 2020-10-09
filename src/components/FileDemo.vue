@@ -26,7 +26,7 @@
 					name="demo[]"
 					url="./upload.php"
 					accept="image/*"
-					maxFileSize="1000000"
+					:maxFileSize="1000000"
 					@upload="onBasicUpload($event)"
 				></FileUpload>
 			</div>

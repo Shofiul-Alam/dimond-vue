@@ -64,7 +64,7 @@
 			<div
 				class="p-col-12 p-md-2"
 				v-for="icon of filteredIcons"
-				:key="icon.properties"
+				:key="icon.properties.name"
 			>
 				<i :class="`pi pi-${icon.properties.name}`"></i>
 				<div>pi-{{ icon.properties.name }}</div>
@@ -94,7 +94,6 @@ export default {
 	mounted() {
 		this.iconService.getIcons().then((iconList) => {
 			let allIcons = iconList.icons;
-			console.log(allIcons);
 			allIcons.sort((icon1, icon2) => {
 				if (icon1.properties.name < icon2.properties.name) {
 					return -1;

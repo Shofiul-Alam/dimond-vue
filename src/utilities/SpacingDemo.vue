@@ -145,7 +145,7 @@
 
 <script>
 export default {
-	name: "Spacing",
+	name: "SpacingDemo",
 };
 </script>
 

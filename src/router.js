@@ -141,13 +141,13 @@ export default new VueRouter({
         },
         {
             path: '/utilities/display',
-            name: 'Display',
-            component: () => import('./utilities/Display.vue'),
+            name: 'DisplayDemo',
+            component: () => import('./utilities/DisplayDemo.vue'),
         },
         {
             path: '/utilities/elevation',
-            name: 'Elevation',
-            component: () => import('./utilities/Elevation.vue'),
+            name: 'ElevationDemo',
+            component: () => import('./utilities/ElevationDemo.vue'),
         },
         {
             path: '/utilities/flexbox',
@@ -155,34 +155,34 @@ export default new VueRouter({
             component: () => import('./utilities/Flexbox.vue'),
         },
         {
+            path: '/utilities/grid',
+            name: 'GridDemo',
+            component: () => import('./utilities/GridDemo.vue'),
+        },
+        {
             path: '/utilities/icons',
             name: 'Icons',
             component: () => import('./utilities/Icons.vue'),
         },
         {
-            path: '/utilities/text',
-            name: 'Text',
-            component: () => import('./utilities/Text.vue'),
-        },
-        {
-            path: '/utilities/widgets',
-            name: 'Widgets',
-            component: () => import('./utilities/Widgets.vue'),
-        },
-        {
-            path: '/utilities/grid',
-            name: 'Grid',
-            component: () => import('./utilities/Grid.vue'),
-        },
-        {
             path: '/utilities/spacing',
-            name: 'Spacing',
-            component: () => import('./utilities/Spacing.vue'),
+            name: 'SpacingDemo',
+            component: () => import('./utilities/SpacingDemo.vue'),
+        },
+        {
+            path: '/utilities/text',
+            name: 'TextDemo',
+            component: () => import('./utilities/TextDemo.vue'),
         },
         {
             path: '/utilities/typography',
             name: 'Typography',
             component: () => import('./utilities/Typography.vue'),
+        },
+        {
+            path: '/utilities/widgets',
+            name: 'Widgets',
+            component: () => import('./utilities/Widgets.vue'),
         },
         {
             path: '*',

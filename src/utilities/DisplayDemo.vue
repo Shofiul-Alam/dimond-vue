@@ -49,6 +49,6 @@
 
 <script>
 export default {
-	name: "Display",
+	name: "DisplayDemo",
 };
 </script>
