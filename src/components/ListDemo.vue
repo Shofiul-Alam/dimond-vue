@@ -30,25 +30,25 @@
 							></DataViewLayoutOptions>
 						</div>
 					</template>
-					<template #list="product">
+					<template #list="slotProps">
 						<div class="p-col-12">
 							<div class="product-list-item">
 								<img
 									:src="
 										'assets/demo/images/product/' +
-										product.data.image
+										slotProps.data.image
 									"
-									:alt="product.data.name"
+									:alt="slotProps.data.name"
 								/>
 								<div class="product-list-detail">
 									<div class="product-name">
-										{{ product.data.name }}
+										{{ slotProps.data.name }}
 									</div>
 									<div class="product-description">
-										{{ product.data.description }}
+										{{ slotProps.data.description }}
 									</div>
 									<Rating
-										v-model="product.data.rating"
+										v-model="slotProps.data.rating"
 										:readonly="true"
 										:cancel="false"
 									></Rating>
@@ -56,18 +56,18 @@
 										class="pi pi-tag product-category-icon"
 									></i
 									><span class="product-category">{{
-										product.data.category
+										slotProps.data.category
 									}}</span>
 								</div>
 								<div class="product-list-action">
 									<span class="product-price"
-										>${{ product.data.price }}</span
+										>${{ slotProps.data.price }}</span
 									>
 									<Button
 										icon="pi pi-shopping-cart"
 										label="Add to Cart"
 										:disabled="
-											product.data.inventoryStatus ===
+											slotProps.data.inventoryStatus ===
 											'OUTOFSTOCK'
 										"
 									></Button>
@@ -84,7 +84,7 @@
 							</div>
 						</div>
 					</template>
-					<template #grid="product">
+					<template #grid="slotProps">
 						<div class="p-col-12 p-md-4">
 							<div class="product-grid-item card">
 								<div class="product-grid-item-top">
@@ -93,16 +93,16 @@
 											class="pi pi-tag product-category-icon"
 										></i>
 										<span class="product-category">{{
-											product.data.category
+											slotProps.data.category
 										}}</span>
 									</div>
 									<span
 										:class="
 											'product-badge status-' +
-											product.data.inventoryStatus.toLowerCase()
+											slotProps.data.inventoryStatus.toLowerCase()
 										"
 										>{{
-											product.data.inventoryStatus
+											slotProps.data.inventoryStatus
 										}}</span
 									>
 								</div>
@@ -110,30 +110,30 @@
 									<img
 										:src="
 											'assets/demo/images/product/' +
-											product.data.image
+											slotProps.data.image
 										"
-										:alt="product.name"
+										:alt="slotProps.data.name"
 									/>
 									<div class="product-name">
-										{{ product.data.name }}
+										{{ slotProps.data.name }}
 									</div>
 									<div class="product-description">
-										{{ product.data.description }}
+										{{ slotProps.data.description }}
 									</div>
 									<Rating
-										v-model="product.data.rating"
+										v-model="slotProps.data.rating"
 										:readonly="true"
 										:cancel="false"
 									></Rating>
 								</div>
 								<div class="product-grid-item-bottom">
 									<span class="product-price"
-										>${{ product.data.price }}</span
+										>${{ slotProps.data.price }}</span
 									>
 									<Button
 										icon="pi pi-shopping-cart"
 										:disabled="
-											product.data.inventoryStatus ===
+											slotProps.data.inventoryStatus ===
 											'OUTOFSTOCK'
 										"
 									></Button>
@@ -167,8 +167,8 @@
 					dataKey="code"
 				>
 					<template #header> Cities </template>
-					<template #item="orderCities">
-						<div>{{ orderCities.item.name }}</div>
+					<template #item="slotProps">
+						<div>{{ slotProps.item.name }}</div>
 					</template>
 				</OrderList>
 			</div>

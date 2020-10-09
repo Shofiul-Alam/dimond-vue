@@ -47,11 +47,11 @@
 						sortable
 						sortField="country.name"
 					>
-						<template #body="customer">
+						<template #body="slotProps">
 							<img
 								src="assets/demo/flags/flag_placeholder.png"
 								:class="
-									'flag flag-' + customer.data.country.code
+									'flag flag-' + slotProps.data.country.code
 								"
 								width="30"
 							/>
@@ -61,7 +61,7 @@
 									margin-left: 0.5em;
 									vertical-align: middle;
 								"
-								>{{ customer.data.country.name }}</span
+								>{{ slotProps.data.country.name }}</span
 							>
 						</template>
 					</Column>
@@ -72,12 +72,12 @@
 						sortable
 						sortField="representative.name"
 					>
-						<template #body="customer">
+						<template #body="slotProps">
 							<img
-								:alt="customer.data.representative.name"
+								:alt="slotProps.data.representative.name"
 								:src="
 									'assets/demo/images/avatar/' +
-									customer.data.representative.image
+									slotProps.data.representative.image
 								"
 								width="32"
 								style="vertical-align: middle"
@@ -88,7 +88,7 @@
 									margin-left: 0.5em;
 									vertical-align: middle;
 								"
-								>{{ customer.data.representative.name }}</span
+								>{{ slotProps.data.representative.name }}</span
 							></template
 						>
 					</Column>
@@ -96,21 +96,21 @@
 					<Column field="date" header="Date" sortable></Column>
 
 					<Column field="status" header="Status" sortable>
-						<template #body="customer">
+						<template #body="slotProps">
 							<span
 								:class="
 									'customer-badge status-' +
-									customer.data.status
+									slotProps.data.status
 								"
-								>{{ customer.data.status }}</span
+								>{{ slotProps.data.status }}</span
 							>
 						</template>
 					</Column>
 
 					<Column field="activity" header="Activity" sortable>
-						<template #body="customer">
+						<template #body="slotProps">
 							<ProgressBar
-								:value="customer.data.activity"
+								:value="slotProps.data.activity"
 								:showValue="false"
 							></ProgressBar>
 						</template>
@@ -176,12 +176,12 @@
 					<Column field="name" header="Name" sortable></Column>
 
 					<Column field="country.name" header="Country" sortable>
-						<template #body="customer">
+						<template #body="slotProps">
 							<span class="p-column-title">Representative</span>
 							<img
 								src="assets/demo/flags/flag_placeholder.png"
 								:class="
-									'flag flag-' + customer.data.country.code
+									'flag flag-' + slotProps.data.country.code
 								"
 								width="30"
 							/>
@@ -191,7 +191,7 @@
 									margin-left: 0.5em;
 									vertical-align: middle;
 								"
-								>{{ customer.data.country.name }}</span
+								>{{ slotProps.data.country.name }}</span
 							>
 						</template>
 					</Column>
@@ -201,13 +201,13 @@
 						header="Representative"
 						sortable
 					>
-						<template #body="customer">
+						<template #body="slotProps">
 							<span class="p-column-title">Representative</span>
 							<img
-								:alt="customer.data.representative.name"
+								:alt="slotProps.data.representative.name"
 								:src="
 									'assets/demo/images/avatar/' +
-									customer.data.representative.image
+									slotProps.data.representative.image
 								"
 								width="32"
 								style="vertical-align: middle"
@@ -218,7 +218,7 @@
 									margin-left: 0.5em;
 									vertical-align: middle;
 								"
-								>{{ customer.data.representative.name }}</span
+								>{{ slotProps.data.representative.name }}</span
 							>
 						</template>
 					</Column>
@@ -226,21 +226,21 @@
 					<Column field="date" header="Date" sortable></Column>
 
 					<Column field="status" header="Status" sortable>
-						<template #body="customer">
+						<template #body="slotProps">
 							<span
 								:class="
 									'customer-badge status-' +
-									customer.data.status
+									slotProps.data.status
 								"
-								>{{ customer.data.status }}</span
+								>{{ slotProps.data.status }}</span
 							>
 						</template>
 					</Column>
 
 					<Column field="activity" header="Activity" sortable>
-						<template #body="customer">
+						<template #body="slotProps">
 							<ProgressBar
-								:value="customer.data.activity"
+								:value="slotProps.data.activity"
 								:showValue="false"
 							></ProgressBar>
 						</template>
@@ -264,13 +264,13 @@
 					<Column field="name" header="Name" sortable></Column>
 
 					<Column header="Image">
-						<template #body="product">
+						<template #body="slotProps">
 							<img
 								:src="
 									'assets/demo/images/product/' +
-									product.data.image
+									slotProps.data.image
 								"
-								:alt="product.data.name"
+								:alt="slotProps.data.name"
 								width="100"
 								class="p-shadow-4"
 							/>
@@ -278,8 +278,8 @@
 					</Column>
 
 					<Column field="price" header="Price" sortable>
-						<template #body="product">
-							{{ formatCurrency(product.data.price) }}
+						<template #body="slotProps">
+							{{ formatCurrency(slotProps.data.price) }}
 						</template>
 					</Column>
 
@@ -295,9 +295,9 @@
 						sortable
 						sortField="product.rating"
 					>
-						<template #body="product">
+						<template #body="slotProps">
 							<Rating
-								:value="product.data.rating"
+								:value="slotProps.data.rating"
 								:readonly="true"
 								:cancel="false"
 							></Rating>
@@ -305,21 +305,21 @@
 					</Column>
 
 					<Column field="inventorystatus" header="Status" sortable>
-						<template #body="product">
+						<template #body="slotProps">
 							<span
 								:class="
 									'product-badge status-' +
-									product.data.inventoryStatus.toLowerCase()
+									slotProps.data.inventoryStatus.toLowerCase()
 								"
-								>{{ product.data.inventoryStatus }}</span
+								>{{ slotProps.data.inventoryStatus }}</span
 							>
 						</template>
 					</Column>
 
-					<template #expansion="product">
+					<template #expansion="slotProps">
 						<div class="p-p-3">
 							<DataTable
-								:value="product.data.orders"
+								:value="slotProps.data.orders"
 								dataKey="id"
 							>
 								<Column
@@ -338,20 +338,22 @@
 									sortable
 								></Column>
 								<Column field="amont" header="Amount" sortable>
-									<template #body="product">
+									<template #body="slotProps">
 										{{
-											formatCurrency(product.data.amount)
+											formatCurrency(
+												slotProps.data.amount
+											)
 										}}
 									</template>
 								</Column>
 								<Column field="stats" header="Status" sortable>
-									<template #body="order">
+									<template #body="slotProps">
 										<span
 											:class="
 												'order-badge order-' +
-												order.data.status.toLowerCase()
+												slotProps.data.status.toLowerCase()
 											"
-											>{{ order.data.status }}</span
+											>{{ slotProps.data.status }}</span
 										>
 									</template>
 								</Column>

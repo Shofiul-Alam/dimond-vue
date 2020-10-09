@@ -93,13 +93,13 @@
 									sortable
 								></Column>
 								<Column field="image" header="Image">
-									<template #body="product">
+									<template #body="slotProps">
 										<img
 											:src="
 												'assets/demo/images/product/' +
-												product.data.image
+												slotProps.data.image
 											"
-											:alt="product.data.image"
+											:alt="slotProps.data.image"
 											class="product-image"
 										/>
 									</template>

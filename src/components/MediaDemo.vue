@@ -74,17 +74,17 @@
 					:circular="true"
 					:style="{ 'max-width': '800px', margin: 'auto' }"
 				>
-					<template #item="images">
+					<template #item="slotProps">
 						<img
-							:src="'assets/' + images.item.itemImageSrc"
-							:alt="images.item.alt"
+							:src="'assets/' + slotProps.item.itemImageSrc"
+							:alt="slotProps.item.alt"
 							style="width: 100%; display: block"
 						/>
 					</template>
-					<template #thumbnail="images">
+					<template #thumbnail="slotProps">
 						<img
-							:src="'assets/' + images.item.thumbnailImageSrc"
-							:alt="images.item.alt"
+							:src="'assets/' + slotProps.item.thumbnailImageSrc"
+							:alt="slotProps.item.alt"
 							tyle="width: 100%; display: block;"
 						/>
 					</template>

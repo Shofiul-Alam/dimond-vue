@@ -233,8 +233,8 @@
 							sortable
 						></Column>
 						<Column field="price" header="Price" sortable>
-							<template #body="product">
-								{{ formatCurrency(product.data.price) }}
+							<template #body="slotProps">
+								{{ formatCurrency(slotProps.data.price) }}
 							</template>
 						</Column>
 						<Column
@@ -242,13 +242,13 @@
 							header="Status"
 							sortable
 						>
-							<template #body="product">
+							<template #body="slotProps">
 								<span
 									:class="
 										'product-badge status-' +
-										product.data.inventoryStatus.toLowerCase()
+										slotProps.data.inventoryStatus.toLowerCase()
 									"
-									>{{ product.data.inventoryStatus }}</span
+									>{{ slotProps.data.inventoryStatus }}</span
 								>
 							</template>
 						</Column>
