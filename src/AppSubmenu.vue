@@ -1,18 +1,18 @@
 <template>
-	<ul v-if="items" role="menu">
+	<ul v-if="items" class="layout-menu" role="menu">
 		<template v-for="(item, i) of items">
 			<li
 				v-if="visible(item) && !item.separator"
 				:key="item.label || i"
 				:class="[
-					item.badgeStyle,
 					{
 						'layout-root-menuitem': root,
 						'active-menuitem': activeIndex === i && !item.disabled,
 					},
 				]"
-				role="none"
+				role="menuitem"
 			>
+				<div class="arrow" v-if="item.items && root === true"></div>
 				<router-link
 					v-if="item.to"
 					:to="item.to"
@@ -26,7 +26,6 @@
 					exact
 					@click="onMenuItemClick($event, item, i)"
 					@mouseenter="onMenuItemMouseEnter(i)"
-					role="menuitem"
 				>
 					<i :class="['layout-menuitem-icon', item.icon]"></i>
 					<span class="layout-menuitem-text">{{ item.label }}</span>
@@ -40,14 +39,13 @@
 					:href="item.url || '#'"
 					:style="item.style"
 					:class="[
-						item.class,
+						'active-root',
 						'p-ripple',
 						{ 'p-disabled': item.disabled },
 					]"
 					:target="item.target"
 					@click="onMenuItemClick($event, item, i)"
 					@mouseenter="onMenuItemMouseEnter(i)"
-					role="menuitem"
 				>
 					<i :class="['layout-menuitem-icon', item.icon]"></i>
 					<span class="layout-menuitem-text">{{ item.label }}</span>
@@ -56,13 +54,18 @@
 						class="pi pi-fw pi-angle-down layout-submenu-toggler"
 					></i>
 				</a>
-				<div class="layout-menu-tooltip" v-if="root">
-					<div class="layout-menu-tooltip-text">{{ item.label }}</div>
-					<div class="layout-menu-tooltip-arrow"></div>
+				<div class="layout-root-menuitem" v-if="root">
+					<div
+						class="layout-menuitem-root-text"
+						style="text-transform: uppercase"
+					>
+						{{ item.label }}
+					</div>
+					<div class="layout-menuitem-root-arrow"></div>
 				</div>
 				<transition name="p-toggleable-content">
 					<AppSubmenu
-						v-show="activeIndex === i"
+						v-show="item.items && (root ? true : activeIndex === i)"
 						:items="visible(item) && item.items"
 						:menuActive="menuActive"
 						:menuMode="menuMode"
@@ -72,7 +75,7 @@
 				</transition>
 			</li>
 			<li
-				class="p-menu-separator"
+				class="menu-separator"
 				:style="item.style"
 				v-if="visible(item) && item.separator"
 				:key="'separator' + i"

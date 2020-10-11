@@ -11,15 +11,12 @@
 		</router-link>
 
 		<div class="layout-menu-container">
-			<ul class="layout-menu">
-				<li>
-					<AppSubmenu
-						:items="model"
-						:menuMode="menuMode"
-						:parentMenuItemActive="true"
-					/>
-				</li>
-			</ul>
+			<AppSubmenu
+				:items="model"
+				:menuMode="menuMode"
+				:parentMenuItemActive="true"
+				:root="true"
+			/>
 		</div>
 	</div>
 </template>

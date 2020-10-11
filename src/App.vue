@@ -286,33 +286,33 @@ export default {
 					items: [
 						{
 							label: "Submenu 1",
-							icon: "pi pi-fw pi-sign-in",
+							icon: "pi pi-fw pi-align-left",
 							items: [
 								{
 									label: "Submenu 1.1",
-									icon: "pi pi-fw pi-sign-in",
+									icon: "pi pi-fw pi-align-left",
 									items: [
 										{
 											label: "Submenu 1.1.1",
-											icon: "pi pi-fw pi-sign-in",
+											icon: "pi pi-fw pi-align-left",
 										},
 										{
 											label: "Submenu 1.1.2",
-											icon: "pi pi-fw pi-sign-in",
+											icon: "pi pi-fw pi-align-left",
 										},
 										{
 											label: "Submenu 1.1.3",
-											icon: "pi pi-fw pi-sign-in",
+											icon: "pi pi-fw pi-align-left",
 										},
 									],
 								},
 								{
 									label: "Submenu 1.2",
-									icon: "pi pi-fw pi-sign-in",
+									icon: "pi pi-fw pi-align-left",
 									items: [
 										{
 											label: "Submenu 1.2.1",
-											icon: "pi pi-fw pi-sign-in",
+											icon: "pi pi-fw pi-align-left",
 										},
 									],
 								},
@@ -320,29 +320,29 @@ export default {
 						},
 						{
 							label: "Submenu 2",
-							icon: "pi pi-fw pi-sign-in",
+							icon: "pi pi-fw pi-align-left",
 							items: [
 								{
 									label: "Submenu 2.1",
-									icon: "pi pi-fw pi-sign-in",
+									icon: "pi pi-fw pi-align-left",
 									items: [
 										{
 											label: "Submenu 2.1.1",
-											icon: "pi pi-fw pi-sign-in",
+											icon: "pi pi-fw pi-align-left",
 										},
 										{
 											label: "Submenu 2.1.2",
-											icon: "pi pi-fw pi-sign-in",
+											icon: "pi pi-fw pi-align-left",
 										},
 									],
 								},
 								{
 									label: "Submenu 2.2",
-									icon: "pi pi-fw pi-sign-in",
+									icon: "pi pi-fw pi-align-left",
 									items: [
 										{
 											label: "Submenu 2.2.1",
-											icon: "pi pi-fw pi-sign-in",
+											icon: "pi pi-fw pi-align-left",
 										},
 									],
 								},
