@@ -56,6 +56,7 @@
 			<InputText
 				class="icon-filter"
 				@input="onFilter($event)"
+				v-model="searchIcon"
 				placeholder="Search an icon"
 			/>
 		</div>
@@ -85,6 +86,7 @@ export default {
 			icons: null,
 			filteredIcons: null,
 			selectedIcon: "",
+			searchIcon: "",
 		};
 	},
 	created() {
@@ -107,8 +109,8 @@ export default {
 		});
 	},
 	methods: {
-		onFilter(event) {
-			const searchText = event.target.value;
+		onFilter($event) {
+			const searchText = $event;
 
 			if (!searchText) {
 				this.filteredIcons = this.icons;
