@@ -179,7 +179,6 @@
 <script>
 import ProductService from "../service/ProductService";
 export default {
-	name: "ListDemo",
 	data() {
 		return {
 			products: [],

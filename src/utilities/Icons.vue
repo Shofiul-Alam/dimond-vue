@@ -77,7 +77,6 @@
 import IconService from "../service/IconService";
 import AppCode from "../AppCode";
 export default {
-	name: "Icons",
 	components: {
 		AppCode,
 	},

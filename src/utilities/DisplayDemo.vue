@@ -48,7 +48,5 @@
 </template>
 
 <script>
-export default {
-	name: "DisplayDemo",
-};
+export default {};
 </script>

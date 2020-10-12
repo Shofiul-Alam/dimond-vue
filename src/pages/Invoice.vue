@@ -113,7 +113,6 @@
 
 <script>
 export default {
-	name: "Invoice",
 	methods: {
 		print() {
 			window.print();

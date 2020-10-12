@@ -476,7 +476,6 @@
 import CustomerService from "../service/CustomerService";
 import ProductService from "../service/ProductService";
 export default {
-	name: "TableDemo",
 	data() {
 		return {
 			customer1: [],

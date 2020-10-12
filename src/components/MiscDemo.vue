@@ -87,7 +87,6 @@
 
 <script>
 export default {
-	name: "MiscDemo",
 	data() {
 		return {
 			value: 0,

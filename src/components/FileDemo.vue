@@ -36,7 +36,6 @@
 
 <script>
 export default {
-	name: "FileDemo",
 	data() {
 		return {
 			uploadedFiles: [],

@@ -193,7 +193,6 @@
 
 <script>
 export default {
-	name: "Help",
 	data() {
 		return {
 			text: [],

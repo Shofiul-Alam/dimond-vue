@@ -210,7 +210,6 @@
 
 <script>
 export default {
-	name: "PanelsDemo",
 	data() {
 		return {
 			items: [

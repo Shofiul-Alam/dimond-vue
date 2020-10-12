@@ -34,7 +34,6 @@
 <script>
 import NodeService from "../service/NodeService";
 export default {
-	name: "TreeDemo",
 	data() {
 		return {
 			treeValue: [],

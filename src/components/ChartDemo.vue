@@ -37,7 +37,6 @@
 
 <script>
 export default {
-	name: "ChartsDemo",
 	data() {
 		return {
 			lineData: {

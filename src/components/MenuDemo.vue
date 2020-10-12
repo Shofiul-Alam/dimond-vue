@@ -116,7 +116,6 @@
 
 <script>
 export default {
-	name: "MenuDemo",
 	data() {
 		return {
 			tieredItems: [

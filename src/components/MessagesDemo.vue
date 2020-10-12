@@ -118,7 +118,6 @@
 
 <script>
 export default {
-	name: "MessagesDemo",
 	data() {
 		return {
 			msgs: [],

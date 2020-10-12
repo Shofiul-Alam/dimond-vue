@@ -144,9 +144,7 @@
 </template>
 
 <script>
-export default {
-	name: "SpacingDemo",
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>

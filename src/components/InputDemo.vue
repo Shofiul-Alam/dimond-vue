@@ -326,7 +326,6 @@
 <script>
 import CountryService from "../service/CountryService";
 export default {
-	name: "InputDemo",
 	created() {
 		this.countryService = new CountryService();
 	},

@@ -564,7 +564,6 @@
 <script>
 import AppCode from "../AppCode";
 export default {
-	name: "Flexbox",
 	components: {
 		AppCode,
 	},

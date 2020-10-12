@@ -603,7 +603,5 @@
 </template>
 
 <script>
-export default {
-	name: "Widgets",
-};
+export default {};
 </script>

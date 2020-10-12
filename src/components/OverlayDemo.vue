@@ -258,7 +258,6 @@
 <script>
 import ProductService from "../service/ProductService";
 export default {
-	name: "OverlaysDemo",
 	data() {
 		return {
 			display: false,

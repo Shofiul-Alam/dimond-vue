@@ -98,7 +98,6 @@
 import ProductService from "../service/ProductService";
 import PhotoService from "../service/PhotoService";
 export default {
-	name: "MediaDemo",
 	data() {
 		return {
 			products: [],

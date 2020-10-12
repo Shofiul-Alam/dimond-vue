@@ -57,7 +57,6 @@ import AppMenu from "./AppMenu";
 import AppSearch from "./AppSearch";
 import AppRightMenu from "./AppRightMenu";
 export default {
-	name: "AppMain",
 	data() {
 		return {
 			menuActive: false,
@@ -100,72 +99,72 @@ export default {
 						{
 							label: "Form Layout",
 							icon: "pi pi-fw pi-id-card",
-							to: "/uikit/formlayout",
+							to: "/formlayout",
 						},
 						{
 							label: "Input",
 							icon: "pi pi-fw pi-check-square",
-							to: "/uikit/input",
+							to: "/input",
 						},
 						{
 							label: "Button",
 							icon: "pi pi-fw pi-mobile",
-							to: "/uikit/button",
+							to: "/button",
 						},
 						{
 							label: "Table",
 							icon: "pi pi-fw pi-table",
-							to: "/uikit/table",
+							to: "/table",
 						},
 						{
 							label: "List",
 							icon: "pi pi-fw pi-list",
-							to: "/uikit/list",
+							to: "/list",
 						},
 						{
 							label: "Tree",
 							icon: "pi pi-fw pi-share-alt",
-							to: "/uikit/tree",
+							to: "/tree",
 						},
 						{
 							label: "Panel",
 							icon: "pi pi-fw pi-tablet",
-							to: "/uikit/panel",
+							to: "/panel",
 						},
 						{
 							label: "Overlay",
 							icon: "pi pi-fw pi-clone",
-							to: "/uikit/overlay",
+							to: "/overlay",
 						},
 						{
 							label: "Media",
 							icon: "pi pi-fw pi-image",
-							to: "/uikit/media",
+							to: "/media",
 						},
 						{
 							label: "Menu",
 							icon: "pi pi-fw pi-bars",
-							to: "/uikit/menu",
+							to: "/menu",
 						},
 						{
 							label: "Message",
 							icon: "pi pi-fw pi-comment",
-							to: "/uikit/message",
+							to: "/messages",
 						},
 						{
 							label: "File",
 							icon: "pi pi-fw pi-file",
-							to: "/uikit/file",
+							to: "/file",
 						},
 						{
 							label: "Chart",
 							icon: "pi pi-fw pi-chart-bar",
-							to: "/uikit/charts",
+							to: "/charts",
 						},
 						{
 							label: "Misc",
 							icon: "pi pi-fw pi-circle-off",
-							to: "/uikit/misc",
+							to: "/misc",
 						},
 					],
 				},
@@ -177,47 +176,47 @@ export default {
 						{
 							label: "Display",
 							icon: "pi pi-fw pi-desktop",
-							to: "/utilities/display",
+							to: "/display",
 						},
 						{
 							label: "Elevation",
 							icon: "pi pi-fw pi-external-link",
-							to: "/utilities/elevation",
+							to: "/elevation",
 						},
 						{
 							label: "FlexBox",
 							icon: "pi pi-fw pi-directions",
-							to: "/utilities/flexbox",
+							to: "/flexbox",
 						},
 						{
 							label: "Icons",
 							icon: "pi pi-fw pi-search",
-							to: "/utilities/icons",
+							to: "/icons",
 						},
 						{
 							label: "Text",
 							icon: "pi pi-fw pi-pencil",
-							to: "/utilities/text",
+							to: "/text",
 						},
 						{
 							label: "Widgets",
 							icon: "pi pi-fw pi-star-o",
-							to: "/utilities/widgets",
+							to: "/widgets",
 						},
 						{
 							label: "Grid System",
 							icon: "pi pi-fw pi-th-large",
-							to: "/utilities/grid",
+							to: "/grid",
 						},
 						{
 							label: "Spacing",
 							icon: "pi pi-fw pi-arrow-right",
-							to: "/utilities/spacing",
+							to: "/spacing",
 						},
 						{
 							label: "Typography",
 							icon: "pi pi-fw pi-align-center",
-							to: "/utilities/typography",
+							to: "/typography",
 						},
 					],
 				},
@@ -229,12 +228,12 @@ export default {
 						{
 							label: "Crud",
 							icon: "pi pi-fw pi-pencil",
-							to: "/pages/crud",
+							to: "/crud",
 						},
 						{
 							label: "Calendar",
 							icon: "pi pi-fw pi-calendar-plus",
-							to: "/pages/calendar",
+							to: "/calendar",
 						},
 						{
 							label: "Landing",
@@ -250,12 +249,12 @@ export default {
 						{
 							label: "Invoice",
 							icon: "pi pi-fw pi-dollar",
-							to: "/pages/invoice",
+							to: "/invoice",
 						},
 						{
 							label: "Help",
 							icon: "pi pi-fw pi-question-circle",
-							to: "/pages/help",
+							to: "/help",
 						},
 						{
 							label: "Error",
@@ -275,7 +274,7 @@ export default {
 						{
 							label: "Empty Page",
 							icon: "pi pi-fw pi-circle-off",
-							to: "/pages/empty",
+							to: "/empty",
 						},
 					],
 				},
@@ -674,3 +673,7 @@ export default {
 	},
 };
 </script>
+
+<style lang="scss">
+@import "App.scss";
+</style>

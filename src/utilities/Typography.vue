@@ -44,7 +44,5 @@
 </template>
 
 <script>
-export default {
-	name: "Typography",
-};
+export default {};
 </script>

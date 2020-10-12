@@ -536,7 +536,6 @@
 <script>
 import ProductService from "../service/ProductService";
 export default {
-	name: "Dashboard",
 	data() {
 		return {
 			selectedOrderWeek: null,

@@ -400,7 +400,6 @@
 
 <script>
 export default {
-	name: "ButtonDemo",
 	data() {
 		return {
 			items: [

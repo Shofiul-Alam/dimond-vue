@@ -13,7 +13,5 @@
 </template>
 
 <script>
-export default {
-	name: "EmptyDemo",
-};
+export default {};
 </script>

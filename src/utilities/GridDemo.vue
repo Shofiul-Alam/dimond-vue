@@ -408,7 +408,6 @@
 
 <script>
 export default {
-	name: "GridDemo",
 	data() {
 		return {
 			columns: [0, 1, 2, 3, 4, 5],

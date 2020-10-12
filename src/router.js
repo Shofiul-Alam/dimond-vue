@@ -1,10 +1,9 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
-import NotFound from './pages/NotFound.vue';
+import Router from 'vue-router';
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
-export default new VueRouter({
+export default new Router({
     routes: [
         {
             path: '/',
@@ -13,46 +12,54 @@ export default new VueRouter({
             component: () => import('./components/Dashboard.vue'),
         },
         {
-            path: '/uikit/button',
-            name: 'ButtonDemo',
-            component: () => import('./components/ButtonDemo.vue'),
-        },
-        {
-            path: '/uikit/charts',
-            name: 'ChartsDemo',
-            component: () => import('./components/ChartsDemo.vue'),
-        },
-
-        {
-            path: '/uikit/file',
-            name: 'FileDemo',
-            component: () => import('./components/FileDemo.vue'),
-        },
-        {
-            path: '/uikit/formlayout',
-            name: 'FormLayoutDemo',
+            path: '/formlayout',
+            name: 'formlayout',
             component: () => import('./components/FormLayoutDemo.vue'),
             meta: {
                 breadcrumb: [{ parent: 'UI Kit', label: 'Form Layout' }],
             },
         },
         {
-            path: '/uikit/input',
-            name: 'InputDemo',
+            path: '/input',
+            name: 'input',
             component: () => import('./components/InputDemo.vue'),
         },
         {
-            path: '/uikit/list',
-            name: 'ListDemo',
+            path: '/button',
+            name: 'button',
+            component: () => import('./components/ButtonDemo.vue'),
+        },
+        {
+            path: '/table',
+            name: 'table',
+            component: () => import('./components/TableDemo.vue'),
+        },
+        {
+            path: '/list',
+            name: 'list',
             component: () => import('./components/ListDemo.vue'),
         },
         {
-            path: '/uikit/menu',
-            name: 'MenuDemo',
+            path: '/tree',
+            name: 'tree',
+            component: () => import('./components/TreeDemo.vue'),
+        },
+        {
+            path: '/panel',
+            name: 'panel',
+            component: () => import('./components/PanelsDemo.vue'),
+        },
+        {
+            path: '/overlay',
+            name: 'overlay',
+            component: () => import('./components/OverlayDemo.vue'),
+        },
+        {
+            path: '/menu',
             component: () => import('./components/MenuDemo.vue'),
             children: [
                 {
-                    path: '/menu',
+                    path: '',
                     component: () => import('./components/menu/PersonalDemo.vue'),
                 },
                 {
@@ -70,141 +77,107 @@ export default new VueRouter({
             ],
         },
         {
-            path: '/uikit/message',
-            name: 'MessagesDemo',
-            component: () => import('./components/MessagesDemo.vue'),
-        },
-        {
-            path: '/uikit/misc',
-            name: 'MiscDemo',
-            component: () => import('./components/MiscDemo.vue'),
-        },
-        {
-            path: '/uikit/overlay',
-            name: 'OverlaysDemo',
-            component: () => import('./components/OverlaysDemo.vue'),
-        },
-        {
-            path: '/uikit/panel',
-            name: 'PanelsDemo',
-            component: () => import('./components/PanelsDemo.vue'),
-        },
-        {
-            path: '/uikit/table',
-            name: 'TableDemo',
-            component: () => import('./components/TableDemo.vue'),
-        },
-        {
-            path: '/uikit/tree',
-            name: 'TreeDemo',
-            component: () => import('./components/TreeDemo.vue'),
-        },
-        {
-            path: '/uikit/media',
-            name: 'MediaDemo',
+            path: '/media',
+            name: 'media',
             component: () => import('./components/MediaDemo.vue'),
         },
         {
-            path: '/documentation',
-            name: 'Documentation',
-            component: () => import('./components/Documentation.vue'),
+            path: '/messages',
+            name: 'messages',
+            component: () => import('./components/MessagesDemo.vue'),
         },
         {
-            path: '/pages/empty',
-            name: 'EmptyDemo',
-            component: () => import('./components/EmptyDemo.vue'),
+            path: '/file',
+            name: 'file',
+            component: () => import('./components/FileDemo.vue'),
+        },
+        {
+            path: '/chart',
+            name: 'chart',
+            component: () => import('./components/ChartDemo.vue'),
+        },
+        {
+            path: '/misc',
+            name: 'misc',
+            component: () => import('./components/MiscDemo.vue'),
+        },
+        {
+            path: '/icons',
+            name: 'icons',
+            component: () => import('./utilities/Icons.vue'),
+        },
+        {
+            path: '/widgets',
+            name: 'widgets',
+            component: () => import('./utilities/Widgets.vue'),
+        },
+        {
+            path: '/grid',
+            name: 'grid',
+            component: () => import('./utilities/GridDemo.vue'),
+        },
+        {
+            path: '/spacing',
+            name: 'spacing',
+            component: () => import('./utilities/SpacingDemo.vue'),
+        },
+        {
+            path: '/elevation',
+            name: 'elevation',
+            component: () => import('./utilities/ElevationDemo.vue'),
+        },
+        {
+            path: '/typography',
+            name: 'typography',
+            component: () => import('./utilities/Typography.vue'),
+        },
+        {
+            path: '/display',
+            name: 'display',
+            component: () => import('./utilities/DisplayDemo.vue'),
+        },
+        {
+            path: '/flexbox',
+            name: 'flexbox',
+            component: () => import('./utilities/FlexBoxDemo.vue'),
+        },
+        {
+            path: '/text',
+            name: 'text',
+            component: () => import('./utilities/TextDemo.vue'),
+        },
+        {
+            path: '/crud',
+            name: 'crud',
+            component: () => import('./pages/CrudDemo.vue'),
+        },
+        {
+            path: '/calendar',
+            name: 'calendar',
+            component: () => import('./pages/CalendarDemo.vue'),
+        },
+        {
+            path: '/invoice',
+            name: 'invoice',
+            component: () => import('./pages/Invoice.vue'),
+        },
+        {
+            path: '/help',
+            name: 'help',
+            component: () => import('./pages/Help.vue'),
+        },
+        {
+            path: '/empty',
+            name: 'empty',
+            component: () => import('./components/EmptyPage.vue'),
             meta: {
                 breadcrumb: [{ parent: 'Pages', label: 'Empty Page' }],
             },
         },
         {
-            path: '/pages/calendar',
-            name: 'Calendar',
-            component: () => import('./pages/Calendar.vue'),
-        },
-        {
-            path: '/pages/crud',
-            name: 'Crud',
-            component: () => import('./pages/Crud.vue'),
-        },
-        {
-            path: '/pages/help',
-            name: 'Help',
-            component: () => import('./pages/Help.vue'),
-        },
-        {
-            path: '/pages/invoice',
-            name: 'Invoice',
-            component: () => import('./pages/Invoice.vue'),
-        },
-        {
-            path: '/login',
-            name: 'Login',
-            component: () => import('./pages/Login.vue'),
-        },
-        {
-            path: '/access',
-            name: 'Access',
-            component: () => import('./pages/Access.vue'),
-        },
-        {
-            path: '/notfound',
-            name: 'NotFound',
-            component: NotFound,
-        },
-        {
-            path: '/error',
-            name: 'Error',
-            component: () => import('./pages/Error.vue'),
-        },
-        {
-            path: '/utilities/display',
-            name: 'DisplayDemo',
-            component: () => import('./utilities/DisplayDemo.vue'),
-        },
-        {
-            path: '/utilities/elevation',
-            name: 'ElevationDemo',
-            component: () => import('./utilities/ElevationDemo.vue'),
-        },
-        {
-            path: '/utilities/flexbox',
-            name: 'Flexbox',
-            component: () => import('./utilities/Flexbox.vue'),
-        },
-        {
-            path: '/utilities/grid',
-            name: 'GridDemo',
-            component: () => import('./utilities/GridDemo.vue'),
-        },
-        {
-            path: '/utilities/icons',
-            name: 'Icons',
-            component: () => import('./utilities/Icons.vue'),
-        },
-        {
-            path: '/utilities/spacing',
-            name: 'SpacingDemo',
-            component: () => import('./utilities/SpacingDemo.vue'),
-        },
-        {
-            path: '/utilities/text',
-            name: 'TextDemo',
-            component: () => import('./utilities/TextDemo.vue'),
-        },
-        {
-            path: '/utilities/typography',
-            name: 'Typography',
-            component: () => import('./utilities/Typography.vue'),
-        },
-        {
-            path: '/utilities/widgets',
-            name: 'Widgets',
-            component: () => import('./utilities/Widgets.vue'),
-        },
-        {
-            path: '*',
-            redirect: NotFound,
+            path: '/documentation',
+            name: 'documentation',
+            component: () => import('./components/Documentation.vue'),
         },
     ],
     scrollBehavior() {

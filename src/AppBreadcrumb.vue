@@ -5,7 +5,7 @@
 		}}</template>
 		<template v-else-if="$route.path === '/'">Dashboard</template>
 		<template v-else>
-			{{ breadcrumb }}
+			{{ $route.path.split("/")[1] }}
 		</template>
 	</span>
 </template>
@@ -13,11 +13,5 @@
 <script>
 export default {
 	name: "AppBreadcrumb",
-	computed: {
-		breadcrumb() {
-			const route = this.$route.path.split("/");
-			return route[route.length - 1];
-		},
-	},
 };
 </script>

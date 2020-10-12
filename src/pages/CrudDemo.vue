@@ -324,7 +324,6 @@
 <script>
 import ProductService from "../service/ProductService";
 export default {
-	name: "Crud",
 	data() {
 		return {
 			confirmation: false,
