@@ -48,8 +48,26 @@ export default new VueRouter({
         },
         {
             path: '/uikit/menu',
-            name: 'MenusDemo',
-            component: () => import('./components/MenusDemo.vue'),
+            name: 'MenuDemo',
+            component: () => import('./components/MenuDemo.vue'),
+            children: [
+                {
+                    path: '/menu',
+                    component: () => import('./components/menu/PersonalDemo.vue'),
+                },
+                {
+                    path: '/menu/seat',
+                    component: () => import('./components/menu/SeatDemo.vue'),
+                },
+                {
+                    path: '/menu/payment',
+                    component: () => import('./components/menu/PaymentDemo.vue'),
+                },
+                {
+                    path: '/menu/confirmation',
+                    component: () => import('./components/menu/ConfirmationDemo.vue'),
+                },
+            ],
         },
         {
             path: '/uikit/message',

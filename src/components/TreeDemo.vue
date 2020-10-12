@@ -52,17 +52,6 @@ export default {
 		this.nodeService = new NodeService();
 	},
 	mounted() {
-		// this.nodeService.getFiles().then((files) => (this.files1 = files));
-		// this.nodeService.getFilesystem().then((files) => (this.files2 = files));
-		// this.nodeService.getFiles().then((files) => {
-		// 	this.files3 = [
-		// 		{
-		// 			label: "Root",
-		// 			children: files,
-		// 		},
-		// 	];
-		// });
-
 		this.nodeService.getTreeNodes().then((data) => (this.treeValue = data));
 		this.nodeService
 			.getTreeTableNodes()

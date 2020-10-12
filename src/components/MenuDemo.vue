@@ -27,16 +27,22 @@
 		<div class="p-col-12 p-md-6">
 			<div class="card">
 				<h5>Steps</h5>
-				<Steps :model="stepsItems"></Steps>
-				<router-view></router-view>
+				<p>
+					Steps and TabMenu are integrated with the same child routes.
+				</p>
+				<Steps :model="nestedRouteItems" :readonly="false" />
+				<router-view />
 			</div>
 		</div>
 
 		<div class="p-col-12 p-md-6">
 			<div class="card">
 				<h5>TabMenu</h5>
-				<TabMenu :model="tabMenuItems"></TabMenu>
-				<router-view></router-view>
+				<p>
+					Steps and TabMenu are integrated with the same child routes.
+				</p>
+				<TabMenu :model="nestedRouteItems" />
+				<router-view />
 			</div>
 		</div>
 
@@ -110,7 +116,7 @@
 
 <script>
 export default {
-	name: "MenusDemo",
+	name: "MenuDemo",
 	data() {
 		return {
 			tieredItems: [
@@ -266,14 +272,6 @@ export default {
 				{ label: "Accessories" },
 				{ label: "Backpacks" },
 				{ label: "Item" },
-			],
-
-			tabMenuItems: [
-				{ label: "Overview", icon: "pi pi-fw pi-home" },
-				{ label: "Members", icon: "pi pi-fw pi-users" },
-				{ label: "Sales", icon: "pi pi-fw pi-shopping-cart" },
-				{ label: "Profile", icon: "pi pi-fw pi-user" },
-				{ label: "Settings", icon: "pi pi-fw pi-cog" },
 			],
 
 			megaMenuItems: [
@@ -510,18 +508,22 @@ export default {
 				},
 			],
 
-			stepsItems: [
+			nestedRouteItems: [
 				{
 					label: "Personal",
+					to: "/menu",
 				},
 				{
 					label: "Seat",
+					to: "/menu/seat",
 				},
 				{
 					label: "Payment",
+					to: "/menu/payment",
 				},
 				{
 					label: "Confirmation",
+					to: "/menu/confirmation",
 				},
 			],
 		};
@@ -535,18 +537,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.product-item {
-	.product-item-content {
-		border: 1px solid var(--surface-d);
-		border-radius: 3px;
-		margin: 0.3rem;
-		text-align: center;
-		padding: 2rem 0;
+/deep/ .stepsdemo-content {
+	padding: 1em 0;
+	p {
+		font-weight: 400;
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 18px;
+		margin: 0;
 	}
-
-	.product-image {
-		width: 50%;
-		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	i {
+		vertical-align: middle;
+		font-size: 1.5em;
+		margin: 0;
 	}
+}
+.contextmenu-image {
+	width: 100%;
 }
 </style>
