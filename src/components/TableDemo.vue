@@ -8,7 +8,7 @@
 
 				<DataTable
 					ref="dt"
-					:value="customers1"
+					:value="customer1"
 					:selection.sync="selectedCustomers1"
 					dataKey="id"
 					class="p-datatable-customers"
@@ -141,7 +141,7 @@
 
 				<DataTable
 					ref="dtc"
-					:value="customers2"
+					:value="customer2"
 					:selection="selectedCustomers2"
 					dataKey="id"
 					selectionMode="single"
@@ -156,6 +156,8 @@
 						'representative.name',
 						'status',
 					]"
+					:paginator="true"
+					:rows="10"
 				>
 					<template #header>
 						<div class="table-header">
@@ -259,6 +261,21 @@
 					@row-expand="onRowExpand"
 					@row-collapse="onRowCollapse"
 				>
+					<template #header>
+						<div class="table-header-container">
+							<Button
+								icon="pi pi-plus"
+								label="Expand All"
+								@click="expandAll"
+								class="p-mr-2"
+							/>
+							<Button
+								icon="pi pi-minus"
+								label="Collapse All"
+								@click="collapseAll"
+							/>
+						</div>
+					</template>
 					<Column :expander="true" headerStyle="width:3rem"></Column>
 
 					<Column field="name" header="Name" sortable></Column>
@@ -379,7 +396,7 @@
 			<div class="card">
 				<h4>Row Group</h4>
 				<DataTable
-					:value="customers3"
+					:value="customer3"
 					rowGroupMode="subheader"
 					groupRowsBy="representative.name"
 					sortMode="single"
@@ -439,6 +456,18 @@
 							>{{ slotProps.data.representative.name }}</span
 						>
 					</template>
+					<template #groupfooter="slotProps">
+						<td colspan="4" style="text-align: right">
+							Total Customers
+						</td>
+						<td>
+							{{
+								calculateCustomerTotal(
+									slotProps.data.representative.name
+								)
+							}}
+						</td>
+					</template>
 				</DataTable>
 			</div>
 		</div>
@@ -452,9 +481,9 @@ export default {
 	name: "TableDemo",
 	data() {
 		return {
-			customers1: [],
-			customers2: [],
-			customers3: [],
+			customer1: [],
+			customer2: [],
+			customer3: [],
 			selectedCustomers1: [],
 			selectedCustomers2: [],
 			products: [],
@@ -493,9 +522,9 @@ export default {
 		updateRowGroupMetaData() {
 			this.rowGroupMetadata = {};
 
-			if (this.customers3) {
-				for (let i = 0; i < this.customers3.length; i++) {
-					const rowData = this.customers3[i];
+			if (this.customer3) {
+				for (let i = 0; i < this.customer3.length; i++) {
+					const rowData = this.customer3[i];
 					const representativeName = rowData.representative.name;
 
 					if (i === 0) {
@@ -504,7 +533,7 @@ export default {
 							size: 1,
 						};
 					} else {
-						const previousRowData = this.customers3[i - 1];
+						const previousRowData = this.customer3[i - 1];
 						const previousRowGroup =
 							previousRowData.representative.name;
 						if (representativeName === previousRowGroup) {
@@ -558,24 +587,38 @@ export default {
 				currency: "USD",
 			});
 		},
+		calculateCustomerTotal(name) {
+			let total = 0;
+			if (this.customer3) {
+				for (let customer of this.customer3) {
+					console.log(customer);
+					if (customer.representative.name === name) {
+						total++;
+					}
+				}
+			}
+			return total;
+		},
 	},
 	created() {
 		this.customerService = new CustomerService();
 		this.productService = new ProductService();
 	},
 	mounted() {
-		this.customerService
-			.getCustomersMedium()
-			.then((customers) => (this.customers1 = customers));
-		this.customerService
-			.getCustomersMedium()
-			.then((customers) => (this.customers2 = customers));
-		this.customerService
-			.getCustomersMedium()
-			.then((customers) => (this.customers3 = customers));
 		this.productService
 			.getProductsWithOrdersSmall()
 			.then((data) => (this.products = data));
+		this.customerService
+			.getCustomersMedium()
+			.then((data) => (this.customer1 = data));
+		this.customerService
+			.getCustomersLarge()
+			.then((data) => (this.customer2 = data));
+		this.customerService
+			.getCustomersMedium()
+			.then((data) => (this.customer3 = data));
+		this.loading1 = false;
+		this.loading2 = false;
 	},
 };
 </script>
