@@ -5,20 +5,23 @@
 				<h5>InputText</h5>
 				<div class="p-grid p-formgrid">
 					<div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
-						<InputText type="text" placeholder="Default" />
+						<InputText
+							type="text"
+							placeholder="Default"
+						></InputText>
 					</div>
 					<div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
 						<InputText
 							type="text"
 							placeholder="Disabled"
 							:disabled="true"
-						/>
+						></InputText>
 					</div>
 					<div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
 						<InputText
 							type="text"
 							placeholder="Invalid"
-							class="p-invalid"
+							class="p-error"
 						/>
 					</div>
 				</div>
@@ -27,74 +30,79 @@
 				<div class="p-grid p-formgrid">
 					<div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
 						<span class="p-input-icon-left">
-							<i class="pi pi-user"></i>
+							<i class="pi pi-user" />
 							<InputText type="text" placeholder="Username" />
 						</span>
 					</div>
 					<div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
 						<span class="p-input-icon-right">
 							<InputText type="text" placeholder="Search" />
-							<i class="pi pi-search"></i>
+							<i class="pi pi-search" />
 						</span>
 					</div>
 					<div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
 						<span class="p-input-icon-left p-input-icon-right">
-							<i class="pi pi-user"></i>
+							<i class="pi pi-user" />
 							<InputText type="text" placeholder="Search" />
-							<i class="pi pi-search"></i>
+							<i class="pi pi-search" />
 						</span>
 					</div>
 				</div>
 
 				<h5>Float Label</h5>
 				<span class="p-float-label">
-					<InputText id="float-input" type="text" />
-					<label for="float-input">Username</label>
+					<InputText id="username" type="text" v-model="floatValue" />
+					<label for="username">Username</label>
 				</span>
 
 				<h5>Textarea</h5>
 				<Textarea
-					rows="5"
-					cols="30"
 					placeholder="Your Message"
-				></Textarea>
+					:autoResize="true"
+					rows="3"
+					cols="30"
+				/>
 
 				<h5>AutoComplete</h5>
 				<AutoComplete
-					v-model="selectedCountryAdvanced"
-					:suggestions="filteredCountries"
-					@complete="filterCountry($event)"
-					field="name"
+					placeholder="Search"
+					id="dd"
 					:dropdown="true"
-				>
-				</AutoComplete>
+					:multiple="true"
+					v-model="selectedAutoValue"
+					:suggestions="autoFilteredValue"
+					@complete="searchCountry($event)"
+					field="name"
+				/>
 
 				<h5>Calendar</h5>
-				<Calendar :showIcon="true" inputId="icon"></Calendar>
+				<Calendar
+					:showIcon="true"
+					:showButtonBar="true"
+					v-model="calendarValue"
+				></Calendar>
 
-				<h5>InputNumber</h5>
+				<h5>Spinner</h5>
 				<InputNumber
+					v-model="inputNumberValue"
+					showButtons
 					mode="decimal"
-					:showButtons="true"
-					:min="0"
-					:max="100"
-				>
-				</InputNumber>
+				></InputNumber>
 
 				<h5>Chips</h5>
-				<Chips v-model="chips"></Chips>
+				<Chips v-model="chipsValue" />
 			</div>
 
 			<div class="card">
 				<h5>Slider</h5>
-				<InputText type="text" v-model="valSlider" readonly />
-				<Slider v-model="valSlider"></Slider>
+				<InputText v-model.number="sliderValue" />
+				<Slider v-model="sliderValue" />
 
 				<h5>Rating</h5>
-				<Rating v-model="rating"></Rating>
+				<Rating v-model="ratingValue" />
 
 				<h5>ColorPicker</h5>
-				<ColorPicker v-model="valColor"></ColorPicker>
+				<ColorPicker style="width: 2rem" v-model="colorValue" />
 			</div>
 		</div>
 
@@ -105,105 +113,104 @@
 					<div class="p-col-12 p-md-4">
 						<div class="p-field-radiobutton">
 							<RadioButton
-								name="city"
+								id="option1"
+								name="option"
 								value="Chicago"
-								v-model="valRadio"
-								id="city1"
-							></RadioButton>
-							<label for="city1">Chicago</label>
+								v-model="radioValue"
+							/>
+							<label for="option1">Chicago</label>
 						</div>
 					</div>
 					<div class="p-col-12 p-md-4">
 						<div class="p-field-radiobutton">
 							<RadioButton
-								name="city"
+								id="option2"
+								name="option"
 								value="Los Angeles"
-								v-model="valRadio"
-								id="city2"
-							></RadioButton>
-							<label for="city2">Los Angeles</label>
+								v-model="radioValue"
+							/>
+							<label for="option2">Los Angeles</label>
 						</div>
 					</div>
 					<div class="p-col-12 p-md-4">
 						<div class="p-field-radiobutton">
 							<RadioButton
-								name="city"
+								id="option3"
+								name="option"
 								value="New York"
-								v-model="valRadio"
-								id="city3"
-							></RadioButton>
-							<label for="city3">New York</label>
+								v-model="radioValue"
+							/>
+							<label for="option3">New York</label>
 						</div>
 					</div>
 				</div>
 
-				<h5>Checkbox</h5>
+				<h5 style="margin-top: 0">Checkbox</h5>
 				<div class="p-grid">
 					<div class="p-col-12 p-md-4">
 						<div class="p-field-checkbox">
 							<Checkbox
-								name="group1"
-								value="New York"
-								v-model="valCheck"
-								id="ny"
-							></Checkbox>
-							<label for="ny">New York</label>
+								id="checkOption1"
+								name="option"
+								value="Chicago"
+								v-model="checkboxValue"
+							/>
+							<label for="checkOption1">Chicago</label>
 						</div>
 					</div>
 					<div class="p-col-12 p-md-4">
 						<div class="p-field-checkbox">
 							<Checkbox
-								name="group1"
-								value="San Francisco"
-								v-model="valCheck"
-								id="sf"
-							></Checkbox>
-							<label for="sf">San Francisco</label>
-						</div>
-					</div>
-					<div class="p-col-12 p-md-4">
-						<div class="p-field-checkbox">
-							<Checkbox
-								name="group1"
+								id="checkOption2"
+								name="option"
 								value="Los Angeles"
-								v-model="valCheck"
-								id="la"
-							></Checkbox>
-							<label for="la">Los Angeles</label>
+								v-model="checkboxValue"
+							/>
+							<label for="checkOption2">Los Angeles</label>
+						</div>
+					</div>
+					<div class="p-col-12 p-md-4">
+						<div class="p-field-checkbox">
+							<Checkbox
+								id="checkOption3"
+								name="option"
+								value="New York"
+								v-model="checkboxValue"
+							/>
+							<label for="checkOption3">New York</label>
 						</div>
 					</div>
 				</div>
 
-				<h5>Input Switch</h5>
-				<InputSwitch v-model="valSwitch"></InputSwitch>
+				<h5 style="margin-top: 0">Input Switch</h5>
+				<InputSwitch v-model="switchValue" />
 			</div>
 
 			<div class="card">
 				<h5>Listbox</h5>
 				<Listbox
-					:options="cities"
-					v-model="selectedList"
+					v-model="listboxValue"
+					:options="listboxValues"
+					optionLabel="name"
 					:filter="true"
-					optionLabel="label"
-				></Listbox>
+				/>
 
 				<h5>Dropdown</h5>
 				<Dropdown
-					:options="cities"
-					v-model="selectedDrop"
-					placeholder="Select a City"
-					:showClear="true"
-					optionLabel="label"
-				></Dropdown>
-
-				<h5>Multiselect</h5>
-				<MultiSelect
-					:options="countries"
-					v-model="selectedMulti"
-					placeholder="Select a Country"
+					v-model="dropdownValue"
+					:options="dropdownValues"
 					optionLabel="name"
-					class="multiselect-custom"
+					placeholder="Select"
+				/>
+
+				<h5>MultiSelect</h5>
+				<MultiSelect
+					v-model="multiselectValue"
+					:options="multiselectValues"
+					optionLabel="name"
+					placeholder="Select Countries"
 					:filter="true"
+					class="multiselect-custom"
 				>
 					<template #value="slotProps">
 						<div
@@ -243,78 +250,73 @@
 			<div class="card">
 				<h5>ToggleButton</h5>
 				<ToggleButton
-					v-model="valToggle"
+					v-model="toggleValue"
 					onLabel="Yes"
 					offLabel="No"
-					:style="{ width: '10em' }"
-				></ToggleButton>
+				/>
 
-				<h5>SelectOneButton</h5>
+				<h5>SelectButton</h5>
 				<SelectButton
-					:options="paymentOptions"
-					v-model="valSelect1"
+					v-model="selectButtonValue1"
+					:options="selectButtonValues1"
 					optionLabel="name"
-				></SelectButton>
+				/>
 
-				<h5>SelectManyButton</h5>
+				<h5>SelectButton - Multiple</h5>
 				<SelectButton
-					:options="paymentOptions"
-					v-model="valSelect2"
-					multiple
+					v-model="selectButtonValue2"
+					:options="selectButtonValues2"
 					optionLabel="name"
-				></SelectButton>
+					:multiple="true"
+				/>
 			</div>
 		</div>
+
 		<div class="p-col-12">
 			<div class="card">
-				<h5>InputGroup</h5>
+				<h5>Input Groups</h5>
 				<div class="p-grid p-fluid">
 					<div class="p-col-12 p-md-6">
 						<div class="p-inputgroup">
-							<span class="p-inputgroup-addon"
-								><i class="pi pi-user"></i
-							></span>
-							<InputText type="text" placeholder="Username" />
+							<span class="p-inputgroup-addon">
+								<i class="pi pi-user"></i>
+							</span>
+							<InputText placeholder="Username" />
 						</div>
 					</div>
+
 					<div class="p-col-12 p-md-6">
 						<div class="p-inputgroup">
 							<span class="p-inputgroup-addon"
-								><i
-									class="pi pi-tags"
-									style="line-height: 1.25"
-								></i
+								><i class="pi pi-shopping-cart"></i
 							></span>
 							<span class="p-inputgroup-addon"
-								><i
-									class="pi pi-shopping-cart"
-									style="line-height: 1.25"
-								></i
+								><i class="pi pi-globe"></i
 							></span>
-							<InputText type="text" placeholder="Price" />
+							<InputText placeholder="Price" />
 							<span class="p-inputgroup-addon">$</span>
 							<span class="p-inputgroup-addon">.00</span>
 						</div>
 					</div>
+
 					<div class="p-col-12 p-md-6">
 						<div class="p-inputgroup">
-							<Button
-								type="button"
-								class="p-ripple"
-								label="Search"
-							></Button>
-							<InputText type="text" placeholder="Keyword" />
+							<Button label="Search" />
+							<InputText placeholder="Keyword" />
 						</div>
 					</div>
+
 					<div class="p-col-12 p-md-6">
 						<div class="p-inputgroup">
-							<span class="p-inputgroup-addon"
-								><Checkbox
-									v-model="usernameCheckbox"
+							<span
+								class="p-inputgroup-addon p-inputgroup-addon-checkbox"
+							>
+								<Checkbox
+									v-model="inputGroupValue"
 									:binary="true"
-								></Checkbox
-							></span>
-							<InputText type="text" placeholder="Username" />
+								/>
+							</span>
+							<InputText placeholder="Confirm" />
 						</div>
 					</div>
 				</div>
@@ -322,78 +324,93 @@
 		</div>
 	</div>
 </template>
-
 <script>
 import CountryService from "../service/CountryService";
 export default {
+	data() {
+		return {
+			floatValue: null,
+			autoValue: null,
+			selectedAutoValue: null,
+			autoFilteredValue: [],
+			calendarValue: null,
+			inputNumberValue: null,
+			chipsValue: null,
+			sliderValue: null,
+			ratingValue: null,
+			colorValue: "1976D2",
+			radioValue: null,
+			checkboxValue: [],
+			switchValue: false,
+			listboxValues: [
+				{ name: "New York", code: "NY" },
+				{ name: "Rome", code: "RM" },
+				{ name: "London", code: "LDN" },
+				{ name: "Istanbul", code: "IST" },
+				{ name: "Paris", code: "PRS" },
+			],
+			listboxValue: null,
+			dropdownValues: [
+				{ name: "New York", code: "NY" },
+				{ name: "Rome", code: "RM" },
+				{ name: "London", code: "LDN" },
+				{ name: "Istanbul", code: "IST" },
+				{ name: "Paris", code: "PRS" },
+			],
+			dropdownValue: null,
+			multiselectValue: null,
+			multiselectValues: [
+				{ name: "Australia", code: "AU" },
+				{ name: "Brazil", code: "BR" },
+				{ name: "China", code: "CN" },
+				{ name: "Egypt", code: "EG" },
+				{ name: "France", code: "FR" },
+				{ name: "Germany", code: "DE" },
+				{ name: "India", code: "IN" },
+				{ name: "Japan", code: "JP" },
+				{ name: "Spain", code: "ES" },
+				{ name: "United States", code: "US" },
+			],
+			toggleValue: false,
+			selectButtonValues1: [
+				{ name: "Option 1", code: "O1" },
+				{ name: "Option 2", code: "O2" },
+				{ name: "Option 3", code: "O3" },
+			],
+			selectButtonValue1: null,
+			selectButtonValues2: [
+				{ name: "Option 1", code: "O1" },
+				{ name: "Option 2", code: "O2" },
+				{ name: "Option 3", code: "O3" },
+			],
+			selectButtonValue2: null,
+			inputGroupValue: false,
+		};
+	},
+	countryService: null,
 	created() {
 		this.countryService = new CountryService();
 	},
 	mounted() {
-		this.countryService.getCountries().then((countries) => {
-			this.countries = countries;
-		});
-	},
-	data() {
-		return {
-			cities: [
-				{
-					label: "New York",
-					value: { id: 1, name: "New York", code: "NY" },
-				},
-				{ label: "Rome", value: { id: 2, name: "Rome", code: "RM" } },
-				{
-					label: "London",
-					value: { id: 3, name: "London", code: "LDN" },
-				},
-				{
-					label: "Istanbul",
-					value: { id: 4, name: "Istanbul", code: "IST" },
-				},
-				{
-					label: "Paris",
-					value: { id: 5, name: "Paris", code: "PRS" },
-				},
-			],
-
-			paymentOptions: [
-				{ name: "Option 1", value: 1 },
-				{ name: "Option 2", value: 2 },
-				{ name: "Option 3", value: 3 },
-			],
-			filteredCountries: [],
-			countries: [],
-			selectedCountryAdvanced: "",
-			valSlider: 50,
-			valColor: "#424242",
-			valRadio: "",
-			valCheck: [],
-			valSwitch: false,
-			selectedList: "",
-			selectedDrop: "",
-			selectedMulti: [],
-			valToggle: false,
-			valSelect1: "",
-			valSelect2: "",
-			chips: [],
-			rating: null,
-			usernameCheckbox: false,
-		};
+		this.countryService
+			.getCountries()
+			.then((data) => (this.autoValue = data));
 	},
 	methods: {
-		filterCountry($event) {
-			const filtered = [];
-			const query = $event.query;
-			for (let i = 0; i < this.countries.length; i++) {
-				const country = this.countries[i];
-				if (
-					country.name.toLowerCase().indexOf(query.toLowerCase()) == 0
-				) {
-					filtered.push(country);
+		searchCountry(event) {
+			setTimeout(() => {
+				if (!event.query.trim().length) {
+					this.autoFilteredValue = [...this.autoValue];
+				} else {
+					this.autoFilteredValue = this.autoValue.filter(
+						(country) => {
+							return country.name
+								.toLowerCase()
+								.startsWith(event.query.toLowerCase());
+						}
+					);
 				}
-			}
-
-			this.filteredCountries = filtered;
+			}, 250);
 		},
 	},
 };

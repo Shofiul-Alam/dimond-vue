@@ -40,11 +40,6 @@ export default {
 			treeTableValue: null,
 			selectedFiles1: [],
 			selectedFiles2: [],
-			cols: [
-				{ field: "name", header: "Name" },
-				{ field: "size", header: "Size" },
-				{ field: "type", header: "Type" },
-			],
 		};
 	},
 	created() {

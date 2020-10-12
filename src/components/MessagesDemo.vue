@@ -121,6 +121,8 @@ export default {
 	data() {
 		return {
 			msgs: [],
+			username: null,
+			email: null,
 		};
 	},
 	methods: {

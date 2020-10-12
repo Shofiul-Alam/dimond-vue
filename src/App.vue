@@ -159,7 +159,7 @@ export default {
 						{
 							label: "Chart",
 							icon: "pi pi-fw pi-chart-bar",
-							to: "/charts",
+							to: "/chart",
 						},
 						{
 							label: "Misc",
@@ -514,7 +514,6 @@ export default {
 		},
 
 		onRightMenuClick(event) {
-			console.log("++");
 			this.rightMenuClick = true;
 			this.rightMenuActive = !this.rightMenuActive;
 

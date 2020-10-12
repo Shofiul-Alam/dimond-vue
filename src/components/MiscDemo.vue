@@ -1,24 +1,19 @@
 <template>
-	<div class="p-grid misc-demo">
+	<div class="p-grid">
 		<div class="p-col-12">
 			<div class="card">
 				<h5>ProgressBar</h5>
 				<div class="p-grid">
 					<div class="p-col">
-						<ProgressBar
-							:value="value"
-							:showValue="false"
-						></ProgressBar>
+						<ProgressBar :value="value" />
 					</div>
 					<div class="p-col">
-						<progressBar
-							:value="50"
-							:showValue="false"
-						></progressBar>
+						<ProgressBar :value="50" :showValue="false" />
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div class="p-col-12">
 			<div class="card">
 				<h4>Badge</h4>
@@ -61,18 +56,20 @@
 
 				<h5>Button Badge</h5>
 				<span class="p-overlay-badge">
-					<Button label="New"></Button>
+					<Button type="button" label="New" />
 					<span class="p-badge p-badge-warning">5</span>
 				</span>
 
 				<h5>Inline Button Badge</h5>
-				<Button label="Emails" badge="8" class="p-mr-2"></Button>
+				<Button type="button" label="Emails" badge="8" class="p-mr-2" />
 				<Button
+					type="button"
 					label="Messages"
 					icon="pi pi-users"
-					class="p-button-warning p-badge-danger"
+					class="p-button-warning"
 					badge="8"
-				></Button>
+					badgeClass="p-badge-danger"
+				/>
 
 				<h5>Sizes</h5>
 				<div class="badges">
@@ -92,26 +89,44 @@ export default {
 			value: 0,
 		};
 	},
-	created() {
-		const interval = setInterval(() => {
-			this.value = this.value + Math.floor(Math.random() * 10) + 1;
-			if (this.value >= 100) {
-				this.value = 100;
-				clearInterval(interval);
-			}
-		}, 2000);
+	interval: null,
+	methods: {
+		startProgress() {
+			this.interval = setInterval(() => {
+				let newValue = this.value + Math.floor(Math.random() * 10) + 1;
+				if (newValue >= 100) {
+					newValue = 100;
+				}
+				this.value = newValue;
+			}, 2000);
+		},
+		endProgress() {
+			clearInterval(this.interval);
+			this.interval = null;
+		},
+	},
+	mounted() {
+		this.startProgress();
+	},
+	beforeDestroy() {
+		this.endProgress();
 	},
 };
 </script>
 
 <style lang="scss" scoped>
-.misc-demo .p-button.p-widget {
-	min-width: 6rem;
+.badges {
+	.p-badge,
+	.p-tag {
+		margin-right: 0.5rem;
+	}
 }
-.misc-demo .badges .p-badge {
+
+.p-button {
 	margin-right: 0.5rem;
 }
-.misc-demo .badges .p-tag {
-	margin-right: 0.5rem;
+
+.p-overlay-badge {
+	margin-right: 2rem;
 }
 </style>

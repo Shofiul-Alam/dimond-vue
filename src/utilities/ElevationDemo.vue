@@ -12,9 +12,11 @@
 					elements along the z-axis.
 				</p>
 
-				<div class="p-grid">
-					<div v-for="i in 24" :key="i" :class="'box p-shadow-' + i">
-						p-shadow-{{ i }}
+				<div class="shadow-container">
+					<div class="p-col" v-for="index in 24" :key="index">
+						<div :class="['box', 'p-shadow-' + index]">
+							p-shadow-{{ index }}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -38,5 +40,10 @@ export default {
 	font-weight: 600;
 	margin: 2rem;
 	border-radius: 4px;
+}
+.shadow-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
 }
 </style>

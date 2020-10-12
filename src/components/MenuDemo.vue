@@ -82,12 +82,11 @@
 			</div>
 		</div>
 
-		<div class="p-col-12 p-md-4">
+		<div class="p-col-12 p-md-4" @contextmenu="onContextRightClick">
 			<div class="card">
 				<h5>ContextMenu</h5>
 				Right click to display.
-
-				<ContextMenu :global="true" :model="menuItems"></ContextMenu>
+				<ContextMenu ref="contextMenu" :model="menuItems"></ContextMenu>
 			</div>
 		</div>
 
@@ -530,6 +529,9 @@ export default {
 	methods: {
 		toggleMenu($event) {
 			this.$refs.menu.toggle($event);
+		},
+		onContextRightClick(event) {
+			this.$refs.contextMenu.show(event);
 		},
 	},
 };

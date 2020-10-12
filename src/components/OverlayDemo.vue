@@ -70,7 +70,7 @@
 						<Button
 							type="button"
 							label="DataTable"
-							@click="op2Toggle($event)"
+							@click="toggleDataTable($event)"
 							class="p-button-success"
 						></Button>
 						<OverlayPanel
@@ -315,7 +315,7 @@ export default {
 		toggleImage($event) {
 			this.$refs.op1.toggle($event);
 		},
-		op2Toggle($event) {
+		toggleDataTable($event) {
 			this.$refs.op2.toggle($event);
 		},
 	},

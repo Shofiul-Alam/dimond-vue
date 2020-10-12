@@ -1,5 +1,6 @@
 <template>
 	<div class="p-grid">
+		<Toast />
 		<div class="p-col-12">
 			<div class="card">
 				<h5>Advanced</h5>
@@ -9,15 +10,8 @@
 					@upload="onUpload($event)"
 					multiple="multiple"
 					accept="image/*"
-					maxFileSize="1000000"
+					:maxFileSize="1000000"
 				>
-					<template #content>
-						<ul v-if="uploadedFiles.length">
-							<li v-for="file in uploadedFiles" :key="file.name">
-								{{ file.name }} - {{ file.size }} bytes
-							</li>
-						</ul>
-					</template>
 				</FileUpload>
 
 				<h5>Basic</h5>
@@ -27,7 +21,7 @@
 					url="./upload.php"
 					accept="image/*"
 					:maxFileSize="1000000"
-					@upload="onBasicUpload($event)"
+					@upload="onUpload($event)"
 				></FileUpload>
 			</div>
 		</div>
@@ -36,29 +30,13 @@
 
 <script>
 export default {
-	data() {
-		return {
-			uploadedFiles: [],
-		};
-	},
 	methods: {
-		onUpload($event) {
-			for (const file of $event.files) {
-				this.uploadedFiles.push(file);
-			}
-
-			this.messageService.add({
+		onUpload() {
+			this.$toast.add({
 				severity: "info",
 				summary: "Success",
 				detail: "File Uploaded",
-			});
-		},
-
-		onBasicUpload() {
-			this.messageService.add({
-				severity: "info",
-				summary: "Success",
-				detail: "File Uploaded with Basic Mode",
+				life: 3000,
 			});
 		},
 	},
