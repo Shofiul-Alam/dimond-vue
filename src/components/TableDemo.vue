@@ -146,8 +146,6 @@
 					dataKey="id"
 					selectionMode="single"
 					class="p-datatable-customers p-datatable-gridlines p-datatable-striped p-datatable-sm"
-					:scrollable="true"
-					scrollHeight="600px"
 					:filterDelay="0"
 					:filters="filters2"
 					:globalFilterFields="[
@@ -591,7 +589,6 @@ export default {
 			let total = 0;
 			if (this.customer3) {
 				for (let customer of this.customer3) {
-					console.log(customer);
 					if (customer.representative.name === name) {
 						total++;
 					}
