@@ -51,6 +51,7 @@
 					:filters="filters"
 					paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
 					currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+					:rowsPerPageOptions="[5, 10, 25]"
 				>
 					<template #header>
 						<div class="p-d-flex p-ai-center p-jc-between">
@@ -126,8 +127,6 @@
 							></Button>
 						</template>
 					</Column>
-
-					<template #paginatorLeft></template>
 
 					<template #footer>
 						<div class="p-d-flex p-ai-center p-jc-between">
