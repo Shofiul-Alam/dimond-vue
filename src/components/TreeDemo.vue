@@ -4,7 +4,7 @@
 			<div class="card">
 				<h4>Tree</h4>
 				<Tree
-					:value="files1"
+					:value="treeValue"
 					selectionMode="checkbox"
 					:selectionKeys.sync="selectedFiles1"
 				></Tree>
@@ -14,7 +14,7 @@
 			<div class="card">
 				<h4>TreeTable</h4>
 				<TreeTable
-					:value="files2"
+					:value="treeTableValue"
 					selectionMode="checkbox"
 					:selectionKeys.sync="selectedFiles2"
 				>
@@ -37,8 +37,8 @@ export default {
 	name: "TreeDemo",
 	data() {
 		return {
-			files1: [],
-			files2: [],
+			treeValue: [],
+			treeTableValue: null,
 			selectedFiles1: [],
 			selectedFiles2: [],
 			cols: [
@@ -52,16 +52,21 @@ export default {
 		this.nodeService = new NodeService();
 	},
 	mounted() {
-		this.nodeService.getFiles().then((files) => (this.files1 = files));
-		this.nodeService.getFilesystem().then((files) => (this.files2 = files));
-		this.nodeService.getFiles().then((files) => {
-			this.files3 = [
-				{
-					label: "Root",
-					children: files,
-				},
-			];
-		});
+		// this.nodeService.getFiles().then((files) => (this.files1 = files));
+		// this.nodeService.getFilesystem().then((files) => (this.files2 = files));
+		// this.nodeService.getFiles().then((files) => {
+		// 	this.files3 = [
+		// 		{
+		// 			label: "Root",
+		// 			children: files,
+		// 		},
+		// 	];
+		// });
+
+		this.nodeService.getTreeNodes().then((data) => (this.treeValue = data));
+		this.nodeService
+			.getTreeTableNodes()
+			.then((data) => (this.treeTableValue = data));
 	},
 };
 </script>
