@@ -1,5 +1,10 @@
 <template>
-	<ul v-if="items" class="layout-menu" role="menu">
+	<ul
+		v-if="items"
+		class="layout-menu"
+		role="menu"
+		:class="{ 'fade-in-right': menuMode === 'slim' }"
+	>
 		<template v-for="(item, i) of items">
 			<li
 				v-if="visible(item) && !item.separator"
