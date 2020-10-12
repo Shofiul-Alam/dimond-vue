@@ -6,7 +6,7 @@
 				Easily manage the layout of your components with the responsive
 				FlexBox utilities. If you require a utility to manage the layout
 				of your application, refer to the
-				<router-link to="'/grid'">Grid System</router-link> instead.
+				<router-link to="/grid">Grid System</router-link> instead.
 			</p>
 
 			<h5>Flex Container</h5>
