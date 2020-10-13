@@ -305,10 +305,9 @@
 					></Column>
 
 					<Column
-						field="reviews"
+						field="rating"
 						header="Reviews"
 						sortable
-						sortField="product.rating"
 					>
 						<template #body="slotProps">
 							<Rating
@@ -319,7 +318,7 @@
 						</template>
 					</Column>
 
-					<Column field="inventorystatus" header="Status" sortable>
+					<Column field="inventoryStatus" header="Status" sortable>
 						<template #body="slotProps">
 							<span
 								:class="
@@ -352,7 +351,7 @@
 									header="Date"
 									sortable
 								></Column>
-								<Column field="amont" header="Amount" sortable>
+								<Column field="amount" header="Amount" sortable>
 									<template #body="slotProps">
 										{{
 											formatCurrency(
@@ -361,7 +360,7 @@
 										}}
 									</template>
 								</Column>
-								<Column field="stats" header="Status" sortable>
+								<Column field="status" header="Status" sortable>
 									<template #body="slotProps">
 										<span
 											:class="
@@ -594,13 +593,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.p-paginator {
+/deep/ .p-paginator {
 	.p-paginator-current {
 		margin-left: auto;
 	}
 }
 
-/deep/ .p-progressbar {
+.p-progressbar {
 	height: 0.5rem;
 	background-color: #d8dadc;
 
@@ -622,7 +621,7 @@ export default {
 	}
 }
 
-/deep/ .p-datatable.p-datatable-customers {
+.p-datatable.p-datatable-customers {
 	.p-datatable-header {
 		padding: 1rem;
 		text-align: left;
@@ -746,7 +745,7 @@ export default {
 }
 
 @media screen and (max-width: 960px) {
-	.p-datatable {
+	/deep/ .p-datatable {
 		&.p-datatable-customers {
 			.p-datatable-thead > tr > th,
 			.p-datatable-tfoot > tr > td {

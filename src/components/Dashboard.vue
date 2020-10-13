@@ -781,4 +781,7 @@ export default {
 		}
 	}
 }
+/deep/ .p-datatable .p-datatable-tbody > tr > td {
+	text-align: center;
+}
 </style>

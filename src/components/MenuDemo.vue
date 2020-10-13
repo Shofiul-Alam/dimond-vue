@@ -51,7 +51,7 @@
 				<h5>TieredMenu</h5>
 				<TieredMenu
 					:model="tieredItems"
-					:style="{ width: '100%', 'margin-bottom': '20px' }"
+					:style="{ 'margin-bottom': '20px' }"
 				></TieredMenu>
 			</div>
 
