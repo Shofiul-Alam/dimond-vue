@@ -64,7 +64,7 @@ npm serve
 					Diamond consists of 3 main parts; the application layout,
 					layout resources and theme resources for PrimeVue
 					components.
-					<i>app.component.html</i> inside app folder is the html
+					<i>App.vue</i> inside app folder is the html
 					template for the base layout, required resources for the
 					layout are placed inside the <i>src/assets/layout</i> folder
 					and similarly theme resources are inside
@@ -74,10 +74,10 @@ npm serve
 				<h4>Template</h4>
 				<p>
 					Main layout is the html template of the
-					app.main.component.ts, it is divided into a couple of
+					App.vue, it is divided into a couple of
 					sections such as topbar, sidebar, right panel and footer.
 					Here is the code for the main template. The component class
-					app.main.component.ts implements the logic such as opening
+					App.vue implements the logic such as opening
 					menus and managing layout modes.
 				</p>
 				
@@ -85,15 +85,16 @@ npm serve
 <template v-pre>
 &lt;div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick()"&gt; 
 	&lt;div class="layout-content-wrapper"&gt; 
-		&lt;app-topbar :topbarNotificationMenuActive="topbarNotificationMenuActive"	:topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick" @search-click="onSearchClick" @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick"
-			@right-menu-click="onRightMenuClick" &gt;&lt;/app-topbar&gt; 
+		&lt;app-topbar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" 
+		    @menu-button-click="onMenuButtonClick" @search-click="onSearchClick" @topbar-notification="onTopbarNotificationMenuButtonClick" 
+			@topbar-user-menu="onTopbarUserMenuButtonClick" @right-menu-click="onRightMenuClick" &gt;&lt;/app-topbar&gt; 
 		&lt;div class="layout-content"&gt;
 			&lt;router-view&gt;&lt;/router-view&gt; 
 		&lt;/div&gt;
 		&lt;app-footer&gt;&lt;/app-footer&gt; 
 	&lt;/div&gt;
-	&lt;app-menu :model="menu" :menuMode="menuMode"	:menuActive="menuActive" &gt;&lt;/app-menu&gt;
-	&lt;app-config :configActive="configActive"	:menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick"	@config-button-click="onConfigButtonClick" 
+	&lt;app-menu :model="menu" :menuMode="menuMode" :menuActive="menuActive" &gt;&lt;/app-menu&gt;
+	&lt;app-config :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick" 
 		@change-menu-theme="changeMenuTheme" &gt;&lt;/app-config&gt; 
 	&lt;app-search :search="search" @on-search-click="onSearchClick" &gt;&lt;/app-search&gt;
 	&lt;div class="layout-mask modal-in"&gt;&lt;/div&gt;
@@ -1306,14 +1307,6 @@ export default {
 			}
 		}
 	}
-}
-i {
-	background-color: #fcf2a7;
-	font-family: monaco, Consolas, Lucida Console, monospace;
-	font-weight: 700;
-	font-style: normal;
-	font-size: 14px;
-	padding: 2px;
 }
 li {
 	line-height: 1.5;

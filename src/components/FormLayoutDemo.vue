@@ -133,7 +133,7 @@
 						<Dropdown
 							inputId="state"
 							:options="states"
-							:model="selectedState"
+							v-model="selectedState"
 							placeholder="Select"
 							optionLabel="name"
 						></Dropdown>

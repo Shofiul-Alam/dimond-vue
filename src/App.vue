@@ -237,7 +237,7 @@ export default {
 						},
 						{
 							label: "Landing",
-							icon: "pi pi-fw pi-user-plus",
+							icon: "pi pi-fw pi-globe",
 							url: "assets/pages/landing.html",
 							target: "_blank",
 						},
@@ -272,7 +272,7 @@ export default {
 							to: "/access",
 						},
 						{
-							label: "Empty Page",
+							label: "Empty",
 							icon: "pi pi-fw pi-circle-off",
 							to: "/empty",
 						},
@@ -355,18 +355,18 @@ export default {
 					icon: "pi pi-fw pi-download",
 					items: [
 						{
-							label: "Docs",
-							icon: "pi pi-fw pi-file",
-							to: "/documentation",
-						},
-						{
 							label: "Buy Now",
-							icon: "pi pi-fw pi-money-bill",
+							icon: "pi pi-fw pi-shopping-cart",
 							command: () =>
 								window.open(
 									"https://www.primefaces.org/store",
 									"_blank"
 								),
+						},
+						{
+							label: "Documentation",
+							icon: "pi pi-fw pi-info-circle",
+							to: "/documentation",
 						},
 					],
 				},

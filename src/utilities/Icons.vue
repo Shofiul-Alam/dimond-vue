@@ -143,4 +143,44 @@ export default {
 		padding-bottom: 2rem;
 	}
 }
+/deep/ pre[class*="language-"] {
+	&:before,
+	&:after {
+		display: none !important;
+	}
+
+	code {
+		border-left: 10px solid var(--surface-d) !important;
+		box-shadow: none !important;
+		background: var(--surface-e) !important;
+		margin: 1em 0;
+		color: var(--text-color);
+		font-size: 14px;
+
+		.token {
+			&.tag,
+			&.keyword {
+				color: #2196f3 !important;
+			}
+
+			&.attr-name,
+			&.attr-string {
+				color: #2196f3 !important;
+			}
+
+			&.attr-value {
+				color: #4caf50 !important;
+			}
+
+			&.punctuation {
+				color: var(--text-color);
+			}
+
+			&.operator,
+			&.string {
+				background: transparent;
+			}
+		}
+	}
+}
 </style>

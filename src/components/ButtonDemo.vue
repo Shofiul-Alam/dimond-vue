@@ -406,9 +406,9 @@ export default {
 				{ label: "Update", icon: "pi pi-refresh" },
 				{ label: "Delete", icon: "pi pi-times" },
 				{
-					label: "Angular.io",
+					label: "Vue.js",
 					icon: "pi pi-info",
-					url: "http://angular.io",
+					url: "https://vuejs.org/",
 				},
 				{ separator: true },
 				{ label: "Setup", icon: "pi pi-cog" },

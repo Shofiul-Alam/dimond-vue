@@ -225,7 +225,7 @@
 					<p>Your sales activity over time.</p>
 
 					<DataTable :value="products" :paginator="true" :rows="5">
-						<Column field="id" header="Id" sortable></Column>
+						<Column field="id" header="ID" sortable></Column>
 						<Column
 							field="category"
 							header="Category"
@@ -251,7 +251,7 @@
 								>
 							</template>
 						</Column>
-						<Column>
+						<Column >
 							<template #body>
 								<Button
 									type="button"
