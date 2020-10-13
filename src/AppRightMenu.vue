@@ -113,5 +113,8 @@ export default {
 			],
 		};
 	},
+	mounted() {
+		this.selectedAmount = this.amount[0];
+	},
 };
 </script>

@@ -219,7 +219,6 @@
 							optionLabel="name"
 							@change="recentSales($event)"
 							class="dashbard-demo-dropdown"
-							:style="{ 'min-width': '8rem' }"
 						></Dropdown>
 					</div>
 
@@ -632,6 +631,8 @@ export default {
 		this.productService
 			.getProductsMixed()
 			.then((data) => (this.productsLastWeek = data));
+
+		this.selectedOrderWeek = this.orderWeek[0];
 	},
 	methods: {
 		changeDataset(event) {
@@ -752,7 +753,7 @@ export default {
 	}
 
 	.dashbard-demo-dropdown {
-		width: 8rem;
+		min-width: 8rem;
 		margin-left: auto;
 	}
 
