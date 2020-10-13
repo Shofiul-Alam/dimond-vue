@@ -435,10 +435,6 @@ export default {
 			}
 
 			if (!this.menuClick) {
-				// if (this.isSlim()) {
-				// 	this.menuService.reset();
-				// }
-
 				if (this.overlayMenuActive || this.staticMenuMobileActive) {
 					this.hideOverlayMenu();
 				}

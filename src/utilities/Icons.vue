@@ -10,10 +10,10 @@
 			using an element such as <i>i</i> or <i>span</i>
 		</p>
 
-		<app-code lang="markup">
-			&lt;i class="pi pi-check"&gt;&lt;/i&gt; &lt;i class="pi
-			pi-times"&gt;&lt;/i&gt;
-		</app-code>
+<app-code lang="markup">
+&lt;i class="pi pi-check"&gt;&lt;/i&gt;
+&lt;i class="pi pi-times"&gt;&lt;/i&gt;
+</app-code>
 
 		<i class="pi pi-check"></i>
 		<i class="pi pi-times"></i>
@@ -21,25 +21,24 @@
 		<h5>Size</h5>
 		<p>Size of the icons can easily be changed using font-size property.</p>
 
-		<app-code lang="markup">
-			&lt;i class="pi pi-check"&gt;&lt;/i&gt;
-		</app-code>
+<app-code lang="markup">
+&lt;i class="pi pi-check"&gt;&lt;/i&gt;
+</app-code>
 
 		<i class="pi pi-check"></i>
 
-		<app-code lang="markup">
-			&lt;i class="pi pi-check" style="font-size: 2rem"&gt;&lt;/i&gt;
-		</app-code>
+<app-code lang="markup">
+&lt;i class="pi pi-check" style="font-size: 2rem"&gt;&lt;/i&gt;
+</app-code>
 
 		<i class="pi pi-check" style="font-size: 2rem"></i>
 
 		<h5>Spinning Animation</h5>
 		<p>Special pi-spin class applies infinite rotate to an icon.</p>
 
-		<app-code lang="markup">
-			&lt;i class="pi pi-spin pi-spinner" style="font-size:
-			2rem"&gt;&lt;/i&gt;
-		</app-code>
+<app-code lang="markup">
+&lt;i class="pi pi-spin pi-spinner" style="font-size: 2rem"&gt;&lt;/i&gt;
+</app-code>
 
 		<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
 
