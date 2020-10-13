@@ -27,6 +27,7 @@
 						'p-ripple',
 						{ 'p-disabled': item.disabled },
 					]"
+					active-class="active-route"
 					:target="item.target"
 					exact
 					@click="onMenuItemClick($event, item, i)"
