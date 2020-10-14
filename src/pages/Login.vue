@@ -1,8 +1,8 @@
 <template>
-    <div class="login-body">
-        <div class="login-wrapper">
-            <div class="login-panel">
-                <img src="assets/layout/images/logo-dark.svg" class="logo" alt="diamond-layout" />
+	<div class="login-body">
+		<div class="login-wrapper">
+			<div class="login-panel">
+				<img src="assets/layout/images/logo-dark.svg" class="logo" alt="diamond-layout" />
 
 				<div class="login-form">
 					<h2>Create Your Free Account</h2>
@@ -13,9 +13,7 @@
 					<Button label="CONTINUE" type="button"></Button>
 				</div>
 
-				<p>
-					A problem? <a href="/">Click here</a> and let us help you.
-				</p>
+				<p>A problem? <a href="/">Click here</a> and let us help you.</p>
 			</div>
 			<div class="login-image">
 				<div class="login-image-content">
@@ -29,9 +27,7 @@
 					</h3>
 				</div>
 				<div class="image-footer">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 					<div class="icons">
 						<i class="pi pi-github"></i>
 						<i class="pi pi-twitter"></i>
