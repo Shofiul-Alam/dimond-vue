@@ -25,6 +25,14 @@ export default new Router({
             component: () => import('./components/InputDemo.vue'),
         },
         {
+            path: '/floatlabel',
+            name: 'floatlabel',
+            component: () => import('./components/FloatLabelDemo.vue'),
+            meta: {
+                breadcrumb: [{ parent: 'UI Kit', label: 'Float Label' }],
+            },
+        },
+        {
             path: '/button',
             name: 'button',
             component: () => import('./components/ButtonDemo.vue'),

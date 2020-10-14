@@ -99,6 +99,11 @@ export default {
                             to: "/input",
                         },
                         {
+                            label: "Float Label",
+                            icon: "pi pi-fw pi-bookmark",
+                            to: "/floatlabel",
+                        },
+                        {
                             label: "Button",
                             icon: "pi pi-fw pi-mobile",
                             to: "/button",
