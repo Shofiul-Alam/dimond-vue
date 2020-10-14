@@ -86,7 +86,7 @@ npm serve
 &lt;div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick()"&gt; 
 	&lt;div class="layout-content-wrapper"&gt; 
 		&lt;app-topbar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" 
-		    @menu-button-click="onMenuButtonClick" @search-click="onSearchClick" @topbar-notification="onTopbarNotificationMenuButtonClick" 
+			@menu-button-click="onMenuButtonClick" @search-click="onSearchClick" @topbar-notification="onTopbarNotificationMenuButtonClick"
 			@topbar-user-menu="onTopbarUserMenuButtonClick" @right-menu-click="onRightMenuClick" &gt;&lt;/app-topbar&gt; 
 		&lt;div class="layout-content"&gt;
 			&lt;router-view&gt;&lt;/router-view&gt; 
