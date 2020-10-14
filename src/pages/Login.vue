@@ -1,12 +1,8 @@
 <template>
-	<div class="login-body">
-		<div class="login-wrapper">
-			<div class="login-panel">
-				<img
-					src="assets/layout/images/logo-dark.svg"
-					class="logo"
-					alt="diamond-layout"
-				/>
+    <div class="login-body">
+        <div class="login-wrapper">
+            <div class="login-panel">
+                <img src="assets/layout/images/logo-dark.svg" class="logo" alt="diamond-layout" />
 
 				<div class="login-form">
 					<h2>Create Your Free Account</h2>

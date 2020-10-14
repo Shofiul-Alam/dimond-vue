@@ -1,17 +1,13 @@
 <template>
-	<div class="exception-body error">
-		<img
-			src="assets/layout/images/logo-white.svg"
-			alt="diamond-layout"
-			class="logo"
-		/>
+    <div class="exception-body error">
+        <img src="assets/layout/images/logo-white.svg" alt="diamond-layout" class="logo" />
 
-		<div class="exception-content">
-			<div class="exception-title">ERROR</div>
-			<div class="exception-detail">Something went wrong.</div>
-			<router-link to="/">Go to Dashboard</router-link>
-		</div>
-	</div>
+        <div class="exception-content">
+            <div class="exception-title">ERROR</div>
+            <div class="exception-detail">Something went wrong.</div>
+            <router-link to="/">Go to Dashboard</router-link>
+        </div>
+    </div>
 </template>
 
 <script>
