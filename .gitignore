@@ -11,5 +11,9 @@ sassdoc
 package-lock.json
 
 /public/assets/layout/css/layout-*.css
-/public/assets/theme/theme-*.css
+/public/assets/layout/css/layout-*.map
+/public/assets/layout/css/landing.css
+/public/assets/layout/css/landing.map
+/public/assets/theme/**/theme-*.css
+/public/assets/theme/**/theme-*.map
 /public/assets/sass/theme/designer
