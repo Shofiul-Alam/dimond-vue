@@ -9,10 +9,7 @@
 				<p>
 					Diamond has no direct dependency other than PrimeVue. More
 					information about dependencies is available at
-					<a
-						href="https://www.primefaces.org/primevue-2-0-0-is-ready-for-primetime//"
-						>PrimeVue 2.0.0 Is Ready For PrimeTime</a
-					>
+					<a href="https://www.primefaces.org/primevue-2-0-0-is-ready-for-primetime//">PrimeVue 2.0.0 Is Ready For PrimeTime</a>
 					article.
 				</p>
 

@@ -1,15 +1,12 @@
 <template>
-	<div class="p-grid">
-		<div class="p-col-12">
-			<div class="card">
-				<h4>Empty Page</h4>
-				<p>
-					This is your empty page template to start building beautiful
-					applications.
-				</p>
-			</div>
-		</div>
-	</div>
+    <div class="p-grid">
+        <div class="p-col-12">
+            <div class="card">
+                <h4>Empty Page</h4>
+                <p>This is your empty page template to start building beautiful applications.</p>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
