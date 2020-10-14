@@ -78,7 +78,7 @@
 					<InputText
 						type="text"
 						placeholder="Username"
-						class="ng-dirty ng-invalid p-invalid p-mr-2"
+						class="p-invalid p-mr-2"
 					/>
 					<InlineMessage severity="error"
 						>Field is required</InlineMessage
@@ -89,7 +89,7 @@
 					<InputText
 						type="text"
 						placeholder="Email"
-						class="ng-dirty ng-invalid p-invalid p-mr-2"
+						class="p-invalid p-mr-2"
 					/>
 					<InlineMessage severity="error"></InlineMessage>
 				</div>
@@ -131,7 +131,7 @@ export default {
 				key: "tst",
 				severity: "info",
 				summary: "Info Message",
-				detail: "PrimeNG rocks",
+				detail: "PrimeVue rocks",
 				life: 3000,
 			});
 		},
@@ -171,7 +171,7 @@ export default {
 			this.msgs.push({
 				severity: "info",
 				summary: "Info Message",
-				detail: "PrimeNG rocks",
+				detail: "PrimeVue rocks",
 			});
 		},
 

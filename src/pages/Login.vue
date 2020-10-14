@@ -10,7 +10,7 @@
 
 				<div class="login-form">
 					<h2>Create Your Free Account</h2>
-					<p>Already have an account? <a href="#">Login</a></p>
+					<p>Already have an account? <a href="/">Login</a></p>
 					<InputText id="name" placeholder="Full Name" />
 					<InputText id="email" placeholder="Email" />
 					<InputText id="password" placeholder="Password" />
@@ -18,7 +18,7 @@
 				</div>
 
 				<p>
-					A problem? <a href="#">Click here</a> and let us help you.
+					A problem? <a href="/">Click here</a> and let us help you.
 				</p>
 			</div>
 			<div class="login-image">

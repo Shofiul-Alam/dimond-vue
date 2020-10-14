@@ -105,7 +105,7 @@ npm serve
 				<h4>Menu</h4>
 				<p>
 					Menu is a separate component defined in
-					app.menu.component.ts file based on PrimeVue MenuModel API.
+					AppMenu.vue file based on PrimeVue MenuModel API.
 					In order to define the menuitems, navigate to this file and
 					define your own model as a nested structure. Here is the
 					menu component from the sample application.
@@ -320,7 +320,7 @@ npm install	primeicons@latest --save
 					<li>pink-dark</li>
 					<li>pink-light</li>
 					<li>purple-light</li>
-					<li>blupurplee-dark</li>
+					<li>bluepurple-dark</li>
 					<li>purple-light</li>
 					<li>teal-light</li>
 					<li>teal-dark</li>
@@ -1182,7 +1182,7 @@ $galleriaThumbnailNavigatorHeight:2rem !default;
 				<h4>Menu Modes</h4>
 				<p>
 					Menu has 3 modes, static, overlay and slim. Layout container
-					element in app.component.html is used to define which mode
+					element in App.vue is used to define which mode
 					to use by adding specific classes. List below indicates the
 					style classes for each mode.
 				</p>
@@ -1202,10 +1202,10 @@ $galleriaThumbnailNavigatorHeight:2rem !default;
 
 				<p>
 					It is also possible to leave the choice to the user by
-					keeping the preference at a component and using an ngClass
-					expression so that user can switch between modes. Sample
+					keeping the preference at a component and using an
+					expression to bind it so that user can switch between modes. Sample
 					application has an example implementation of such use case.
-					Refer to app.component.ts for an example.
+					Refer to App.vue for an example.
 				</p>
 
 				<h4>Menu Themes</h4>
