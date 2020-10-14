@@ -131,7 +131,7 @@ export default {
 				key: "tst",
 				severity: "info",
 				summary: "Info Message",
-				detail: "PrimeNG rocks",
+				detail: "PrimeVue rocks",
 				life: 3000,
 			});
 		},
@@ -171,7 +171,7 @@ export default {
 			this.msgs.push({
 				severity: "info",
 				summary: "Info Message",
-				detail: "PrimeNG rocks",
+				detail: "PrimeVue rocks",
 			});
 		},
 
