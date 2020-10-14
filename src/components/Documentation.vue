@@ -15,7 +15,7 @@
 
 				<h4>Getting Started</h4>
 				<p>
-					Diamond is a true native application template for Angular
+					Diamond is a true native application template for Vue
 					and is distributed as a CLI project. In case CLI is not
 					installed already, use the command below to set it up.
 				</p>
@@ -31,14 +31,14 @@ yarn global add @vue/cli
 				<p>
 					Once CLI is ready in your system, extract the contents of
 					the Diamond zip file distribution, cd to the directory,
-					install the libraries from npm and then execute "ng serve"
+					install the libraries from npm and then execute "npm run serve"
 					to run the application in your local environment.
 				</p>
 
 <app-code lang="markup">
 cd diamond 
 npm install 
-npm serve
+npm run serve
 </app-code>
 
 				<p>
@@ -249,14 +249,8 @@ data(){
 				</p>
 
 				<ul>
-					<li>
-						Copy the <i>src/assets</i> folder to your projects
-						folder with the same name
-					</li>
-					<li>
-						Copy all app.* files to the src/app folder of your
-						application.
-					</li>
+					<li>Copy the <i>public/assets</i> folder to your projects folder with the same name</li>
+					<li>Copy all src/App*.vue files to the src folder of your application.</li>
 				</ul>
 
 				<p>Install PrimeVue</p>
@@ -265,14 +259,12 @@ npm install primevue@2.1.0 --save
 npm install	primeicons@latest --save
 </app-code>
 
-				<p>Add PrimeVue CSS at styles section in angular.json.</p>
+				<p>Add PrimeVue CSS at styles section in main.js.</p>
 
 <app-code lang="markup">
-"styles": [
-	"node_modules/primevue/resources/primevue.min.css",  		//required: PrimeVue components
-	"node_modules/primeicons/primeicons.css", 					//required: PrimeIcons 
-	"styles.scss" 												//your styles and overrides 
-],
+import 'primevue/resources/primevue.min.css';   	//required: PrimeVue components
+import 'primeicons/primeicons.css';	 				//required: PrimeIcons 					
+import 'styles.scss'; 							    //your styles and overrides 
 </app-code>
 
 				<p>
