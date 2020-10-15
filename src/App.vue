@@ -402,12 +402,6 @@ export default {
     },
     methods: {
         onDocumentClick($event) {
-            if ($event.target.closest(".layout-sidebar-right-active")) return;
-
-            if (document.querySelector(".layout-search")) {
-                if ($event.target.closest(".search-container")) return;
-            }
-
             if (!this.searchClick) {
                 this.search = false;
             }

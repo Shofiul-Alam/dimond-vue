@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-sidebar-right" :class="{ 'layout-sidebar-right-active': rightMenuActive }">
+    <div class="layout-sidebar-right" :class="{ 'layout-sidebar-right-active': rightMenuActive }" @click="rightMenuClick">
         <h5>Activity</h5>
         <div class="widget-timeline">
             <div class="timeline-event">
@@ -86,5 +86,10 @@ export default {
     mounted() {
         this.selectedAmount = this.amount[0];
     },
+    methods: {
+        rightMenuClick($event) {
+            $event.stopPropagation();
+        }
+    }
 };
 </script>
