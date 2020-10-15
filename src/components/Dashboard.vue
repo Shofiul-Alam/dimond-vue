@@ -596,7 +596,7 @@ export default {
         }
     }
 }
-/deep/ .p-datatable .p-datatable-tbody > tr > td {
+/deep/ .p-datatable .p-datatable-tbody > tr > td:last-of-type {
     text-align: center;
 }
 </style>
