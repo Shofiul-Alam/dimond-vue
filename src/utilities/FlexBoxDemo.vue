@@ -610,4 +610,22 @@ i:not([class~="pi"]) {
 	font-weight: 600;
 	margin: 0 2px;
 }
+
+/deep/ pre[class*="language-"] {
+	&:before,
+	&:after {
+		display: none !important;
+	}
+	code {
+		border-left: 10px solid var(--surface-d) !important;
+		box-shadow: none !important;
+		background: var(--surface-b) !important;
+		margin: 1em 0;
+		color: var(--text-color);
+		font-size: 14px;
+	}
+}
+li {
+	line-height: 1.5;
+}
 </style>
