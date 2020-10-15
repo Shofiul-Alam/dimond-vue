@@ -47,7 +47,6 @@
                         :menuActive="menuActive"
                         :menuMode="menuMode"
                         :parentMenuItemActive="activeIndex === i"
-                        @menuitem-click="$emit('menuitem-click', $event)"
                     ></AppSubmenu>
                 </transition>
             </li>
@@ -57,7 +56,6 @@
 </template>
 
 <script>
-import EventBus from "./event-bus";
 export default {
     name: "AppSubmenu",
     props: {
@@ -71,25 +69,17 @@ export default {
         parentMenuItemActive: {
             type: Boolean,
             default: false,
-        }
+        },
     },
     data() {
         return {
             activeIndex: null,
         };
     },
-    mounted() {
-        EventBus.$on("reset_active_index", () => {
-            if (this.layoutMode === "horizontal" || this.layoutMode === "slim") {
-                this.activeIndex = null;
-            }
-        });
-    },
     methods: {
         onMenuItemClick(event, item, index) {
             if (item.disabled) {
                 event.preventDefault();
-                return;
             }
             //execute command
             if (item.command) {
@@ -97,7 +87,9 @@ export default {
                 event.preventDefault();
             }
             if (item.items) {
-                event.preventDefault();
+                if(this.isMobile()) {
+                    event.stopPropagation();
+                }
             }
             if (this.root) {
                 this.$emit("root-menuitem-click", {
@@ -114,12 +106,17 @@ export default {
         },
 
         onMenuItemMouseEnter(index) {
-            if (this.root && this.menuActive && (this.layoutMode === "horizontal" || this.layoutMode === "slim") && !this.isMobile()) {
+            if (this.root && this.menuActive && (this.menuMode === "slim") && !this.isMobile()) {
                 this.activeIndex = index;
             }
         },
+
         visible(item) {
             return typeof item.visible === "function" ? item.visible() : item.visible !== false;
+        },
+        
+        isMobile() {
+            return window.innerWidth <= 991;
         },
     },
     components: {

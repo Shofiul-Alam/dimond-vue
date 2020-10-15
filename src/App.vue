@@ -371,7 +371,6 @@ export default {
             return [
                 "layout-wrapper",
                 {
-                    "layout-horizontal": this.menuMode === "horizontal",
                     "layout-overlay": this.menuMode === "overlay",
                     "layout-static": this.menuMode === "static",
                     "layout-slim": this.menuMode === "slim",
