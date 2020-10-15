@@ -51,7 +51,7 @@
                         </template>
                     </Column>
 
-                    <Column headerStyle="width:8rem">
+                    <Column headerStyle="width: 8rem; text-align: center" bodyStyle="text-align: center; overflow: visible">
                         <template #body>
                             <Button type="button" class="p-button-secondary" icon="pi pi-cog"></Button>
                         </template>
