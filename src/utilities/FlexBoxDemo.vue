@@ -1,34 +1,29 @@
 <template>
-	<div class="p-grid flexbox-demo">
-		<div class="p-col-12">
+	<div class="p-grid">
+		<div class="p-col-12 flexbox-demo">
 			<h4>FlexBox</h4>
-			<p>
-				Easily manage the layout of your components with the responsive
-				FlexBox utilities. If you require a utility to manage the layout
-				of your application, refer to the
-				<router-link to="/grid">Grid System</router-link> instead.
+			<p>Easily manage the layout of your components with the responsive FlexBox utilities. If you require a
+				utility to manage the layout of your application,
+				refer to the
+				<router-link to="/grid">Grid System</router-link>
+				instead.
 			</p>
 
 			<h5>Flex Container</h5>
-			<p>
-				An element can configured as a flexbox container using the
-				<i>p-d-flex</i> or <i>p-d-inline-flex</i> classes.
-			</p>
+			<p>An element can configured as a flexbox container using the <i>p-d-flex</i> or <i>p-d-inline-flex</i>
+				classes.</p>
 
-<app-code lang="markup">
-&lt;div class="p-d-flex"&gt;Flex Container&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex"&gt;Flex Container&lt;/div&gt;
 &lt;div class="p-d-inline-flex"&gt;Inline Flex Container&lt;/div&gt;
-</app-code>
+</CodeHighlight>
 
 			<div class="box p-d-flex p-mb-3">Flex Container</div>
 			<div class="box p-d-inline-flex">Inline Flex Container</div>
 
 			<h5>Direction</h5>
-			<p>
-				Default is applied using the
-				<i>p-flex-&#123;direction&#125;</i> class where direction can be
-				either of the following.
-			</p>
+			<p>Default is applied using the <i>p-flex-{direction}</i> class where direction can be either of the
+				following.</p>
 			<ul>
 				<li>row (default)</li>
 				<li>row-reverse</li>
@@ -37,14 +32,13 @@
 			</ul>
 
 			<h6>Row</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex"&gt; 
-	&lt;div class="p-mr-2"&gt;Item 1&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex"&gt;
+	&lt;div class="p-mr-2"&gt;Item 1&lt;/div&gt;
 	&lt;div class="p-mr-2"&gt;Item 2&lt;/div&gt;
-	&lt;div&gt;Item 3&lt;/div&gt; 
+	&lt;div&gt;Item 3&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
-
+</CodeHighlight>
 			<div class="p-d-flex">
 				<div class="p-mr-2">Item 1</div>
 				<div class="p-mr-2">Item 2</div>
@@ -52,14 +46,13 @@
 			</div>
 
 			<h6>Column</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex p-flex-column"&gt; 
-	&lt;div class="p-mb-2"&gt;Item 1&lt;/div&gt; 
-	&lt;div class="p-mb-2"&gt;Item 2&lt;/div&gt; 
-	&lt;div&gt;Item3&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex p-flex-column"&gt;
+	&lt;div class="p-mb-2"&gt;Item 1&lt;/div&gt;
+	&lt;div class="p-mb-2"&gt;Item 2&lt;/div&gt;
+	&lt;div&gt;Item 3&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
-
+</CodeHighlight>
 			<div class="p-d-flex p-flex-column">
 				<div class="p-mb-2">Item 1</div>
 				<div class="p-mb-2">Item 2</div>
@@ -69,13 +62,13 @@
 			<h6>Responsive</h6>
 			<p>Row direction for larger screens and column for smaller.</p>
 
-<app-code lang="markup">
-&lt;div class="p-d-flex p-flex-column p-flex-md-row"&gt; 
-	&lt;div class="p-mb-2 p-mr-2"&gt;Item 1&lt;/div&gt; 
-	&lt;div class="p-mb-2 p-mr-2"&gt;Item 2&lt;/div&gt; 
-	&lt;div class="p-mb-2 p-mr-2"&gt;Item 3&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex p-flex-column p-flex-md-row"&gt;
+	&lt;div class="p-mb-2 p-mr-2"&gt;Item 1&lt;/div&gt;
+	&lt;div class="p-mb-2 p-mr-2"&gt;Item 2&lt;/div&gt;
+	&lt;div class="p-mb-2 p-mr-2"&gt;Item 3&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
+</CodeHighlight>
 
 			<div class="p-d-flex p-flex-column p-flex-md-row">
 				<div class="p-mb-2 p-mr-2">Item 1</div>
@@ -108,21 +101,17 @@
 			</ul>
 
 			<h5>Order</h5>
-			<p>
-				Order configures the way in which they appear in the flex
-				container. <i>p-order-&#123;value&#125;</i> format is used where
-				value can be a number from 0 to 6.
-			</p>
+			<p>Order configures the way in which they appear in the flex container. <i>p-order-{value}</i> format is
+				used where value can be a number from 0 to 6.</p>
 
 			<h6>Customized</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex"&gt; 
-	&lt;div class="p-mr-2 p-order-3"&gt;Item 1&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-order-1"&gt;Item 2&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex"&gt;
+	&lt;div class="p-mr-2 p-order-3"&gt;Item 1&lt;/div&gt;
+	&lt;div class="p-mr-2 p-order-1"&gt;Item 2&lt;/div&gt;
 	&lt;div class="p-mr-2 p-order-2"&gt;Item 3&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
-
+</CodeHighlight>
 			<div class="p-d-flex">
 				<div class="p-mr-2 p-order-3">Item 1</div>
 				<div class="p-mr-2 p-order-1">Item 2</div>
@@ -131,13 +120,13 @@
 
 			<h6>Responsive</h6>
 			<p>Orders change depending on the screen size.</p>
-<app-code lang="markup">
-&lt;div class="p-d-flex"&gt; 
-	&lt;div class="p-mr-2 p-order-3 p-order-md-2"&gt;Item 1&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-order-1 p-order-md-3"&gt;Item 2&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex"&gt;
+	&lt;div class="p-mr-2 p-order-3 p-order-md-2"&gt;Item 1&lt;/div&gt;
+	&lt;div class="p-mr-2 p-order-1 p-order-md-3"&gt;Item 2&lt;/div&gt;
 	&lt;div class="p-mr-2 p-order-2 p-order-md-1"&gt;Item 3&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
+</CodeHighlight>
 
 			<div class="p-d-flex">
 				<div class="p-mr-2 p-order-3 p-order-md-2">Item 1</div>
@@ -185,12 +174,9 @@
 			</ul>
 
 			<h5>Wrap</h5>
-			<p>
-				Flex wrap defines the wrap behavior when there is not enough
-				space in the container. The format of the class is
-				<i>p-flex-&#123;value&#125;</i> and the value field can be
-				either of the listed alternatives.
-			</p>
+			<p>Flex wrap defines the wrap behavior when there is not enough space in the container. The format of the
+				class is <i>p-flex-{value}</i> and the value field can be either of the
+				listed alternatives.</p>
 
 			<ul>
 				<li>nowrap (default)</li>
@@ -199,17 +185,16 @@
 			</ul>
 
 			<h6>No Wrap</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex"&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 1&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 2&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 3&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 4&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 5&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 6&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex"&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 1&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 2&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 3&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 4&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 5&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 6&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
-
+</CodeHighlight>
 			<div class="p-d-flex">
 				<div class="p-mr-2 p-mb-2">Item 1</div>
 				<div class="p-mr-2 p-mb-2">Item 2</div>
@@ -220,8 +205,8 @@
 			</div>
 
 			<h6>Wrap</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex p-flex-wrap"&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex p-flex-wrap"&gt;
 	&lt;div class="p-mr-2 p-mb-2"&gt;Item 1&lt;/div&gt;
 	&lt;div class="p-mr-2 p-mb-2"&gt;Item 2&lt;/div&gt;
 	&lt;div class="p-mr-2 p-mb-2"&gt;Item 3&lt;/div&gt;
@@ -229,8 +214,7 @@
 	&lt;div class="p-mr-2 p-mb-2"&gt;Item 5&lt;/div&gt;
 	&lt;div class="p-mr-2 p-mb-2"&gt;Item 6&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
-
+</CodeHighlight>
 			<div class="p-d-flex p-flex-wrap">
 				<div class="p-mr-2 p-mb-2">Item 1</div>
 				<div class="p-mr-2 p-mb-2">Item 2</div>
@@ -241,17 +225,16 @@
 			</div>
 
 			<h6>Wrap Reverse</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex p-flex-wrap-reverse"&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 1&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 2&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 3&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 4&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 5&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-mb-2"&gt;Item 6&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex p-flex-wrap-reverse"&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 1&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 2&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 3&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 4&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 5&lt;/div&gt;
+	&lt;div class="p-mr-2 p-mb-2"&gt;Item 6&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
-
+</CodeHighlight>
 			<div class="p-d-flex p-flex-wrap-reverse">
 				<div class="p-mr-2 p-mb-2">Item 1</div>
 				<div class="p-mr-2 p-mb-2">Item 2</div>
@@ -281,11 +264,9 @@
 			</ul>
 
 			<h5>Justify Content</h5>
-			<p>
-				Justify content is the alignment along the main axis and defined
-				using the <i>p-jc-&#123;value&#125;</i> format with responsive
-				alternatives. Value field accepts the options below.
-			</p>
+			<p>Justify content is the alignment along the main axis and defined using the <i>p-jc-{value}</i> format
+				with responsive alternatives. Value field accepts
+				the options below.</p>
 			<ul>
 				<li>start</li>
 				<li>end</li>
@@ -296,24 +277,24 @@
 			</ul>
 
 			<h6>Between</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex p-jc-between"&gt; 
-	&lt;div&gt;Item 1&lt;/div&gt; 
-	&lt;div&gt;Item 2&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex p-jc-between"&gt;
+	&lt;div&gt;Item 1&lt;/div&gt;
+	&lt;div&gt;Item 2&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
+</CodeHighlight>
 			<div class="p-d-flex p-jc-between">
 				<div>Item 1</div>
 				<div>Item 2</div>
 			</div>
 
 			<h6>Center</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex p-jc-center"&gt; 
-	&lt;div class="p-mr-2"&gt;Item 1&lt;/div&gt; 
-	&lt;div&gt;Item 2&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex p-jc-center"&gt;
+	&lt;div class="p-mr-2"&gt;Item 1&lt;/div&gt;
+	&lt;div&gt;Item 2&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
+</CodeHighlight>
 			<div class="p-d-flex p-jc-center">
 				<div class="p-mr-2">Item 1</div>
 				<div>Item 2</div>
@@ -354,11 +335,9 @@
 			</ul>
 
 			<h5>Align Items</h5>
-			<p>
-				Align Items configuration is the alignment along the cross axis
-				and defined using the <i>p-ai-&#123;value&#125;</i> format with
-				responsive alternatives. Value field accepts the options below.
-			</p>
+			<p>Align Items configuration is the alignment along the cross axis and defined using the <i>p-ai-{value}</i>
+				format with responsive alternatives. Value field accepts
+				the options below.</p>
 			<ul>
 				<li>start</li>
 				<li>end</li>
@@ -368,27 +347,27 @@
 			</ul>
 
 			<h6>Start</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex p-ai-start"&gt; 
-	&lt;div class="p-mr-2" style="height:100px"&gt;Item 1&lt;/div&gt; 
-	&lt;div style="height:50px"&gt;Item 2&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex p-ai-start"&gt;
+	&lt;div class="p-mr-2" style="height:100px"&gt;Item 1&lt;/div&gt;
+	&lt;div style="height:50px"&gt;Item 2&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
+</CodeHighlight>
 			<div class="p-d-flex p-ai-start">
-				<div class="p-mr-2" style="height: 100px">Item 1</div>
-				<div style="height: 50px">Item 2</div>
+				<div class="p-mr-2" style="height:100px">Item 1</div>
+				<div style="height:50px">Item 2</div>
 			</div>
 
 			<h6>Center</h6>
-<app-code lang="markup">
-&lt;div class="p-d-flex p-ai-center"&gt; 
-	&lt;div class="p-mr-2" style="height:100px"&gt;Item 1&lt;/div&gt; 
-	&lt;div style="height:50px"&gt;Item 2&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex p-ai-center"&gt;
+	&lt;div class="p-mr-2" style="height:100px"&gt;Item 1&lt;/div&gt;
+	&lt;div style="height:50px"&gt;Item 2&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
+</CodeHighlight>
 			<div class="p-d-flex p-ai-center">
-				<div class="p-mr-2" style="height: 100px">Item 1</div>
-				<div style="height: 50px">Item 2</div>
+				<div class="p-mr-2" style="height:100px">Item 1</div>
+				<div style="height:50px">Item 2</div>
 			</div>
 
 			<h6>Align Items Classes</h6>
@@ -421,12 +400,9 @@
 			</ul>
 
 			<h5>Align Self</h5>
-			<p>
-				Align self configuration is the alignment along the cross axis
-				for a particular element and defined using the
-				<i>p-as-&#123;value&#125;</i> format with responsive
-				alternatives. Value field accepts the options below.
-			</p>
+			<p>Align self configuration is the alignment along the cross axis for a particular element and defined using
+				the <i>p-as-{value}</i> format with responsive alternatives. Value field accepts
+				the options below.</p>
 			<ul>
 				<li>start</li>
 				<li>end</li>
@@ -435,16 +411,15 @@
 				<li>stretch (default)</li>
 			</ul>
 
-<app-code lang="markup">
-&lt;div class="p-d-flex" style="height: 150px;"&gt; 
-	&lt;div class="p-mr-2 p-as-start"&gt;Start&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-as-center"&gt;Center&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-as-end"&gt;End&lt;/div&gt; 
-	&lt;div class="p-mr-2 p-as-stretch"&gt;Stretch&lt;/div&gt; 
+<CodeHighlight>
+&lt;div class="p-d-flex" style="height: 150px;"&gt;
+	&lt;div class="p-mr-2 p-as-start"&gt;Start&lt;/div&gt;
+	&lt;div class="p-mr-2 p-as-center"&gt;Center&lt;/div&gt;
+	&lt;div class="p-mr-2 p-as-end"&gt;End&lt;/div&gt;
+	&lt;div class="p-mr-2 p-as-stretch"&gt;Stretch&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
-
-			<div class="p-d-flex" style="height: 150px">
+</CodeHighlight>
+			<div class="p-d-flex" style="height: 150px;">
 				<div class="p-mr-2 p-as-start">Start</div>
 				<div class="p-mr-2 p-as-center">Center</div>
 				<div class="p-mr-2 p-as-end">End</div>
@@ -481,11 +456,9 @@
 			</ul>
 
 			<h5>Align Content</h5>
-			<p>
-				Align content is the alignment along the cross axis and defined
-				using the <i>p-ac-&#123;value&#125;</i> format with responsive
-				alternatives. Value field accepts the options below.
-			</p>
+			<p>Align content is the alignment along the cross axis and defined using the <i>p-ac-{value}</i> format with
+				responsive alternatives. Value field accepts
+				the options below.</p>
 			<ul>
 				<li>start</li>
 				<li>end</li>
@@ -530,43 +503,33 @@
 			</ul>
 
 			<h5>Margin with FlexBox</h5>
-			<p>
-				When combined with
-				<router-link to="/primeflex/spacing"
-					>spacing utilities</router-link
-				>, flexbox offers endless possibilities.
+			<p>When combined with
+				<router-link to="/setup">spacing utilities</router-link>
+				, flexbox offers endless possibilities.
 			</p>
 			<h6>Horizontal Spacing</h6>
 
-<app-code lang="markup">
+<CodeHighlight>
 &lt;div class="p-d-flex p-p-3 card"&gt;
 	&lt;Button type="Button" icon="pi pi-check" class="p-mr-2" /&gt;
 	&lt;Button type="Button" icon="pi pi-trash" class="p-button-danger"/&gt;
 	&lt;Button type="Button" icon="pi pi-search" class="p-ml-auto p-button-help"/&gt;
 &lt;/div&gt;
-</app-code>
-
+</CodeHighlight>
 			<div class="p-d-flex p-p-3 card">
-				<Button icon="pi pi-check" class="p-mr-2 p-ripple"></Button>
-				<Button
-					icon="pi pi-trash"
-					class="p-button-danger p-ripple"
-				></Button>
-				<Button
-					icon="pi pi-search"
-					class="p-ml-auto p-button-help p-ripple"
-				></Button>
+				<Button type="Button" icon="pi pi-check" class="p-mr-2"/>
+				<Button type="Button" icon="pi pi-trash" class="p-button-danger"/>
+				<Button type="Button" icon="pi pi-search" class="p-ml-auto p-button-help"/>
 			</div>
 
 			<h6>Vertical Spacing</h6>
-<app-code lang="markup">
+<CodeHighlight>
 &lt;div class="p-d-flex p-flex-column" style="height:150px"&gt;
 	&lt;div&gt;Item 1&lt;/div&gt;
 	&lt;div class="p-mt-auto"&gt;Item 2&lt;/div&gt;
 &lt;/div&gt;
-</app-code>
-
-			<div class="p-d-flex p-flex-column" style="height: 150px">
+</CodeHighlight>
+			<div class="p-d-flex p-flex-column" style="height:150px">
 				<div>Item 1</div>
 				<div class="p-mt-auto">Item 2</div>
 			</div>
@@ -575,57 +538,70 @@
 </template>
 
 <script>
-import AppCode from "../AppCode";
+import CodeHighlight from '../components/CodeHighlight';
 export default {
 	components: {
-		AppCode,
-	},
-};
+		'CodeHighlight': CodeHighlight
+	}
+}
 </script>
 
+
 <style lang="scss" scoped>
-.p-d-flex > div,
-.box {
-	background-color: var(--surface-e);
-	text-align: center;
-	padding: 1rem;
-	border-radius: 4px;
-	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),
-		0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-}
-
-.p-d-flex > div {
-	width: 8rem;
-}
-
-i:not([class~="pi"]) {
-	background-color: #ffffff;
-	color: #2196f3;
-	font-family: Monaco, courier, monospace;
-	font-style: normal;
-	font-size: 12px;
-	padding: 2px 4px;
-	letter-spacing: 0.5px;
-	border-radius: 3px;
-	font-weight: 600;
-	margin: 0 2px;
-}
-
-/deep/ pre[class*="language-"] {
-	&:before,
-	&:after {
-		display: none !important;
+	.p-d-flex > div,
+	.box {
+		background-color: var(--surface-e);
+		text-align: center;
+		padding: 1rem;
+		border-radius: 4px;
+		box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
 	}
-	code {
-		border-left: 10px solid var(--surface-d) !important;
-		box-shadow: none !important;
-		background: var(--surface-b) !important;
-		margin: 1em 0;
-		color: var(--text-color);
-		font-size: 14px;
+	.p-d-flex > div {
+		width: 8rem;
 	}
-}
-li {
-	line-height: 1.5;
-}
+	i:not([class~="pi"]) {
+		background-color: #ffffff;
+		color: #2196f3;
+		font-family: Monaco, courier, monospace;
+		font-style: normal;
+		font-size: 12px;
+		padding: 2px 4px;
+		letter-spacing: .5px;
+		border-radius: 3px;
+		font-weight: 600;
+		margin: 0 2px;
+	}
+	/deep/ pre[class*="language-"] {
+		&:before, &:after {
+			display: none !important;
+		}
+		code {
+			border-left: 10px solid var(--surface-d) !important;
+			box-shadow: none !important;
+			background: var(--surface-e) !important;
+			margin: 1em 0;
+			color: var(--text-color);
+			font-size: 14px;
+			.token {
+				&.tag,
+				&.keyword {
+					color: #2196F3 !important;
+				}
+				&.attr-name,
+				&.attr-string {
+					color: #2196F3 !important;
+				}
+				&.attr-value {
+					color: #4CAF50 !important;
+				}
+				&.punctuation {
+					color: var(--text-color);
+				}
+				&.operator,
+				&.string {
+					background: transparent;
+				}
+			}
+		}
+	}
 </style>

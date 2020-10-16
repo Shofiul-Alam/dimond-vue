@@ -1,42 +1,48 @@
 <template>
-	<div class="p-grid">
+	<div class="p-grid messages-demo">
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Toast</h5>
-				<Toast key="tst"></Toast>
 
-				<Button type="button" @click="showSuccessViaToast()" label="Success" class="p-button-success p-mr-2 p-mb-2"></Button>
-				<Button type="button" @click="showInfoViaToast()" label="Info" class="p-button-info p-mr-2 p-mb-2"></Button>
-				<Button type="button" @click="showWarnViaToast()" label="Warn" class="p-button-warning p-mr-2 p-mb-2"></Button>
-				<Button type="button" @click="showErrorViaToast()" label="Error" class="p-button-danger p-mb-2"></Button>
+				<Toast />
+				<Button @click="showSuccess()" label="Success" class="p-button-success p-mr-2" />
+				<Button @click="showInfo()" label="Info" class="p-button-info p-mr-2" />
+				<Button @click="showWarn()" label="Warn" class="p-button-warning p-mr-2" />
+				<Button @click="showError()" label="Error" class="p-button-danger p-mr-2" />
 			</div>
 		</div>
 
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Messages</h5>
-				<Button type="button" @click="showSuccessViaMessages()" label="Success" class="p-button-success p-mr-2 p-mb-2"></Button>
-				<Button type="button" @click="showInfoViaMessages()" label="Info" class="p-button-info p-mr-2 p-mb-2"></Button>
-				<Button type="button" @click="showWarnViaMessages()" label="Warn" class="p-button-warning p-mr-2 p-mb-2"></Button>
-				<Button type="button" @click="showErrorViaMessages()" label="Error" class="p-button-danger p-mb-2"></Button>
 
-				<transition-group name="p-message" tag="div">
-					<Message v-for="msg of msgs" :severity="msg.severity" :key="msg.summary">{{ msg.detail }}</Message>
+				<Button label="Success" @click="addSuccessMessage()" class="p-button-success p-mr-2"/>
+				<Button label="Info" @click="addInfoMessage()" class="p-button-info p-mr-2"/>
+				<Button label="Warn" @click="addWarnMessage()" class="p-button-warning p-mr-2"/>
+				<Button label="Error" @click="addErrorMessage()" class="p-button-danger p-mr-2"/>
+
+				<transition-group name="p-messages" tag="div">
+					<Message v-for="msg of message" :severity="msg.severity" :key="msg.content">{{msg.content}}</Message>
 				</transition-group>
 			</div>
 		</div>
 
 		<div class="p-col-12 p-lg-8">
 			<div class="card">
-				<h5>Inline Message</h5>
-				<div class="p-mt-4">
-					<InputText type="text" placeholder="Username" class="p-invalid p-mr-2" />
-					<InlineMessage severity="error">Field is required</InlineMessage>
+				<h5>Inline</h5>
+				<div class="p-field p-grid p-align-start">
+					<label for="username1" class="p-col-fixed">Username</label>
+					<div class="p-col">
+						<InputText id="username1" v-model="username" :required="true" class="p-invalid"></InputText>
+						<InlineMessage>Username is required</InlineMessage>
+					</div>
 				</div>
-
-				<div class="p-mt-4">
-					<InputText type="text" placeholder="Email" class="p-invalid p-mr-2" />
-					<InlineMessage severity="error"></InlineMessage>
+				<div class="p-field p-grid">
+					<label for="email" class="p-col-fixed">Email</label>
+					<div class="p-col">
+						<InputText id="email" v-model="email" :required="true" class="p-invalid"></InputText>
+						<InlineMessage/>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -45,9 +51,9 @@
 			<div class="card">
 				<h5>Help Text</h5>
 				<div class="p-field p-fluid">
-					<label for="username">Username</label>
-					<InputText id="username" type="username" aria-describedby="username-help" class="p-invalid" />
-					<small id="username-help" class="p-invalid">Username is not available.</small>
+					<label for="username2">Username</label>
+					<InputText id="username2" type="username" class="p-error" aria-describedby="username-help" />
+					<small id="username-help" class="p-error">Enter your username to reset your password.</small>
 				</div>
 			</div>
 		</div>
@@ -55,99 +61,48 @@
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-			msgs: [],
-			username: null,
-			email: null,
-		};
-	},
-	methods: {
-		showInfoViaToast() {
-			this.$toast.add({
-				key: "tst",
-				severity: "info",
-				summary: "Info Message",
-				detail: "PrimeVue rocks",
-				life: 3000,
-			});
+	export default {
+		data() {
+			return {
+				message: [],
+				username:null,
+				email:null
+			}
 		},
-
-		showWarnViaToast() {
-			this.$toast.add({
-				key: "tst",
-				severity: "warn",
-				summary: "Warn Message",
-				detail: "There are unsaved changes",
-				life: 3000,
-			});
-		},
-
-		showErrorViaToast() {
-			this.$toast.add({
-				key: "tst",
-				severity: "error",
-				summary: "Error Message",
-				detail: "Validation failed",
-				life: 3000,
-			});
-		},
-
-		showSuccessViaToast() {
-			this.$toast.add({
-				key: "tst",
-				severity: "success",
-				summary: "Success Message",
-				detail: "Message sent",
-				life: 3000,
-			});
-		},
-
-		showInfoViaMessages() {
-			this.msgs = [];
-			this.msgs.push({
-				severity: "info",
-				summary: "Info Message",
-				detail: "PrimeVue rocks",
-			});
-		},
-
-		showWarnViaMessages() {
-			this.msgs = [];
-			this.msgs.push({
-				severity: "warn",
-				summary: "Warn Message",
-				detail: "There are unsaved changes",
-			});
-		},
-
-		showErrorViaMessages() {
-			this.msgs = [];
-			this.msgs.push({
-				severity: "error",
-				summary: "Error Message",
-				detail: "Validation failed",
-			});
-		},
-
-		showSuccessViaMessages() {
-			this.msgs = [];
-			this.msgs.push({
-				severity: "success",
-				summary: "Success Message",
-				detail: "Message sent",
-			});
-		},
-	},
-};
+		methods: {
+			addSuccessMessage() {
+				this.message = [{severity: 'success', content: 'Message Detail'}]
+			},
+			addInfoMessage() {
+				this.message = [{severity: 'info', content: 'Message Detail'}]
+			},
+			addWarnMessage() {
+				this.message = [{severity: 'warn', content: 'Message Detail'}]
+			},
+			addErrorMessage() {
+				this.message = [{severity: 'error', content: 'Message Detail'}]
+			},
+			showSuccess() {
+				this.$toast.add({severity:'success', summary: 'Success Message', detail:'Message Detail', life: 3000});
+			},
+			showInfo() {
+				this.$toast.add({severity:'info', summary: 'Info Message', detail:'Message Detail', life: 3000});
+			},
+			showWarn() {
+				this.$toast.add({severity:'warn', summary: 'Warn Message', detail:'Message Detail', life: 3000});
+			},
+			showError() {
+				this.$toast.add({severity:'error', summary: 'Error Message', detail:'Message Detail', life: 3000});
+			},
+		}
+	}
 </script>
 
 <style lang="scss" scoped>
-.p-button {
-	min-width: 8em;
-}
-.p-message {
-	margin-left: 0.25em;
-}
+	.p-field > label {
+		width: 125px;
+	}
+	.p-inputtext {
+		margin-right: .5rem;
+	}
 </style>

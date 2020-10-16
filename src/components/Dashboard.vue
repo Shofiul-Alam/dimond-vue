@@ -182,7 +182,7 @@
                                 <span :class="'product-badge status-' + slotProps.data.inventoryStatus.toLowerCase()">{{ slotProps.data.inventoryStatus }}</span>
                             </template>
                         </Column>
-                        <Column>
+                        <Column bodyStyle="text-align: center">
                             <template #body> <Button type="button" icon="pi pi-search"></Button></template
                         ></Column>
                     </DataTable>
@@ -595,8 +595,5 @@ export default {
             color: #8a5340;
         }
     }
-}
-/deep/ .p-datatable .p-datatable-tbody > tr > td:last-of-type {
-    text-align: center;
 }
 </style>

@@ -1,28 +1,22 @@
 <template>
+
     <div class="p-grid spacing-demo">
         <div class="p-col-12">
             <div class="card">
                 <h3>Spacing</h3>
-                <p><router-link to="/grid">PrimeFlex</router-link> provides various spacing utilities to modify an element's layout.</p>
+                <p><router-link to="grid">PrimeFlex</router-link> provides various spacing utilities to modify
+                    an element's layout.</p>
 
                 <h5>Classes</h5>
-                <p>
-                    The spacing classes use the
-                    <i>p-&#123;property&#125;&#123;position&#125;-&#123;value&#125;</i>
-                    syntax whereas for responsive values
-                    <i>p-&#123;property&#125;&#123;position&#125;-&#123;breakpoint&#125;-&#123;value&#125;</i>
-                    format is used.
-                </p>
-
-                <h5>Property</h5>
-                <p>Property can either be a margin or a padding.</p>
-                <ul>
-                    <li><b>m</b>: margin</li>
-                    <li><b>p</b>: padding</li>
-                </ul>
-
+                <p>The classes modify the margins and use the <mark>p-m{position}-{value}</mark> syntax whereas for responsive
+                    values <mark>p-m{position}-{breakpoint}-{value}</mark> format is used.</p>
+                <pre>
+&lt;div class="p-mb-2"&gt;&lt;/i&gt;
+&lt;div class="p-mt-4"&gt;&lt;/i&gt;
+&lt;div class="p-m-1 p-m-lg-2"&gt;&lt;/i&gt;
+</pre>
                 <h5>Position</h5>
-                <p>Position are available for the individual sides, the x-y axis or blank for the shortand of all sides.</p>
+                <p>Position can either be either of the 4 sides, the x-y axis or blank for the shortand of all sides.</p>
                 <ul>
                     <li><b>t</b>: top</li>
                     <li><b>b</b>: bottom</li>
@@ -34,10 +28,7 @@
                 </ul>
 
                 <h5>Value</h5>
-                <p>
-                    Value field varies from 0 to 6 where default value of the
-                    <i>$spacer</i> is 1rem. The special <i>auto</i> value is available to margins only and used to center elements.
-                </p>
+                <p>Value field varies from 0 to 6 where default value of the <mark>$spacer</mark> is 1rem. The special auto value is used to center elements using auto margins.</p>
                 <ul>
                     <li><b>0</b>: $spacer * 0</li>
                     <li><b>1</b>: $spacer * .25</li>
@@ -50,7 +41,7 @@
                 </ul>
 
                 <h5>Breakpoint</h5>
-                <p>Breakpoints define how the spacing should be defined depending on the screen size. Design is mobile first so smaller values can also apply to larger values e.g. md also applies to lg or xl if they are not explicitly defined.</p>
+                <p>Breakpoints define how the spacing should be depending on the screen size.</p>
                 <ul>
                     <li><b>sm</b>: small screens e.g. phones</li>
                     <li><b>md</b>: medium screens e.g. tablets</li>
@@ -59,26 +50,29 @@
                 </ul>
             </div>
         </div>
+
         <div class="p-col-12 p-md-6">
             <div class="card">
                 <h5>Use Case 1</h5>
-                <p>Spacing is a handy utility when elements wrap when screen size get smaller. In example below, when buttons wrap they are displayed on top of each other whereas with spacing this issue can easily be resolved.</p>
+                <p>Spacing is a handy utility when elements wrap when screen size get smaller. In example below, when buttons wrap
+                    they are displayed on top of each other whereas with spacing this issue can easily be resolved.
+                </p>
 
                 <h6>Without Spacing</h6>
-                <Button label="Button 1" style="width: 250px"></Button>
-                <Button label="Button 2" style="width: 250px"></Button>
+                <Button type="button" label="Button 1" style="width:20rem" />
+                <Button type="button" label="Button 2" style="width:20rem" />
 
                 <h6>With Spacing</h6>
-                <Button label="Button 1" style="width: 250px" class="p-mr-2 p-mb-2"></Button>
-                <Button label="Button 2" style="width: 250px" class="p-mr-2"></Button>
+                <Button type="button" label="Button 1" style="width:20rem" class="p-mr-2 p-mb-2" />
+                <Button type="button" label="Button 2" style="width:20rem" class="p-mb-2"/>
             </div>
         </div>
+
         <div class="p-col-12 p-md-6">
             <div class="card">
                 <h5>Use Case 2</h5>
-                <p>
-                    Spacing utilities also work seamlessly with responsive PrimeFlex grid utilty. Example below demonstrates a case where on a smaller screen inputs receive a margin to position themselves separately in stacked mode, reduce the
-                    dimension of the window to view the difference.
+                <p>Spacing utilities also work seamlessly with responsive PrimeFlex grid utilty. Example below demonstrates a case where on a smaller screen inputs receive a margin to position themselves
+                    separately in stacked mode, reduce the dimension of the window to view the difference.
                 </p>
 
                 <h6>Without Spacing</h6>
@@ -112,20 +106,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+}
 </script>
 
-<style lang="scss" scoped>
-i:not([class~="pi"]) {
-    background-color: var(--surface-b);
-    color: var(--primary-color);
-    font-family: Monaco, courier, monospace;
-    font-style: normal;
-    font-size: 12px;
-    padding: 2px 4px;
-    letter-spacing: 0.5px;
-    border-radius: 3px;
-    font-weight: 600;
-    margin: 0 2px;
+<style scoped>
+.demo-container {
+	border: 1px solid var(--surface-d);
 }
 </style>

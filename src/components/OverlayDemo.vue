@@ -1,177 +1,186 @@
 <template>
-    <div class="p-grid">
-        <div class="p-col-12 p-lg-6">
-            <div class="card p-fluid">
-                <h5>Dialog</h5>
-                <Dialog header="Dialog" :visible.sync="display" :modal="true" showEffect="fade" :style="{ width: '400px'}">
-                    <div style="line-height: 1.5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                    <template #footer>
-                        <Button type="button" icon="pi pi-check" @click="display = false" label="Yes" class="p-button-text"></Button>
-                        <Button type="button" icon="pi pi-times" @click="display = false" label="No" class="p-button-text"></Button>
-                    </template>
-                </Dialog>
+	<div class="p-grid overlay-demo">
+		<div class="p-col-12 p-lg-6">
+			<div class="card">
+				<h5>Dialog</h5>
+				<Dialog header="Dialog" :visible.sync="display" :style="{width: '30vw'}" :modal="true">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+						in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<template #footer>
+						<Button label="Dismiss" @click="close" icon="pi pi-check" class="p-button-secondary"/>
+					</template>
+				</Dialog>
+				<div class="p-grid">
+					<div class="p-col-12">
+						<Button label="Show" icon="pi pi-external-link" style="width: 50%" @click="open"/>
+					</div>
+				</div>
+			</div>
+			<div class="card p-fluid">
+				<h5>Overlay Panel</h5>
+				<div class="p-grid p-formgrid">
+					<div class="p-col-6">
+						<Button type="button" label="Image" @click="toggle" class="p-button-success"/>
+						<OverlayPanel ref="op" appendTo="body" :showCloseIcon="true">
+							<img src="assets/demo/images/nature/nature9.jpg" alt="Nature 9" />
+						</OverlayPanel>
+					</div>
+					<div class="p-col-6">
+						<Button type="button" label="DataTable" @click="toggleDataTable" class="p-button-success"/>
+						<OverlayPanel ref="op2" appendTo="body" :showCloseIcon="true" id="overlay_panel" style="width: 450px">
+							<DataTable :value="products" :selection.sync="selectedProduct" selectionMode="single" :paginator="true" :rows="5" @row-select="onProductSelect">
+								<Column field="name" header="Name" sortable></Column>
+								<Column header="Image">
+									<template #body="slotProps">
+										<img :src="'assets/demo/images/product/' + slotProps.data.image" :alt="slotProps.data.image" class="product-image" />
+									</template>
+								</Column>
+								<Column field="price" header="Price" sortable>
+									<template #body="slotProps">
+										{{formatCurrency(slotProps.data.price)}}
+									</template>
+								</Column>
+							</DataTable>
+						</OverlayPanel>
 
-                <Button type="text" @click="display = true" icon="pi pi-external-link" label="Show"></Button>
-            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="p-col-12 p-lg-6">
+			<div class="card">
+				<h5>Confirmation</h5>
+				<Button label="Delete" icon="pi pi-trash" class="p-button-danger" style="width: 50%" @click="openConfirmation" />
+				<Dialog header="Confirmation" :visible.sync="displayConfirmation" :style="{width: '350px'}" :modal="true">
+					<div class="confirmation-content">
+						<i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem" />
+						<span>Are you sure you want to proceed?</span>
+					</div>
+					<template #footer>
+						<Button label="No" icon="pi pi-times" @click="closeConfirmation" class="p-button-text"/>
+						<Button label="Yes" icon="pi pi-check" @click="closeConfirmation" class="p-button-text" autofocus />
+					</template>
+				</Dialog>
+			</div>
+			<div class="card">
+				<h5>Sidebar</h5>
+				<Sidebar :visible.sync="visibleLeft" :baseZIndex="1000">
+					<h4 style="fontWeight:normal">Left Sidebar</h4>
+					<Button type="button" @click="visibleLeft = false" label="Save" class="p-button-success" style="margin-right:.25em" />
+					<Button type="button" @click="visibleLeft = false" label="Cancel" class="p-button-secondary"/>
+				</Sidebar>
 
-            <div class="card p-fluid">
-                <h5>Overlay Panel</h5>
-                <div class="p-grid">
-                    <div class="p-col-6">
-                        <Button type="button" label="Image" @click="toggleImage($event)" class="p-button-success"></Button>
-                        <OverlayPanel ref="op1" appendTo="body">
-                            <img src="assets/demo/images/nature/nature1.jpg" alt="Nature 1" />
-                        </OverlayPanel>
-                    </div>
-                    <div class="p-col-6">
-                        <Button type="button" label="DataTable" @click="toggleDataTable($event)" class="p-button-success"></Button>
-                        <OverlayPanel ref="op2" appendTo="body" :showCloseIcon="true" style="width: 450px">
-                            <DataTable :value="products" selectionMode="single" :selection.sync="selectedProduct" :paginator="true" :rows="5" @row-select="op2.hide()">
-                                <Column field="name" header="Name" sortable></Column>
-                                <Column field="image" header="Image">
-                                    <template #body="slotProps">
-                                        <img :src="'assets/demo/images/product/' + slotProps.data.image" :alt="slotProps.data.image" class="product-image" />
-                                    </template>
-                                </Column>
-                                <Column field="price" header="Price" sortable></Column>
-                            </DataTable>
-                        </OverlayPanel>
-                    </div>
-                </div>
-            </div>
-        </div>
+				<Sidebar :visible.sync="visibleRight" :baseZIndex="1000" position="right">
+					<h4 style="fontWeight:normal">Right Sidebar</h4>
+					<Button type="button" @click="visibleRight = false" label="Save" class="p-button-success" style="margin-right:.25em" />
+					<Button type="button" @click="visibleRight = false" label="Cancel" class="p-button-secondary"/>
+				</Sidebar>
 
-        <div class="p-col-12 p-lg-6">
-            <div class="card p-fluid">
-                <h5>Confirmation</h5>
-                <Button type="text" @click="openConfirmation()" icon="pi pi-trash" label="Delete" class="p-button-danger"></Button>
+				<Sidebar :visible.sync="visibleTop" :baseZIndex="1000" position="top">
+					<h4 style="fontWeight:normal">Top Sidebar</h4>
+					<Button type="button" @click="visibleTop = false" label="Save" class="p-button-success" style="margin-right:.25em" />
+					<Button type="button" @click="visibleTop = false" label="Cancel" class="p-button-secondary"/>
+				</Sidebar>
 
-                <Dialog header="Confirmation" :visible.sync="confirmation" :modal="true" icon="pi pi-exclamation-triangle" :style="{ width: '425px' }">
-                    <div class="confirmation-content">
-                        <i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem" />
-                        <span>Are you sure you want to proceed?</span>
-                    </div>
-                    <template #footer>
-                        <Button label="No" icon="pi pi-times" @click="closeConfirmation" class="p-button-text" />
-                        <Button label="Yes" icon="pi pi-check" @click="closeConfirmation" class="p-button-text" autofocus /> </template
-                ></Dialog>
-            </div>
+				<Sidebar :visible.sync="visibleBottom" :baseZIndex="1000" position="bottom">
+					<h4 style="fontWeight:normal">Bottom Sidebar</h4>
+					<Button type="button" @click="visibleBottom = false" label="Save" class="p-button-success" style="margin-right:.25em" />
+					<Button type="button" @click="visibleBottom = false" label="Cancel" class="p-button-secondary"/>
+				</Sidebar>
 
-            <div class="card">
-                <h5>Sidebar</h5>
-                <Sidebar :visible.sync="visibleSidebar1" :baseZIndex="10000">
-                    <h3 style="font-weight: normal">Left Sidebar</h3>
-                </Sidebar>
+				<Sidebar :visible.sync="visibleFull" :baseZIndex="1000" position="full">
+					<h4 style="fontWeight:normal">Full Screen</h4>
+					<Button type="button" @click="visibleFull = false" label="Save" class="p-button-success" style="margin-right:.25em" />
+					<Button type="button" @click="visibleFull = false" label="Cancel" class="p-button-secondary"/>
+				</Sidebar>
 
-                <Sidebar :visible.sync="visibleSidebar2" position="right" :baseZIndex="10000">
-                    <h3 style="font-weight: normal">Right Sidebar</h3>
-                </Sidebar>
+				<Button icon="pi pi-arrow-right" @click="visibleLeft = true" class="p-button-warning" style="margin-right:.25em" />
+				<Button icon="pi pi-arrow-left" @click="visibleRight = true" class="p-button-warning" style="margin-right:.25em" />
+				<Button icon="pi pi-arrow-down" @click="visibleTop = true" class="p-button-warning" style="margin-right:.25em" />
+				<Button icon="pi pi-arrow-up" @click="visibleBottom = true" class="p-button-warning" style="margin-right:.25em" />
+				<Button icon="pi pi-external-link" @click="visibleFull = true" class="p-button-warning"/>
+			</div>
+		</div>
+		<div class="p-col-12">
+			<div class="card">
+				<h5>Tooltip</h5>
+				<div class="p-formgroup-inline">
+					<div class="p-field">
+						<InputText type="text" placeholder="Username" v-tooltip="'Your username'" />
+					</div>
 
-                <Sidebar :visible.sync="visibleSidebar3" position="top" :baseZIndex="10000">
-                    <h3 style="font-weight: normal">Top Sidebar</h3>
-                </Sidebar>
-
-                <Sidebar :visible.sync="visibleSidebar4" position="bottom" :baseZIndex="10000">
-                    <h3 style="font-weight: normal">Bottom Sidebar</h3>
-                </Sidebar>
-
-                <Sidebar :visible.sync="visibleSidebar5" position="full" :baseZIndex="10000">
-                    <h3 style="font-weight: normal">Full Screen Sidebar</h3>
-                </Sidebar>
-
-                <Button type="button" @click="visibleSidebar1 = true" icon="pi pi-arrow-right" class="p-button-warning"></Button>
-                <Button type="button" @click="visibleSidebar2 = true" icon="pi pi-arrow-left" class="p-button-warning"></Button>
-                <Button type="button" @click="visibleSidebar3 = true" icon="pi pi-arrow-down" class="p-button-warning"></Button>
-                <Button type="button" @click="visibleSidebar4 = true" icon="pi pi-arrow-up" class="p-button-warning"></Button>
-                <Button type="button" @click="visibleSidebar5 = true" icon="pi pi-th-large" class="p-button-warning"></Button>
-            </div>
-        </div>
-        <div class="p-col-12">
-            <div class="card">
-                <h5>Tooltip</h5>
-                <div class="p-formgroup-inline">
-                    <div class="p-field">
-                        <label for="firstname5" class="p-sr-only">Username</label>
-                        <InputText id="firstname5" type="text" placeholder="Username" pTooltip="Enter your username" />
-                    </div>
-                    <Button class="p-ripple" type="button" label="Submit" v-tooltip="'Click to proceed'"></Button>
-                </div>
-            </div>
-        </div>
-    </div>
+					<Button type="button" label="Save" icon="pi pi-check" v-tooltip="'Click to proceed'" />
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-import ProductService from "../service/ProductService";
-export default {
-    data() {
-        return {
-            display: false,
-            confirmation: false,
-            products: [],
-            selectedProduct: [],
-            visibleSidebar1: null,
-            visibleSidebar2: null,
-            visibleSidebar3: null,
-            visibleSidebar4: null,
-            visibleSidebar5: null,
-            images: [
-                {
-                    source: "assets/demo/images/sopranos/sopranos1.jpg",
-                    thumbnail: "assets/demo/images/sopranos/sopranos1_small.jpg",
-                    title: "Sopranos 1",
-                },
-                {
-                    source: "assets/demo/images/sopranos/sopranos2.jpg",
-                    thumbnail: "assets/demo/images/sopranos/sopranos2_small.jpg",
-                    title: "Sopranos 2",
-                },
-                {
-                    source: "assets/demo/images/sopranos/sopranos3.jpg",
-                    thumbnail: "assets/demo/images/sopranos/sopranos3_small.jpg",
-                    title: "Sopranos 3",
-                },
-                {
-                    source: "assets/demo/images/sopranos/sopranos4.jpg",
-                    thumbnail: "assets/demo/images/sopranos/sopranos4_small.jpg",
-                    title: "Sopranos 4",
-                },
-            ],
-        };
-    },
-    created() {
-        this.productService = new ProductService();
-    },
-    mounted() {
-        this.productService.getProductsSmall().then((products) => (this.products = products));
-    },
-    methods: {
-        openConfirmation() {
-            this.confirmation = true;
-        },
-        closeConfirmation() {
-            this.confirmation = false;
-        },
-        toggleImage($event) {
-            this.$refs.op1.toggle($event);
-        },
-        toggleDataTable($event) {
-            this.$refs.op2.toggle($event);
-        },
-    },
-};
+	import ProductService from '../service/ProductService'
+	export default {
+		data() {
+			return {
+				display: false,
+				displayConfirmation: false,
+				position: 'center',
+				visibleLeft: false,
+				visibleRight: false,
+				visibleTop: false,
+				visibleBottom: false,
+				visibleFull: false,
+				products: null,
+				selectedProduct: null
+			}
+		},
+		productService: null,
+		created() {
+			this.productService = new ProductService();
+		},
+		mounted() {
+			this.productService.getProductsSmall().then(data => this.products = data);
+		},
+		methods: {
+			open() {
+				this.display = true;
+			},
+			close() {
+				this.display = false;
+			},
+			openConfirmation() {
+				this.displayConfirmation = true;
+			},
+			closeConfirmation() {
+				this.displayConfirmation = false;
+			},
+			toggle(event) {
+				this.$refs.op.toggle(event);
+			},
+			toggleDataTable(event) {
+				this.$refs.op2.toggle(event);
+			},
+			formatCurrency(value) {
+				return value.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+			},
+			onProductSelect(event) {
+				this.$refs.op.hide();
+				this.$toast.add({severity:'info', summary: 'Product Selected', detail: event.data.name, life: 3000});
+			}
+		}
+	}
 </script>
 
-<style lang="scss" scoped>
-.product-image {
-    width: 50px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+<style scoped>
+p {
+	line-height: 1.5;
+	margin: 0;
 }
-
-button {
-    margin-right: 0.25em;
+.product-image {
+	width: 50px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 </style>

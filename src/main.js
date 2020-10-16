@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-
 import AutoComplete from 'primevue/autocomplete';
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
@@ -15,7 +14,6 @@ import Checkbox from 'primevue/checkbox';
 import Chips from 'primevue/chips';
 import ColorPicker from 'primevue/colorpicker';
 import Column from 'primevue/column';
-import ColumnGroup from 'primevue/columngroup';
 import ContextMenu from 'primevue/contextmenu';
 import DataTable from 'primevue/datatable';
 import DataView from 'primevue/dataview';
@@ -25,7 +23,6 @@ import Dropdown from 'primevue/dropdown';
 import Fieldset from 'primevue/fieldset';
 import FileUpload from 'primevue/fileupload';
 import FullCalendar from 'primevue/fullcalendar';
-import Galleria from 'primevue/galleria';
 import InlineMessage from 'primevue/inlinemessage';
 import InputMask from 'primevue/inputmask';
 import InputNumber from 'primevue/inputnumber';
@@ -98,7 +95,6 @@ Vue.component('Checkbox', Checkbox);
 Vue.component('Chips', Chips);
 Vue.component('ColorPicker', ColorPicker);
 Vue.component('Column', Column);
-Vue.component('ColumnGroup', ColumnGroup);
 Vue.component('ContextMenu', ContextMenu);
 Vue.component('DataTable', DataTable);
 Vue.component('DataView', DataView);
@@ -108,7 +104,6 @@ Vue.component('Dropdown', Dropdown);
 Vue.component('Fieldset', Fieldset);
 Vue.component('FileUpload', FileUpload);
 Vue.component('FullCalendar', FullCalendar);
-Vue.component('Galleria', Galleria);
 Vue.component('InlineMessage', InlineMessage);
 Vue.component('InputMask', InputMask);
 Vue.component('InputNumber', InputNumber);
@@ -147,8 +142,6 @@ Vue.component('ToggleButton', ToggleButton);
 Vue.component('Tree', Tree);
 Vue.component('TreeTable', TreeTable);
 Vue.component('TriStateCheckbox', TriStateCheckbox);
-
-Vue.config.productionTip = false;
 
 import Access from './pages/Access';
 import Error from './pages/Error';

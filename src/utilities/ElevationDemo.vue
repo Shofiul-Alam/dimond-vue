@@ -3,15 +3,13 @@
         <div class="p-col-12">
             <div class="card">
                 <h5>Shadow</h5>
-                <p>
-                    Elevation is an add-on utility of
-                    <a href="https://github.com/primefaces/primeflex">PrimeFlex</a>
-                    and used to specify the separation between surfaces and elements along the z-axis.
-                </p>
+                <p>Elevation is used to specify the separation between surfaces and elements along the z-axis. There are 24 style classes (<mark>.p-shadow-{level}</mark>) to define the elevation layers.</p>
 
                 <div class="shadow-container">
                     <div class="p-col" v-for="index in 24" :key="index">
-                        <div :class="['box', 'p-shadow-' + index]">p-shadow-{{ index }}</div>
+                        <div :class="['box', 'p-shadow-' + index]">
+                            p-shadow-{{index}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -21,8 +19,7 @@
 
 <script>
 export default {
-    name: "ElevationDemo",
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -32,7 +29,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
+    font-size: 1.25rem;
     margin: 2rem;
     border-radius: 4px;
 }

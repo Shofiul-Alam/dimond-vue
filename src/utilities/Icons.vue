@@ -1,152 +1,105 @@
 <template>
 	<div class="card icons-demo">
 		<h3>Icons</h3>
+		<p>Diamond uses PrimeIcons v4.0, PrimeTek's new modern icon library.</p>
 
 		<h5>Getting Started</h5>
-		<p>
-			PrimeIcons use the
-			<strong>pi pi-&#123;icon&#125;</strong> syntax such as
-			<strong>pi pi-check</strong>. A standalone icon can be displayed
-			using an element such as <i>i</i> or <i>span</i>
-		</p>
-
-<app-code lang="markup">
+		<p>PrimeIcons use the pi pi-{icon} syntax such as pi pi-check. A standalone icon can be displayed using an element like i or span.</p>
+<CodeHighlight>
 &lt;i class="pi pi-check"&gt;&lt;/i&gt;
 &lt;i class="pi pi-times"&gt;&lt;/i&gt;
-</app-code>
+</CodeHighlight>
 
-		<i class="pi pi-check"></i>
+		<i class="pi pi-check" style="margin-right: .5rem"></i>
 		<i class="pi pi-times"></i>
+
+		<h5>Component Icons</h5>
+		<p>Components that have icon properties accept PrimeIcons with the pi pi-{icon} syntax.</p>
+<CodeHighlight>
+&lt;Button label="Confirm" icon="pi pi-check"&gt;&lt;/Button&gt;
+</CodeHighlight>
+
+		<Button label="Confirm" icon="pi pi-check"></Button>
 
 		<h5>Size</h5>
 		<p>Size of the icons can easily be changed using font-size property.</p>
 
-<app-code lang="markup">
+<CodeHighlight>
 &lt;i class="pi pi-check"&gt;&lt;/i&gt;
-</app-code>
+</CodeHighlight>
 
 		<i class="pi pi-check"></i>
 
-<app-code lang="markup">
-&lt;i class="pi pi-check" style="font-size: 2rem"&gt;&lt;/i&gt;
-</app-code>
+<CodeHighlight>
+&lt;i class="pi pi-check" style="fontSize: 2rem"&gt;&lt;/i&gt;
+</CodeHighlight>
 
-		<i class="pi pi-check" style="font-size: 2rem"></i>
+		<i class="pi pi-check" style="fontSize: 2rem"></i>
 
 		<h5>Spinning Animation</h5>
-		<p>Special pi-spin class applies infinite rotate to an icon.</p>
+		<p>Special pi-spin class applies continuous rotation to an icon.</p>
+<CodeHighlight>
+&lt;i class="pi pi-spin pi-spinner" style="fontSize: 2rem"&gt;&lt;/i&gt;
+</CodeHighlight>
 
-<app-code lang="markup">
-&lt;i class="pi pi-spin pi-spinner" style="font-size: 2rem"&gt;&lt;/i&gt;
-</app-code>
-
-		<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+		<i class="pi pi-spin pi-spinner" style="fontSize: 2rem"></i>
 
 		<h5>List of Icons</h5>
-		<p>
-			Here is the current list of PrimeIcons, more icons will be added
-			periodically. You may also
-			<a href="https://github.com/primefaces/primeicons/issues"
-				>request new icons</a
-			>
-			at the issue tracker.
-		</p>
-		<div>
-			<InputText
-				class="icon-filter"
-				@input="onFilter($event)"
-				v-model="searchIcon"
-				placeholder="Search an icon"
-			/>
-		</div>
+		<p>Here is the current list of PrimeIcons, more icons are added periodically. You may also <a href="https://github.com/primefaces/primeicons/issues">request new icons</a> at the issue tracker.</p>
 
 		<div class="p-grid icons-list">
-			<div
-				class="p-col-12 p-md-2"
-				v-for="icon of filteredIcons"
-				:key="icon.properties.name"
-			>
-				<i :class="`pi pi-${icon.properties.name}`"></i>
-				<div>pi-{{ icon.properties.name }}</div>
+			<div class="p-col-12 p-md-2" v-for="icon of icons" :key="icon.properties.name">
+				<i :class="'pi pi-' + icon.properties.name"></i>
+				<div>pi-{{icon.properties.name}}</div>
 			</div>
 		</div>
+
 	</div>
 </template>
 
 <script>
-import IconService from "../service/IconService";
-import AppCode from "../AppCode";
+import CodeHighlight from "../components/CodeHighlight";
+import axios from 'axios';
 export default {
-	components: {
-		AppCode,
-	},
 	data() {
 		return {
-			icons: null,
-			filteredIcons: null,
-			selectedIcon: "",
-			searchIcon: "",
-		};
-	},
-	created() {
-		this.iconService = new IconService();
+			icons: null
+		}
 	},
 	mounted() {
-		this.iconService.getIcons().then((iconList) => {
-			let allIcons = iconList.icons;
-			allIcons.sort((icon1, icon2) => {
-				if (icon1.properties.name < icon2.properties.name) {
+		axios.get('assets/demo/data/icons.json').then(res => {
+			let icons = res.data.icons;
+			icons.sort((icon1, icon2) => {
+				if(icon1.properties.name < icon2.properties.name)
 					return -1;
-				} else if (icon1.properties.name < icon2.properties.name) {
+				else if(icon1.properties.name < icon2.properties.name)
 					return 1;
-				} else {
+				else
 					return 0;
-				}
 			});
-			this.icons = allIcons;
-			this.filteredIcons = allIcons;
+			this.icons = icons;
 		});
 	},
-	methods: {
-		onFilter($event) {
-			const searchText = $event;
-
-			if (!searchText) {
-				this.filteredIcons = this.icons;
-			} else {
-				this.filteredIcons = this.icons.filter((it) => {
-					return it.icon.tags[0].includes(searchText);
-				});
-			}
-		},
-	},
-};
+	components: {
+		'CodeHighlight': CodeHighlight
+	}
+}
 </script>
 
-<style lang="scss" scoped>
-.icon-filter {
-	width: 100%;
-	padding: 1rem;
-	margin: 1rem 0 1.5rem 0;
-}
-
+<style scoped lang="scss">
 .icons-list {
 	text-align: center;
-
-	i {
-		font-size: 1.5rem;
-		color: var(--text-color-secondary);
-		margin-bottom: 0.5rem;
-	}
-
+	color: #6c757d;
 	.p-md-2 {
-		padding-bottom: 2rem;
+		padding: 1em;
 	}
 }
-
+.icons-list i {
+	font-size: 1.5rem;
+	margin-bottom: .5rem;
+}
 /deep/ pre[class*="language-"] {
-	&:before,
-	&:after {
+	&:before, &:after {
 		display: none !important;
 	}
 	code {
@@ -156,9 +109,26 @@ export default {
 		margin: 1em 0;
 		color: var(--text-color);
 		font-size: 14px;
+		.token {
+			&.tag,
+			&.keyword {
+				color: #2196F3 !important;
+			}
+			&.attr-name,
+			&.attr-string {
+				color: #2196F3 !important;
+			}
+			&.attr-value {
+				color: #4CAF50 !important;
+			}
+			&.punctuation {
+				color: var(--text-color);
+			}
+			&.operator,
+			&.string {
+				background: transparent;
+			}
+		}
 	}
-}
-li {
-	line-height: 1.5;
 }
 </style>
