@@ -11,11 +11,17 @@
             <AppFooter/>
         </div>
 
-        <AppMenu :model="menu" :menuMode="menuMode" :menuActive="menuActive"></AppMenu>
+        <transition name="layout-menu-container">
+            <div class="layout-menu-wrapper">
+                <div class="menu-scroll-content">
+                    <AppMenu :model="menu" :layoutMode="layoutMode" :menuActive="menuActive" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"></AppMenu>
+                </div>
+            </div>
+        </transition>
 
         <AppRightMenu :rightMenuActive="rightMenuActive"></AppRightMenu>
 
-        <AppConfig :menuMode="menuMode" :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
+        <AppConfig :layoutMode="layoutMode" :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
             @change-menu-theme="changeMenuTheme" @change-component-theme="changeStyleSheetsColor" @menu-mode="changeMenuMode" @change-color-scheme="changeColorScheme"></AppConfig>
 
         <AppSearch :search="search"/>
@@ -25,6 +31,7 @@
 </template>
 
 <script>
+import EventBus from './event-bus';
 import AppTopBar from "./AppTopbar";
 import AppFooter from "./AppFooter";
 import AppConfig from "./AppConfig";
@@ -35,7 +42,7 @@ export default {
     data() {
         return {
             menuActive: false,
-            menuMode: "static",
+            layoutMode: "static",
             colorScheme: "light",
             menuTheme: "layout-sidebar-darkgray",
             overlayMenuActive: false,
@@ -52,8 +59,7 @@ export default {
             rightMenuActive: false,
             configActive: false,
             configClick: false,
-            resetMenu: false,
-            menuHoverActive: false,
+            // resetMenu: false,
             menu: [
                 {
                     label: "Favorites", icon: "pi pi-fw pi-home",
@@ -171,14 +177,14 @@ export default {
             return [
                 "layout-wrapper",
                 {
-                    "layout-overlay": this.menuMode === "overlay",
-                    "layout-static": this.menuMode === "static",
-                    "layout-slim": this.menuMode === "slim",
+                    "layout-overlay": this.layoutMode === "overlay",
+                    "layout-static": this.layoutMode === "static",
+                    "layout-slim": this.layoutMode === "slim",
                     "layout-sidebar-dim": this.colorScheme === "dim",
                     "layout-sidebar-dark": this.colorScheme === "dark",
                     "layout-overlay-active": this.overlayMenuActive,
                     "layout-mobile-active": this.staticMenuMobileActive,
-                    "layout-static-inactive": this.staticMenuDesktopInactive && this.menuMode === "static",
+                    "layout-static-inactive": this.staticMenuDesktopInactive && this.layoutMode === "static",
                     "p-input-filled": this.$appState.inputStyle === "filled",
                     "p-ripple-disabled": !this.$primevue.ripple,
                 },
@@ -219,11 +225,16 @@ export default {
             }
 
             if (!this.menuClick) {
+                if (this.isHorizontal() || this.isSlim()) {
+					// EventBus.$emit('reset_active_index');
+					this.menuActive = false;
+                }
+                
                 if (this.overlayMenuActive || this.staticMenuMobileActive) {
                     this.hideOverlayMenu();
                 }
 
-                this.menuHoverActive = false;
+                EventBus.$emit('reset_active_index');
                 this.unblockBodyScroll();
             }
 
@@ -310,11 +321,15 @@ export default {
         },
 
         isSlim() {
-            return this.menuMode === "slim";
+            return this.layoutMode === "slim";
         },
 
         isOverlay() {
-            return this.menuMode === "overlay";
+            return this.layoutMode === "overlay";
+        },
+
+        isHorizontal() {
+            return this.layoutMode === "horizontal";
         },
 
         isDesktop() {
@@ -427,8 +442,21 @@ export default {
         },
 
         changeMenuMode(mode) {
-            this.menuMode = mode;
+            this.layoutMode = mode;
         },
+
+        onMenuItemClick(event) {
+			if (!event.item.items) {
+				EventBus.$emit('reset_active_index');
+				this.hideOverlayMenu();
+			}
+			if (!event.item.items && (this.isHorizontal() || this.isSlim())) {
+				this.menuActive = false;
+            }
+		},
+		onRootMenuItemClick() {
+            this.menuActive = !this.menuActive;
+		}
     },
 };
 </script>

@@ -1,53 +1,26 @@
 <template>
-    <ul v-if="items" class="layout-menu" role="menu" :class="{ 'fade-in-right': menuMode === 'slim' }">
+    <ul v-if="items" class="layout-menu" role="menu">
         <template v-for="(item, i) of items">
-            <li v-if="visible(item) && !item.separator" :key="item.label || i"
-                :class="[{
-                        'layout-root-menuitem': root,
-                        'active-menuitem': activeIndex === i && !item.disabled,
-                    }]" role="menuitem">
+            <li v-if="visible(item) && !item.separator" :key="item.label || i" :class="[{'layout-root-menuitem': root, 'active-menuitem': activeIndex === i && !item.disabled}]" role="menuitem">
                 <div class="arrow" v-if="item.items && root === true"></div>
-                <router-link
-                    v-if="item.to"
-                    :to="item.to"
-                    :style="item.style"
-                    :class="[item.class, 'p-ripple', { 'p-disabled': item.disabled }]"
-                    active-class="active-route"
-                    :target="item.target"
-                    exact
-                    @click="onMenuItemClick($event, item, i)"
-                    @mouseenter="onMenuItemMouseEnter(i)">
+                <router-link v-if="item.to" :to="item.to" :style="item.style" :class="[item.class, 'p-ripple', { 'p-disabled': item.disabled }]" active-class="active-route" :target="item.target"
+                    exact @click.native="onMenuItemClick($event, item, i)" @mouseenter.native="onMenuItemMouseEnter(i)" v-ripple>
                     <i :class="['layout-menuitem-icon', item.icon]"></i>
                     <span class="layout-menuitem-text">{{ item.label }}</span>
                     <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
                 </router-link>
-                <a
-                    v-if="!item.to"
-                    :href="item.url || '#'"
-                    :style="item.style"
-                    :class="['active-root', 'p-ripple', { 'p-disabled': item.disabled }]"
-                    :target="item.target"
-                    @click="onMenuItemClick($event, item, i)"
-                    @mouseenter="onMenuItemMouseEnter(i)"
-                >
+                <a v-if="!item.to" :href="item.url || '#'" :style="item.style" :class="[item.class, 'p-ripple', { 'p-disabled': item.disabled }]"
+                    :target="item.target"  @click="onMenuItemClick($event, item, i)" @mouseenter="onMenuItemMouseEnter(i)" v-ripple>
                     <i :class="['layout-menuitem-icon', item.icon]"></i>
                     <span class="layout-menuitem-text">{{ item.label }}</span>
                     <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
                 </a>
                 <div class="layout-root-menuitem" v-if="root">
-                    <div class="layout-menuitem-root-text" style="text-transform: uppercase">
-                        {{ item.label }}
-                    </div>
+                    <div class="layout-menuitem-root-text" style="text-transform: uppercase">{{ item.label }}</div>
                     <div class="layout-menuitem-root-arrow"></div>
                 </div>
                 <transition name="p-toggleable-content">
-                    <AppSubmenu
-                        v-show="item.items && (root ? true : activeIndex === i)"
-                        :items="visible(item) && item.items"
-                        :menuActive="menuActive"
-                        :menuMode="menuMode"
-                        :parentMenuItemActive="activeIndex === i"
-                    ></AppSubmenu>
+                    <AppSubmenu v-show="item.items && (root ? true : activeIndex === i)" :items="visible(item) && item.items" :menuActive="menuActive" :layoutMode="layoutMode" :parentMenuItemActive="activeIndex === i"></AppSubmenu>
                 </transition>
             </li>
             <li class="menu-separator" :style="item.style" v-if="visible(item) && item.separator" :key="'separator' + i" role="separator"></li>
@@ -56,11 +29,12 @@
 </template>
 
 <script>
+import EventBus from './event-bus';
 export default {
     name: "AppSubmenu",
     props: {
         items: Array,
-        menuMode: String,
+        layoutMode: String,
         menuActive: Boolean,
         root: {
             type: Boolean,
@@ -76,10 +50,18 @@ export default {
             activeIndex: null,
         };
     },
+    mounted() {
+		EventBus.$on('reset_active_index', () => {
+			if((this.layoutMode === 'horizontal' || this.layoutMode === 'slim')) {
+				this.activeIndex = null;
+			}
+		});
+	},
     methods: {
         onMenuItemClick(event, item, index) {
             if (item.disabled) {
                 event.preventDefault();
+                return;
             }
             //execute command
             if (item.command) {
@@ -87,9 +69,7 @@ export default {
                 event.preventDefault();
             }
             if (item.items) {
-                if(this.isMobile()) {
-                    event.stopPropagation();
-                }
+                event.preventDefault();
             }
             if (this.root) {
                 this.$emit("root-menuitem-click", {
@@ -106,7 +86,7 @@ export default {
         },
 
         onMenuItemMouseEnter(index) {
-            if (this.root && this.menuActive && (this.menuMode === "slim") && !this.isMobile()) {
+            if (this.root && this.menuActive && (this.layoutMode === 'horizontal' || this.layoutMode === "slim") && !this.isMobile()) {
                 this.activeIndex = index;
             }
         },

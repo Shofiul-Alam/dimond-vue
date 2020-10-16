@@ -89,7 +89,7 @@ export default {
         },
         colorScheme: String,
         menuTheme: String,
-        menuMode: String,
+        layoutMode: String,
     },
     data() {
         return {
@@ -187,7 +187,7 @@ export default {
             ],
             componentTheme: "blue",
             d_colorScheme: this.colorScheme,
-            d_menuMode: this.menuMode,
+            d_menuMode: this.layoutMode,
         };
     },
     computed: {
