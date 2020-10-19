@@ -2,7 +2,6 @@
     <ul v-if="items" class="layout-menu" role="menu">
         <template v-for="(item, i) of items">
             <li v-if="visible(item) && !item.separator" :key="item.label || i" :class="[{'layout-root-menuitem': root, 'active-menuitem': activeIndex === i && !item.disabled}]" role="menuitem">
-                <div class="arrow" v-if="item.items && root === true"></div>
                 <router-link v-if="item.to" :to="item.to" :style="item.style" :class="[item.class, 'p-ripple', { 'p-disabled': item.disabled }]" active-class="active-route" :target="item.target"
                     exact @click.native="onMenuItemClick($event, item, i)" @mouseenter.native="onMenuItemMouseEnter(i)" v-ripple>
                     <i :class="['layout-menuitem-icon', item.icon]"></i>
@@ -17,7 +16,6 @@
                 </a>
                 <div class="layout-root-menuitem" v-if="root">
                     <div class="layout-menuitem-root-text" style="text-transform: uppercase">{{ item.label }}</div>
-                    <div class="layout-menuitem-root-arrow"></div>
                 </div>
                 <transition name="p-toggleable-content">
                     <AppSubmenu v-show="item.items && (root ? true : activeIndex === i)" :items="visible(item) && item.items" :menuActive="menuActive" :layoutMode="layoutMode" :parentMenuItemActive="activeIndex === i"></AppSubmenu>
@@ -94,7 +92,7 @@ export default {
         visible(item) {
             return typeof item.visible === "function" ? item.visible() : item.visible !== false;
         },
-        
+
         isMobile() {
             return window.innerWidth <= 991;
         },
