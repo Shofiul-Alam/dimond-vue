@@ -207,7 +207,7 @@ export default {
         },
     },
     methods: {
-        onDocumentClick($event) {
+        onDocumentClick() {
             if (!this.searchClick) {
                 this.search = false;
             }
@@ -229,7 +229,7 @@ export default {
 					EventBus.$emit('reset_active_index');
 					this.menuActive = false;
                 }
-                
+
                 if (this.overlayMenuActive || this.staticMenuMobileActive) {
                     this.hideOverlayMenu();
                 }
@@ -458,7 +458,7 @@ export default {
 		onRootMenuItemClick() {
             this.menuActive = !this.menuActive;
         },
-        
+
         onSearchInputClick(){
             this.searchClick = false;
             this.search = false
