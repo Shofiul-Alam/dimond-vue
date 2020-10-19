@@ -6,7 +6,7 @@
         </router-link>
 
         <div class="layout-menu-container">
-            <AppSubmenu :items="model" :layoutMode="layoutMode" :parentMenuItemActive="true" :menuActive="menuActive" :root="true" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
+            <AppSubmenu :items="model" :layoutMode="layoutMode" :parentMenuItemActive="true" :menuActive="active" :root="true" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
         </div>
     </div>
 </template>
@@ -18,7 +18,7 @@ export default {
     props: {
         model: Array,
         layoutMode: String,
-        menuActive: Boolean
+        active: Boolean
     },
     methods: {
         onMenuItemClick(event) {

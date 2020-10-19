@@ -14,7 +14,7 @@
         <transition name="layout-menu-container">
             <div class="layout-menu-wrapper">
                 <div class="menu-scroll-content">
-                    <AppMenu :model="menu" :layoutMode="layoutMode" :menuActive="menuActive" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"></AppMenu>
+                    <AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"></AppMenu>
                 </div>
             </div>
         </transition>
@@ -22,7 +22,7 @@
         <AppRightMenu :rightMenuActive="rightMenuActive"></AppRightMenu>
 
         <AppConfig :layoutMode="layoutMode" :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
-            @change-menu-theme="changeMenuTheme" @change-component-theme="changeStyleSheetsColor" @menu-mode="changeMenuMode" @change-color-scheme="changeColorScheme"></AppConfig>
+            @menu-theme-change="changeMenuTheme" @component-theme-change="changeStyleSheetUrl" @menu-mode-change="changeMenuMode" @color-scheme-change="changeColorScheme"></AppConfig>
 
         <AppSearch :search="search"/>
 
@@ -365,7 +365,7 @@ export default {
 
         changeMenuTheme(themeName, logoColor, componentTheme) {
             this.menuTheme = themeName;
-            this.changeStyleSheetsColor("theme-css", componentTheme, 2);
+            this.changeStyleSheetUrl("theme-css", componentTheme, 2);
 
             const appLogoLink = document.getElementById("app-logo");
 
@@ -378,8 +378,8 @@ export default {
 
         changeColorScheme(scheme) {
             this.colorScheme = scheme;
-            this.changeStyleSheetsColor("layout-css", "layout-" + scheme + ".css", 1);
-            this.changeStyleSheetsColor("theme-css", "theme-" + scheme + ".css", 1);
+            this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
+            this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
 
             const mobileLogoLink = document.getElementById("logo-mobile");
             const invoiceLogoLink = document.getElementById("invoice-logo");
@@ -396,7 +396,7 @@ export default {
             }
         },
 
-        changeStyleSheetsColor(id, value, from) {
+        changeStyleSheetUrl(id, value, from) {
             const element = document.getElementById(id);
             const urlTokens = element.getAttribute("href").split("/");
 

@@ -210,15 +210,15 @@ export default {
     },
     methods: {
         changeColorScheme(scheme) {
-            this.$emit("change-color-scheme", scheme);
+            this.$emit("color-scheme-change", scheme);
         },
 
         changeMenuTheme(name, logoColor, componentTheme) {
-            this.$emit("change-menu-theme", "layout-sidebar-" + name, logoColor, componentTheme);
+            this.$emit("menu-theme-change", "layout-sidebar-" + name, logoColor, componentTheme);
         },
 
         changeComponentTheme(theme) {
-            this.$emit("change-component-theme", "theme-css", theme, 3);
+            this.$emit("component-theme-change", "theme-css", theme, 3);
         },
 
         onConfigButtonClick(event) {
@@ -231,7 +231,7 @@ export default {
         },
 
         changeMenuMode(mode) {
-            this.$emit("menu-mode", mode);
+            this.$emit("menu-mode-change", mode);
         },
     },
 };
