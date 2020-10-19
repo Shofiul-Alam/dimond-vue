@@ -12,7 +12,7 @@
         </div>
 
         <transition name="layout-menu-container">
-            <div class="layout-menu-wrapper">
+            <div class="layout-menu-wrapper" @click="onMenuClick">
                 <div class="menu-scroll-content">
                     <AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"></AppMenu>
                 </div>
@@ -453,10 +453,6 @@ export default {
 			}
 			if (!event.item.items && (this.isHorizontal() || this.isSlim())) {
                 this.menuActive = false;
-            }
-            if (event.item.items && this.isSlim()) {
-                this.configActive = false;
-                this.configClick = false;
             }
 		},
 		onRootMenuItemClick() {
