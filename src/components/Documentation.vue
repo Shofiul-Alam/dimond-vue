@@ -57,8 +57,9 @@ npm run serve
 &lt;template&gt;
     &lt;div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick"&gt;
         &lt;div class="layout-content-wrapper"&gt;
-            &lt;AppTopBar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick" @search-click="onSearchClick"
-                @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick" @right-menu-click="onRightMenuClick"&gt;&lt;/AppTopBar&gt;
+            &lt;AppTopBar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick"
+                        @search-click="onSearchClick" @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick"
+                        @right-menu-click="onRightMenuClick"&gt;&lt;/AppTopBar&gt;
 
             &lt;div class="layout-content"&gt;
                 &lt;router-view/&gt;
@@ -67,12 +68,13 @@ npm run serve
             &lt;AppFooter/&gt;
         &lt;/div&gt;
 
-        &lt;AppMenu :model="menu" :menuMode="menuMode" :menuActive="menuActive"&gt;&lt;/AppMenu&gt;
+        &lt;AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"&gt;&lt;/AppMenu&gt;
 
         &lt;AppRightMenu :rightPanelMenuActive="rightPanelMenuActive" @rightmenu-click="onRightMenuClick"&gt;&lt;/AppRightMenu&gt;
 
-        &lt;AppConfig :menuMode="menuMode" :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
-            @change-menu-theme="changeMenuTheme" @change-component-theme="changeStyleSheetsColor" @menu-mode="changeMenuMode" @change-color-scheme="changeColorScheme"&gt;&lt;/AppConfig&gt;
+        &lt;AppConfig :layoutMode="layoutMode" :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick"
+                    @config-button-click="onConfigButtonClick" @menu-theme-change="changeMenuTheme" @component-theme-change="changeStyleSheetUrl"
+                    @menu-mode-change="changeMenuMode" @color-scheme-change="changeColorScheme"&gt;&lt;/AppConfig&gt;
 
         &lt;AppSearch :search="search"/&gt;
 
@@ -274,8 +276,8 @@ import 'styles.scss'; 	                            //your styles and overrides
                 <p>A custom theme can be developed by the following steps.</p>
 				<ul>
 					<li>Choose a custom theme name such as "mytheme".</li>
-					<li>Create a folder named "mytheme" under <i>assets/theme folder</i>.</li>
-					<li>Create a file such as theme.scss under <i>assets/theme/mytheme folder</i>.</li>
+					<li>Create a folder named "mytheme" under <i>assets/theme</i> folder.</li>
+					<li>Create a file such as theme.scss under <i>assets/theme/mytheme</i> folder.</li>
 					<li>Define the variables listed below in your file and import the <i>../../sass/theme/_theme.scss</i> file.</li>
 					<li>Build the scss to generate css</li>
 					<li>Include the generated theme.css to your page.</li>
@@ -299,8 +301,7 @@ $highlightTextColor: #495057;
                 <p>An example sass command to compile the css would be;</p>
 
 <CodeHighlight>
-sass --update
-src/assets/theme/mytheme/theme.scss:src/assets/theme/mytheme/theme.css
+sass src/assets/theme/mytheme/theme.scss:src/assets/theme/mytheme/theme.css
 </CodeHighlight>
 
                 <p>Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command
