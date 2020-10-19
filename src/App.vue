@@ -453,6 +453,10 @@ export default {
 			if (!event.item.items && (this.isHorizontal() || this.isSlim())) {
                 this.menuActive = false;
             }
+            if (event.item.items && this.isSlim()) {
+                this.configActive = false;
+                this.configClick = false;
+            }
 		},
 		onRootMenuItemClick() {
             this.menuActive = !this.menuActive;
