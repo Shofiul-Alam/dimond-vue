@@ -154,7 +154,7 @@ export default {
             this.$emit("topbar-user-menu", event);
         },
         onRightMenuClick(event) {
-            this.$emit("right-menu-click", event);
+            this.$emit("right-menubutton-click", event);
         }
     }
 };

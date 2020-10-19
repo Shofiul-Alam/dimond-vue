@@ -88,7 +88,7 @@ export default {
     },
     methods: {
         rightMenuClick($event) {
-            $event.stopPropagation();
+            this.$emit("right-menu-click", $event)
         }
     }
 };

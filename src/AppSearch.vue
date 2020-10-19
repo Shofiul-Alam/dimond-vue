@@ -1,8 +1,8 @@
 <template>
-    <div class="layout-search" :class="{ 'layout-search-active': search }" @click="searchClick">
+    <div class="layout-search" :class="{ 'layout-search-active': search }" @click="onSearchClick">
         <div class="search-container fade-in-up">
             <i class="pi pi-search"></i>
-            <InputText type="text" name="search" placeholder="Search" />
+            <InputText type="text" name="search" placeholder="Search" @click="clicked" />
         </div>
     </div>
 </template>
@@ -17,11 +17,12 @@ export default {
         }
     },
     methods: {
-        searchClick($event) {
-                const tar = $event.target.classList[0];
-                if(tar === "p-inputtext" || tar === "pi" || tar === "search-container") {
-                    $event.stopPropagation();
-                }
+        onSearchClick(event){
+            this.$emit('search-click', event);
+            event.preventDefault()
+        },
+        clicked(event){
+            this.$emit('search-input-click', event)
         }
     }
 };

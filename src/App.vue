@@ -2,7 +2,7 @@
     <div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick($event)">
         <div class="layout-content-wrapper">
             <AppTopBar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick" @search-click="onSearchClick"
-                @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick" @right-menu-click="onRightMenuClick"></AppTopBar>
+                @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick" @right-menu-click="onRightMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick"></AppTopBar>
 
             <div class="layout-content">
                 <router-view/>
@@ -19,12 +19,12 @@
             </div>
         </transition>
 
-        <AppRightMenu :rightMenuActive="rightMenuActive"></AppRightMenu>
+        <AppRightMenu :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightMenu>
 
         <AppConfig :layoutMode="layoutMode" :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
             @menu-theme-change="changeMenuTheme" @component-theme-change="changeStyleSheetUrl" @menu-mode-change="changeMenuMode" @color-scheme-change="changeColorScheme"></AppConfig>
 
-        <AppSearch :search="search"/>
+        <AppSearch :search="search" @search-click="onSearchClick" @search-input-click="onSearchInputClick"/>
 
         <div class="layout-mask modal-in"></div>
     </div>
@@ -302,14 +302,15 @@ export default {
             event.preventDefault();
         },
 
-        onRightMenuClick(event) {
-            this.rightMenuClick = true;
-            this.rightMenuActive = !this.rightMenuActive;
-
-            this.hideOverlayMenu();
-
-            event.preventDefault();
-        },
+        onRightMenuButtonClick(event) {
+			this.rightMenuClick = true;
+			this.rightMenuActive = !this.rightMenuActive;
+			this.hideOverlayMenu();
+			event.preventDefault();
+		},
+		onRightMenuClick() {
+			this.rightMenuClick = true;
+		},
 
         onConfigClick() {
             this.configClick = true;
@@ -460,7 +461,12 @@ export default {
 		},
 		onRootMenuItemClick() {
             this.menuActive = !this.menuActive;
-		}
+        },
+        
+        onSearchInputClick(){
+            this.searchClick = false;
+            this.search = false
+        }
     },
 };
 </script>

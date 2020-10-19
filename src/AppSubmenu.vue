@@ -69,7 +69,7 @@ export default {
                 event.preventDefault();
             }
             if (item.items) {
-                event.stopPropagation()
+                event.preventDefault();
             }
             if (this.root) {
                 this.$emit("root-menuitem-click", {
