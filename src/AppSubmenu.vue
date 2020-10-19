@@ -75,6 +75,7 @@ export default {
                 this.$emit("root-menuitem-click", {
                     originalEvent: event,
                 });
+                event.stopPropagation();
             }
             if (item.items) {
                 this.activeIndex = index === this.activeIndex ? null : index;
@@ -83,6 +84,9 @@ export default {
                 originalEvent: event,
                 item: item,
             });
+            if (!this.root && item.items) {
+                event.stopPropagation()
+            }
         },
 
         onMenuItemMouseEnter(index) {

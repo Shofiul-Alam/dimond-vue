@@ -85,11 +85,6 @@ export default new Router({
             ],
         },
         {
-            path: '/media',
-            name: 'media',
-            component: () => import('./components/MediaDemo.vue'),
-        },
-        {
             path: '/messages',
             name: 'messages',
             component: () => import('./components/MessagesDemo.vue'),

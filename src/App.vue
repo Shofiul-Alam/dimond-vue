@@ -59,7 +59,7 @@ export default {
             rightMenuActive: false,
             configActive: false,
             configClick: false,
-            // resetMenu: false,
+            resetMenu: false,
             menu: [
                 {
                     label: "Favorites", icon: "pi pi-fw pi-home",
@@ -226,7 +226,7 @@ export default {
 
             if (!this.menuClick) {
                 if (this.isHorizontal() || this.isSlim()) {
-					// EventBus.$emit('reset_active_index');
+					EventBus.$emit('reset_active_index');
 					this.menuActive = false;
                 }
                 
@@ -451,7 +451,7 @@ export default {
 				this.hideOverlayMenu();
 			}
 			if (!event.item.items && (this.isHorizontal() || this.isSlim())) {
-				this.menuActive = false;
+                this.menuActive = false;
             }
 		},
 		onRootMenuItemClick() {
