@@ -329,18 +329,19 @@ export default {
             this.unblockBodyScroll();
         },
         blockBodyScroll() {
-            this.addClass(document.body, "blocked-scroll");
+            if (document.body.classList) {
+                document.body.classList.add('blocked-scroll');
+            } else {
+                document.body.className += ' blocked-scroll';
+            }
         },
         unblockBodyScroll() {
-            this.removeClass(document.body, "blocked-scroll");
-        },
-        addClass(element, className) {
-            if (element.classList) element.classList.add(className);
-            else element.className += " " + className;
-        },
-        removeClass(element, className) {
-            if (element.classList) element.classList.remove(className);
-            else element.className = element.classList.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " ");
+            if (document.body.classList) {
+                document.body.classList.remove('blocked-scroll');
+            } else {
+                document.body.className = document.body.className.replace(new RegExp('(^|\\b)' +
+                    'blocked-scroll'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+            }
         },
         isSlim() {
             return this.layoutMode === "slim";
