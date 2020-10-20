@@ -1,9 +1,11 @@
 <template>
-    <div class="layout-search" :class="{ 'layout-search-active': search }" @click="onSearchClick">
-        <div class="search-container fade-in-up">
-            <i class="pi pi-search"></i>
-            <InputText type="text" name="search" placeholder="Search" @click="clicked" />
-        </div>
+    <div class="layout-search">
+        <transition name="search-container" @after-enter="onAfterEnter">
+            <div v-show="searchActive" class="search-container" @click="onSearchContainerClick">
+                <i class="pi pi-search"></i>
+                <InputText ref="searchInput" type="text" name="search" placeholder="Search" @keydown="onInputKeydown" />
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -11,18 +13,27 @@
 export default {
     name: "AppSearch",
     props: {
-        search: {
+        searchActive: {
             type: Boolean,
             default: false,
         }
     },
     methods: {
-        onSearchClick(event){
-            this.$emit('search-click', event);
-            event.preventDefault()
+        onAfterEnter() {
+            if (this.$refs.searchInput) {
+                this.$refs.searchInput.$el.focus();
+            }
         },
-        clicked(event){
-            this.$emit('search-input-click', event)
+        onSearchContainerClick(event) {
+            this.$emit('search-click', event);
+        },
+        onInputKeydown(event) {
+            const key = event.which;
+            
+            //escape, tab and enter
+            if (key === 27 || key === 9 || key === 13) {
+                this.$emit('search-hide', event);
+            }
         }
     }
 };

@@ -1,7 +1,7 @@
 <template>
     <div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick($event)">
         <div class="layout-content-wrapper">
-            <AppTopBar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick" @search-click="onSearchClick"
+            <AppTopBar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick" @search-click="toggleSearch"
                 @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick" @right-menu-click="onRightMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick"></AppTopBar>
 
             <div class="layout-content">
@@ -24,7 +24,7 @@
         <AppConfig :layoutMode="layoutMode" :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
             @menu-theme-change="changeMenuTheme" @component-theme-change="changeStyleSheetUrl" @menu-mode-change="changeMenuMode" @color-scheme-change="changeColorScheme"></AppConfig>
 
-        <AppSearch :search="search" @search-click="onSearchClick" @search-input-click="onSearchInputClick"/>
+        <AppSearch :searchActive="searchActive" @search-click="onSearchClick" @search-hide="onSearchHide"/>
 
         <div class="layout-mask modal-in"></div>
     </div>
@@ -49,7 +49,7 @@ export default {
             staticMenuDesktopInactive: false,
             staticMenuMobileActive: false,
             menuClick: false,
-            search: false,
+            searchActive: false,
             searchClick: false,
             userMenuClick: false,
             topbarUserMenuActive: false,
@@ -208,8 +208,8 @@ export default {
     },
     methods: {
         onDocumentClick() {
-            if (!this.searchClick) {
-                this.search = false;
+            if (!this.searchClick && this.searchActive) {
+                this.onSearchHide();
             }
 
             if (!this.userMenuClick) {
@@ -274,9 +274,9 @@ export default {
             event.preventDefault();
         },
 
-        onSearchClick() {
-            this.search = !this.search;
-            this.searchClick = !this.searchClick;
+        toggleSearch() {
+            this.searchActive = !this.searchActive;
+            this.searchClick = true;
         },
 
         onMenuClick() {
@@ -459,9 +459,13 @@ export default {
             this.menuActive = !this.menuActive;
         },
 
-        onSearchInputClick(){
+        onSearchClick(){
+            this.searchClick = true;
+        },
+
+        onSearchHide() {
+            this.searchActive = false;
             this.searchClick = false;
-            this.search = false
         }
     },
 };
