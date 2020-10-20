@@ -58,7 +58,7 @@
 
         <h5>Shipment Tracking</h5>
         <p>Track your ongoing shipments to customers.</p>
-        <img class="logo-image" src="assets/demo/images/sidebar-right/staticmap.png" alt="diamond-ng" style="width: 100%" />
+        <img class="logo-image" src="assets/demo/images/sidebar-right/staticmap.png" alt="diamond-vue" style="width: 100%" />
     </div>
 </template>
 

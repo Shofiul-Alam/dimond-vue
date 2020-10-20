@@ -99,7 +99,7 @@
                                     <i class="pi pi-plus-circle"></i>
                                     <span class="order-label">New</span>
                                     <i class="stat-detail-icon icon-arrow-right-circle"></i>
-                                    <img src="assets/demo/images/dashboard/graph-new.svg" alt="diamond-ng" />
+                                    <img src="assets/demo/images/dashboard/graph-new.svg" alt="diamond-vue" />
                                 </div>
                                 <div
                                     class="order-tab order-tab-completed p-col-6 p-md-3"
@@ -115,7 +115,7 @@
                                     <i class="pi pi-check-circle"></i>
                                     <span class="order-label">Completed</span>
                                     <i class="stat-detail-icon icon-arrow-right-circle"></i>
-                                    <img src="assets/demo/images/dashboard/graph-completed.svg" alt="diamond-ng" />
+                                    <img src="assets/demo/images/dashboard/graph-completed.svg" alt="diamond-vue" />
                                 </div>
                                 <div
                                     class="order-tab order-tab-refunded p-col-6 p-md-3"
@@ -131,7 +131,7 @@
                                     <i class="pi pi-refresh"></i>
                                     <span class="order-label">Refunded</span>
                                     <i class="stat-detail-icon icon-arrow-right-circle"></i>
-                                    <img src="assets/demo/images/dashboard/graph-refunded.svg" alt="diamond-ng" />
+                                    <img src="assets/demo/images/dashboard/graph-refunded.svg" alt="diamond-vue" />
                                 </div>
                                 <div
                                     class="order-tab order-tab-cancelled p-col-6 p-md-3"
@@ -147,7 +147,7 @@
                                     <i class="pi pi-times-circle"></i>
                                     <span class="order-label">Cancelled</span>
                                     <i class="stat-detail-icon icon-arrow-right-circle"></i>
-                                    <img src="assets/demo/images/dashboard/graph-cancelled.svg" alt="diamond-ng" />
+                                    <img src="assets/demo/images/dashboard/graph-cancelled.svg" alt="diamond-vue" />
                                 </div>
                             </div>
                         </div>
@@ -374,7 +374,7 @@
 </template>
 
 <script>
-import ProductService from "../service/ProductService";
+import ProductService from '../service/ProductService';
 export default {
     data() {
         return {
@@ -384,31 +384,31 @@ export default {
             productsLastWeek: null,
             productService: null,
             cols: [
-                { field: "vin", header: "Vin" },
-                { field: "year", header: "Year" },
-                { field: "brand", header: "Brand" },
-                { field: "color", header: "Color" },
+                { field: 'vin', header: 'Vin' },
+                { field: 'year', header: 'Year' },
+                { field: 'brand', header: 'Brand' },
+                { field: 'color', header: 'Color' },
             ],
 
             items: [
                 {
-                    label: "Shipments",
+                    label: 'Shipments',
                     items: [
-                        { label: "Tracker", icon: "pi pi-compass" },
-                        { label: "Map", icon: "pi pi-map-marker" },
-                        { label: "Manage", icon: "pi pi-pencil" },
+                        { label: 'Tracker', icon: 'pi pi-compass' },
+                        { label: 'Map', icon: 'pi pi-map-marker' },
+                        { label: 'Manage', icon: 'pi pi-pencil' },
                     ],
                 },
             ],
 
             ordersChart: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [
                     {
-                        label: "New",
+                        label: 'New',
                         data: [2, 7, 20, 9, 16, 9, 5],
-                        backgroundColor: ["rgba(100, 181, 246, 0.2)"],
-                        borderColor: ["#64B5F6"],
+                        backgroundColor: ['rgba(100, 181, 246, 0.2)'],
+                        borderColor: ['#64B5F6'],
                         borderWidth: 3,
                         fill: true,
                     },
@@ -421,7 +421,7 @@ export default {
                 },
                 responsive: true,
                 hover: {
-                    mode: "index",
+                    mode: 'index',
                 },
                 scales: {
                     yAxes: [
@@ -436,16 +436,16 @@ export default {
             },
 
             orderWeek: [
-                { name: "This Week", code: "0" },
-                { name: "Last Week", code: "1" },
+                { name: 'This Week', code: '0' },
+                { name: 'Last Week', code: '1' },
             ],
 
             revenueChart: {
-                labels: ["Direct", "Promoted", "Affiliate"],
+                labels: ['Direct', 'Promoted', 'Affiliate'],
                 datasets: [
                     {
                         data: [40, 35, 25],
-                        backgroundColor: ["#64B5F6", "#7986CB", "#4DB6AC"],
+                        backgroundColor: ['#64B5F6', '#7986CB', '#4DB6AC'],
                     },
                 ],
             },
@@ -470,14 +470,14 @@ export default {
                 [2, 2, 20, 4, 17, 16, 20],
             ];
 
-            this.ordersChart.datasets[0].data = dataSet[parseInt(event.currentTarget.getAttribute("data-index"))];
-            this.ordersChart.datasets[0].label = event.currentTarget.getAttribute("data-label");
-            this.ordersChart.datasets[0].borderColor = event.currentTarget.getAttribute("data-stroke");
-            this.ordersChart.datasets[0].backgroundColor = event.currentTarget.getAttribute("data-fill");
+            this.ordersChart.datasets[0].data = dataSet[parseInt(event.currentTarget.getAttribute('data-index'))];
+            this.ordersChart.datasets[0].label = event.currentTarget.getAttribute('data-label');
+            this.ordersChart.datasets[0].borderColor = event.currentTarget.getAttribute('data-stroke');
+            this.ordersChart.datasets[0].backgroundColor = event.currentTarget.getAttribute('data-fill');
         },
 
         recentSales($event) {
-            if ($event.value.code === "0") {
+            if ($event.value.code === '0') {
                 this.products = this.productsThisWeek;
             } else {
                 this.products = this.productsLastWeek;
@@ -501,9 +501,9 @@ export default {
         },
 
         formatCurrency(value) {
-            return value.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
+            return value.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
             });
         },
     },

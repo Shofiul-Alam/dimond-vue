@@ -1,7 +1,7 @@
 <template>
     <div class="layout-sidebar">
         <router-link to="/" class="logo">
-            <img id="app-logo" class="logo-image" src="assets/layout/images/logo-white.svg" alt="diamond-ng" />
+            <img id="app-logo" class="logo-image" src="assets/layout/images/logo-white.svg" alt="diamond-vue" />
             <span class="app-name">DIAMOND</span>
         </router-link>
 
