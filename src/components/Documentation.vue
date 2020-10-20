@@ -58,8 +58,8 @@ npm run serve
     &lt;div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick"&gt;
         &lt;div class="layout-content-wrapper"&gt;
             &lt;AppTopBar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick"
-                        @search-click="onSearchClick" @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick"
-                        @right-menu-click="onRightMenuClick"&gt;&lt;/AppTopBar&gt;
+                        @search-click="toggleSearch" @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick"
+                        @right-menu-click="onRightMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick"&gt;&lt;/AppTopBar&gt;
 
             &lt;div class="layout-content"&gt;
                 &lt;router-view/&gt;
@@ -76,7 +76,7 @@ npm run serve
                     @config-button-click="onConfigButtonClick" @menu-theme-change="changeMenuTheme" @component-theme-change="changeStyleSheetUrl"
                     @menu-mode-change="changeMenuMode" @color-scheme-change="changeColorScheme"&gt;&lt;/AppConfig&gt;
 
-        &lt;AppSearch :search="search"/&gt;
+        &lt;AppSearch :searchActive="searchActive" @search-click="onSearchClick" @search-hide="onSearchHide"/&gt;
 
         &lt;div class="layout-content-mask"&gt;&lt;/div&gt;
     &lt;/div&gt;
@@ -112,6 +112,7 @@ data() {
                     {label: "Tree", icon: "pi pi-fw pi-share-alt", to: "/tree"},
                     {label: "Panel", icon: "pi pi-fw pi-tablet", to: "/panel"},
                     {label: "Overlay", icon: "pi pi-fw pi-clone", to: "/overlay"},
+                    {label: "Media", icon: "pi pi-fw pi-image", to: "/media"},
                     {label: "Menu", icon: "pi pi-fw pi-bars", to: "/menu"},
                     {label: "Message", icon: "pi pi-fw pi-comment", to: "/messages"},
                     {label: "File", icon: "pi pi-fw pi-file", to: "/file"},
