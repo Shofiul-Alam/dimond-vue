@@ -344,6 +344,7 @@ export default {
         hideOverlayMenu() {
             this.overlayMenuActive = false;
             this.staticMenuMobileActive = false;
+            this.unblockBodyScroll();
         },
 
         blockBodyScroll() {
