@@ -72,9 +72,7 @@ npm run serve
 
         &lt;AppRightMenu :rightPanelMenuActive="rightPanelMenuActive" @rightmenu-click="onRightMenuClick"&gt;&lt;/AppRightMenu&gt;
 
-        &lt;AppConfig :layoutMode="layoutMode" :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick"
-                    @config-button-click="onConfigButtonClick" @menu-theme-change="changeMenuTheme" @component-theme-change="changeStyleSheetUrl"
-                    @menu-mode-change="changeMenuMode" @color-scheme-change="changeColorScheme"&gt;&lt;/AppConfig&gt;
+        &lt;AppConfig :configActive="configActive" :layoutMode.sync="layoutMode" :menuTheme.sync="menuTheme" :colorScheme.sync="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"&gt;&lt;/AppConfig&gt;
 
         &lt;AppSearch :searchActive="searchActive" @search-click="onSearchClick" @search-hide="onSearchHide"/&gt;
 
@@ -231,7 +229,7 @@ npm install	primeicons@latest --save
 <CodeHighlight>
 import 'primevue/resources/primevue.min.css';   	//required: PrimeVue components
 import 'primeicons/primeicons.css';	 				//required: PrimeIcons 					
-import 'styles.scss'; 	                            //your styles and overrides 
+import './App.scss'; 	                            //your styles and overrides 
 </CodeHighlight>
 
                 <p>Last part is adding theme and layout css files, in the CLI app they are defined using link tags in index.html so the demo can switch them on the fly by changing the path however

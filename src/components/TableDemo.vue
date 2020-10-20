@@ -24,33 +24,39 @@
 					<Column selectionMode="multiple" headerStyle="width: 3em"></Column>
 					<Column field="name" header="Name" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">Name</span>
 							{{slotProps.data.name}}
 						</template>
 					</Column>
 					<Column header="Country" :sortable="true" sortField="country.name" filterField="country.name">
 						<template #body="slotProps">
+							<span class="p-column-title">Country</span>
 							<img src="assets/demo/flags/flag_placeholder.png" :alt="slotProps.data.country.name" :class="'flag flag-' + slotProps.data.country.code" width="30" />
 							<span style="margin-left: .5em; vertical-align: middle" class="image-text">{{slotProps.data.country.name}}</span>
 						</template>
 					</Column>
 					<Column header="Representative" :sortable="true" sortField="representative.name" filterField="representative.name">
 						<template #body="slotProps">
+							<span class="p-column-title">Representative</span>
 							<img :alt="slotProps.data.representative.name" :src="'assets/demo/images/avatar/' + slotProps.data.representative.image" width="32" style="vertical-align: middle" />
 							<span style="margin-left: .5em; vertical-align: middle" class="image-text">{{slotProps.data.representative.name}}</span>
 						</template>
 					</Column>
 					<Column field="date" header="Date" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">Date</span>
 							<span>{{slotProps.data.date}}</span>
 						</template>
 					</Column>
 					<Column field="status" header="Status" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">Status</span>
 							<span :class="'customer-badge status-' + slotProps.data.status">{{slotProps.data.status}}</span>
 						</template>
 					</Column>
 					<Column field="activity" header="Activity" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">Activity</span>
 							<ProgressBar :value="slotProps.data.activity" :showValue="false" />
 						</template>
 					</Column>
@@ -66,7 +72,7 @@
 			<div class="card">
 				<h4>Customized</h4>
 				<p>Scrollable table with gridlines (<mark>.p-datatable-gridlines</mark>), striped rows (<mark>.p-datatable-striped</mark>) and smaller paddings (<mark>p-datatable-sm</mark>).</p>
-				<DataTable :value="customer2" :paginator="true" class="p-datatable-striped p-datatable-responsive p-datatable-sm p-datatable-gridlines p-datatable-customers"
+				<DataTable :value="customer2" :paginator="true" class="p-datatable-striped p-datatable-sm p-datatable-gridlines p-datatable-customers"
 							:rows="10" dataKey="id" :rowHover="true" :selection.sync="selectedCustomers2" :filters="filters2" :loading="loading2">
 					<template #header>
 						<div class="table-header">
@@ -105,7 +111,12 @@
 							<span style="vertical-align: middle; margin-left: .5em">{{slotProps.data.representative.name}}</span>
 						</template>
 					</Column>
-					<Column field="date" header="Join Date" :sortable="true"></Column>
+					<Column field="date" header="Join Date" :sortable="true">
+						<template #body="slotProps">
+							<span class="p-column-title">Date</span>
+							<span>{{slotProps.data.date}}</span>
+						</template>
+					</Column>
 					<Column field="status" header="Status" :sortable="true">
 						<template #body="slotProps">
 							<span class="p-column-title">Status</span>
