@@ -266,7 +266,7 @@ import 'styles.scss'; 	                            //your styles and overrides
 					<li>pink-dark</li>
 					<li>pink-dim</li>
 					<li>purple-light</li>
-					<li>bluepurple-dark</li>
+					<li>purple-dark</li>
 					<li>purple-dim</li>
 					<li>teal-light</li>
 					<li>teal-dark</li>
@@ -391,7 +391,7 @@ $rightSidebarWidth: 16rem !default;
 $rightSidebarBg: #ffffff !default;
 </CodeHighlight>
 
-                <h5>sass/variables/theme/_theme_light</h5>
+                <h5>sass/variables/theme/_theme_light.scss</h5>
 				<p>Variables of the light component theme, see the <a href="https://www.primefaces.org/designer/api/primevue/2.0.1/">Theme Designer API</a> for documentation.</p>
 
 
