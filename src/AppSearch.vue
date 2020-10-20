@@ -1,6 +1,6 @@
 <template>
     <div class="layout-search">
-        <transition name="search-container" @after-enter="onAfterEnter">
+        <transition name="search-container" @enter="onEnter">
             <div v-show="searchActive" class="search-container" @click="onSearchContainerClick">
                 <i class="pi pi-search"></i>
                 <InputText ref="searchInput" type="text" name="search" placeholder="Search" @keydown="onInputKeydown" />
@@ -19,7 +19,7 @@ export default {
         }
     },
     methods: {
-        onAfterEnter() {
+        onEnter() {
             if (this.$refs.searchInput) {
                 this.$refs.searchInput.$el.focus();
             }
