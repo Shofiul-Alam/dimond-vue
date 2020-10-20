@@ -89,7 +89,7 @@ export default {
         },
         colorScheme: String,
         menuTheme: String,
-        layoutMode: String,
+        layoutMode: String
     },
     data() {
         return {
@@ -185,9 +185,9 @@ export default {
                 { name: "pink", color: "#EC407A" },
                 { name: "teal", color: "#26A69A" },
             ],
-            componentTheme: "blue",
+            logoColor: 'white',
             d_colorScheme: this.colorScheme,
-            d_menuMode: this.layoutMode,
+            d_menuMode: this.layoutMode
         };
     },
     computed: {
@@ -209,16 +209,8 @@ export default {
         },
     },
     methods: {
-        changeColorScheme(scheme) {
-            this.$emit("color-scheme-change", scheme);
-        },
-
-        changeMenuTheme(name, logoColor, componentTheme) {
-            this.$emit("menu-theme-change", "layout-sidebar-" + name, logoColor, componentTheme);
-        },
-
         changeComponentTheme(theme) {
-            this.$emit("component-theme-change", "theme-css", theme, 3);
+            this.changeStyleSheetUrl("theme-css", theme, 3);
         },
 
         onConfigButtonClick(event) {
@@ -231,8 +223,97 @@ export default {
         },
 
         changeMenuMode(mode) {
-            this.$emit("menu-mode-change", mode);
+            this.$emit('update:layoutMode', mode);
         },
+
+        changeMenuTheme(name, logoColor, componentTheme) {
+            this.$emit('update:menuTheme', 'layout-sidebar-' + name);
+            this.changeStyleSheetUrl("theme-css", componentTheme, 2);
+
+            const appLogoLink = document.getElementById("app-logo");
+            const appLogoUrl = `assets/layout/images/logo-${logoColor === 'dark' ? 'dark' : 'white'}.svg`;
+
+            if (appLogoLink) {
+                appLogoLink.src = appLogoUrl;
+            }
+            this.logoColor = logoColor;
+        },
+
+        changeColorScheme(scheme) {
+            this.$emit('update:colorScheme', scheme);
+            this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
+            this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
+            this.changeLogo();
+        },
+
+        changeStyleSheetUrl(id, value, from) {
+            const element = document.getElementById(id);
+            const urlTokens = element.getAttribute("href").split("/");
+
+            if (from === 1) {
+                // which function invoked this function
+                urlTokens[urlTokens.length - 1] = value;
+            } else if (from === 2) {
+                // which function invoked this function
+                if (value !== null) {
+                    urlTokens[urlTokens.length - 2] = value;
+                }
+            } else if (from === 3) {
+                // which function invoked this function
+                urlTokens[urlTokens.length - 2] = value;
+            }
+
+            const newURL = urlTokens.join("/");
+
+            this.replaceLink(element, newURL);
+        },
+
+        changeLogo() {
+            const appLogoLink = document.getElementById("app-logo");
+            const mobileLogoLink = document.getElementById("logo-mobile");
+            const invoiceLogoLink = document.getElementById("invoice-logo");
+            const footerLogoLink = document.getElementById("footer-logo");
+            const logoUrl = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? 'dark' : 'white'}.svg`;
+
+            if (appLogoLink) {
+                appLogoLink.src = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? this.logoColor : 'white'}.svg`;
+            }
+
+            if (mobileLogoLink) {
+                mobileLogoLink.src = logoUrl;
+            }
+            
+            if (invoiceLogoLink) {
+                invoiceLogoLink.src = logoUrl;
+            }
+            
+            if (footerLogoLink) {
+                footerLogoLink.src = logoUrl;
+            }
+        },
+
+        replaceLink(linkElement, href) {
+            if (this.isIE()) {
+                linkElement.setAttribute("href", href);
+            } else {
+                const id = linkElement.getAttribute("id");
+                const cloneLinkElement = linkElement.cloneNode(true);
+
+                cloneLinkElement.setAttribute("href", href);
+                cloneLinkElement.setAttribute("id", id + "-clone");
+
+                linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
+
+                cloneLinkElement.addEventListener("load", () => {
+                    linkElement.remove();
+                    cloneLinkElement.setAttribute("id", id);
+                });
+            }
+        },
+
+        isIE() {
+            return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
+        }
     },
 };
 </script>

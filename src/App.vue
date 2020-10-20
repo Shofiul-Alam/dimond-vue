@@ -1,5 +1,5 @@
 <template>
-    <div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick($event)">
+    <div :class="containerClass" :data-theme="colorScheme" @click="onDocumentClick($event)">
         <div class="layout-content-wrapper">
             <AppTopBar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick" @search-click="toggleSearch"
                 @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick" @right-menu-click="onRightMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick"></AppTopBar>
@@ -21,8 +21,7 @@
 
         <AppRightMenu :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightMenu>
 
-        <AppConfig :layoutMode="layoutMode" :configActive="configActive" :menuTheme="menuTheme" :colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
-            @menu-theme-change="changeMenuTheme" @component-theme-change="changeStyleSheetUrl" @menu-mode-change="changeMenuMode" @color-scheme-change="changeColorScheme"></AppConfig>
+        <AppConfig :configActive="configActive" :layoutMode.sync="layoutMode" :menuTheme.sync="menuTheme" :colorScheme.sync="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"></AppConfig>
 
         <AppSearch :searchActive="searchActive" @search-click="onSearchClick" @search-hide="onSearchHide"/>
 
@@ -334,10 +333,6 @@ export default {
             return window.innerWidth > 991;
         },
 
-        isMobile() {
-            return window.innerWidth <= 991;
-        },
-
         hideOverlayMenu() {
             this.overlayMenuActive = false;
             this.staticMenuMobileActive = false;
@@ -362,98 +357,6 @@ export default {
             else element.className = element.classList.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " ");
         },
 
-        changeMenuTheme(themeName, logoColor, componentTheme) {
-            this.menuTheme = themeName;
-            this.changeStyleSheetUrl("theme-css", componentTheme, 2);
-
-            const appLogoLink = document.getElementById("app-logo");
-            const appLogoUrl = `assets/layout/images/logo-${logoColor === 'dark' ? 'dark' : 'white'}.svg`;
-
-            if (appLogoLink) {
-                appLogoLink.src = appLogoUrl;
-            }
-        },
-
-        changeColorScheme(scheme) {
-            this.colorScheme = scheme;
-            this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
-            this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
-            this.changeLogo();
-        },
-
-        changeStyleSheetUrl(id, value, from) {
-            const element = document.getElementById(id);
-            const urlTokens = element.getAttribute("href").split("/");
-
-            if (from === 1) {
-                // which function invoked this function
-                urlTokens[urlTokens.length - 1] = value;
-            } else if (from === 2) {
-                // which function invoked this function
-                if (value !== null) {
-                    urlTokens[urlTokens.length - 2] = value;
-                }
-            } else if (from === 3) {
-                // which function invoked this function
-                urlTokens[urlTokens.length - 2] = value;
-            }
-
-            const newURL = urlTokens.join("/");
-
-            this.replaceLink(element, newURL);
-        },
-
-        changeLogo() {
-            const appLogoLink = document.getElementById("app-logo");
-            const mobileLogoLink = document.getElementById("logo-mobile");
-            const invoiceLogoLink = document.getElementById("invoice-logo");
-            const footerLogoLink = document.getElementById("footer-logo");
-            const logoUrl = `assets/layout/images/logo-${this.colorScheme === 'light' ? 'dark' : 'white'}.svg`;
-
-            if (appLogoLink) {
-                appLogoLink.src = logoUrl;
-            }
-
-            if (mobileLogoLink) {
-                mobileLogoLink.src = logoUrl;
-            }
-            
-            if (invoiceLogoLink) {
-                invoiceLogoLink.src = logoUrl;
-            }
-            
-            if (footerLogoLink) {
-                footerLogoLink.src = logoUrl;
-            }
-        },
-
-        replaceLink(linkElement, href) {
-            if (this.isIE()) {
-                linkElement.setAttribute("href", href);
-            } else {
-                const id = linkElement.getAttribute("id");
-                const cloneLinkElement = linkElement.cloneNode(true);
-
-                cloneLinkElement.setAttribute("href", href);
-                cloneLinkElement.setAttribute("id", id + "-clone");
-
-                linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
-
-                cloneLinkElement.addEventListener("load", () => {
-                    linkElement.remove();
-                    cloneLinkElement.setAttribute("id", id);
-                });
-            }
-        },
-
-        isIE() {
-            return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
-        },
-
-        changeMenuMode(mode) {
-            this.layoutMode = mode;
-        },
-
         onMenuItemClick(event) {
 			if (!event.item.items) {
 				EventBus.$emit('reset_active_index');
@@ -462,12 +365,13 @@ export default {
 			if (!event.item.items && this.isSlim()) {
                 this.menuActive = false;
             }
-		},
+        },
+        
 		onRootMenuItemClick() {
             this.menuActive = !this.menuActive;
         },
 
-        onSearchClick(){
+        onSearchClick() {
             this.searchClick = true;
         },
 

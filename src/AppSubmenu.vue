@@ -50,7 +50,7 @@ export default {
     },
     mounted() {
 		EventBus.$on('reset_active_index', () => {
-			if(this.layoutMode === 'slim') {
+			if (this.layoutMode === 'slim') {
 				this.activeIndex = null;
 			}
 		});
@@ -95,7 +95,7 @@ export default {
 
         isMobile() {
             return window.innerWidth <= 991;
-        },
+        }
     },
     components: {
         AppSubmenu: this,
