@@ -11,13 +11,7 @@
             <AppFooter/>
         </div>
 
-        <transition name="layout-menu-container">
-            <div class="layout-menu-wrapper" @click="onMenuClick">
-                <div class="menu-scroll-content">
-                    <AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"></AppMenu>
-                </div>
-            </div>
-        </transition>
+        <AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"></AppMenu>
 
         <AppRightMenu :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightMenu>
 
@@ -58,7 +52,6 @@ export default {
             rightMenuActive: false,
             configActive: false,
             configClick: false,
-            resetMenu: false,
             menu: [
                 {
                     label: "Favorites", icon: "pi pi-fw pi-home",
@@ -249,7 +242,9 @@ export default {
             this.notificationMenuClick = false;
             this.menuClick = false;
         },
-
+        onMenuClick() {
+            this.menuClick = true;
+        },
         onMenuButtonClick(event) {
             this.menuClick = true;
             this.topbarUserMenuActive = false;
@@ -273,90 +268,6 @@ export default {
 
             event.preventDefault();
         },
-
-        toggleSearch() {
-            this.searchActive = !this.searchActive;
-            this.searchClick = true;
-        },
-
-        onMenuClick() {
-            this.menuClick = true;
-            this.resetMenu = false;
-        },
-
-        onTopbarUserMenuButtonClick(event) {
-            this.userMenuClick = true;
-            this.topbarUserMenuActive = !this.topbarUserMenuActive;
-
-            this.hideOverlayMenu();
-
-            event.preventDefault();
-        },
-
-        onTopbarNotificationMenuButtonClick(event) {
-            this.notificationMenuClick = true;
-            this.topbarNotificationMenuActive = !this.topbarNotificationMenuActive;
-
-            this.hideOverlayMenu();
-
-            event.preventDefault();
-        },
-
-        onRightMenuButtonClick(event) {
-			this.rightMenuClick = true;
-			this.rightMenuActive = !this.rightMenuActive;
-			this.hideOverlayMenu();
-			event.preventDefault();
-		},
-		onRightMenuClick() {
-			this.rightMenuClick = true;
-		},
-
-        onConfigClick() {
-            this.configClick = true;
-        },
-
-        onConfigButtonClick() {
-            this.configActive = !this.configActive;
-            this.configClick = true;
-        },
-
-        isSlim() {
-            return this.layoutMode === "slim";
-        },
-
-        isOverlay() {
-            return this.layoutMode === "overlay";
-        },
-
-        isDesktop() {
-            return window.innerWidth > 991;
-        },
-
-        hideOverlayMenu() {
-            this.overlayMenuActive = false;
-            this.staticMenuMobileActive = false;
-            this.unblockBodyScroll();
-        },
-
-        blockBodyScroll() {
-            this.addClass(document.body, "blocked-scroll");
-        },
-
-        unblockBodyScroll() {
-            this.removeClass(document.body, "blocked-scroll");
-        },
-
-        addClass(element, className) {
-            if (element.classList) element.classList.add(className);
-            else element.className += " " + className;
-        },
-
-        removeClass(element, className) {
-            if (element.classList) element.classList.remove(className);
-            else element.className = element.classList.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " ");
-        },
-
         onMenuItemClick(event) {
 			if (!event.item.items) {
 				EventBus.$emit('reset_active_index');
@@ -366,18 +277,79 @@ export default {
                 this.menuActive = false;
             }
         },
-        
 		onRootMenuItemClick() {
             this.menuActive = !this.menuActive;
         },
+        onTopbarUserMenuButtonClick(event) {
+            this.userMenuClick = true;
+            this.topbarUserMenuActive = !this.topbarUserMenuActive;
 
+            this.hideOverlayMenu();
+
+            event.preventDefault();
+        },
+        onTopbarNotificationMenuButtonClick(event) {
+            this.notificationMenuClick = true;
+            this.topbarNotificationMenuActive = !this.topbarNotificationMenuActive;
+
+            this.hideOverlayMenu();
+
+            event.preventDefault();
+        },
+        toggleSearch() {
+            this.searchActive = !this.searchActive;
+            this.searchClick = true;
+        },
         onSearchClick() {
             this.searchClick = true;
         },
-
         onSearchHide() {
             this.searchActive = false;
             this.searchClick = false;
+        },
+        onRightMenuClick() {
+			this.rightMenuClick = true;
+		},
+        onRightMenuButtonClick(event) {
+			this.rightMenuClick = true;
+			this.rightMenuActive = !this.rightMenuActive;
+			this.hideOverlayMenu();
+			event.preventDefault();
+		},
+        onConfigClick() {
+            this.configClick = true;
+        },
+        onConfigButtonClick() {
+            this.configActive = !this.configActive;
+            this.configClick = true;
+        },
+        hideOverlayMenu() {
+            this.overlayMenuActive = false;
+            this.staticMenuMobileActive = false;
+            this.unblockBodyScroll();
+        },
+        blockBodyScroll() {
+            this.addClass(document.body, "blocked-scroll");
+        },
+        unblockBodyScroll() {
+            this.removeClass(document.body, "blocked-scroll");
+        },
+        addClass(element, className) {
+            if (element.classList) element.classList.add(className);
+            else element.className += " " + className;
+        },
+        removeClass(element, className) {
+            if (element.classList) element.classList.remove(className);
+            else element.className = element.classList.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " ");
+        },
+        isSlim() {
+            return this.layoutMode === "slim";
+        },
+        isOverlay() {
+            return this.layoutMode === "overlay";
+        },
+        isDesktop() {
+            return window.innerWidth > 991;
         }
     },
 };

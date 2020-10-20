@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-sidebar">
+    <div class="layout-sidebar" @click="onMenuClick">
         <router-link to="/" class="logo">
             <img id="app-logo" class="logo-image" src="assets/layout/images/logo-white.svg" alt="diamond-vue" />
             <span class="app-name">DIAMOND</span>
@@ -21,6 +21,9 @@ export default {
         active: Boolean
     },
     methods: {
+        onMenuClick(event) {
+            this.$emit('menu-click', event);
+        },
         onMenuItemClick(event) {
             this.$emit('menuitem-click', event);
         },

@@ -68,7 +68,7 @@ npm run serve
             &lt;AppFooter/&gt;
         &lt;/div&gt;
 
-        &lt;AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"&gt;&lt;/AppMenu&gt;
+        &lt;AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"&gt;&lt;/AppMenu&gt;
 
         &lt;AppRightMenu :rightPanelMenuActive="rightPanelMenuActive" @rightmenu-click="onRightMenuClick"&gt;&lt;/AppRightMenu&gt;
 

@@ -202,28 +202,22 @@ export default {
         changeComponentTheme(theme) {
             this.changeStyleSheetUrl("theme-css", theme, 3);
         },
-
         onConfigButtonClick(event) {
             this.$emit("config-button-click", event);
             event.preventDefault();
         },
-
         onConfigClick(event) {
             this.$emit("config-click", event);
         },
-
         onChange(value) {
             this.$appState.inputStyle = value;
         },
-
         onRippleChange(value) {
             this.$primevue.ripple = value;
         },
-
         changeMenuMode(mode) {
             this.$emit('update:layoutMode', mode);
         },
-
         changeMenuTheme(name, logoColor, componentTheme) {
             this.$emit('update:menuTheme', 'layout-sidebar-' + name);
             this.changeStyleSheetUrl("theme-css", componentTheme, 2);
@@ -236,14 +230,12 @@ export default {
             }
             this.logoColor = logoColor;
         },
-
         changeColorScheme(scheme) {
             this.$emit('update:colorScheme', scheme);
             this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
             this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
             this.changeLogo();
         },
-
         changeStyleSheetUrl(id, value, from) {
             const element = document.getElementById(id);
             const urlTokens = element.getAttribute("href").split("/");
@@ -265,7 +257,6 @@ export default {
 
             this.replaceLink(element, newURL);
         },
-
         changeLogo() {
             const appLogoLink = document.getElementById("app-logo");
             const mobileLogoLink = document.getElementById("logo-mobile");
@@ -289,7 +280,6 @@ export default {
                 footerLogoLink.src = logoUrl;
             }
         },
-
         replaceLink(linkElement, href) {
             if (this.isIE()) {
                 linkElement.setAttribute("href", href);
@@ -308,7 +298,6 @@ export default {
                 });
             }
         },
-
         isIE() {
             return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
         }

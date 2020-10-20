@@ -82,17 +82,14 @@ export default {
                 item: item,
             });
         },
-
         onMenuItemMouseEnter(index) {
             if (this.root && this.menuActive && this.layoutMode === "slim" && !this.isMobile()) {
                 this.activeIndex = index;
             }
         },
-
         visible(item) {
             return typeof item.visible === "function" ? item.visible() : item.visible !== false;
         },
-
         isMobile() {
             return window.innerWidth <= 991;
         }
