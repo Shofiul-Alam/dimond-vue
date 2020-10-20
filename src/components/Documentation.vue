@@ -1226,14 +1226,6 @@ $galleriaThumbnailNavigatorHeight:2rem !default;
             }
         }
     }
-    i {
-        background-color: #fcf2a7;
-        font-family: monaco,Consolas,Lucida Console,monospace;
-        font-weight: 700;
-        font-style: normal;
-        font-size: 14px;
-        padding: 2px;
-    }
     li {
         line-height: 1.5;
     }
