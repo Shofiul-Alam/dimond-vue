@@ -226,7 +226,7 @@ export default {
             }
 
             if (!this.menuClick) {
-                if (this.isHorizontal() || this.isSlim()) {
+                if (this.isSlim()) {
 					EventBus.$emit('reset_active_index');
 					this.menuActive = false;
                 }
@@ -328,10 +328,6 @@ export default {
 
         isOverlay() {
             return this.layoutMode === "overlay";
-        },
-
-        isHorizontal() {
-            return this.layoutMode === "horizontal";
         },
 
         isDesktop() {
@@ -463,7 +459,7 @@ export default {
 				EventBus.$emit('reset_active_index');
 				this.hideOverlayMenu();
 			}
-			if (!event.item.items && (this.isHorizontal() || this.isSlim())) {
+			if (!event.item.items && this.isSlim()) {
                 this.menuActive = false;
             }
 		},

@@ -50,7 +50,7 @@ export default {
     },
     mounted() {
 		EventBus.$on('reset_active_index', () => {
-			if((this.layoutMode === 'horizontal' || this.layoutMode === 'slim')) {
+			if(this.layoutMode === 'slim') {
 				this.activeIndex = null;
 			}
 		});
@@ -84,7 +84,7 @@ export default {
         },
 
         onMenuItemMouseEnter(index) {
-            if (this.root && this.menuActive && (this.layoutMode === 'horizontal' || this.layoutMode === "slim") && !this.isMobile()) {
+            if (this.root && this.menuActive && this.layoutMode === "slim" && !this.isMobile()) {
                 this.activeIndex = index;
             }
         },
