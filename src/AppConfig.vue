@@ -38,18 +38,18 @@
 
             <h5>Input Style</h5>
             <div class="p-field-radiobutton">
-                <RadioButton name="inputStyle" value="outlined" v-model="inputStyle" inputId="inputStyle1"></RadioButton>
-                <label for="inputStyle1">Outlined</label>
+                <RadioButton id="input_outlined" name="inputstyle" value="outlined" :modelValue="inputStyle" @input="onChange" />
+                <label for="input_outlined">Outlined</label>
             </div>
             <div class="p-field-radiobutton">
-                <RadioButton name="inputStyle" value="filled" v-model="inputStyle" inputId="inputStyle2"></RadioButton>
-                <label for="inputStyle2">Filled</label>
+                <RadioButton id="input_filled" name="inputstyle" value="filled" :modelValue="inputStyle" @input="onChange" />
+                <label for="input_filled">Filled</label>
             </div>
 
             <hr />
 
             <h5>Ripple Effect</h5>
-            <InputSwitch v-model="rippleActive"></InputSwitch>
+            <InputSwitch :value="rippleActive" @input="onRippleChange"  />
 
             <hr />
 
@@ -191,21 +191,11 @@ export default {
         };
     },
     computed: {
-        rippleActive: {
-            get() {
-                return this.$primevue.ripple;
-            },
-            set(value) {
-                this.$primevue.ripple = value;
-            },
+        rippleActive() {
+            return this.$primevue.ripple;
         },
-        inputStyle: {
-            get() {
-                return this.$appState.inputStyle;
-            },
-            set(value) {
-                this.$appState.inputStyle = value;
-            },
+        inputStyle() {
+            return this.$appState.inputStyle;
         },
     },
     methods: {
@@ -220,6 +210,14 @@ export default {
 
         onConfigClick(event) {
             this.$emit("config-click", event);
+        },
+
+        onChange(value) {
+            this.$appState.inputStyle = value;
+        },
+
+        onRippleChange(value) {
+            this.$primevue.ripple = value;
         },
 
         changeMenuMode(mode) {
@@ -282,11 +280,11 @@ export default {
             if (mobileLogoLink) {
                 mobileLogoLink.src = logoUrl;
             }
-            
+
             if (invoiceLogoLink) {
                 invoiceLogoLink.src = logoUrl;
             }
-            
+
             if (footerLogoLink) {
                 footerLogoLink.src = logoUrl;
             }
