@@ -369,11 +369,10 @@ export default {
             this.changeStyleSheetUrl("theme-css", componentTheme, 2);
 
             const appLogoLink = document.getElementById("app-logo");
+            const appLogoUrl = `assets/layout/images/logo-${logoColor === 'dark' ? 'dark' : 'white'}.svg`;
 
-            if (logoColor === "dark") {
-                appLogoLink.src = "assets/layout/images/logo-dark.svg";
-            } else {
-                appLogoLink.src = "assets/layout/images/logo-white.svg";
+            if (appLogoLink) {
+                appLogoLink.src = appLogoUrl;
             }
         },
 
@@ -381,20 +380,7 @@ export default {
             this.colorScheme = scheme;
             this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
             this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
-
-            const mobileLogoLink = document.getElementById("logo-mobile");
-            const invoiceLogoLink = document.getElementById("invoice-logo");
-            const footerLogoLink = document.getElementById("footer-logo");
-
-            if (scheme === "light") {
-                mobileLogoLink.src = "assets/layout/images/logo-dark.svg";
-                invoiceLogoLink.src = "assets/layout/images/logo-dark.svg";
-                footerLogoLink.src = "assets/layout/images/logo-dark.svg";
-            } else {
-                mobileLogoLink.src = "assets/layout/images/logo-white.svg";
-                invoiceLogoLink.src = "assets/layout/images/logo-white.svg";
-                footerLogoLink.src = "assets/layout/images/logo-white.svg";
-            }
+            this.changeLogo();
         },
 
         changeStyleSheetUrl(id, value, from) {
@@ -417,6 +403,30 @@ export default {
             const newURL = urlTokens.join("/");
 
             this.replaceLink(element, newURL);
+        },
+
+        changeLogo() {
+            const appLogoLink = document.getElementById("app-logo");
+            const mobileLogoLink = document.getElementById("logo-mobile");
+            const invoiceLogoLink = document.getElementById("invoice-logo");
+            const footerLogoLink = document.getElementById("footer-logo");
+            const logoUrl = `assets/layout/images/logo-${this.colorScheme === 'light' ? 'dark' : 'white'}.svg`;
+
+            if (appLogoLink) {
+                appLogoLink.src = logoUrl;
+            }
+
+            if (mobileLogoLink) {
+                mobileLogoLink.src = logoUrl;
+            }
+            
+            if (invoiceLogoLink) {
+                invoiceLogoLink.src = logoUrl;
+            }
+            
+            if (footerLogoLink) {
+                footerLogoLink.src = logoUrl;
+            }
         },
 
         replaceLink(linkElement, href) {

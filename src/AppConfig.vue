@@ -1,6 +1,6 @@
 <template>
     <div id="layout-config">
-        <a style="cursor: pointer" id="layout-config-button" class="layout-config-button" @click="onConfigButtonClick($event)">
+        <a id="layout-config-button" class="layout-config-button" @click="onConfigButtonClick($event)">
             <i class="pi pi-cog"></i>
         </a>
         <div class="layout-config" :class="{ 'layout-config-active': configActive }" @click="onConfigClick">
@@ -56,7 +56,7 @@
             <h5>Menu Themes</h5>
             <div class="layout-themes" v-if="d_colorScheme === 'light'">
                 <div v-for="theme in menuThemes" :key="theme.name">
-                    <a style="cursor: pointer" @click="changeMenuTheme(theme.name, theme.logoColor, theme.componentTheme)" :style="{ 'background-color': theme.color }"></a>
+                    <a style="cursor: pointer" @click="changeMenuTheme(theme.name, theme.logoColor, theme.componentTheme)" :title="theme.name" :style="{ 'background-color': theme.color }"></a>
                 </div>
             </div>
             <div v-if="d_colorScheme !== 'light'">
@@ -68,7 +68,7 @@
             <h5>Component Themes</h5>
             <div class="layout-themes">
                 <div v-for="theme in componentThemes" :key="theme.name">
-                    <a style="cursor: pointer" @click="changeComponentTheme(theme.name)" :style="{ 'background-color': theme.color }"></a>
+                    <a style="cursor: pointer" @click="changeComponentTheme(theme.name)" :title="theme.name" :style="{ 'background-color': theme.color }"></a>
                 </div>
             </div>
         </div>
