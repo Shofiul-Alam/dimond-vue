@@ -5,7 +5,14 @@
                 <i class="pi pi-chevron-left"></i>
             </a>
             <span class="topbar-separator"></span>
-            <app-breadcrumb></app-breadcrumb>
+           
+            <div class="layout-breadcrumb viewname" style="text-transform: uppercase">
+                <template v-if="$route.meta.breadcrumb">
+                    <span>{{$route.meta.breadcrumb[0].label}}</span>
+                </template>
+                <template v-else>$route.matched[0].meta.breadCrumb</template>
+            </div>
+
             <img id="logo-mobile" class="mobile-logo" src="assets/layout/images/logo-dark.svg" alt="diamond-layout" />
         </div>
 
@@ -120,12 +127,8 @@
 </template>
 
 <script>
-import AppBreadcrumb from "./AppBreadcrumb";
 export default {
     name: "AppTopbar",
-    components: {
-        AppBreadcrumb,
-    },
     props: {
         topbarNotificationMenuActive: Boolean,
         topbarUserMenuActive: Boolean,
