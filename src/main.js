@@ -79,7 +79,7 @@ Vue.directive('Tooltip', Tooltip);
 Vue.directive('ripple', Ripple);
 
 Vue.prototype.$appState = Vue.observable({ inputStyle: 'outlined' });
-Vue.prototype.$primevue = Vue.observable({ ripple: false });
+Vue.prototype.$primevue = Vue.observable({ ripple: true });
 
 Vue.config.productionTip = false;
 
