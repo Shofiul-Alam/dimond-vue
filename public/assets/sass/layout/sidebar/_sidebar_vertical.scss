@@ -65,6 +65,19 @@
         .layout-menu-tooltip {
             display: none;
         }
+
+        .layout-menu-leave-to {
+            max-height: 0;
+        }
+
+        .layout-menu-leave {
+            max-height: 1000px;
+        }
+
+        .layout-menu-leave-active {
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);
+        }
     }
 
     ul {
@@ -112,6 +125,19 @@
                     .layout-submenu-toggler {
                         transform: rotate(-180deg);
                     }
+                }
+
+                .layout-menu-enter {
+                    max-height: 0;
+                }
+
+                .layout-menu-enter-to {
+                    max-height: 1000px;
+                }
+                
+                .layout-menu-enter-active {
+                    overflow: hidden;
+                    transition: max-height 1s ease-in-out;
                 }
             }
         }

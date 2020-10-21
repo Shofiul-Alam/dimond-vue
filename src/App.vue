@@ -11,7 +11,7 @@
             <AppFooter/>
         </div>
 
-        <AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"></AppMenu>
+        <AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" :mobileMenuActive="staticMenuMobileActive" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"></AppMenu>
 
         <AppRightMenu :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightMenu>
 
@@ -226,8 +226,7 @@ export default {
                 if (this.overlayMenuActive || this.staticMenuMobileActive) {
                     this.hideOverlayMenu();
                 }
-
-                EventBus.$emit('reset_active_index');
+                
                 this.unblockBodyScroll();
             }
 

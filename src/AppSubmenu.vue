@@ -17,8 +17,8 @@
                 <div class="layout-root-menuitem" v-if="root">
                     <div class="layout-menuitem-root-text" style="text-transform: uppercase">{{ item.label }}</div>
                 </div>
-                <transition name="p-toggleable-content">
-                    <AppSubmenu v-show="item.items && (root ? true : activeIndex === i)" :items="visible(item) && item.items" :menuActive="menuActive" :layoutMode="layoutMode" :parentMenuItemActive="activeIndex === i" @menuitem-click="$emit('menuitem-click', $event)"></AppSubmenu>
+                <transition name="layout-menu">
+                    <AppSubmenu v-show="item.items && (root && (!isSlim() || (isSlim() && (mobileMenuActive || activeIndex !== null))) ? true : activeIndex === i)" :items="visible(item) && item.items" :menuActive="menuActive" :layoutMode="layoutMode" :parentMenuItemActive="activeIndex === i" @menuitem-click="$emit('menuitem-click', $event)"></AppSubmenu>
                 </transition>
             </li>
             <li class="menu-separator" :style="item.style" v-if="visible(item) && item.separator" :key="'separator' + i" role="separator"></li>
@@ -34,6 +34,7 @@ export default {
         items: Array,
         layoutMode: String,
         menuActive: Boolean,
+        mobileMenuActive: Boolean,
         root: {
             type: Boolean,
             default: false,
@@ -50,7 +51,7 @@ export default {
     },
     mounted() {
 		EventBus.$on('reset_active_index', () => {
-			if (this.layoutMode === 'slim') {
+			if (this.isSlim()) {
 				this.activeIndex = null;
 			}
 		});
@@ -92,6 +93,9 @@ export default {
         },
         isMobile() {
             return window.innerWidth <= 991;
+        },
+        isSlim() {
+            return this.layoutMode === 'slim';
         }
     },
     components: {

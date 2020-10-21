@@ -86,8 +86,28 @@
                         border-top-right-radius: $borderRadius;
                         border-bottom-right-radius: $borderRadius;
                         padding: 1rem;
-                        animation-duration: $animationDuration;
-                        animation-timing-function: $animationTimingFunction;
+
+                        &.layout-menu-enter,
+                        &.layout-menu-leave-to {
+                            opacity: 0;
+                            transform: translateX(20px);
+                        }
+    
+                        &.layout-menu-enter-to,
+                        &.layout-menu-leave {
+                            opacity: 1;
+                            transform: none;
+                        }
+    
+                        &.layout-menu-leave-active {
+                            transition: opacity .4s cubic-bezier(0.86, 0, 0.07, 1),
+                                transform .4s cubic-bezier(0.86, 0, 0.07, 1);
+                        }
+    
+                        &.layout-menu-enter-active {
+                            transition: opacity .4s cubic-bezier(0.86, 0, 0.07, 1),
+                                transform .4s cubic-bezier(0.86, 0, 0.07, 1);
+                        }
                     }
                 }
             }
