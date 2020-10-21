@@ -78,7 +78,7 @@ export default {
 <style scoped lang="scss">
 .icons-list {
 	text-align: center;
-	color: #6c757d;
+	color: var(--text-color);
 	.p-md-2 {
 		padding: 1em;
 	}
@@ -86,6 +86,7 @@ export default {
 .icons-list i {
 	font-size: 1.5rem;
 	margin-bottom: .5rem;
+	color: var(--text-color-secondary);
 }
 /deep/ pre[class*="language-"] {
 	&:before, &:after {
