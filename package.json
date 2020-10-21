@@ -28,7 +28,7 @@
         "node-sass": "^4.9.0",
         "primeflex": "2.0.0",
         "primeicons": "4.0.0",
-        "primevue": "2.2.0",
+        "primevue": "2.1.0",
         "prismjs": "^1.15.0",
         "sass-loader": "^7.1.0",
         "vue": "^2.6.10",
