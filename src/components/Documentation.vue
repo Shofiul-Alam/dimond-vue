@@ -220,7 +220,7 @@ data() {
 				<p>Install PrimeVue</p>
 
 <CodeHighlight>
-npm install primevue@2.1.0 --save 
+npm install primevue@2.2.0 --save 
 npm install	primeicons@latest --save
 </CodeHighlight>
 
