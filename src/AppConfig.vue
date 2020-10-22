@@ -6,15 +6,15 @@
         <div class="layout-config" :class="{ 'layout-config-active': configActive }" @click="onConfigClick">
             <h5>Menu Type</h5>
             <div class="p-field-radiobutton">
-                <RadioButton name="menuMode" value="static" v-model="d_menuMode" inputId="mode1" @change="changeMenuMode('static')"></RadioButton>
+                <RadioButton name="menuMode" value="static" v-model="d_menuMode" id="mode1" @change="changeMenuMode('static')"></RadioButton>
                 <label for="mode1">Static</label>
             </div>
             <div class="p-field-radiobutton">
-                <RadioButton name="menuMode" value="overlay" v-model="d_menuMode" inputId="mode2" @change="changeMenuMode('overlay')"></RadioButton>
+                <RadioButton name="menuMode" value="overlay" v-model="d_menuMode" id="mode2" @change="changeMenuMode('overlay')"></RadioButton>
                 <label for="mode2">Overlay</label>
             </div>
             <div class="p-field-radiobutton">
-                <RadioButton name="menuMode" value="slim" v-model="d_menuMode" inputId="mode3" @change="changeMenuMode('slim')"></RadioButton>
+                <RadioButton name="menuMode" value="slim" v-model="d_menuMode" id="mode3" @change="changeMenuMode('slim')"></RadioButton>
                 <label for="mode3">Slim</label>
             </div>
 
@@ -22,15 +22,15 @@
 
             <h5>Color Scheme</h5>
             <div class="p-field-radiobutton">
-                <RadioButton name="colorScheme" value="dark" v-model="d_colorScheme" inputId="theme1" @change="changeColorScheme('dark')"></RadioButton>
+                <RadioButton name="colorScheme" value="dark" v-model="d_colorScheme" id="theme1" @change="changeColorScheme('dark')"></RadioButton>
                 <label for="theme1">Dark</label>
             </div>
             <div class="p-field-radiobutton">
-                <RadioButton name="colorScheme" value="dim" v-model="d_colorScheme" inputId="theme2" @change="changeColorScheme('dim')"></RadioButton>
+                <RadioButton name="colorScheme" value="dim" v-model="d_colorScheme" id="theme2" @change="changeColorScheme('dim')"></RadioButton>
                 <label for="theme2">Dim</label>
             </div>
             <div class="p-field-radiobutton">
-                <RadioButton name="colorScheme" value="light" v-model="d_colorScheme" inputId="theme3" @change="changeColorScheme('light')"></RadioButton>
+                <RadioButton name="colorScheme" value="light" v-model="d_colorScheme" id="theme3" @change="changeColorScheme('light')"></RadioButton>
                 <label for="theme3">Light</label>
             </div>
 
