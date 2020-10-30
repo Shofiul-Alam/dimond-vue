@@ -7,7 +7,6 @@
             <div class="layout-content">
                 <router-view/>
             </div>
-
             <AppFooter/>
         </div>
 
@@ -15,7 +14,7 @@
 
         <AppRightMenu :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightMenu>
 
-        <AppConfig :configActive="configActive" :layoutMode.sync="layoutMode" :menuTheme.sync="menuTheme" :colorScheme.sync="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"></AppConfig>
+        <AppConfig v-model:configActive="configActive" v-model:layoutMode="layoutMode" v-model:menuTheme="menuTheme" v-model:colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"></AppConfig>
 
         <AppSearch :searchActive="searchActive" @search-click="onSearchClick" @search-hide="onSearchHide"/>
 
@@ -219,7 +218,7 @@ export default {
 
             if (!this.menuClick) {
                 if (this.isSlim()) {
-					EventBus.$emit('reset_active_index');
+					EventBus.emit('reset-active-index');
 					this.menuActive = false;
                 }
 
@@ -269,7 +268,7 @@ export default {
         },
         onMenuItemClick(event) {
 			if (!event.item.items) {
-				EventBus.$emit('reset_active_index');
+				EventBus.emit('reset-active-index');
 				this.hideOverlayMenu();
 			}
 			if (!event.item.items && this.isSlim()) {

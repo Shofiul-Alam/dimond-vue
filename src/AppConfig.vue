@@ -17,7 +17,6 @@
                 <RadioButton name="menuMode" value="slim" v-model="d_menuMode" id="mode3" @change="changeMenuMode('slim')"></RadioButton>
                 <label for="mode3">Slim</label>
             </div>
-
             <hr />
 
             <h5>Color Scheme</h5>
@@ -38,18 +37,18 @@
 
             <h5>Input Style</h5>
             <div class="p-field-radiobutton">
-                <RadioButton id="input_outlined" name="inputstyle" value="outlined" :modelValue="inputStyle" @input="onChange" />
+                <RadioButton id="input_outlined" name="inputstyle" value="outlined" :modelValue="inputStyle" @update:modelValue="onChange" />
                 <label for="input_outlined">Outlined</label>
             </div>
             <div class="p-field-radiobutton">
-                <RadioButton id="input_filled" name="inputstyle" value="filled" :modelValue="inputStyle" @input="onChange" />
+                <RadioButton id="input_filled" name="inputstyle" value="filled" :modelValue="inputStyle" @update:modelValue="onChange" />
                 <label for="input_filled">Filled</label>
             </div>
 
             <hr />
 
             <h5>Ripple Effect</h5>
-            <InputSwitch :value="rippleActive" @input="onRippleChange"  />
+            <InputSwitch :modelValue="rippleActive" @update:modelValue="onRippleChange"  />
 
             <hr />
 
@@ -78,6 +77,7 @@
 <script>
 export default {
     name: "AppConfig",
+    emits: ["config-button-click", "config-click", "update:layoutMode", "update:menuTheme", "update:colorScheme"],
     props: {
         configActive: {
             type: Boolean,
@@ -216,10 +216,10 @@ export default {
             this.$primevue.ripple = value;
         },
         changeMenuMode(mode) {
-            this.$emit('update:layoutMode', mode);
+            this.$emit("update:layoutMode", mode);
         },
         changeMenuTheme(name, logoColor, componentTheme) {
-            this.$emit('update:menuTheme', 'layout-sidebar-' + name);
+            this.$emit("update:menuTheme", "layout-sidebar-" + name);
             this.changeStyleSheetUrl("theme-css", componentTheme, 2);
 
             const appLogoLink = document.getElementById("app-logo");
@@ -231,7 +231,7 @@ export default {
             this.logoColor = logoColor;
         },
         changeColorScheme(scheme) {
-            this.$emit('update:colorScheme', scheme);
+            this.$emit("update:colorScheme", scheme);
             this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
             this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
             this.changeLogo();

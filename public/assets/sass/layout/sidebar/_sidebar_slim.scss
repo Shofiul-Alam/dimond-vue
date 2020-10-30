@@ -87,14 +87,14 @@
                         border-bottom-right-radius: $borderRadius;
                         padding: 1rem;
 
-                        &.layout-menu-enter,
+                        &.layout-menu-enter-from,
                         &.layout-menu-leave-to {
                             opacity: 0;
                             transform: translateX(20px);
                         }
     
                         &.layout-menu-enter-to,
-                        &.layout-menu-leave {
+                        &.layout-menu-leave-from {
                             opacity: 1;
                             transform: none;
                         }

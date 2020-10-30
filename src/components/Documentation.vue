@@ -3,45 +3,51 @@
         <div class="p-col-12">
             <div class="card docs">
                 <h4>Current Version</h4>
-                <p>Vue 2.6.11 and PrimeVue 2.x</p>
+                <p>Vue 3.0.2 and PrimeVue 3.x</p>
 
                 <h4>Dependencies</h4>
 				<p>
 					Diamond has no direct dependency other than PrimeVue. More
 					information about dependencies is available at
-					<a href="https://www.primefaces.org/primevue-2-0-0-is-ready-for-primetime//">PrimeVue 2.0.0 Is Ready For PrimeTime</a>
+					<a href="https://www.primefaces.org/primevue-3-0-0-final-released-for-vue-3/">PrimeVue 3.0.0 Is Ready For PrimeTime</a>
 					article.
 				</p>
 
                 <h4>Getting Started</h4>
                 <p>Diamond is a true native application template for Vue and is distributed as a CLI project. In case CLI is not installed already, use the command below to set it up.</p>
-<CodeHighlight>
+<pre v-code>
+<code>
 npm install -g @vue/cli
 
 # OR
 
 yarn global add @vue/cli
-</CodeHighlight>
+
+</code></pre>
 
                 <p>Once CLI is ready in your system, extract the contents of the Diamond zip file distribution, cd to the directory and install the libraries from npm.</p>
 
-<CodeHighlight>
+<pre v-code>
+<code>
 cd diamond 
 npm install 
 npm run serve
-</CodeHighlight>
+
+</code></pre>
 
                 <p>The application should run at http://localhost:8080/, you may now start with the development of your application.</p>
 
 				<h4>Important CLI Commands</h4>
 				<p>Following commands are derived from CLI.</p>
 
-<CodeHighlight>
+<pre v-code>
+<code>
 "npm run serve": Starts the development server
 "npm run build": Builds the application for deployment.
 "npm run lint": Executes the lint checks.
 "npm run test:unit": Runs the tests.
-</CodeHighlight>
+
+</code></pre>
 
                 <h4>Structure</h4>
                 <p>Diamond consists of 3 main parts; the application layout, layout resources and theme resources for PrimeVue components. <i>App.vue</i> inside app folder is the html
@@ -52,8 +58,8 @@ npm run serve
                     <i>App.vue</i> component that implements the logic such as menu state, layout modes and other configurable options.
                 </p>
 
-<CodeHighlight>
-<template v-pre>
+<pre v-code>
+<code>
 &lt;template&gt;
     &lt;div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick"&gt;
         &lt;div class="layout-content-wrapper"&gt;
@@ -79,15 +85,16 @@ npm run serve
         &lt;div class="layout-content-mask"&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/template&gt;
-</template>
-</CodeHighlight>
+
+</code></pre>
 
                 <h4>Menu</h4>
                 <p>Menu is a separate component defined in <i>AppMenu.vue</i> file based on PrimeVue MenuModel API. In order to define the menuitems,
                     navigate to data section of <i>App.vue</i> file and define your own model as a nested structure using the menu property.
                     Here is the menu component from the demo application. Notice that menu object is bound to the model property of AppMenu component as shown above.</p>
 <div style="overflow: auto; height: 400px">
-<CodeHighlight lang="javascript">
+<pre v-code.script>
+<code>
 data() {
     return {
         menu : [
@@ -203,7 +210,8 @@ data() {
         ]
     }
 }
-</CodeHighlight>
+
+</code></pre>
 </div>
 
                 <h4>Integration with an Existing CLI Project</h4>
@@ -219,18 +227,22 @@ data() {
 
 				<p>Install PrimeVue</p>
 
-<CodeHighlight>
-npm install primevue@2.1.0 --save 
+<pre v-code>
+<code>
+npm install primevue@3.0.1 --save 
 npm install	primeicons@latest --save
-</CodeHighlight>
+
+</code></pre>
 
                 <p>Add PrimeVue CSS at styles section in main.js.</p>
 
-<CodeHighlight>
+<pre v-code>
+<code>
 import 'primevue/resources/primevue.min.css';   	//required: PrimeVue components
 import 'primeicons/primeicons.css';	 				//required: PrimeIcons 					
 import './App.scss'; 	                            //your styles and overrides 
-</CodeHighlight>
+
+</code></pre>
 
                 <p>Last part is adding theme and layout css files, in the CLI app they are defined using link tags in index.html so the demo can switch them on the fly by changing the path however
                     if this is not a requirement, you may also add them to the styles configuration above so they go inside the bundle.</p>
@@ -284,7 +296,8 @@ import './App.scss'; 	                            //your styles and overrides
 
                 <p>Here are the variables required to create a sample theme.</p>
 
-<CodeHighlight lang="css">
+<pre v-code.css>
+<code>
 $primaryColor: #2196F3; 
 $primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
 $primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default; 
@@ -295,19 +308,24 @@ $highlightBg: #E3F2FD;
 $highlightTextColor: #495057; 
 
 @import '../../sass/theme/_theme_light';
-</CodeHighlight>
+
+</code></pre>
 
                 <p>An example sass command to compile the css would be;</p>
 
-<CodeHighlight>
+<pre v-code>
+<code>
 sass src/assets/theme/mytheme/theme.scss:src/assets/theme/mytheme/theme.css
-</CodeHighlight>
+
+</code></pre>
 
                 <p>Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command
                     so that sass generates the file whenever you make a customization. This builds all css files whenever a change is made to any scss file.</p>
-<CodeHighlight>
+<pre v-code>
+<code>
 sass --watch public/assets:public/assets
-</CodeHighlight>
+
+</code></pre>
                 
                 <p>Same can also be applied to layout itself;</p>
 				<ul>
@@ -320,9 +338,11 @@ sass --watch public/assets:public/assets
 
 				<p>Here are the variables required to create a layout.</p>
 
-<CodeHighlight>
+<pre v-code>
+<code>
 @import '../../sass/layout/_layout';
-</CodeHighlight>
+
+</code></pre>
 
                 <h4>SASS Variables</h4>
 				<p>Both the theme and layout provides various variables to customize the design.</p>
@@ -330,7 +350,8 @@ sass --watch public/assets:public/assets
 				<h5>sass/variables/layout/_common.scss</h5>
 				<p>Common variables for light, dark and dim application layout.</p>
 
-<CodeHighlight lang="css">
+<pre v-code.css>
+<code>
 $fontSize:14px !default;
 $fontFamily:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !default;
 $transitionDuration:.2s !default;
@@ -340,12 +361,14 @@ $letterSpacing:normal !default;
 $borderRadius:4px !default;
 $tabletBreakpoint:991px !default;
 $phoneBreakpoint:576px !default;
-</CodeHighlight>
+
+</code></pre>
 
 
                 <h5>sass/variables/layout/_layout_light.scss</h5>
 				<p>Variables of the light theme layout.</p>
-<CodeHighlight lang="css">
+<pre v-code.css>
+<code>
 @import '_common';
 
 $bodyBg: #f8f9fa !default;
@@ -388,14 +411,16 @@ $footerBorder: 1px solid $dividerColor !default;
 //sidebar right
 $rightSidebarWidth: 16rem !default;
 $rightSidebarBg: #ffffff !default;
-</CodeHighlight>
+
+</code></pre>
 
                 <h5>sass/variables/theme/_theme_light.scss</h5>
 				<p>Variables of the light component theme, see the <a href="https://www.primefaces.org/designer/api/primevue/2.0.1/">Theme Designer API</a> for documentation.</p>
 
 
 <div style="height: 400px; overflow: auto">
-<CodeHighlight lang="css">
+<pre v-code.css>
+<code>
 //reused color variables
 $shade000:#ffffff !default;    //surface
 $shade100:#f8f9fa !default;    //header background
@@ -1128,7 +1153,7 @@ $galleriaThumbnailNavigatorHeight:2rem !default;
     --font-family:#{$fontFamily};
 }
 
-</CodeHighlight>
+</code></pre>
 </div>
 
                 <h4>Menu Modes</h4>
@@ -1140,9 +1165,11 @@ $galleriaThumbnailNavigatorHeight:2rem !default;
 				</ul>
 
 				<p>For example to create a horizontal menu, the div element should be in following form;</p>
-<CodeHighlight>
+<pre v-code>
+<code>
 &lt;div class="layout-wrapper layout-static"&gt;
-</CodeHighlight>
+
+</code></pre>
 
                 <h4>Menu Themes</h4>
 				<p>In addition to layout options, menu offer themes when the general color scheme is light. Menu themes are only available in light mode by design as large surfaces can emit too much brightness in dark mode. Available options for the menu themes are the following;</p>
@@ -1183,16 +1210,12 @@ $galleriaThumbnailNavigatorHeight:2rem !default;
 </template>
 
 <script>
-    import CodeHighlight from './CodeHighlight';
     export default {
-        components: {
-            'CodeHighlight': CodeHighlight
-        }
     }
 </script>
 
 <style scoped lang="scss">
-    /deep/ pre[class*="language-"] {
+    ::v-deep(pre[class*="language-"]) {
         &:before, &:after {
             display: none !important;
         }

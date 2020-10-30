@@ -15,6 +15,7 @@
 import AppSubmenu from "./AppSubmenu";
 export default {
     name: "AppMenu",
+    emits: ["menu-click", "menuitem-click", "root-menuitem-click"],
     props: {
         model: Array,
         layoutMode: String,
@@ -23,13 +24,13 @@ export default {
     },
     methods: {
         onMenuClick(event) {
-            this.$emit('menu-click', event);
+            this.$emit("menu-click", event);
         },
         onMenuItemClick(event) {
-            this.$emit('menuitem-click', event);
+            this.$emit("menuitem-click", event);
         },
 		onRootMenuItemClick(event) {
-			this.$emit('root-menuitem-click', event);
+			this.$emit("root-menuitem-click", event);
 		}
     },
     components: { AppSubmenu },

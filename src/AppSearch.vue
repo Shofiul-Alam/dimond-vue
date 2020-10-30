@@ -12,6 +12,7 @@
 <script>
 export default {
     name: "AppSearch",
+    emits: ["search-click", "search-hide"],
     props: {
         searchActive: {
             type: Boolean,
@@ -25,14 +26,14 @@ export default {
             }
         },
         onSearchContainerClick(event) {
-            this.$emit('search-click', event);
+            this.$emit("search-click", event);
         },
         onInputKeydown(event) {
             const key = event.which;
             
             //escape, tab and enter
             if (key === 27 || key === 9 || key === 13) {
-                this.$emit('search-hide', event);
+                this.$emit("search-hide", event);
             }
         }
     }

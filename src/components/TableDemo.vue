@@ -4,7 +4,7 @@
 			<div class="card">
 				<h4>Default</h4>
 				<p>Pagination, sorting, filtering and checkbox selection.</p>
-				<DataTable :value="customer1" :paginator="true" class="p-datatable-customers" :rows="10" dataKey="id" :rowHover="true" :selection.sync="selectedCustomers1"
+				<DataTable :value="customer1" :paginator="true" class="p-datatable-customers" :rows="10" dataKey="id" :rowHover="true" v-model:selection="selectedCustomers1"
 							:filters="filters1" :loading="loading1">
 					<template #header>
 						<div class="table-header">
@@ -73,7 +73,7 @@
 				<h4>Customized</h4>
 				<p>Scrollable table with gridlines (<mark>.p-datatable-gridlines</mark>), striped rows (<mark>.p-datatable-striped</mark>) and smaller paddings (<mark>p-datatable-sm</mark>).</p>
 				<DataTable :value="customer2" :paginator="true" class="p-datatable-striped p-datatable-sm p-datatable-gridlines p-datatable-customers"
-							:rows="10" dataKey="id" :rowHover="true" :selection.sync="selectedCustomers2" :filters="filters2" :loading="loading2">
+							:rows="10" dataKey="id" :rowHover="true" v-model:selection="selectedCustomers2" :filters="filters2" :loading="loading2">
 					<template #header>
 						<div class="table-header">
 							Customers
@@ -137,7 +137,7 @@
 			<div class="card">
 				<h4>Row Expand</h4>
 				<Toast />
-				<DataTable :value="products" :expandedRows.sync="expandedRows" dataKey="id" @row-expand="onRowExpand" @row-collapse="onRowCollapse">
+				<DataTable :value="products" v-model:expandedRows="expandedRows" dataKey="id" @row-expand="onRowExpand" @row-collapse="onRowCollapse">
 					<template #header>
 						<div class="table-header-container">
 							<Button icon="pi pi-plus" label="Expand All" @click="expandAll" class="p-mr-2" />
@@ -296,7 +296,7 @@
 </script>
 
 <style scoped lang="scss">
-/deep/ .p-progressbar {
+::v-deep(.p-progressbar) {
 	height: .5rem;
 	background-color: #D8DADC;
 	.p-progressbar-value {
@@ -310,7 +310,7 @@
 	display: flex;
 	justify-content: space-between;
 }
-/deep/ .p-datatable.p-datatable-customers {
+::v-deep(.p-datatable.p-datatable-customers) {
 	.p-datatable-header {
 		padding: 1rem;
 		text-align: left;
@@ -425,7 +425,7 @@
 	}
 }
 @media screen and (max-width: 960px) {
-	/deep/ .p-datatable {
+	::v-deep(.p-datatable) {
 		&.p-datatable-customers {
 			.p-datatable-thead > tr > th,
 			.p-datatable-tfoot > tr > td {

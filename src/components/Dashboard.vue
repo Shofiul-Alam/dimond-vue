@@ -170,14 +170,14 @@
                     <p>Your sales activity over time.</p>
 
                     <DataTable :value="products" :paginator="true" :rows="5">
-                        <Column field="id" header="ID" sortable></Column>
-                        <Column field="category" header="Category" sortable></Column>
-                        <Column field="price" header="Price" sortable>
+                        <Column field="id" header="ID" :sortable="true"></Column>
+                        <Column field="category" header="Category" :sortable="true"></Column>
+                        <Column field="price" header="Price" :sortable="true">
                             <template #body="slotProps">
                                 {{ formatCurrency(slotProps.data.price) }}
                             </template>
                         </Column>
-                        <Column field="inventoryStatus" header="Status" sortable>
+                        <Column field="inventoryStatus" header="Status" :sortable="true">
                             <template #body="slotProps">
                                 <span :class="'product-badge status-' + slotProps.data.inventoryStatus.toLowerCase()">{{ slotProps.data.inventoryStatus }}</span>
                             </template>
@@ -448,7 +448,7 @@ export default {
                         backgroundColor: ['#64B5F6', '#7986CB', '#4DB6AC'],
                     },
                 ],
-            },
+            }
         };
     },
     created() {

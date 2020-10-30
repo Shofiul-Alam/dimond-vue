@@ -128,6 +128,7 @@
 <script>
 export default {
     name: "AppTopbar",
+    emits: ["menu-button-click", "search-click", "topbar-notification", "topbar-user-menu", "right-menubutton-click"],
     props: {
         topbarNotificationMenuActive: Boolean,
         topbarUserMenuActive: Boolean,
@@ -137,7 +138,7 @@ export default {
             items: [],
         };
     },
-    destroyed() {
+    unmounted() {
         if (this.subscription) {
             this.subscription.unsubscribe();
         }

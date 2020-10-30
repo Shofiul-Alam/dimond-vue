@@ -5,42 +5,52 @@
 
 		<h5>Getting Started</h5>
 		<p>PrimeIcons use the pi pi-{icon} syntax such as pi pi-check. A standalone icon can be displayed using an element like i or span.</p>
-<CodeHighlight>
+<pre v-code>
+<code>
 &lt;i class="pi pi-check"&gt;&lt;/i&gt;
 &lt;i class="pi pi-times"&gt;&lt;/i&gt;
-</CodeHighlight>
+
+</code></pre>
 
 		<i class="pi pi-check" style="margin-right: .5rem"></i>
 		<i class="pi pi-times"></i>
 
 		<h5>Component Icons</h5>
 		<p>Components that have icon properties accept PrimeIcons with the pi pi-{icon} syntax.</p>
-<CodeHighlight>
+<pre v-code>
+<code>
 &lt;Button label="Confirm" icon="pi pi-check"&gt;&lt;/Button&gt;
-</CodeHighlight>
+
+</code></pre>
 
 		<Button label="Confirm" icon="pi pi-check"></Button>
 
 		<h5>Size</h5>
 		<p>Size of the icons can easily be changed using font-size property.</p>
 
-<CodeHighlight>
+<pre v-code>
+<code>
 &lt;i class="pi pi-check"&gt;&lt;/i&gt;
-</CodeHighlight>
+
+</code></pre>
 
 		<i class="pi pi-check"></i>
 
-<CodeHighlight>
+<pre v-code>
+<code>
 &lt;i class="pi pi-check" style="fontSize: 2rem"&gt;&lt;/i&gt;
-</CodeHighlight>
+
+</code></pre>
 
 		<i class="pi pi-check" style="fontSize: 2rem"></i>
 
 		<h5>Spinning Animation</h5>
 		<p>Special pi-spin class applies continuous rotation to an icon.</p>
-<CodeHighlight>
+<pre v-code>
+<code>
 &lt;i class="pi pi-spin pi-spinner" style="fontSize: 2rem"&gt;&lt;/i&gt;
-</CodeHighlight>
+
+</code></pre>
 
 		<i class="pi pi-spin pi-spinner" style="fontSize: 2rem"></i>
 
@@ -58,7 +68,6 @@
 </template>
 
 <script>
-import CodeHighlight from "../components/CodeHighlight";
 import axios from 'axios';
 export default {
 	data() {
@@ -68,9 +77,6 @@ export default {
 	},
 	mounted() {
 		axios.get('assets/demo/data/icons.json').then(res => this.icons = res.data.icons);
-	},
-	components: {
-		'CodeHighlight': CodeHighlight
 	}
 }
 </script>
@@ -88,37 +94,37 @@ export default {
 	margin-bottom: .5rem;
 	color: var(--text-color-secondary);
 }
-/deep/ pre[class*="language-"] {
-	&:before, &:after {
-		display: none !important;
-	}
-	code {
-		border-left: 10px solid var(--surface-d) !important;
-		box-shadow: none !important;
-		background: var(--surface-b) !important;
-		margin: 1em 0;
-		color: var(--text-color);
-		font-size: 14px;
-		.token {
-			&.tag,
-			&.keyword {
-				color: #2196F3 !important;
-			}
-			&.attr-name,
-			&.attr-string {
-				color: #2196F3 !important;
-			}
-			&.attr-value {
-				color: #4CAF50 !important;
-			}
-			&.punctuation {
-				color: var(--text-color);
-			}
-			&.operator,
-			&.string {
-				background: transparent;
-			}
-		}
-	}
-}
+::v-deep(pre[class*="language-"]) {
+        &:before, &:after {
+            display: none !important;
+        }
+        code {
+            border-left: 10px solid var(--surface-d) !important;
+            box-shadow: none !important;
+            background: var(--surface-b) !important;
+            margin: 1em 0;
+            color: var(--text-color);
+            font-size: 14px;
+            .token {
+                &.tag,
+                &.keyword {
+                    color: #2196F3 !important;
+                }
+                &.attr-name,
+                &.attr-string {
+                    color: #2196F3 !important;
+                }
+                &.attr-value {
+                    color: #4CAF50 !important;
+                }
+                &.punctuation {
+                    color: var(--text-color);
+                }
+                &.operator,
+                &.string {
+                    background: transparent;
+                }
+            }
+        }
+    }
 </style>

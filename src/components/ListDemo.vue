@@ -22,7 +22,7 @@
 								<div class="product-list-detail">
 									<div class="product-name">{{slotProps.data.name}}</div>
 									<div class="product-description">{{slotProps.data.description}}</div>
-									<Rating :value="slotProps.data.rating" :readonly="true" :cancel="false"></Rating>
+									<Rating :modelValue="slotProps.data.rating" :readonly="true" :cancel="false"></Rating>
 									<i class="pi pi-tag product-category-icon"></i><span class="product-category">{{slotProps.data.category}}</span>
 								</div>
 								<div class="product-list-action">
@@ -48,7 +48,7 @@
 									<img :src="'assets/demo/images/product/' + slotProps.data.image" :alt="slotProps.data.name"/>
 									<div class="product-name">{{slotProps.data.name}}</div>
 									<div class="product-description">{{slotProps.data.description}}</div>
-									<Rating :value="slotProps.data.rating" :readonly="true" :cancel="false"></Rating>
+									<Rating :modelValue="slotProps.data.rating" :readonly="true" :cancel="false"></Rating>
 								</div>
 								<div class="product-grid-item-bottom">
 									<span class="product-price">${{slotProps.data.price}}</span>
@@ -170,7 +170,7 @@
 	font-weight: 600;
 	vertical-align: middle;
 }
-/deep/ .product-list-item {
+::v-deep(.product-list-item) {
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-align: center;
@@ -225,7 +225,7 @@
 		color: #8A5340;
 	}
 }
-/deep/ .product-grid-item {
+::v-deep(.product-grid-item) {
 	margin: .5em;
 	border: 1px solid var(--surface-d);
 	.product-grid-item-top,
@@ -251,7 +251,7 @@
 	}
 }
 @media screen and (max-width: 576px) {
-/deep/	.product-list-item {
+	::v-deep(.product-list-item) {
 		-ms-flex-direction: column;
 		flex-direction: column;
 		-ms-flex-align: center;
