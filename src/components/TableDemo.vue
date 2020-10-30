@@ -145,24 +145,24 @@
 						</div>
 					</template>
 					<Column :expander="true" headerStyle="width: 3rem" />
-					<Column field="name" header="Name" sortable></Column>
+					<Column field="name" header="Name" :sortable="true"></Column>
 					<Column header="Image">
 						<template #body="slotProps">
 							<img :src="'assets/demo/images/product/' + slotProps.data.image" :alt="slotProps.data.image" class="product-image" />
 						</template>
 					</Column>
-					<Column field="price" header="Price" sortable>
+					<Column field="price" header="Price" :sortable="true">
 						<template #body="slotProps">
 							{{formatCurrency(slotProps.data.price)}}
 						</template>
 					</Column>
-					<Column field="category" header="Category" sortable></Column>
-					<Column field="rating" header="Reviews" sortable>
+					<Column field="category" header="Category" :sortable="true"></Column>
+					<Column field="rating" header="Reviews" :sortable="true">
 						<template #body="slotProps">
 							<Rating :value="slotProps.data.rating" :readonly="true" :cancel="false" />
 						</template>
 					</Column>
-					<Column field="inventoryStatus" header="Status" sortable>
+					<Column field="inventoryStatus" header="Status" :sortable="true">
 						<template #body="slotProps">
 							<span :class="'product-badge status-' + slotProps.data.inventoryStatus.toLowerCase()">{{slotProps.data.inventoryStatus}}</span>
 						</template>
@@ -171,15 +171,15 @@
 						<div class="orders-subtable">
 							<h5>Orders for {{slotProps.data.name}}</h5>
 							<DataTable :value="slotProps.data.orders">
-								<Column field="id" header="Id" sortable></Column>
-								<Column field="customer" header="Customer" sortable></Column>
-								<Column field="date" header="Date" sortable></Column>
-								<Column field="amount" header="Amount" sortable>
-									<template #body="slotProps" sortable>
+								<Column field="id" header="Id" :sortable="true"></Column>
+								<Column field="customer" header="Customer" :sortable="true"></Column>
+								<Column field="date" header="Date" :sortable="true"></Column>
+								<Column field="amount" header="Amount" :sortable="true">
+									<template #body="slotProps" :sortable="true">
 										{{formatCurrency(slotProps.data.amount)}}
 									</template>
 								</Column>
-								<Column field="status" header="Status" sortable>
+								<Column field="status" header="Status" :sortable="true">
 									<template #body="slotProps">
 										<span :class="'order-badge order-' + slotProps.data.status.toLowerCase()">{{slotProps.data.status}}</span>
 									</template>
