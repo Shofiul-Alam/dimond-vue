@@ -56,9 +56,11 @@
 
 		<h5>List of Icons</h5>
 		<p>Here is the current list of PrimeIcons, more icons are added periodically. You may also <a href="https://github.com/primefaces/primeicons/issues">request new icons</a> at the issue tracker.</p>
-
+		<div>
+			<InputText type="text" class="icon-filter" @input="onFilter($event)" placeholder="Search an icon" />
+		</div>
 		<div class="p-grid icons-list">
-			<div class="p-col-12 p-md-2" v-for="icon of icons" :key="icon.properties.name">
+			<div class="p-col-12 p-md-2" v-for="icon of filteredIcons" :key="icon.properties.name">
 				<i :class="'pi pi-' + icon.properties.name"></i>
 				<div>pi-{{icon.properties.name}}</div>
 			</div>
@@ -72,16 +74,46 @@ import axios from 'axios';
 export default {
 	data() {
 		return {
-			icons: null
+			icons: null,
+			filteredIcons: null
 		}
 	},
 	mounted() {
-		axios.get('assets/demo/data/icons.json').then(res => this.icons = res.data.icons);
+		axios.get('assets/demo/data/icons.json').then(res => {
+			let icons = res.data.icons;
+			icons.sort((icon1, icon2) => {
+				if(icon1.properties.name < icon2.properties.name)
+					return -1;
+				else if(icon1.properties.name < icon2.properties.name)
+					return 1;
+				else
+					return 0;
+			});
+			this.icons = icons;
+			this.filteredIcons = icons;
+		});
+	},
+	methods: {
+		onFilter(event) {
+			if(!event.target.value) {
+				this.filteredIcons = this.icons;
+			} 
+			else {
+				this.filteredIcons = this.icons.filter( it => {
+					return it.icon.tags[0].includes(event.target.value);
+				});
+			}
+		}
 	}
 }
 </script>
 
 <style scoped lang="scss">
+.icon-filter {
+	width: 100%;
+	padding: 1rem;
+	margin: 1rem 0 1.5rem 0;
+}
 .icons-list {
 	text-align: center;
 	color: var(--text-color);
