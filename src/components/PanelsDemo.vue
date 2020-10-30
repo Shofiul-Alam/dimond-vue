@@ -23,7 +23,7 @@
 		<div class="p-col-12 p-md-6">
 			<div class="card">
 				<h5>AccordionPanel</h5>
-				<Accordion>
+				<Accordion  :activeIndex="0">
 					<AccordionTab header="Header I" :active="true">
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 							Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -90,7 +90,8 @@
 			<Card>
 				<template v-slot:title>
 					<h5>Card</h5>
-					<Button icon="pi pi-plus" class="p-button-text"/>
+					<Button icon="pi pi-plus" class="p-button-text" @click="toggle"/>
+					<Menu id="config_menu" ref="menu" :model="cardMenu" :popup="true" />
 				</template>
 
 				<template v-slot:subtitle>
@@ -129,7 +130,17 @@
 						label: 'Home Page',
 						icon: 'pi pi-home'
 					},
+				],
+				cardMenu:  [
+					{ label: 'Save', icon: 'pi pi-fw pi-check' },
+					{ label: 'Update', icon: 'pi pi-fw pi-refresh' },
+					{ label: 'Delete', icon: 'pi pi-fw pi-trash' },
 				]
+			}
+		},
+		methods: {
+			toggle() {
+				this.$refs.menu.toggle(event);
 			}
 		}
 	}
