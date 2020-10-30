@@ -159,7 +159,7 @@
 					<Column field="category" header="Category" :sortable="true"></Column>
 					<Column field="rating" header="Reviews" :sortable="true">
 						<template #body="slotProps">
-							<Rating :value="slotProps.data.rating" :readonly="true" :cancel="false" />
+							<Rating :modelValue="slotProps.data.rating" :readonly="true" :cancel="false" />
 						</template>
 					</Column>
 					<Column field="inventoryStatus" header="Status" :sortable="true">
