@@ -83,8 +83,6 @@ router.beforeEach(function(to, from, next) {
     next();
 });
 
-// const app = createApp(App);
-
 import Access from './pages/Access';
 import Error from './pages/Error';
 import Login from './pages/Login';
