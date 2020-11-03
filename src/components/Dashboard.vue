@@ -85,65 +85,29 @@
                     <div class="p-grid">
                         <div class="p-col-12">
                             <div id="order-tabs-container" class="p-grid order-tabs">
-                                <div
-                                    class="order-tab order-tab-new p-col-6 p-md-3"
-                                    @click="
-                                        changeDataset($event);
-                                        refreshDataset($event);
-                                    "
-                                    data-label="New Orders"
-                                    data-index="0"
-                                    data-stroke="#BBDEFB"
-                                    data-fill="rgba(100, 181, 246, 0.2)"
-                                >
+                                <div class="order-tab order-tab-new p-col-6 p-md-3" @click="changeDataset($event); refreshDataset($event);"
+                                    data-label="New Orders" data-index="0" data-stroke="#BBDEFB" data-fill="rgba(100, 181, 246, 0.2)" >
                                     <i class="pi pi-plus-circle"></i>
                                     <span class="order-label">New</span>
                                     <i class="stat-detail-icon icon-arrow-right-circle"></i>
                                     <img src="assets/demo/images/dashboard/graph-new.svg" alt="diamond-vue" />
                                 </div>
-                                <div
-                                    class="order-tab order-tab-completed p-col-6 p-md-3"
-                                    @click="
-                                        changeDataset($event);
-                                        refreshDataset($event);
-                                    "
-                                    data-label="Completed Orders"
-                                    data-index="1"
-                                    data-stroke="#C5CAE9"
-                                    data-fill="rgba(121, 134, 203, 0.2)"
-                                >
+                                <div class="order-tab order-tab-completed p-col-6 p-md-3" @click="changeDataset($event); refreshDataset($event);"
+                                    data-label="Completed Orders" data-index="1" data-stroke="#C5CAE9" data-fill="rgba(121, 134, 203, 0.2)">
                                     <i class="pi pi-check-circle"></i>
                                     <span class="order-label">Completed</span>
                                     <i class="stat-detail-icon icon-arrow-right-circle"></i>
                                     <img src="assets/demo/images/dashboard/graph-completed.svg" alt="diamond-vue" />
                                 </div>
-                                <div
-                                    class="order-tab order-tab-refunded p-col-6 p-md-3"
-                                    @click="
-                                        changeDataset($event);
-                                        refreshDataset($event);
-                                    "
-                                    data-label="Refunded Orders"
-                                    data-index="2"
-                                    data-stroke="#B2DFDB"
-                                    data-fill="rgba(224, 242, 241, 0.5)"
-                                >
+                                <div class="order-tab order-tab-refunded p-col-6 p-md-3" @click="changeDataset($event); refreshDataset($event);" 
+                                        data-label="Refunded Orders" data-index="2" data-stroke="#B2DFDB" data-fill="rgba(224, 242, 241, 0.5)">
                                     <i class="pi pi-refresh"></i>
                                     <span class="order-label">Refunded</span>
                                     <i class="stat-detail-icon icon-arrow-right-circle"></i>
                                     <img src="assets/demo/images/dashboard/graph-refunded.svg" alt="diamond-vue" />
                                 </div>
-                                <div
-                                    class="order-tab order-tab-cancelled p-col-6 p-md-3"
-                                    @click="
-                                        changeDataset($event);
-                                        refreshDataset($event);
-                                    "
-                                    data-label="Cancelled Orders"
-                                    data-index="3"
-                                    data-stroke="#B2EBF2"
-                                    data-fill="rgba(224, 247, 250, 0.5)"
-                                >
+                                <div class="order-tab order-tab-cancelled p-col-6 p-md-3" @click="changeDataset($event);  refreshDataset($event);"
+                                    data-label="Cancelled Orders" data-index="3" data-stroke="#B2EBF2" data-fill="rgba(224, 247, 250, 0.5)">
                                     <i class="pi pi-times-circle"></i>
                                     <span class="order-label">Cancelled</span>
                                     <i class="stat-detail-icon icon-arrow-right-circle"></i>
@@ -426,10 +390,7 @@ export default {
                 scales: {
                     yAxes: [
                         {
-                            ticks: {
-                                min: 0,
-                                max: 20,
-                            },
+                            ticks: { min: 0, max: 20},
                         },
                     ],
                 },

@@ -61,36 +61,16 @@ export default {
 				datasets: [
 					{
 						data: [540, 325, 702, 421],
-						backgroundColor: [
-							'#0F97C7',
-							'#b944d6',
-							'#e2841a',
-							'#10b163'
-						]
+						backgroundColor: ['#0F97C7','#b944d6','#e2841a','#10b163']
 					}]
 			},
 			polarData: {
 				datasets: [{
-					data: [
-						11,
-						16,
-						7,
-						3
-					],
-					backgroundColor: [
-						'#0F97C7',
-						'#b944d6',
-						'#e2841a',
-						'#10b163'
-					],
+					data: [11,16,7,3],
+					backgroundColor: ['#0F97C7','#b944d6','#e2841a','#10b163'],
 					label: 'My dataset'
 				}],
-				labels: [
-					'Blue',
-					'Purple',
-					'Orange',
-					'Green'
-				]
+				labels: ['Blue','Purple','Orange','Green']
 			},
 			barData: {
 				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -111,19 +91,10 @@ export default {
 			},
 			doughnutData: {
 				labels: ['A','B','C'],
-				datasets: [
-					{
+				datasets: [{
 						data: [300, 50, 100],
-						backgroundColor: [
-							"#e2841a",
-							"#0F97C7",
-							"#10b163"
-						],
-						hoverBackgroundColor: [
-							"#edb575",
-							"#6fc0dd",
-							"#6fd0a1"
-						]
+						backgroundColor: ["#e2841a","#0F97C7","#10b163"],
+						hoverBackgroundColor: ["#edb575","#6fc0dd","#6fd0a1"]
 					}]
 			},
 			radarData: {
