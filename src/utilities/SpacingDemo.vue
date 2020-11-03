@@ -11,9 +11,9 @@
                 <p>The classes modify the margins and use the <mark>p-m{position}-{value}</mark> syntax whereas for responsive
                     values <mark>p-m{position}-{breakpoint}-{value}</mark> format is used.</p>
                 <pre>
-&lt;div class="p-mb-2"&gt;&lt;/i&gt;
-&lt;div class="p-mt-4"&gt;&lt;/i&gt;
-&lt;div class="p-m-1 p-m-lg-2"&gt;&lt;/i&gt;
+&lt;div class="p-mb-2"&gt;&lt;/div&gt;
+&lt;div class="p-mt-4"&gt;&lt;/div&gt;
+&lt;div class="p-m-1 p-m-lg-2"&gt;&lt;/div&gt;
 </pre>
                 <h5>Position</h5>
                 <p>Position can either be either of the 4 sides, the x-y axis or blank for the shortand of all sides.</p>

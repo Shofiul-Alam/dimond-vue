@@ -33,13 +33,13 @@
 						<Button type="button" label="DataTable" @click="toggleDataTable" class="p-button-success"/>
 						<OverlayPanel ref="op2" appendTo="body" :showCloseIcon="true" id="overlay_panel" style="width: 450px">
 							<DataTable :value="products" v-model:selection="selectedProduct" selectionMode="single" :paginator="true" :rows="5" @row-select="onProductSelect">
-								<Column field="name" header="Name" sortable></Column>
+								<Column field="name" header="Name" :sortable="true"></Column>
 								<Column header="Image">
 									<template #body="slotProps">
 										<img :src="'assets/demo/images/product/' + slotProps.data.image" :alt="slotProps.data.image" class="product-image" />
 									</template>
 								</Column>
-								<Column field="price" header="Price" sortable>
+								<Column field="price" header="Price" :sortable="true">
 									<template #body="slotProps">
 										{{formatCurrency(slotProps.data.price)}}
 									</template>
