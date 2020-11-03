@@ -419,8 +419,6 @@
 		}
 		.dynamic-box-enter, .dynamic-box-leave-to {
 			opacity: 0;
-		}
-		.dynamic-box-enter, .dynamic-box-leave-to {
 			transform: translateX(30px);
 		}
 		p {
