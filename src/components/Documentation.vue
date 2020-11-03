@@ -78,7 +78,7 @@ npm run serve
 
         &lt;AppRightMenu :rightPanelMenuActive="rightPanelMenuActive" @rightmenu-click="onRightMenuClick"&gt;&lt;/AppRightMenu&gt;
 
-        &lt;AppConfig :configActive="configActive" :layoutMode.sync="layoutMode" :menuTheme.sync="menuTheme" :colorScheme.sync="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"&gt;&lt;/AppConfig&gt;
+        &lt;AppConfig v-model:configActive="configActive" v-model:layoutMode="layoutMode" v-model:menuTheme="menuTheme" v-model:colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"&gt;&lt;/AppConfig&gt;
 
         &lt;AppSearch :searchActive="searchActive" @search-click="onSearchClick" @search-hide="onSearchHide"/&gt;
 
