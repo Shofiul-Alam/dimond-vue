@@ -32,7 +32,7 @@
         <div class="p-col-12">
             <div class="card">
                 <h5>Galleria</h5>
-                <Galleria :value="images" :responsiveOptions="galleriaResponsiveOptions" :numVisible="7" :circular="true" :style="{ 'max-width': '800px', margin: 'auto' }">
+                <Galleria :value="images" :responsiveOptions="galleriaResponsiveOptions" :numVisible="7" :circular="true" containerStyle="max-width: 800px; margin: auto">
                     <template #item="slotProps">
                         <img :src="'assets/' + slotProps.item.itemImageSrc" :alt="slotProps.item.alt" style="width: 100%; display: block" />
                     </template>
