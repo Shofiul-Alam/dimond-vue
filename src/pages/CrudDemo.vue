@@ -17,7 +17,7 @@
 
 				<DataTable ref="dt" :value="products" v-model:selection="selectedProducts" dataKey="id" :paginator="true" :rows="10" :filters="filters"
 							paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]"
-							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products">
+							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" class="p-datatable-customers">
 					<template #header>
 						<div class="table-header">
 							<h5 class="p-m-0">Manage Products</h5>
@@ -277,6 +277,44 @@ export default {
 	&.status-lowstock {
 		background: #FEEDAF;
 		color: #8A5340;
+	}
+}
+@media screen and (max-width: 960px) {
+	::v-deep(.p-datatable) {
+		&.p-datatable-customers {
+			.p-datatable-thead > tr > th,
+			.p-datatable-tfoot > tr > td {
+				display: none !important;
+			}
+			.p-datatable-tbody > tr {
+				border-bottom: 1px solid var(--surface-d);
+				> td {
+					text-align: left;
+					display: block;
+					border: 0 none !important;
+					width: 100% !important;
+					float: left;
+					clear: left;
+					border: 0 none;
+					.p-column-title {
+						padding: .4rem;
+						min-width: 30%;
+						display: inline-block;
+						margin: -.4rem 1rem -.4rem -.4rem;
+						font-weight: bold;
+					}
+					.p-progressbar {
+						margin-top: .5rem;
+					}
+				}
+			}
+		}
+	}
+	::v-deep(.p-toolbar) {
+		flex-wrap: wrap;
+		.p-button {
+			margin-bottom: .25rem;
+		}
 	}
 }
 </style>
