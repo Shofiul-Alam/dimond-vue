@@ -493,7 +493,7 @@
 				display: none !important;
 			}
 			.p-datatable-tbody > tr {
-				border-bottom: 1px solid var(--layer-2);
+				border-bottom: 1px solid var(--surface-d);
 				> td {
 					text-align: left;
 					display: block;
