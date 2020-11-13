@@ -126,37 +126,4 @@ export default {
 	margin-bottom: .5rem;
 	color: var(--text-color-secondary);
 }
-::v-deep(pre[class*="language-"]) {
-        &:before, &:after {
-            display: none !important;
-        }
-        code {
-            border-left: 10px solid var(--surface-d) !important;
-            box-shadow: none !important;
-            background: var(--surface-b) !important;
-            margin: 1em 0;
-            color: var(--text-color);
-            font-size: 14px;
-            .token {
-                &.tag,
-                &.keyword {
-                    color: #2196F3 !important;
-                }
-                &.attr-name,
-                &.attr-string {
-                    color: #2196F3 !important;
-                }
-                &.attr-value {
-                    color: #4CAF50 !important;
-                }
-                &.punctuation {
-                    color: var(--text-color);
-                }
-                &.operator,
-                &.string {
-                    background: transparent;
-                }
-            }
-        }
-    }
 </style>
