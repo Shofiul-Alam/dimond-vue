@@ -4,7 +4,7 @@
 		<p>Diamond uses PrimeIcons v4.0, PrimeTek's new modern icon library.</p>
 
 		<h5>Getting Started</h5>
-		<p>PrimeIcons use the pi pi-{icon} syntax such as pi pi-check. A standalone icon can be displayed using an element like i or span.</p>
+		<p>PrimeIcons use the <strong>pi pi-{icon}</strong> syntax such as <strong>pi pi-check</strong>. A standalone icon can be displayed using an element like <i>i</i> or <i>span</i>.</p>
 <pre v-code>
 <code>
 &lt;i class="pi pi-check"&gt;&lt;/i&gt;
@@ -16,7 +16,7 @@
 		<i class="pi pi-times"></i>
 
 		<h5>Component Icons</h5>
-		<p>Components that have icon properties accept PrimeIcons with the pi pi-{icon} syntax.</p>
+		<p>Components that have icon properties accept PrimeIcons with the <strong>pi pi-{icon}</strong> syntax.</p>
 <pre v-code>
 <code>
 &lt;Button label="Confirm" icon="pi pi-check"&gt;&lt;/Button&gt;
