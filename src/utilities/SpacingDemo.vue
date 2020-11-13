@@ -8,13 +8,9 @@
                     an element's layout.</p>
 
                 <h5>Classes</h5>
-                <p>The classes modify the margins and use the <mark>p-m{position}-{value}</mark> syntax whereas for responsive
-                    values <mark>p-m{position}-{breakpoint}-{value}</mark> format is used.</p>
-                <pre>
-&lt;div class="p-mb-2"&gt;&lt;/div&gt;
-&lt;div class="p-mt-4"&gt;&lt;/div&gt;
-&lt;div class="p-m-1 p-m-lg-2"&gt;&lt;/div&gt;
-</pre>
+                <p>The spacing classes use the <i>p-&#123;property&#125;&#123;position&#125;-&#123;value&#125;</i> syntax whereas for responsive
+				values <i>p-&#123;property&#125;&#123;position&#125;-&#123;breakpoint&#125;-&#123;value&#125;</i> format is used.</p>
+                
                 <h5>Position</h5>
                 <p>Position can either be either of the 4 sides, the x-y axis or blank for the shortand of all sides.</p>
                 <ul>
@@ -113,5 +109,17 @@ export default {
 <style scoped>
 .demo-container {
 	border: 1px solid var(--surface-d);
+}
+i:not([class~="pi"]) {
+    background-color: var(--surface-b);
+    color: var(--primary-color);
+    font-family: Monaco, courier, monospace;
+    font-style: normal;
+    font-size: 12px;
+    padding: 2px 4px;
+    letter-spacing: .5px;
+    border-radius: 3px;
+    font-weight: 600;
+    margin: 0 2px;
 }
 </style>
