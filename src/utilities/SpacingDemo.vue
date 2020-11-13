@@ -10,6 +10,13 @@
                 <h5>Classes</h5>
                 <p>The spacing classes use the <i>p-&#123;property&#125;&#123;position&#125;-&#123;value&#125;</i> syntax whereas for responsive
 				values <i>p-&#123;property&#125;&#123;position&#125;-&#123;breakpoint&#125;-&#123;value&#125;</i> format is used.</p>
+    
+                <h5>Property</h5>
+                <p>Property can either be a margin or a padding.</p>
+                <ul>
+                    <li><b>m</b>: margin</li>
+                    <li><b>p</b>: padding</li>
+                </ul>
                 
                 <h5>Position</h5>
                 <p>Position can either be either of the 4 sides, the x-y axis or blank for the shortand of all sides.</p>
