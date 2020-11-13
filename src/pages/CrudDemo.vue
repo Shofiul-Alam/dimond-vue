@@ -67,7 +67,6 @@
 					</Column>
 					<Column field="inventoryStatus" header="Status" :sortable="true">
 						<template #body="slotProps">
-							<span class="p-column-title">InventoryStatus</span>
 							<span :class="'product-badge status-' + slotProps.data.inventoryStatus.toLowerCase()">{{slotProps.data.inventoryStatus}}</span>
 						</template>
 					</Column>
