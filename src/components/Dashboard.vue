@@ -134,15 +134,27 @@
                     <p>Your sales activity over time.</p>
 
                     <DataTable :value="products" class="p-datatable-customers" :paginator="true" :rows="5">
-                        <Column field="id" header="ID" :sortable="true"></Column>
-                        <Column field="category" header="Category" :sortable="true"></Column>
+                        <Column field="id" header="ID" :sortable="true">
+                            <template #body="slotProps">
+                                <span class="p-column-title">Id</span>
+                                {{slotProps.data.id}}
+                            </template>
+                        </Column>
+                        <Column field="category" header="Category" :sortable="true">
+                            <template #body="slotProps">
+                                <span class="p-column-title">Category</span>
+                                {{slotProps.data.category}}
+                            </template>
+                        </Column>
                         <Column field="price" header="Price" :sortable="true">
                             <template #body="slotProps">
+                                <span class="p-column-title">Price</span>
                                 {{ formatCurrency(slotProps.data.price) }}
                             </template>
                         </Column>
                         <Column field="inventoryStatus" header="Status" :sortable="true">
                             <template #body="slotProps">
+                                <span class="p-column-title">Status</span>
                                 <span :class="'product-badge status-' + slotProps.data.inventoryStatus.toLowerCase()">{{ slotProps.data.inventoryStatus }}</span>
                             </template>
                         </Column>

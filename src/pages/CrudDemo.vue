@@ -29,26 +29,45 @@
 					</template>
 
 					<Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
-					<Column field="code" header="Code" :sortable="true"></Column>
-					<Column field="name" header="Name" :sortable="true"></Column>
+					<Column field="code" header="Code" :sortable="true">
+						<template #body="slotProps">
+                            <span class="p-column-title">Code</span>
+                            {{slotProps.data.code}}
+                        </template>
+					</Column>
+					<Column field="name" header="Name" :sortable="true">
+						<template #body="slotProps">
+                            <span class="p-column-title">Name</span>
+                            {{slotProps.data.name}}
+                        </template>
+					</Column>
 					<Column header="Image">
 						<template #body="slotProps">
+							<span class="p-column-title">Image</span>
 							<img :src="'assets/demo/images/product/' + slotProps.data.image" :alt="slotProps.data.image" class="product-image" />
 						</template>
 					</Column>
 					<Column field="price" header="Price" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">Price</span>
 							{{formatCurrency(slotProps.data.price)}}
 						</template>
 					</Column>
-					<Column field="category" header="Category" :sortable="true"></Column>
+					<Column field="category" header="Category" :sortable="true">
+						<template #body="slotProps">
+                            <span class="p-column-title">Category</span>
+                            {{slotProps.data.category}}
+                        </template>
+					</Column>
 					<Column field="rating" header="Reviews" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">Reviews</span>
 							<Rating :modelValue="slotProps.data.rating" :readonly="true" :cancel="false" />
 						</template>
 					</Column>
 					<Column field="inventoryStatus" header="Status" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">InventoryStatus</span>
 							<span :class="'product-badge status-' + slotProps.data.inventoryStatus.toLowerCase()">{{slotProps.data.inventoryStatus}}</span>
 						</template>
 					</Column>

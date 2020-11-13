@@ -145,25 +145,38 @@
 						</div>
 					</template>
 					<Column :expander="true" headerStyle="width: 3rem" />
-					<Column field="name" header="Name" :sortable="true"></Column>
+					<Column field="name" header="Name" :sortable="true">
+						<template #body="slotProps">
+							<span class="p-column-title">Name</span>
+							{{slotProps.data.name}}
+						</template></Column>
 					<Column header="Image">
 						<template #body="slotProps">
+							<span class="p-column-title">Image</span>
 							<img :src="'assets/demo/images/product/' + slotProps.data.image" :alt="slotProps.data.image" class="product-image" />
 						</template>
 					</Column>
 					<Column field="price" header="Price" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">Price</span>
 							{{formatCurrency(slotProps.data.price)}}
 						</template>
 					</Column>
-					<Column field="category" header="Category" :sortable="true"></Column>
+					<Column field="category" header="Category" :sortable="true">
+						<template #body="slotProps">
+							<span class="p-column-title">Category</span>
+							{{slotProps.data.category}}
+						</template>
+					</Column>
 					<Column field="rating" header="Reviews" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">Reviews</span>
 							<Rating :modelValue="slotProps.data.rating" :readonly="true" :cancel="false" />
 						</template>
 					</Column>
 					<Column field="inventoryStatus" header="Status" :sortable="true">
 						<template #body="slotProps">
+							<span class="p-column-title">Status</span>
 							<span :class="'product-badge status-' + slotProps.data.inventoryStatus.toLowerCase()">{{slotProps.data.inventoryStatus}}</span>
 						</template>
 					</Column>
@@ -171,16 +184,33 @@
 						<div class="orders-subtable">
 							<h5>Orders for {{slotProps.data.name}}</h5>
 							<DataTable :value="slotProps.data.orders">
-								<Column field="id" header="Id" :sortable="true"></Column>
-								<Column field="customer" header="Customer" :sortable="true"></Column>
-								<Column field="date" header="Date" :sortable="true"></Column>
+								<Column field="id" header="Id" :sortable="true">
+									<template #body="slotProps">
+										<span class="p-column-title">Id</span>
+										{{slotProps.data.id}}
+									</template>
+								</Column>
+								<Column field="customer" header="Customer" :sortable="true">
+									<template #body="slotProps">
+										<span class="p-column-title">Customer</span>
+										{{slotProps.data.customer}}
+									</template>
+								</Column>
+								<Column field="date" header="Date" :sortable="true">
+									<template #body="slotProps">
+										<span class="p-column-title">Date</span>
+										{{slotProps.data.date}}
+									</template>
+								</Column>
 								<Column field="amount" header="Amount" :sortable="true">
 									<template #body="slotProps" :sortable="true">
+										<span class="p-column-title">Amount</span>
 										{{formatCurrency(slotProps.data.amount)}}
 									</template>
 								</Column>
 								<Column field="status" header="Status" :sortable="true">
 									<template #body="slotProps">
+										<span class="p-column-title">Status</span>
 										<span :class="'order-badge order-' + slotProps.data.status.toLowerCase()">{{slotProps.data.status}}</span>
 									</template>
 								</Column>
@@ -199,22 +229,43 @@
 		<div class="p-col-12">
 			<div class="card">
 				<h4>Row Group</h4>
-				<DataTable :value="customer3" rowGroupMode="subheader" groupRowsBy="representative.name" sortMode="single" sortField="representative.name" :sortOrder="1">
-					<Column field="representative.name" header="Representative"></Column>
-					<Column field="name" header="Name"></Column>
+				<DataTable :value="customer3" class="p-datatable-customers" rowGroupMode="subheader" groupRowsBy="representative.name" sortMode="single" sortField="representative.name" :sortOrder="1">
+					<Column field="representative.name" header="Representative">
+						<template #body="slotProps">
+							<span class="p-column-title">Representative</span>
+							{{slotProps.data.representative}}
+						</template></Column>
+					<Column field="name" header="Name">
+						<template #body="slotProps">
+							<span class="p-column-title">Name</span>
+							{{slotProps.data.name}}
+						</template>
+					</Column>
 					<Column field="country" header="Country">
 						<template #body="slotProps">
+							<span class="p-column-title">Country</span>
 							<img src="assets/demo/flags/flag_placeholder.png" :class="'flag flag-' + slotProps.data.country.code" width="30" />
 							<span style="margin-left: .5em; vertical-align: middle" class="image-text">{{slotProps.data.country.name}}</span>
 						</template>
 					</Column>
-					<Column field="company" header="Company"></Column>
+					<Column field="company" header="Company">
+						<template #body="slotProps">
+							<span class="p-column-title">Company</span>
+							{{slotProps.data.company}}
+						</template>
+					</Column>
 					<Column field="status" header="Status">
 						<template #body="slotProps">
+							<span class="p-column-title">Status</span>
 							<span :class="'customer-badge status-' + slotProps.data.status">{{slotProps.data.status}}</span>
 						</template>
 					</Column>
-					<Column field="date" header="Date"></Column>
+					<Column field="date" header="Date">
+						<template #body="slotProps">
+							<span class="p-column-title">Date</span>
+							{{slotProps.data.date}}
+						</template>
+					</Column>
 					<template #groupheader="slotProps">
 						<img :alt="slotProps.data.representative.name" :src="'assets/demo/images/avatar/' + slotProps.data.representative.image" width="32" style="vertical-align: middle" />
 						<span style="margin-left: .5em; vertical-align: middle" class="image-text">{{slotProps.data.representative.name}}</span>
@@ -296,6 +347,11 @@
 </script>
 
 <style scoped lang="scss">
+.p-paginator {
+	.p-paginator-current {
+		margin-left: auto;
+	}
+}
 ::v-deep(.p-progressbar) {
 	height: .5rem;
 	background-color: #D8DADC;
@@ -327,6 +383,11 @@
 	}
 	.p-dropdown-label:not(.p-placeholder) {
 		text-transform: uppercase;
+	}
+}
+.p-datatable.p-datatable-customers:not(.p-datatable-gridlines) {
+	.p-datatable-tbody > tr > td {
+		cursor: auto;
 	}
 }
 /* Responsive */
