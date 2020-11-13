@@ -1,7 +1,7 @@
 <template>
 	<div class="p-grid panel-demo">
 		<div class="p-col-12">
-			<div class="card">
+			<div class="card toolbar-demo">
 				<h5>Toolbar</h5>
 				<Toolbar>
 					<template v-slot:left>
@@ -169,8 +169,10 @@
 		margin-left: 0;
 	}
     @media screen and (max-width: 960px) {
-        .panel-demo{
-            overflow: auto;
+        .panel-demo {
+			.toolbar-demo.card {
+				overflow: auto;
+			}
         }
     }
 </style>

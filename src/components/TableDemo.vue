@@ -75,7 +75,7 @@
 				<DataTable :value="customer2" :paginator="true" class="p-datatable-striped p-datatable-sm p-datatable-gridlines p-datatable-customers"
 							:rows="10" dataKey="id" :rowHover="true" v-model:selection="selectedCustomers2" :filters="filters2" :loading="loading2">
 					<template #header>
-						<div class="table-header">
+						<div class="table-header p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
 							Customers
 							<span class="p-input-icon-left">
 							<i class="pi pi-search"/>
@@ -140,8 +140,8 @@
 				<DataTable :value="products" class="p-datatable-customers" v-model:expandedRows="expandedRows" dataKey="id" @row-expand="onRowExpand" @row-collapse="onRowCollapse">
 					<template #header>
 						<div class="table-header-container">
-							<Button icon="pi pi-plus" label="Expand All" @click="expandAll" class="p-mr-2" />
-							<Button icon="pi pi-minus" label="Collapse All" @click="collapseAll" />
+							<Button icon="pi pi-plus" label="Expand All" @click="expandAll" class="p-mr-2 p-mb-2" />
+							<Button icon="pi pi-minus" label="Collapse All" @click="collapseAll" class="p-mb-2"/>
 						</div>
 					</template>
 					<Column :expander="true" headerStyle="width: 3rem" />

@@ -297,6 +297,10 @@ export default {
 		color: #8A5340;
 	}
 }
+/* Responsive */
+.p-datatable-customers .p-datatable-tbody > tr > td .p-column-title {
+	display: none;
+}
 @media screen and (max-width: 960px) {
 	::v-deep(.p-datatable) {
 		&.p-datatable-customers {
