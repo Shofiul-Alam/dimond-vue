@@ -7,7 +7,7 @@
 				<DataTable :value="customer1" :paginator="true" class="p-datatable-customers" :rows="10" dataKey="id" :rowHover="true" v-model:selection="selectedCustomers1"
 							:filters="filters1" :loading="loading1">
 					<template #header>
-						<div class="table-header">
+						<div class="table-header p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
 							List of Customers
 							<span class="p-input-icon-left">
                                 <i class="pi pi-search" />
