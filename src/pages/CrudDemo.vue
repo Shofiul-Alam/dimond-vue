@@ -29,25 +29,25 @@
 					</template>
 
 					<Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
-					<Column field="code" header="Code" sortable></Column>
-					<Column field="name" header="Name" sortable></Column>
+					<Column field="code" header="Code" :sortable="true"></Column>
+					<Column field="name" header="Name" :sortable="true"></Column>
 					<Column header="Image">
 						<template #body="slotProps">
 							<img :src="'assets/demo/images/product/' + slotProps.data.image" :alt="slotProps.data.image" class="product-image" />
 						</template>
 					</Column>
-					<Column field="price" header="Price" sortable>
+					<Column field="price" header="Price" :sortable="true">
 						<template #body="slotProps">
 							{{formatCurrency(slotProps.data.price)}}
 						</template>
 					</Column>
-					<Column field="category" header="Category" sortable></Column>
-					<Column field="rating" header="Reviews" sortable>
+					<Column field="category" header="Category" :sortable="true"></Column>
+					<Column field="rating" header="Reviews" :sortable="true">
 						<template #body="slotProps">
 							<Rating :modelValue="slotProps.data.rating" :readonly="true" :cancel="false" />
 						</template>
 					</Column>
-					<Column field="inventoryStatus" header="Status" sortable>
+					<Column field="inventoryStatus" header="Status" :sortable="true">
 						<template #body="slotProps">
 							<span :class="'product-badge status-' + slotProps.data.inventoryStatus.toLowerCase()">{{slotProps.data.inventoryStatus}}</span>
 						</template>
