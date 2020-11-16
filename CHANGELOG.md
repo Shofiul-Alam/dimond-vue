@@ -4,12 +4,9 @@
 
 **Migration Guide**
 
-- Update your project to Vue 3.
+- Update Vue version to v3.
 - Update main.js, router.js and event-bus.js.
-- Update App.vue.
-- Update AppMenu.vue and App.Submenu.vue.
-- Update AppRightMenu.vue.
-- Update AppTopbar.vue.
+- Update App*.vue files (App.vue, AppMenu.vue, App.Submenu.vue, AppRightMenu.vue and AppTopbar.vue)
 - Update theme and layout files.
 
 **Implemented New Features and Enhancements:**
