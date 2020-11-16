@@ -328,6 +328,12 @@ export default {
 					.p-progressbar {
 						margin-top: .5rem;
 					}
+					&:last-child {
+						text-align: center;
+					}
+					&:nth-child(7) {
+						display: flex;
+					}
 				}
 			}
 		}
