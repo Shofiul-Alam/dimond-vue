@@ -1,6 +1,6 @@
 <template>
 	<div class="card icons-demo">
-		<h3>Icons</h3>
+		<h4>Icons</h4>
 		<p>Diamond uses PrimeIcons v4.0, PrimeTek's new modern icon library.</p>
 
 		<h5>Getting Started</h5>
@@ -97,7 +97,7 @@ export default {
 		onFilter(event) {
 			if(!event.target.value) {
 				this.filteredIcons = this.icons;
-			} 
+			}
 			else {
 				this.filteredIcons = this.icons.filter( it => {
 					return it.icon.tags[0].includes(event.target.value);
