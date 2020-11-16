@@ -29,8 +29,8 @@ yarn global add @vue/cli
 
 <pre v-code>
 <code>
-cd diamond 
-npm install 
+cd diamond
+npm install
 npm run serve
 
 </code></pre>
@@ -82,7 +82,7 @@ npm run serve
 
         &lt;AppSearch :searchActive="searchActive" @search-click="onSearchClick" @search-hide="onSearchHide"/&gt;
 
-        &lt;div class="layout-content-mask"&gt;&lt;/div&gt;
+        &lt;div class="layout-mask modal-in"&gt;&lt;/div&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -229,7 +229,7 @@ data() {
 
 <pre v-code>
 <code>
-npm install primevue@3.0.1 --save 
+npm install primevue@3.0.1 --save
 npm install	primeicons@latest --save
 
 </code></pre>
@@ -239,8 +239,8 @@ npm install	primeicons@latest --save
 <pre v-code>
 <code>
 import 'primevue/resources/primevue.min.css';   	//required: PrimeVue components
-import 'primeicons/primeicons.css';	 				//required: PrimeIcons 					
-import './App.scss'; 	                            //your styles and overrides 
+import 'primeicons/primeicons.css';	 				//required: PrimeIcons
+import './App.scss'; 	                            //your styles and overrides
 
 </code></pre>
 
@@ -298,14 +298,14 @@ import './App.scss'; 	                            //your styles and overrides
 
 <pre v-code.css>
 <code>
-$primaryColor: #2196F3; 
+$primaryColor: #2196F3;
 $primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
-$primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default; 
+$primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default;
 $primaryDarkerColor: scale-color($primaryColor, $lightness: -20%) !default;
-$primaryTextColor: #ffffff; 
+$primaryTextColor: #ffffff;
 
 $highlightBg: #E3F2FD;
-$highlightTextColor: #495057; 
+$highlightTextColor: #495057;
 
 @import '../../sass/theme/_theme_light';
 
@@ -326,7 +326,7 @@ sass src/assets/theme/mytheme/theme.scss:src/assets/theme/mytheme/theme.css
 sass --watch public/assets:public/assets
 
 </code></pre>
-                
+
                 <p>Same can also be applied to layout itself;</p>
 				<ul>
 					<li>Choose a layout name such as layout-myown.</li>
