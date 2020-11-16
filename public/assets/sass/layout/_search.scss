@@ -44,14 +44,14 @@
         }
     }
 
-    .search-container-enter,
+    .search-container-enter-from,
     .search-container-leave-to {
         opacity: 0;
         transform: translateY(20px);
     }
 
     .search-container-enter-to,
-    .search-container-leave {
+    .search-container-leave-from {
         opacity: 1;
         transform: none;
     }
