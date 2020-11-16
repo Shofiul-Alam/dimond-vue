@@ -9,7 +9,7 @@
 					<p>Already have an account? <a href="/">Login</a></p>
 					<InputText id="name" placeholder="Full Name" />
 					<InputText id="email" placeholder="Email" />
-					<Password promptLabel="Password"/>
+					<Password placeholder="Password" />
 					<Button label="CONTINUE" type="button"></Button>
 				</div>
 
