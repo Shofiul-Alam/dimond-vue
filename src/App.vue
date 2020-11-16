@@ -65,7 +65,7 @@ export default {
                         {label: "Form Layout", icon: "pi pi-fw pi-id-card", to: "/formlayout"},
                         {label: "Input", icon: "pi pi-fw pi-check-square", to: "/input"},
                         {label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel"},
-                        {label: "Button", icon: "pi pi-fw pi-mobile", to: "/button"},
+                        {label: "Button", icon: "pi pi-fw pi-mobile", to: "/button", class: 'rotated-icon'},
                         {label: "Table", icon: "pi pi-fw pi-table", to: "/table"},
                         {label: "List", icon: "pi pi-fw pi-list", to: "/list"},
                         {label: "Tree", icon: "pi pi-fw pi-share-alt", to: "/tree"},
@@ -225,7 +225,7 @@ export default {
                 if (this.overlayMenuActive || this.staticMenuMobileActive) {
                     this.hideOverlayMenu();
                 }
-                
+
                 this.unblockBodyScroll();
             }
 
