@@ -18,7 +18,7 @@
                     <div class="layout-menuitem-root-text" style="text-transform: uppercase">{{ item.label }}</div>
                 </div>
                 <transition name="layout-menu">
-                    <AppSubmenu v-show="item.items && (root && (!isSlim() || (isSlim() && (mobileMenuActive || activeIndex !== null))) ? true : activeIndex === i)" :items="visible(item) && item.items" :menuActive="menuActive" :layoutMode="layoutMode" :parentMenuItemActive="activeIndex === i" @menuitem-click="$emit('menuitem-click', $event)"></AppSubmenu>
+                    <appsubmenu v-show="item.items && (root && (!isSlim() || (isSlim() && (mobileMenuActive || activeIndex !== null))) ? true : activeIndex === i)" :items="visible(item) && item.items" :menuActive="menuActive" :layoutMode="layoutMode" :parentMenuItemActive="activeIndex === i" @menuitem-click="$emit('menuitem-click', $event)"></appsubmenu>
                 </transition>
             </li>
             <li class="menu-separator" :style="item.style" v-if="visible(item) && item.separator" :key="'separator' + i" role="separator"></li>
@@ -29,7 +29,7 @@
 <script>
 import EventBus from './event-bus';
 export default {
-    name: "AppSubmenu",
+    name: "appsubmenu",
     emits: ["root-menuitem-click", "menuitem-click"],
     props: {
         items: Array,
@@ -98,9 +98,6 @@ export default {
         isSlim() {
             return this.layoutMode === 'slim';
         }
-    },
-    components: {
-        AppSubmenu: this,
-    },
+    }
 };
 </script>
