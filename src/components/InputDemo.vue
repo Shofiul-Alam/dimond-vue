@@ -302,8 +302,8 @@
 		min-width: 20rem;
 	}
 	::v-deep(.multiselect-custom .p-multiselect-label) {
-		padding-top: .5rem;
-		padding-bottom: .5rem;
+		padding-top: .25rem;
+		padding-bottom: .25rem;
 	}
 	::v-deep(.multiselect-custom .country-item.country-item-value) {
 		padding: .25rem .5rem;
