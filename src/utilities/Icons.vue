@@ -1,7 +1,7 @@
 <template>
 	<div class="card icons-demo">
 		<h4>Icons</h4>
-		<p>Diamond uses PrimeIcons v4.0, PrimeTek's new modern icon library.</p>
+		<p>Diamond uses PrimeIcons v4.1, PrimeTek's new modern icon library.</p>
 
 		<h5>Getting Started</h5>
 		<p>PrimeIcons use the <strong>pi pi-{icon}</strong> syntax such as <strong>pi pi-check</strong>. A standalone icon can be displayed using an element like <i>i</i> or <i>span</i>.</p>
