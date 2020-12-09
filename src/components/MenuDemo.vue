@@ -44,14 +44,14 @@
 		<div class="p-col-12 p-md-4">
 			<div class="card">
 				<h5>Tiered Menu</h5>
-				<TieredMenu :model="tieredMenuItems" />
+				<TieredMenu :model="tieredMenuItems" :style="{'width':'100%','margin-bottom':'20px'}" />
 			</div>
 		</div>
 
 		<div class="p-col-12 p-md-4">
 			<div class="card">
 				<h5>Plain Menu</h5>
-				<Menu :model="menuitems" />
+				<Menu :model="menuitems" :style="{'width':'100%'}" />
 			</div>
 		</div>
 
