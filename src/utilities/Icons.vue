@@ -5,8 +5,7 @@
 
 		<h5>Getting Started</h5>
 		<p>PrimeIcons use the <strong>pi pi-{icon}</strong> syntax such as <strong>pi pi-check</strong>. A standalone icon can be displayed using an element like <i>i</i> or <i>span</i>.</p>
-<pre v-code>
-<code>
+<pre v-code><code>
 &lt;i class="pi pi-check"&gt;&lt;/i&gt;
 &lt;i class="pi pi-times"&gt;&lt;/i&gt;
 
@@ -17,8 +16,7 @@
 
 		<h5>Component Icons</h5>
 		<p>Components that have icon properties accept PrimeIcons with the <strong>pi pi-{icon}</strong> syntax.</p>
-<pre v-code>
-<code>
+<pre v-code><code>
 &lt;Button label="Confirm" icon="pi pi-check"&gt;&lt;/Button&gt;
 
 </code></pre>
@@ -28,16 +26,14 @@
 		<h5>Size</h5>
 		<p>Size of the icons can easily be changed using font-size property.</p>
 
-<pre v-code>
-<code>
+<pre v-code><code>
 &lt;i class="pi pi-check"&gt;&lt;/i&gt;
 
 </code></pre>
 
 		<i class="pi pi-check"></i>
 
-<pre v-code>
-<code>
+<pre v-code><code>
 &lt;i class="pi pi-check" style="fontSize: 2rem"&gt;&lt;/i&gt;
 
 </code></pre>
@@ -46,8 +42,7 @@
 
 		<h5>Spinning Animation</h5>
 		<p>Special pi-spin class applies continuous rotation to an icon.</p>
-<pre v-code>
-<code>
+<pre v-code><code>
 &lt;i class="pi pi-spin pi-spinner" style="fontSize: 2rem"&gt;&lt;/i&gt;
 
 </code></pre>

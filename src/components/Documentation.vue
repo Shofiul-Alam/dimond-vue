@@ -15,8 +15,7 @@
 
                 <h4>Getting Started</h4>
                 <p>Diamond is a true native application template for Vue and is distributed as a CLI project. In case CLI is not installed already, use the command below to set it up.</p>
-<pre v-code>
-<code>
+<pre v-code><code>
 npm install -g @vue/cli
 
 # OR
@@ -27,8 +26,7 @@ yarn global add @vue/cli
 
                 <p>Once CLI is ready in your system, extract the contents of the Diamond zip file distribution, cd to the directory and install the libraries from npm.</p>
 
-<pre v-code>
-<code>
+<pre v-code><code>
 cd diamond
 npm install
 npm run serve
@@ -40,8 +38,7 @@ npm run serve
 				<h4>Important CLI Commands</h4>
 				<p>Following commands are derived from CLI.</p>
 
-<pre v-code>
-<code>
+<pre v-code><code>
 "npm run serve": Starts the development server
 "npm run build": Builds the application for deployment.
 "npm run lint": Executes the lint checks.
@@ -58,8 +55,7 @@ npm run serve
                     <i>App.vue</i> component that implements the logic such as menu state, layout modes and other configurable options.
                 </p>
 
-<pre v-code>
-<code>
+<pre v-code><code>
 &lt;template&gt;
     &lt;div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick"&gt;
         &lt;div class="layout-content-wrapper"&gt;
@@ -93,8 +89,7 @@ npm run serve
                     navigate to data section of <i>App.vue</i> file and define your own model as a nested structure using the menu property.
                     Here is the menu component from the demo application. Notice that menu object is bound to the model property of AppMenu component as shown above.</p>
 <div style="overflow: auto; height: 400px">
-<pre v-code.script>
-<code>
+<pre v-code.script><code>
 data() {
     return {
         menu : [
@@ -227,8 +222,7 @@ data() {
 
 				<p>Install PrimeVue</p>
 
-<pre v-code>
-<code>
+<pre v-code><code>
 npm install primevue@3.0.1 --save
 npm install	primeicons@latest --save
 
@@ -236,8 +230,7 @@ npm install	primeicons@latest --save
 
                 <p>Add PrimeVue CSS at styles section in main.js.</p>
 
-<pre v-code>
-<code>
+<pre v-code><code>
 import 'primevue/resources/primevue.min.css';   	//required: PrimeVue components
 import 'primeicons/primeicons.css';	 				//required: PrimeIcons
 import './App.scss'; 	                            //your styles and overrides
@@ -296,8 +289,7 @@ import './App.scss'; 	                            //your styles and overrides
 
                 <p>Here are the variables required to create a sample theme.</p>
 
-<pre v-code.css>
-<code>
+<pre v-code.css><code>
 $primaryColor: #2196F3;
 $primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
 $primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default;
@@ -313,16 +305,14 @@ $highlightTextColor: #495057;
 
                 <p>An example sass command to compile the css would be;</p>
 
-<pre v-code>
-<code>
+<pre v-code><code>
 sass src/assets/theme/mytheme/theme.scss:src/assets/theme/mytheme/theme.css
 
 </code></pre>
 
                 <p>Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command
                     so that sass generates the file whenever you make a customization. This builds all css files whenever a change is made to any scss file.</p>
-<pre v-code>
-<code>
+<pre v-code><code>
 sass --watch public/assets:public/assets
 
 </code></pre>
@@ -338,8 +328,7 @@ sass --watch public/assets:public/assets
 
 				<p>Here are the variables required to create a layout.</p>
 
-<pre v-code>
-<code>
+<pre v-code><code>
 @import '../../sass/layout/_layout';
 
 </code></pre>
@@ -350,8 +339,7 @@ sass --watch public/assets:public/assets
 				<h5>sass/variables/layout/_common.scss</h5>
 				<p>Common variables for light, dark and dim application layout.</p>
 
-<pre v-code.css>
-<code>
+<pre v-code.css><code>
 $fontSize:14px !default;
 $fontFamily:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !default;
 $transitionDuration:.2s !default;
@@ -367,8 +355,7 @@ $phoneBreakpoint:576px !default;
 
                 <h5>sass/variables/layout/_layout_light.scss</h5>
 				<p>Variables of the light theme layout.</p>
-<pre v-code.css>
-<code>
+<pre v-code.css><code>
 @import '_common';
 
 $bodyBg: #f8f9fa !default;
@@ -419,8 +406,7 @@ $rightSidebarBg: #ffffff !default;
 
 
 <div style="height: 400px; overflow: auto">
-<pre v-code.css>
-<code>
+<pre v-code.css><code>
 //reused color variables
 $shade000:#ffffff !default;    //surface
 $shade100:#f8f9fa !default;    //header background
@@ -1165,8 +1151,7 @@ $galleriaThumbnailNavigatorHeight:2rem !default;
 				</ul>
 
 				<p>For example to create a horizontal menu, the div element should be in following form;</p>
-<pre v-code>
-<code>
+<pre v-code><code>
 &lt;div class="layout-wrapper layout-static"&gt;
 
 </code></pre>
