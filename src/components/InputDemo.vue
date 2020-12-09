@@ -97,7 +97,7 @@
 					</div>
 				</div>
 
-				<h5 style="margin-top: 0">Checkbox</h5>
+				<h5>Checkbox</h5>
 				<div class="p-grid">
 					<div class="p-col-12 p-md-4">
 						<div class="p-field-checkbox">
@@ -119,7 +119,7 @@
 					</div>
 				</div>
 
-				<h5 style="margin-top: 0">Input Switch</h5>
+				<h5>Input Switch</h5>
 				<InputSwitch v-model="switchValue" />
 			</div>
 
@@ -134,16 +134,18 @@
 				<MultiSelect v-model="multiselectValue" :options="multiselectValues" optionLabel="name" placeholder="Select Countries" :filter="true" class="multiselect-custom">
 					<template #value="slotProps">
 						<div class="country-item country-item-value" v-for="option of slotProps.value" :key="option.code">
-							<span :class="'flag flag-' + option.code.toLowerCase()" />
+							<img src="assets/demo/flags/flag_placeholder.png" :class="'flag flag-' + option.code.toLowerCase()" />
 							<div>{{option.name}}</div>
 						</div>
 						<template v-if="!slotProps.value || slotProps.value.length === 0">
-							Select Countries
+							<div class="country-placeholder">
+								Select Countries
+							</div>
 						</template>
 					</template>
 					<template #option="slotProps">
 						<div class="country-item">
-							<span :class="'flag flag-' + slotProps.option.code.toLowerCase()" />
+							<img src="assets/demo/flags/flag_placeholder.png" :class="'flag flag-' + slotProps.option.code.toLowerCase()" />
 							<div>{{slotProps.option.name}}</div>
 						</div>
 					</template>
@@ -152,7 +154,7 @@
 
 			<div class="card">
 				<h5>ToggleButton</h5>
-				<ToggleButton v-model="toggleValue" onLabel="Yes" offLabel="No"/>
+				<ToggleButton v-model="toggleValue" onLabel="Yes" offLabel="No" :style="{width: '10em'}"/>
 
 				<h5>SelectButton</h5>
 				<SelectButton v-model="selectButtonValue1" :options="selectButtonValues1" optionLabel="name" />
@@ -217,7 +219,7 @@
 				calendarValue: null,
 				inputNumberValue: null,
 				chipsValue: null,
-				sliderValue: null,
+				sliderValue: 50,
 				ratingValue: null,
 				colorValue: '1976D2',
 				radioValue: null,
@@ -293,30 +295,36 @@
 </script>
 
 <style scoped lang="scss">
-	.p-multiselect {
+	::v-deep(.p-multiselect) {
 		min-width: 15rem;
 	}
-	.multiselect-custom {
-		.p-multiselect-label:not(.p-placeholder) {
-			padding-top: .25rem;
-			padding-bottom: .25rem;
-		}
-		.country-item {
-			display: flex;
-			align-items: center;
-			span.flag {
-				width: 18px;
-				height: 12px;
-				margin-right: .5rem;
-				margin-left: .5rem;
-			}
-		}
-		.country-item-value {
-			border-radius: 3px;
-			display: inline-flex;
-			margin-right: .5rem;
-			background-color: var(--primary-color);
-			color: var(--primary-color-text);
-		}
+	::v-deep(.multiselect-custom-virtual-scroll .p-multiselect) {
+		min-width: 20rem;
+	}
+	::v-deep(.multiselect-custom .p-multiselect-label) {
+		padding-top: .5rem;
+		padding-bottom: .5rem;
+	}
+	::v-deep(.multiselect-custom .country-item.country-item-value) {
+		padding: .25rem .5rem;
+		border-radius: 3px;
+		display: inline-flex;
+		margin-right: .5rem;
+		background-color: var(--primary-color);
+		color: var(--primary-color-text);
+	}
+	::v-deep(.multiselect-custom .country-item.country-item-value img.flag) {
+		width: 17px;
+	}
+	::v-deep(.multiselect-custom .country-item) {
+		display: flex;
+		align-items: center;
+	}
+	::v-deep(.multiselect-custom .country-item img.flag) {
+		width: 18px;
+		margin-right: .5rem;
+	}
+	::v-deep(.multiselect-custom .country-placeholder) {
+		padding: 0.25rem;
 	}
 </style>
