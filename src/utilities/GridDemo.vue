@@ -1,5 +1,5 @@
 <template>
-	<div class="flexgrid-demo">
+	<div class="card flexgrid-demo">
 		<h4>Grid System</h4>
 		<p>Grid is a lightweight flex based responsive layout utility optimized for mobile phones, tablets and desktops.</p>
 
