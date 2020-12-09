@@ -16,13 +16,13 @@
 			<div class="card">
 				<h5>Messages</h5>
 
-				<Button label="Success" @click="addSuccessMessage()" class="p-button-success p-mr-2"/>
-				<Button label="Info" @click="addInfoMessage()" class="p-button-info p-mr-2"/>
-				<Button label="Warn" @click="addWarnMessage()" class="p-button-warning p-mr-2"/>
-				<Button label="Error" @click="addErrorMessage()" class="p-button-danger p-mr-2"/>
+				<Button label="Success" @click="addMessage('success')" class="p-button-success p-mr-2 p-mb-2"/>
+				<Button label="Info" @click="addMessage('info')" class="p-button-info p-mr-2 p-mb-2"/>
+				<Button label="Warn" @click="addMessage('warn')" class="p-button-warning p-mr-2 p-mb-2"/>
+				<Button label="Error" @click="addMessage('error')" class="p-button-danger p-mr-2 p-mb-2"/>
 
-				<transition-group name="p-messages" tag="div">
-					<Message v-for="msg of message" :severity="msg.severity" :key="msg.content">{{msg.content}}</Message>
+				<transition-group name="p-message" tag="div">
+					<Message v-for="msg of message" :severity="msg.severity" :key="msg.id">{{msg.content}}</Message>
 				</transition-group>
 			</div>
 		</div>
@@ -66,21 +66,24 @@
 			return {
 				message: [],
 				username:null,
-				email:null
+				email:null,
+				count: 0,
 			}
 		},
 		methods: {
-			addSuccessMessage() {
-				this.message = [{severity: 'success', content: 'Message Detail'}]
-			},
-			addInfoMessage() {
-				this.message = [{severity: 'info', content: 'Message Detail'}]
-			},
-			addWarnMessage() {
-				this.message = [{severity: 'warn', content: 'Message Detail'}]
-			},
-			addErrorMessage() {
-				this.message = [{severity: 'error', content: 'Message Detail'}]
+			addMessage(type) {
+				if(type === 'success') {
+					this.message = [{severity: 'success', content: 'Message Detail', id: this.count++}]
+				}
+				else if(type === 'info') {
+					this.message = [{severity: 'info', content: 'Message Detail', id: this.count++}]
+				}
+				else if(type === 'warn') {
+					this.message = [{severity: 'warn', content: 'Message Detail', id: this.count++}]
+				}
+				else if(type === 'error') {
+					this.message = [{severity: 'error', content: 'Message Detail', id: this.count++}]
+				}
 			},
 			showSuccess() {
 				this.$toast.add({severity:'success', summary: 'Success Message', detail:'Message Detail', life: 3000});
