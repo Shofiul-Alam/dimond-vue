@@ -512,6 +512,17 @@ $treeNodeContentPadding:.5rem !default;
 $treeNodeChildrenPadding:0 0 0 1rem !default;
 $treeNodeIconColor:$shade100 !default;
 
+//timeline
+$timelineVerticalEventContentPadding:0 1rem !default;
+$timelineHorizontalEventContentPadding:1rem 0 !default;
+$timelineEventMarkerWidth:1rem !default;
+$timelineEventMarkerHeight:1rem !default;
+$timelineEventMarkerBorderRadius:50% !default;
+$timelineEventMarkerBorder:2px solid $primaryColor !default;
+$timelineEventMarkerBackground:$shade800 !default;
+$timelineEventConnectorSize:2px !default;
+$timelineEventColor:$shade600 !default;
+
 //org chart
 $organizationChartConnectorColor:$shade600 !default;
 
@@ -574,6 +585,10 @@ $dialogHeaderPadding:1.5rem !default;
 $dialogContentPadding:0 1.5rem 2rem 1.5rem !default;
 $dialogFooterBorder:0 none !default;
 $dialogFooterPadding:0 1.5rem 1.5rem 1.5rem !default;
+
+//confirmpopup
+$confirmPopupContentPadding:$panelContentPadding;
+$confirmPopupFooterPadding:0 1rem 1rem 1rem;
 
 //tooltip
 $tooltipBg:$shade600 !default;
@@ -712,6 +727,40 @@ $galleriaThumbnailNavigatorHoverColor:#f8f9fa !default;
 $galleriaThumbnailNavigatorBorderRadius:50% !default;
 $galleriaThumbnailNavigatorWidth:2rem !default;
 $galleriaThumbnailNavigatorHeight:2rem !default;
+
+//divider
+$dividerHorizontalMargin:1rem 0;
+$dividerHorizontalPadding:0 1rem;
+$dividerVerticalMargin:0 1rem;
+$dividerVerticalPadding:1rem 0;
+$dividerSize:1px;
+$dividerColor:$shade600;
+
+//avatar
+$avatarBg:$shade600;
+$avatarTextColor:$textColor;
+
+//chip
+$chipBg:$shade600;
+$chipTextColor:$textColor;
+$chipBorderRadius: 16px;
+
+//scrollTop
+$scrollTopBg:$highlightBg;
+$scrollTopHoverBg:scale-color($highlightBg, $alpha: 24%);
+$scrollTopWidth:3rem;
+$scrollTopHeight:3rem;
+$scrollTopBorderRadius:50%;
+$scrollTopFontSize:1.5rem;
+$scrollTopTextColor:$highlightTextColor;
+
+//skeleton
+$skeletonBg:rgba(255,255,255,.06);
+$skeletonAnimationBg:rgba(255,255,255,.04);
+
+//splitter
+$splitterGutterBg:rgba(255,255,255,.03);
+$splitterGutterHandleBg:$shade600;
 
 :root {
     --surface-a:#{$shade800};
