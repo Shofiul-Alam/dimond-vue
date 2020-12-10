@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.1 (2020-12-10)
+
+**Migration Guide**
+
+- Update App*.vue files (App.vue, AppMenu.vue and App.Submenu.vue)
+- Update theme and layout files.
+
 ## 3.0.0 
 
 **Migration Guide**
