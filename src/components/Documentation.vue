@@ -106,6 +106,7 @@ data() {
                     {label: "Form Layout", icon: "pi pi-fw pi-id-card", to: "/formlayout"},
                     {label: "Input", icon: "pi pi-fw pi-check-square", to: "/input"},
                     {label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel"},
+                    {label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "invalidstate"},
                     {label: "Button", icon: "pi pi-fw pi-mobile", to: "/button"},
                     {label: "Table", icon: "pi pi-fw pi-table", to: "/table"},
                     {label: "List", icon: "pi pi-fw pi-list", to: "/list"},
@@ -141,6 +142,7 @@ data() {
                 items: [
                     {label: "Crud", icon: "pi pi-fw pi-pencil", to: "/crud"},
                     {label: "Calendar", icon: "pi pi-fw pi-calendar-plus", to: "/calendar"},
+                    {label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/timeline'},
                     {label: "Landing", icon: "pi pi-fw pi-user-plus", url: "assets/pages/landing.html", target: "_blank"},
                     {label: "Login", icon: "pi pi-fw pi-sign-in", to: "/login"},
                     {label: "Invoice", icon: "pi pi-fw pi-dollar", to: "/invoice"},
