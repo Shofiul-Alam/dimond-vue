@@ -35,6 +35,14 @@ const routes = [
         },
     },
     {
+        path: '/invalidstate',
+        name: 'invalidstate',
+        component: () => import('./components/InvalidStateDemo.vue'),
+        meta: {
+            breadcrumb: [{ parent: 'UI Kit', label: 'Invalid State' }],
+        },
+    },
+    {
         path: '/button',
         name: 'button',
         component: () => import('./components/ButtonDemo.vue'),
