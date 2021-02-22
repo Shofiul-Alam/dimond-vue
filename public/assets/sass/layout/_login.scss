@@ -36,7 +36,7 @@
                     }
                 }
 
-                > input {
+                > input{
                     width: 85%;
                     max-width: 310px;
                     margin-bottom: 20px;
@@ -45,6 +45,12 @@
                 > button {
                     width: 85%;
                     max-width: 310px;
+                }
+
+                > div > input {
+                    width: 274px;
+                    max-width: 274px;
+                    margin-bottom: 20px;
                 }
             }
 
