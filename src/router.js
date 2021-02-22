@@ -253,6 +253,14 @@ const routes = [
         },
     },
     {
+        path: '/timeline',
+        name: 'timeline',
+        component: () => import('./pages/TimelineDemo.vue'),
+        meta: {
+            breadcrumb: [{ parent: 'Pages', label: 'Timeline' }],
+        },
+    },
+    {
         path: '/invoice',
         name: 'invoice',
         component: () => import('./pages/Invoice.vue'),
