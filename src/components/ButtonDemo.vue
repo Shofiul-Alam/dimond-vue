@@ -5,6 +5,7 @@
 				<h5>Default</h5>
 				<Button label="Submit" class="p-mr-2 p-mb-2"></Button>
 				<Button label="Disabled" class="p-mr-2 p-mb-2" :disabled="true"></Button>
+				<Button label="Link" class="p-button-link p-mr-2 p-mb-2" />
 			</div>
 
 			<div class="card">
@@ -55,6 +56,7 @@
 				<SplitButton label="Save" icon="pi pi-check" :model="items" class="p-button-success p-mr-2 p-mb-2"></SplitButton>
 				<SplitButton label="Save" icon="pi pi-check" :model="items" class="p-button-info p-mr-2 p-mb-2"></SplitButton>
 				<SplitButton label="Save" icon="pi pi-check" :model="items" class="p-button-warning p-mr-2 p-mb-2"></SplitButton>
+				<SplitButton label="Save" icon="pi pi-check" :model="items" class="p-button-help p-mr-2 p-mb-2"></SplitButton>
 				<SplitButton label="Save" icon="pi pi-check" :model="items" class="p-button-danger p-mr-2 p-mb-2"></SplitButton>
 			</div>
 		</div>
@@ -74,6 +76,7 @@
 				<Button label="Success" class="p-button-raised p-button-success p-mr-2 p-mb-2" />
 				<Button label="Info" class="p-button-raised p-button-info p-mr-2 p-mb-2" />
 				<Button label="Warning" class="p-button-raised p-button-warning p-mr-2 p-mb-2" />
+				<Button label="Help" class="p-button-raised p-button-help p-mr-2 p-mb-2" />
 				<Button label="Danger" class="p-button-raised p-button-danger p-mr-2 p-mb-2" />
 			</div>
 
@@ -84,6 +87,7 @@
 				<Button label="Success" class="p-button-rounded p-button-success p-mr-2 p-mb-2" />
 				<Button label="Info" class="p-button-rounded p-button-info p-mr-2 p-mb-2" />
 				<Button label="Warning" class="p-button-rounded p-button-warning p-mr-2 p-mb-2" />
+				<Button label="Help" class="p-button-rounded p-button-help p-mr-2 p-mb-2" />
 				<Button label="Danger" class="p-button-rounded p-button-danger p-mr-2 p-mb-2" />
 			</div>
 
@@ -94,6 +98,7 @@
 				<Button icon="pi pi-check" class="p-button-rounded p-button-success p-mr-2 p-mb-2" />
 				<Button icon="pi pi-search" class="p-button-rounded p-button-info p-mr-2 p-mb-2" />
 				<Button icon="pi pi-user" class="p-button-rounded p-button-warning p-mr-2 p-mb-2" />
+				<Button icon="pi pi-heart" class="p-button-rounded p-button-help p-mr-2 p-mb-2" />
 				<Button icon="pi pi-sign-out" class="p-button-rounded p-button-danger p-mr-2 p-mb-2" />
 			</div>
 

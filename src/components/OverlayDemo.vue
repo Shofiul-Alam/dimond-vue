@@ -1,5 +1,6 @@
 <template>
 	<div class="p-grid overlay-demo">
+		<Toast />
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Dialog</h5>
@@ -20,6 +21,24 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="p-col-12 p-lg-6">
+			<div class="card">
+				<h5>Confirmation</h5>
+				<Button label="Delete" icon="pi pi-trash" class="p-button-danger" style="width: 50%" @click="openConfirmation" />
+				<Dialog header="Confirmation" v-model:visible="displayConfirmation" :style="{width: '350px'}" :modal="true">
+					<div class="confirmation-content">
+						<i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem" />
+						<span>Are you sure you want to proceed?</span>
+					</div>
+					<template #footer>
+						<Button label="No" icon="pi pi-times" @click="closeConfirmation" class="p-button-text"/>
+						<Button label="Yes" icon="pi pi-check" @click="closeConfirmation" class="p-button-text" autofocus />
+					</template>
+				</Dialog>
+			</div>
+		</div>
+		<div class="p-col-12 p-lg-6">
 			<div class="card p-fluid">
 				<h5>Overlay Panel</h5>
 				<div class="p-grid p-formgrid">
@@ -52,20 +71,6 @@
 			</div>
 		</div>
 		<div class="p-col-12 p-lg-6">
-			<div class="card">
-				<h5>Confirmation</h5>
-				<Button label="Delete" icon="pi pi-trash" class="p-button-danger" style="width: 50%" @click="openConfirmation" />
-				<Dialog header="Confirmation" v-model:visible="displayConfirmation" :style="{width: '350px'}" :modal="true">
-					<div class="confirmation-content">
-						<i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem" />
-						<span>Are you sure you want to proceed?</span>
-					</div>
-					<template #footer>
-						<Button label="No" icon="pi pi-times" @click="closeConfirmation" class="p-button-text"/>
-						<Button label="Yes" icon="pi pi-check" @click="closeConfirmation" class="p-button-text" autofocus />
-					</template>
-				</Dialog>
-			</div>
 			<div class="card">
 				<h5>Sidebar</h5>
 				<Sidebar v-model:visible="visibleLeft" :baseZIndex="1000">
@@ -105,16 +110,26 @@
 				<Button icon="pi pi-external-link" @click="visibleFull = true" class="p-button-warning"/>
 			</div>
 		</div>
-		<div class="p-col-12">
+		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Tooltip</h5>
 				<div class="p-formgroup-inline">
 					<div class="p-field">
 						<InputText type="text" placeholder="Username" v-tooltip="'Your username'" />
 					</div>
-
-					<Button type="button" label="Save" icon="pi pi-check" v-tooltip="'Click to proceed'" />
+					<div class="p-field">
+						<Button type="button" label="Save" icon="pi pi-check" v-tooltip="'Click to proceed'" />
+					</div>
 				</div>
+			</div>
+		</div>
+		<div class="p-col-12 p-lg-6">
+			<div class="card">
+				<h5>ConfirmPopup</h5>
+				<ConfirmPopup></ConfirmPopup>
+				<Button ref="popup" @click="confirm($event)" icon="pi pi-check" label="Confirm Popup" class="p-mr-2" style="width: 50%"></Button>
+				<ConfirmDialog></ConfirmDialog>
+				<Button @click="del()" icon="pi pi-check" label="Confirm Dialog"></Button>
 			</div>
 		</div>
 	</div>
@@ -122,6 +137,7 @@
 
 <script>
 	import ProductService from '../service/ProductService'
+
 	export default {
 		data() {
 			return {
@@ -169,7 +185,32 @@
 			onProductSelect(event) {
 				this.$refs.op.hide();
 				this.$toast.add({severity:'info', summary: 'Product Selected', detail: event.data.name, life: 3000});
-			}
+			},
+			confirm(event) {
+				this.$confirm.require({
+					target: event.currentTarget,
+					message: 'Are you sure you want to proceed?',
+					icon: 'pi pi-exclamation-triangle',
+					accept: () => {
+						this.$toast.add({severity:'info', summary:'Confirmed', detail:'You have accepted', life: 3000});
+					},
+					reject: () => {
+						this.$toast.add({severity:'error', summary:'Rejected', detail:'You have rejected', life: 3000});
+					}
+				});
+			},
+			del() {
+				this.$confirm.require({
+					message: 'Are you sure you want to delete?',
+					icon: 'pi pi-exclamation-triangle',
+					accept: () => {
+						this.$toast.add({severity:'info', summary:'Confirmed', detail:'You have accepted', life: 3000});
+					},
+					reject: () => {
+						this.$toast.add({severity:'error', summary:'Rejected', detail:'You have rejected', life: 3000});
+					}
+				});
+			},
 		}
 	}
 </script>
