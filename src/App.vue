@@ -180,7 +180,7 @@ export default {
                     "layout-mobile-active": this.staticMenuMobileActive,
                     "layout-static-inactive": this.staticMenuDesktopInactive && this.layoutMode === "static",
                     "p-input-filled": this.$appState.inputStyle === "filled",
-                    "p-ripple-disabled": !this.$primevue.ripple,
+                    "p-ripple-disabled": !this.$primevue.config.ripple,
                 },
                 this.colorScheme === "light" ? this.menuTheme : "",
             ];

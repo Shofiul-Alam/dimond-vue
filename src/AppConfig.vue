@@ -192,7 +192,7 @@ export default {
     },
     computed: {
         rippleActive() {
-            return this.$primevue.ripple;
+            return this.$primevue.config.ripple;
         },
         inputStyle() {
             return this.$appState.inputStyle;
@@ -213,7 +213,7 @@ export default {
             this.$appState.inputStyle = value;
         },
         onRippleChange(value) {
-            this.$primevue.ripple = value;
+            this.$primevue.config.ripple = value;
         },
         changeMenuMode(mode) {
             this.$emit("update:layoutMode", mode);
