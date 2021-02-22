@@ -94,6 +94,12 @@ $inputOverlayHeaderBg:$inputListHeaderBg !default;
 $inputOverlayBorder:1px solid $shade600 !default;
 $inputOverlayShadow:0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12) !default;
 
+//password
+$passwordMeterBg:$shade600 !default;
+$passwordWeakBg:#F48FB1 !default;
+$passwordMediumBg:#FFE082 !default;
+$passwordStrongBg:#C5E1A5 !default;
+
 //button
 $buttonPadding:.5rem 1rem !default;
 $buttonIconOnlyWidth:2.357rem !default;
