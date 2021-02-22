@@ -15,6 +15,7 @@
 				<Button label="Success" class="p-button-success p-mr-2 p-mb-2" />
 				<Button label="Info" class="p-button-info p-mr-2 p-mb-2" />
 				<Button label="Warning" class="p-button-warning p-mr-2 p-mb-2" />
+				<Button label="Help" class="p-button-help p-mr-2 p-mb-2" />
 				<Button label="Danger" class="p-button-danger p-mr-2 p-mb-2" />
 			</div>
 
