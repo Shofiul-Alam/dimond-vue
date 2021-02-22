@@ -11,7 +11,7 @@
 						<InputText type="text" placeholder="Disabled" :disabled="true"></InputText>
 					</div>
 					<div class="p-col-12 p-mb-2 p-lg-4 p-mb-lg-0">
-						<InputText type="text" placeholder="Invalid" class="p-error" />
+						<InputText type="text" placeholder="Invalid" class="p-invalid" />
 					</div>
 				</div>
 
@@ -61,15 +61,25 @@
 			</div>
 
 			<div class="card">
-				<h5>Slider</h5>
-				<InputText v-model.number="sliderValue" />
-				<Slider v-model="sliderValue" />
-
-				<h5>Rating</h5>
-				<Rating v-model="ratingValue"/>
-
-				<h5>ColorPicker</h5>
-				<ColorPicker style="width: 2rem" v-model="colorValue" />
+				<div class="p-grid">
+					<div class="p-col-12">
+						<h5>Slider</h5>
+						<InputText v-model.number="sliderValue" />
+						<Slider v-model="sliderValue" />
+					</div>
+					<div class="p-col-12 p-md-6">
+						<h5>Rating</h5>
+						<Rating v-model="ratingValue"/>
+					</div>
+					<div class="p-col-12 p-md-6">
+						<h5>ColorPicker</h5>
+						<ColorPicker style="width: 2rem" v-model="colorValue" />
+					</div>
+					<div class="p-col-12">
+						<h5>Knob</h5>
+						<Knob v-model="knobValue" :step="10" :min="-50" :max="50" valueTemplate="{value}%" />
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -267,7 +277,8 @@
 					{name: 'Option 3', code: 'O3'},
 				],
 				selectButtonValue2: null,
-				inputGroupValue: false
+				inputGroupValue: false,
+				knobValue: 20
 			}
 		},
 		countryService: null,

@@ -4,71 +4,90 @@
 			<h5>Float Label</h5>
 			<p>All input text components support floating labels by adding (<mark>.p-float-label</mark>) to wrapper class.</p>
 			<div class="p-grid p-fluid">
-				<div class="p-field p-col-12 p-md-4">	
-					<span class="p-float-label">
-						<InputText type="text" id="inputtext" v-model="value1" />
-						<label for="inputtext">InputText</label>
-					</span>
-				</div>
-				<div class="p-field p-col-12 p-md-4">
-					<span class="p-float-label">
-						<AutoComplete id="autocomplete" v-model="value2" :suggestions="filteredCountries" @complete="searchCountry($event)" field="name"></AutoComplete>
-						<label for="autocomplete">AutoComplete</label>
-					</span>
-				</div>
-				<div class="p-field p-col-12 p-md-4">
-					<span class="p-float-label">
-						<Calendar inputId="calendar" v-model="value3"></Calendar>
-						<label for="calendar">Calendar</label>
-					</span>
-				</div>
-				<div class="p-field p-col-12 p-md-4">
-					<span class="p-float-label">
-						<Chips inputId="chips" v-model="value4"></Chips>
-						<label for="chips">Chips</label>
-					</span>
-				</div>
-				<div class="p-field p-col-12 p-md-4">
-					<span class="p-float-label">
-						<InputMask id="inputmask" mask="99/99/9999" v-model="value5"></InputMask>
-						<label for="inputmask">InputMask</label>
-					</span>
-				</div>
-				<div class="p-field p-col-12 p-md-4">
-					<span class="p-float-label">
-						<InputNumber id="inputnumber" v-model="value6"></InputNumber>
-						<label for="inputnumber">InputNumber</label>
-					</span>
-				</div>
-				<div class="p-field p-col-12 p-md-4">
-					<div class="p-inputgroup">
-						<span class="p-inputgroup-addon">
-							<i class="pi pi-user"></i>
-						</span>
+				<div class="p-col-12 p-md-6">
+					<div class="p-field">	
 						<span class="p-float-label">
-							<InputText type="text" id="inputgroup" v-model="value7" />
-							<label for="inputgroup">InputGroup</label>
+							<InputText type="text" id="inputtext" v-model="value1" />
+							<label for="inputtext">InputText</label>
+						</span>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label p-input-icon-left">
+							<i class="pi pi-search" />
+							<InputText type="text" id="lefticon" v-model="value2"/>
+							<label for="lefticon">Left Icon</label>
+						</span>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label p-input-icon-right">
+							<i class="pi pi-spin pi-spinner" />
+							<InputText type="text" id="righticon" v-model="value3" />
+							<label for="righticon">Right Icon</label>
+						</span>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label">
+							<InputMask id="inputmask" mask="99/99/9999" v-model="value4"></InputMask>
+							<label for="inputmask">InputMask</label>
+						</span>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label">
+							<InputNumber id="inputnumber" v-model="value5"></InputNumber>
+							<label for="inputnumber">InputNumber</label>
+						</span>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label">
+							<Chips inputId="chips" v-model="value6"></Chips>
+							<label for="chips">Chips</label>
 						</span>
 					</div>
 				</div>
-				<div class="p-field p-col-12 p-md-4">
-					<span class="p-float-label">
-						<Dropdown id="dropdown" :options="cities" v-model="value8" optionLabel="name"></Dropdown>
-						<label for="dropdown">Dropdown</label>
-					</span>
-				</div>
-				<div class="p-field p-col-12 p-md-4">
-					<span class="p-float-label">
-						<MultiSelect id="multiselect" :options="cities" v-model="value9" optionLabel="name" :filter="false"></MultiSelect>
-						<label for="multiselect">MultiSelect</label>
-					</span>
-				</div>
-				<div class="p-field p-col-12 p-md-4">
-					<span class="p-float-label">
-						<Textarea inputId="textarea" rows="3" cols="30" v-model="value10"></Textarea>
-						<label for="textarea">Textarea</label>
-					</span>
-				</div>				
+				
+				<div class="p-col-12 p-md-6">
+					<div class="p-field">
+						<div class="p-inputgroup">
+							<span class="p-inputgroup-addon">
+								<i class="pi pi-user"></i>
+							</span>
+							<span class="p-float-label">
+								<InputText type="text" id="inputgroup" v-model="value7" />
+								<label for="inputgroup">InputGroup</label>
+							</span>
+						</div>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label">
+							<AutoComplete id="autocomplete" v-model="value8" :suggestions="filteredCountries" @complete="searchCountry($event)" field="name"></AutoComplete>
+							<label for="autocomplete">AutoComplete</label>
+						</span>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label">
+							<Dropdown id="dropdown" :options="cities" v-model="value9" optionLabel="name"></Dropdown>
+							<label for="dropdown">Dropdown</label>
+						</span>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label">
+							<MultiSelect id="multiselect" :options="cities" v-model="value10" optionLabel="name" :filter="false"></MultiSelect>
+							<label for="multiselect">MultiSelect</label>
+						</span>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label">
+							<Calendar inputId="calendar" v-model="value11"></Calendar>
+							<label for="calendar">Calendar</label>
+						</span>
+					</div>
+					<div class="p-field">
+						<span class="p-float-label">
+							<Textarea inputId="textarea" rows="3" cols="30" v-model="value12"></Textarea>
+							<label for="textarea">Textarea</label>
+						</span>
+					</div>	
+				</div>			
 			</div>
 		</div>
 	</div>
@@ -98,6 +117,8 @@ export default {
 			value8: null,
 			value9: null,
 			value10: null,
+			value11: null,
+			value12: null
 		};
 	},
 	created() {
