@@ -2,6 +2,7 @@ import { createApp, h } from 'vue';
 import { reactive } from 'vue';
 import router from './router';
 import App from './App.vue';
+import PrimeVue from 'primevue/config';
 import AutoComplete from 'primevue/autocomplete';
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
@@ -30,6 +31,7 @@ import InputMask from 'primevue/inputmask';
 import InputNumber from 'primevue/inputnumber';
 import InputSwitch from 'primevue/inputswitch';
 import InputText from 'primevue/inputtext';
+import Knob from 'primevue/knob';
 import Galleria from 'primevue/galleria';
 import Listbox from 'primevue/listbox';
 import MegaMenu from 'primevue/megamenu';
@@ -108,8 +110,8 @@ const app = createApp({
 });
 
 app.config.globalProperties.$appState = reactive({ inputStyle: 'outlined' });
-app.config.globalProperties.$primevue = reactive({ ripple: true });
 
+app.use(PrimeVue, { ripple: true });
 app.use(ToastService);
 app.use(router);
 
@@ -146,6 +148,7 @@ app.component('InputNumber', InputNumber);
 app.component('InputSwitch', InputSwitch);
 app.component('InputText', InputText);
 app.component('Galleria', Galleria);
+app.component('Knob', Knob);
 app.component('Listbox', Listbox);
 app.component('MegaMenu', MegaMenu);
 app.component('Menu', Menu);
