@@ -83,7 +83,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .custom-marker {
     display: flex;
     width: 2rem;
