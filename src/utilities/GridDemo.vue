@@ -23,7 +23,7 @@
 		<div style="margin-top: .5em">
 			<transition-group name="dynamic-box" tag="div" class="p-grid">
 				<div v-for="col of columns" :key="col" class="p-col">
-					<div class="box">{{col}}</div>
+					<div class="box">{{col+1}}</div>
 				</div>
 			</transition-group>
 		</div>

@@ -61,12 +61,12 @@
                 </p>
 
                 <h6>Without Spacing</h6>
-                <Button type="button" label="Button 1" style="width:20rem" />
-                <Button type="button" label="Button 2" style="width:20rem" />
+                <Button type="button" label="Button 1" style="width:15rem" />
+                <Button type="button" label="Button 2" style="width:15rem" />
 
                 <h6>With Spacing</h6>
-                <Button type="button" label="Button 1" style="width:20rem" class="p-mr-2 p-mb-2" />
-                <Button type="button" label="Button 2" style="width:20rem" class="p-mb-2"/>
+                <Button type="button" label="Button 1" style="width:15rem" class="p-mr-2 p-mb-2" />
+                <Button type="button" label="Button 2" style="width:15rem" class="p-mb-2"/>
             </div>
         </div>
 
