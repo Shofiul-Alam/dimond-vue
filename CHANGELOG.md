@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.1.0
+
+**Migration Guide**
+
+- Update theme files and layout files.
+
+**Implemented New Features and Enhenements:**
+
+- Upgrade to PrimeVue 3.3.0-rc.1
+- Styles of new PrimeVue components
+
+
 ## 3.0.1 (2020-12-10)
 
 **Migration Guide**
