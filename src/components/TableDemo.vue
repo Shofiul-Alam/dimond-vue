@@ -4,7 +4,7 @@
 			<div class="card">
 				<h5>Default</h5>
 				<p>Pagination, sorting, filtering and checkbox selection.</p>
-				<DataTable :value="customer1" :paginator="true" class="p-datatable-customers" :rows="10" dataKey="id" :rowHover="true" 
+				<DataTable :value="customer1" :paginator="true" class="p-datatable-customers p-datatable-gridlines" :rows="10" dataKey="id" :rowHover="true" 
 							v-model:filters="filters1" filterDisplay="menu" :loading="loading1" :filters="filters1"
 							:globalFilterFields="['name','country.name','representative.name','balance','status']" >
 					
@@ -13,7 +13,7 @@
                             <Button type="button" icon="pi pi-filter-slash" label="Clear" class="p-button-outlined p-mb-2" @click="clearFilter1()"/>
                             <span class="p-input-icon-left p-mb-2">
                                 <i class="pi pi-search" />
-                                <InputText v-model="filters1['global'].value" placeholder="Keyword Search" />
+                                <InputText v-model="filters1['global'].value" placeholder="Keyword Search" style="width: 100%"/>
                             </span>
                         </div>
                     </template>
@@ -117,7 +117,7 @@
                             </div>
                         </template>
                     </Column>
-                    <Column field="verified" header="Verified" dataType="boolean" headerStyle="width: 8rem" bodyClass="p-text-center">
+                    <Column field="verified" header="Verified" dataType="boolean" headerStyle="width: 8rem">
                         <template #body="{data}">
                             <span class="p-column-title">Verified</span>
                             <i class="pi" :class="{'true-icon pi-check-circle': data.verified, 'false-icon pi-times-circle': !data.verified}"></i>
@@ -136,7 +136,7 @@
                 <ToggleButton v-model="idFrozen" onIcon="pi pi-lock" offIcon="pi pi-lock-open" onLabel="Unfreeze Id" offLabel="Freeze Id" style="width: 10rem" />
 
                 <DataTable :value="customer2" :scrollable="true" scrollHeight="400px" :loading="loading2" scrollDirection="both" class="p-mt-3">
-                    <Column field="name" header="Name" :style="{width:'200px'}" frozen></Column>
+                    <Column field="name" header="Name" :style="{width:'150px'}" frozen></Column>
                     <Column field="id" header="Id" :style="{width:'100px'}" :frozen="idFrozen"></Column>
                     <Column field="name" header="Name" :style="{width:'200px'}"></Column>
                     <Column field="country.name" header="Country" :style="{width:'200px'}">
@@ -159,7 +159,7 @@
                             <span style="margin-left: .5em; vertical-align: middle" class="image-text">{{data.representative.name}}</span>
                         </template>
 					</Column>
-                    <Column field="balance" header="Balance" :style="{width:'200px'}" frozen alignFrozen="right">
+                    <Column field="balance" header="Balance" :style="{width:'150px'}" frozen alignFrozen="right">
                         <template #body="{data}">
                              <span class="p-text-bold">{{formatCurrency(data.balance)}}</span>
                         </template>
@@ -448,6 +448,10 @@
 
 		.p-datatable-tbody > tr > td {
 			cursor: auto;
+
+			&:last-child {
+				text-align: center;
+			}
 		}
 
 		.p-dropdown-label:not(.p-placeholder) {
@@ -583,7 +587,7 @@
 					border-bottom: 1px solid var(--surface-d);
 
 					> td {
-						text-align: left;
+						text-align: left !important;
 						display: block;
 						border: 0 none !important;
 						width: 100% !important;
