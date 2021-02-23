@@ -112,35 +112,35 @@
         <div class="card">
             <h4>Chip</h4>
             <h5>Basic</h5>
-            <div class="p-d-flex p-ai-center">
-                <Chip label="Action" class="p-mr-2"></Chip>
-                <Chip label="Comedy" class="p-mr-2"></Chip>
-                <Chip label="Mystery" class="p-mr-2"></Chip>
-                <Chip label="Thriller" :removable="true"></Chip>
+            <div class="p-d-flex p-ai-center p-flex-column p-flex-sm-row">
+                <Chip label="Action" class="p-mr-2 p-mb-2"></Chip>
+                <Chip label="Comedy" class="p-mr-2 p-mb-2"></Chip>
+                <Chip label="Mystery" class="p-mr-2 p-mb-2"></Chip>
+                <Chip label="Thriller" :removable="true" class="p-mb-2"></Chip>
             </div>
 
             <h5>Icon</h5>
-            <div class="p-d-flex p-ai-center">
-                <Chip label="Apple" icon="pi pi-apple" class="p-mr-2"></Chip>
-                <Chip label="Facebook" icon="pi pi-facebook" class="p-mr-2"></Chip>
-                <Chip label="Google" icon="pi pi-google" class="p-mr-2"></Chip>
-                <Chip label="Microsoft" icon="pi pi-microsoft" :removable="true"></Chip>
+            <div class="p-d-flex p-ai-center p-flex-column p-flex-sm-row">
+                <Chip label="Apple" icon="pi pi-apple" class="p-mr-2 p-mb-2"></Chip>
+                <Chip label="Facebook" icon="pi pi-facebook" class="p-mr-2 p-mb-2"></Chip>
+                <Chip label="Google" icon="pi pi-google" class="p-mr-2 p-mb-2"></Chip>
+                <Chip label="Microsoft" icon="pi pi-microsoft" :removable="true" class="p-mb-2"></Chip>
             </div>
 
             <h5>Image</h5>
-            <div class="p-d-flex p-ai-center">
-                <Chip label="Amy Elsner" image="assets/demo/images/avatar/amyelsner.png" class="p-mr-2"></Chip>
-                <Chip label="Asiya Javayant" image="assets/demo/images/avatar/asiyajavayant.png" class="p-mr-2"></Chip>
-                <Chip label="Onyama Limba" image="assets/demo/images/avatar/onyamalimba.png" class="p-mr-2"></Chip>
-                <Chip label="Xuxue Feng" image="assets/demo/images/avatar/xuxuefeng.png" :removable="true"></Chip>
+            <div class="p-d-flex p-ai-center p-flex-column p-flex-sm-row">
+                <Chip label="Amy Elsner" image="assets/demo/images/avatar/amyelsner.png" class="p-mr-2 p-mb-2"></Chip>
+                <Chip label="Asiya Javayant" image="assets/demo/images/avatar/asiyajavayant.png" class="p-mr-2 p-mb-2"></Chip>
+                <Chip label="Onyama Limba" image="assets/demo/images/avatar/onyamalimba.png" class="p-mr-2 p-mb-2"></Chip>
+                <Chip label="Xuxue Feng" image="assets/demo/images/avatar/xuxuefeng.png" :removable="true" class="p-mb-2"></Chip>
             </div>
 
             <h5>Styling</h5>
-            <div class="p-d-flex p-ai-center">
-                <Chip label="Action" class="p-mr-2 custom-chip"></Chip>
-                <Chip label="Comedy" class="p-mr-2 custom-chip"></Chip>
-                <Chip label="Onyama Limba" image="assets/demo/images/avatar/onyamalimba.png" class="p-mr-2 custom-chip"></Chip>
-                <Chip label="Xuxue Feng" image="assets/demo/images/avatar/xuxuefeng.png" :removable="true" class="custom-chip"></Chip>
+            <div class="p-d-flex p-ai-center p-flex-column p-flex-sm-row">
+                <Chip label="Action" class="p-mr-2 p-mb-2 custom-chip"></Chip>
+                <Chip label="Comedy" class="p-mr-2 p-mb-2 custom-chip"></Chip>
+                <Chip label="Onyama Limba" image="assets/demo/images/avatar/onyamalimba.png" class="p-mr-2 p-mb-2 custom-chip"></Chip>
+                <Chip label="Xuxue Feng" image="assets/demo/images/avatar/xuxuefeng.png" :removable="true" class="p-mb-2 custom-chip"></Chip>
             </div>
         </div>
 
