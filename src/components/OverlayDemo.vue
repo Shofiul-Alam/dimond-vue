@@ -25,7 +25,7 @@
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Confirmation</h5>
-				<Button label="Delete" icon="pi pi-trash" class="p-button-danger" style="width: 50%" @click="openConfirmation" />
+				<Button label="Delete" icon="pi pi-trash" class="p-button-danger" @click="openConfirmation" />
 				<Dialog header="Confirmation" v-model:visible="displayConfirmation" :style="{width: '350px'}" :modal="true">
 					<div class="confirmation-content">
 						<i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem" />
@@ -127,7 +127,7 @@
 			<div class="card">
 				<h5>ConfirmPopup</h5>
 				<ConfirmPopup></ConfirmPopup>
-				<Button ref="popup" @click="confirm($event)" icon="pi pi-check" label="Confirm" class="p-mr-2" style="width: 50%"></Button>
+				<Button ref="popup" @click="confirm($event)" icon="pi pi-check" label="Confirm" class="p-mr-2"></Button>
 			</div>
 		</div>
 	</div>
