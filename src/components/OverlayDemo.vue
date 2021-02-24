@@ -127,7 +127,7 @@
 			<div class="card">
 				<h5>ConfirmPopup</h5>
 				<ConfirmPopup></ConfirmPopup>
-				<Button ref="popup" @click="confirm($event)" icon="pi pi-check" label="Confirm Popup" class="p-mr-2" style="width: 50%"></Button>
+				<Button ref="popup" @click="confirm($event)" icon="pi pi-check" label="Confirm" class="p-mr-2" style="width: 50%"></Button>
 			</div>
 		</div>
 	</div>
