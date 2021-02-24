@@ -2,8 +2,7 @@
 	<div class="p-grid">
 		<div class="p-col-12">
 			<div class="card">
-				<h5>Default</h5>
-				<p>Pagination, sorting, filtering and checkbox selection.</p>
+				<h5>Filter Menu</h5>
 				<DataTable :value="customer1" :paginator="true" class="p-datatable-customers p-datatable-gridlines" :rows="10" dataKey="id" :rowHover="true" 
 							v-model:filters="filters1" filterDisplay="menu" :loading="loading1" :filters="filters1"
 							:globalFilterFields="['name','country.name','representative.name','balance','status']" >
