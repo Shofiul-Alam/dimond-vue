@@ -128,8 +128,6 @@
 				<h5>ConfirmPopup</h5>
 				<ConfirmPopup></ConfirmPopup>
 				<Button ref="popup" @click="confirm($event)" icon="pi pi-check" label="Confirm Popup" class="p-mr-2" style="width: 50%"></Button>
-				<ConfirmDialog></ConfirmDialog>
-				<Button @click="del()" icon="pi pi-check" label="Confirm Dialog"></Button>
 			</div>
 		</div>
 	</div>
