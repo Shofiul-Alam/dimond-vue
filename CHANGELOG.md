@@ -8,7 +8,7 @@
 
 **Implemented New Features and Enhenements:**
 
-- Upgrade to PrimeVue 3.3.0-rc.1
+- Upgrade to PrimeVue 3.3.0
 - Styles of new PrimeVue components
 
 
