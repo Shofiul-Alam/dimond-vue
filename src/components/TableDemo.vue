@@ -77,7 +77,7 @@
                             <Calendar v-model="filterModel.value" dateFormat="mm/dd/yy" placeholder="mm/dd/yyyy" />
                         </template>
                     </Column>
-                    <Column header="Balance" filterField="balance" dataType="numeric">>
+                    <Column header="Balance" filterField="balance" dataType="numeric">
                         <template #body="{data}">
                             <span class="p-column-title">Balance</span>
                             {{formatCurrency(data.balance)}}
