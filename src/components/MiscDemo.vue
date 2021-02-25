@@ -33,7 +33,7 @@
 
             <h5>Inline Button Badge</h5>
             <Button label="Emails" badge="8" class="p-mr-2"></Button>
-            <Button label="Messages" icon="pi pi-users" class="p-button-warning" badge="8" badgeClass="Badge-danger"></Button>
+            <Button label="Messages" icon="pi pi-users" class="p-button-warning" badge="8" badgeClass="p-badge-danger"></Button>
 
             <h5>Sizes</h5>
             <div class="badges">
