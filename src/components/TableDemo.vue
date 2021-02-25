@@ -31,7 +31,7 @@
                             <InputText type="text" v-model="filterModel.value" class="p-column-filter" placeholder="Search by name"/>
                         </template>
                     </Column>
-                    <Column header="Country" filterField="country.name">>
+                    <Column header="Country" filterField="country.name">
                         <template #body="{data}">
                             <span class="p-column-title">Country</span>
                             <img src="assets/demo/flags/flag_placeholder.png" :alt="data.country.name" :class="'flag flag-' + data.country.code" width="30" />
@@ -50,7 +50,7 @@
                             <div class="p-px-3 p-pt-0 p-pb-3 p-text-center p-text-bold">Customized Buttons</div>
                         </template>
                     </Column>
-                    <Column header="Agent" filterField="representative" :showFilterMatchModes="false" :filterMenuStyle="{'width':'14rem'}">>
+                    <Column header="Agent" filterField="representative" :showFilterMatchModes="false" :filterMenuStyle="{'width':'14rem'}">
                         <template #body="{data}">
                             <span class="p-column-title">Agent</span>
                             <img :alt="data.representative.name" :src="'assets/demo/images/avatar/' + data.representative.image" width="32" style="vertical-align: middle" />
@@ -68,7 +68,7 @@
                             </MultiSelect>
                         </template>
                     </Column>
-                    <Column header="Date" filterField="date" dataType="date">>
+                    <Column header="Date" filterField="date" dataType="date">
                         <template #body="{data}">
                             <span class="p-column-title">Date</span>
                             {{formatDate(data.date)}}
