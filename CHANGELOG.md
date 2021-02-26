@@ -5,6 +5,7 @@
 **Migration Guide**
 
 - Update theme files and layout files.
+- Update App*.vue files (App.vue and AppConfig.vue)
 
 **Implemented New Features and Enhenements:**
 
