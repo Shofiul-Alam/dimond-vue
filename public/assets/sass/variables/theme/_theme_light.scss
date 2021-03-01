@@ -24,12 +24,12 @@ $shade800:#343a40 !default;    //unused
 $shade900:#212529 !default;    //unused
 
 //global
-$fontFamily:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !default;
+$fontFamily:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $fontSize:1rem !default;
 $fontWeight:normal !default;
 $textColor:$shade700 !default;
 $textSecondaryColor:$shade600 !default;
-$borderRadius:4px !default;
+$borderRadius:3px !default;
 $transitionDuration:.2s !default;
 $formElementTransition:background-color $transitionDuration, color $transitionDuration, border-color $transitionDuration, box-shadow $transitionDuration !default;
 $actionIconTransition:background-color $transitionDuration, color $transitionDuration, box-shadow $transitionDuration !default;
@@ -66,7 +66,6 @@ $actionIconBorderRadius:50% !default;
 //input field (e.g. inputtext, spinner, inputmask)
 $inputPadding:.5rem .5rem !default;
 $inputTextFontSize:1rem !default;
-
 $inputBg:$shade000 !default;
 $inputTextColor:$shade700 !default;
 $inputIconColor:$shade600 !default;
@@ -107,7 +106,7 @@ $inputListHeaderBorder:0 none !default;
 //inputs with overlays (e.g. autocomplete, dropdown, multiselect)
 $inputOverlayBg:$inputListBg !default;
 $inputOverlayHeaderBg:$inputListHeaderBg !default;
-$inputOverlayBorder:0 none !default;
+$inputOverlayBorder:0 none !default;                  
 $inputOverlayShadow:0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12) !default;
 
 //password
@@ -796,4 +795,15 @@ $splitterGutterHandleBg:$shade300;
     --primary-color:#{$primaryColor};
     --primary-color-text:#{$primaryTextColor};
     --font-family:#{$fontFamily};
+    --surface-0: #ffffff;
+    --surface-50: #FAFAFA;
+    --surface-100: #F5F5F5;
+    --surface-200: #EEEEEE;
+    --surface-300: #E0E0E0;
+    --surface-400: #BDBDBD;
+    --surface-500: #9E9E9E;
+    --surface-600: #757575;
+    --surface-700: #616161;
+    --surface-800: #424242;
+    --surface-900: #212121;
 }
