@@ -4,7 +4,7 @@
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Dialog</h5>
-				<Dialog header="Dialog" v-model:visible="display" :style="{width: '30vw'}" :modal="true">
+				<Dialog header="Dialog" v-model:visible="display" :breakpoints="{'960px': '75vw'}" :style="{width: '30vw'}" :modal="true">
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
