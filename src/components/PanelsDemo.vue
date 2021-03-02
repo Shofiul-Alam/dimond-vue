@@ -111,7 +111,7 @@
 			<div class="card">
 				<h5>Divider</h5>
 				<div class="p-grid">
-					<div class="p-col-5 p-d-flex p-ai-center p-jc-center">
+					<div class="p-col-5 p-d-flex p-flex-column p-ai-center p-jc-center">
 						<div class="p-fluid">
 							<div class="p-field">
 								<label for="username">Username</label>
@@ -121,6 +121,8 @@
 								<label for="password">Password</label>
 								<InputText id="password" type="password" />
 							</div>
+						</div>
+						<div class="p-fluid">
 							<Button label="Login"></Button>
 						</div>
 					</div>
