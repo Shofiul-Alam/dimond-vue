@@ -1,7 +1,7 @@
 <template>
 	<div class="p-grid">
 		<div class="p-col-12 flexbox-demo">
-			<div class="card">
+			<div>
 				<h4>FlexBox</h4>
 				<p>Easily manage the layout of your components with the responsive FlexBox utilities. If you require a
 					utility to manage the layout of your application,
