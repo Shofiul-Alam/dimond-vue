@@ -6,11 +6,13 @@
 
 - Update theme files and layout files.
 - Update App*.vue files (App.vue and AppConfig.vue)
+- update event-bus.js
 
 **Implemented New Features and Enhenements:**
 
 - Upgrade to PrimeVue 3.3.3 and Vue 3.0.6
 - Styles of new PrimeVue components
+- Remove mitt event bus
 
 
 ## 3.0.1 (2020-12-10)
