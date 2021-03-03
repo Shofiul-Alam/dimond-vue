@@ -5,7 +5,7 @@
 **Migration Guide**
 
 - Update theme files and layout files.
-- Update App*.vue files (App.vue and AppConfig.vue)
+- Update App*.vue files (App.vue)
 - update event-bus.js
 
 **Implemented New Features and Enhenements:**
